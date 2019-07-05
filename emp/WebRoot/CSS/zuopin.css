@@ -1,0 +1,13 @@
+.userproduction{width: 300px;border: 1px solid #F3F3F3;background: #fff;float: left;margin-right: 30px;margin-bottom: 30px;}
+.userproduction .cover{padding: 10px 10px 0 10px;}
+.userproduction .active:hover{background-color:rgb(166,166,166);opacity: 1;}
+.userproduction .name{display: inline;font-size:16px;color: #dd3915;margin: 5px;width: 280px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.userproduction .name:hover{background: #DD3915;color:#fff;}
+.userproduction p{margin:0 10px;}
+.userproduction .stars{margin: 10px;color:#909090;font-size:12px;}
+.userproduction .stars span{color:#909090;font-size:12px;display: inline-block;margin-right:20px;}
+.userproduction .stars a{color:#909090;font-size:12px;}
+.userproduction .stars a:hover{background: #909090;color: #fff;}
+.userproduction .stars .b,.stars .c{float:right;}
+.userproduction  .b:before{background-position: -29px -165px;}
+.userproduction  .c:before{background-position: -93px -164px;}

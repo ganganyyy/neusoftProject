@@ -1,0 +1,24 @@
+<%@ page language="java" pageEncoding="GBK"%>
+<html>
+<head>
+	<title>作品动态</title>
+	<link href="CSS/zuopin.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="userprod clearfix">
+		<div class="userproduction">
+            		<div class="cover">
+            			<img src="images/san.jpg"/>
+            			<a href="#" class="active" title="一一"></a>
+            		</div>
+                    <p class="name">三明治</p>
+        			<p>这道菜太好吃了</p>
+        			<div class="stars">
+        				<span class="a">啊啊啊啊啊啊</span>
+                    	<span class="b">62</span>
+                    	<span class="c">9</span>
+        			</div>
+		</div>
+	</div>
+</body>
+</html>
