@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>个人菜谱 - 美拾</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/product.css"/>
+	<link rel="stylesheet" type="text/css" href="css/addpro.css"/>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
 </head>
 
@@ -81,31 +81,33 @@
 	         </div>
 	     </div>
 	<div class="konghang"></div>
-
-		<div class="conwidth content clearfix">
-			<div class="leftcon">
-				<div class="ctitle">
-					<span>${ins.aac102}&nbsp;的作品</span>
-				</div>
-				<img src="${ins.aac204}"/>
+	
+	<div class="content">
+		<form id="myform" action="<%=path%>/addPro.html" method="post">					
+			<div class="aa1" style="margin-top: 10px;">
+				<span class="aa2">上传我做的</span> 
+			</div>					
+			<div class="proimg">
+				<span class="aa3">选择图片</span>
+				<div class="aa4">
+					<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+						<legend>拖拽上传</legend>
+					</fieldset> 						 
+					<div class="layui-upload-drag" id="test10">
+						<i class="layui-icon"></i>
+						<p>点击上传，或将文件拖拽到此处</p>
+					</div>
+				</div> 
+			</div>					
+			<div class="protext">
+				<span class="aa5">心得</span> 
 				<div>
-					<div class="author">				
-						<img src="${ins.aab106}" width="100px"/>
-						<span>${ins.aab102}</span>
-						<span style="color:#DD3915">做过</span>
-						<span>${ins.aac102}</span>
-					</div>
-					<div class="fr">
-						<a class="dianzan">赞</a>
-					</div>
-				</div>				
-				<div class="desc">
-					<p name="aac203">${ins.aac203}</p><br/>
+					<textarea class="aa6" placeholder="说点什么吧" required></textarea>
 				</div>
-				<div class="kh30"></div>
-		    </div>
-		 </div>
-
+			</div>
+		</form>
+	</div>
+	
  	<div class="conwidth footer"><!----------------页脚---------------->
         <ul>
             <li><a href="#">美食生活杂志</a></li>
@@ -118,8 +120,23 @@
             <li><a href="#">隐私声明</a></li>
         </ul><br />
     </div>
-        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/main.js"></script>
         <script src="layui/layui.js"></script>
+        <script>
+			layui.use('upload', function(){
+			  var $ = layui.jquery
+			  ,upload = layui.upload;
+			  
+			  //拖拽上传
+			  upload.render({
+			    elem: '#test10'
+			    ,url: '/upload/'
+			    ,done: function(res){
+			      console.log(res)
+			    }
+			  });
+			});
+		</script>
 </body>
 </html>

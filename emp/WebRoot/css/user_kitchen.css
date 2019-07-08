@@ -46,7 +46,7 @@ margin-right: 5px;}
 .userproduction .active:hover{background-color:rgb(166,166,166);opacity: 1;}
 .userproduction .name{display: inline;font-size:16px;color: #dd3915;margin: 5px;width: 280px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
 .userproduction .name:hover{background: #DD3915;color:#fff;}
-.userproduction p{margin:0 10px;}
+.userproduction p{ margin:15px;}
 .userproduction .stars{margin: 10px;color:#909090;font-size:12px;}
 .userproduction .stars span{color:#909090;font-size:12px;display: inline-block;margin-right:20px;}
 .userproduction .stars a{color:#909090;font-size:12px;}

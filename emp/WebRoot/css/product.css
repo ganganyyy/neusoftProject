@@ -6,6 +6,7 @@ display: inline-block;background-position: 0 0;}
 
 .title .fubiaoti{font-size: 24px;}
 .leftcon{width:660px;float:left;}
+.ctitle{margin-top: 10px; margin-bottom: 10px; font-size: 24px;}
 .leftcon .cookde{margin-top: 10px;}
 .leftcon .cookde span{color: #909090;}
 .leftcon .cookde .cooknum{font-size: 18px;color: #DD3915;font-weight: 700;}
