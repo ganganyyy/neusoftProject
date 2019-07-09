@@ -9,7 +9,6 @@ import com.neusoft.system.tools.Tools;
 
 public class Ab01ServicesImpl extends JdbcServicesSupport 
 {
-	
     private boolean deleteById()throws Exception
     {
     	String sql="delete from ab01 where aab101=?";
@@ -87,8 +86,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
     	return this.batchUpdate(sql, idlist);
     }
 
-    
-    
+
     public Map<String,String> findById()throws Exception
     {
     	//1.±‡–¥SQL”Ôæ‰
@@ -165,8 +163,4 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 	  		sql.append(" order by x.aab102");
 	  		return this.queryForList(sql.toString(), paramList.toArray());
 	  }
-    
-    
-
-	
 }

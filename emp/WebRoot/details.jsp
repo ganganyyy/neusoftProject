@@ -1,10 +1,18 @@
-<%@ page language="java" pageEncoding="GBK"%>
+<%@ page language="java" pageEncoding="GBK" %>
+<%String path=request.getContextPath(); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>个人菜谱 - 美拾</title>
+		<title>菜谱详情</title>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
-			<link rel="stylesheet" type="text/css" href="css/menu_book.css"/>
+		<link rel="stylesheet" type="text/css" href="css/menu_book.css"/>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+		
+        <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/main.js"></script>
+        <script src="layui/layui.js"></script>
 	</head>
 
 	<body>
@@ -79,57 +87,63 @@
         </div>
         <div class="konghang"></div><!--因为头部固定而需要设置高度空行把内容撑下去-->
 
-
+	<form id="myform" action="<%=path%>/details.html" method="post">
+	<input type="submit" name="next" value="查询">
 		<div class="conwidth content clearfix">
-			<h1>松子蒜蓉鸡便当<i></i></h1>
+			<h1>${ins.aac102 }<i></i></h1>
 			<div class="leftcon">
-				<img src="img/menubook/745c4c122aea11e7947d0242ac110002_1536w_1024h.jpg"/>
+				<img src="img/menubook/${ins.aac108 }" style="width:660px;height:440px"/>
 				<div class="cookde">
 					<span class="cooknum">0</span><span>&nbsp;人做过这道菜</span>
 					<div class="fr">
-						<a href="#" title="添加到菜单" class="icon"></a><a class="shoucang">收藏</a>
+						<a class="shoucang">点赞</a>
+						<a class="shoucang">评论</a>
+						<a class="shoucang">收藏</a>
 					</div>
 				</div>
 				<div class="author">
 					<img src="img/menubook/cd9d547428ab11e7947d0242ac110002_271w_209h.jpg"/><span>食在心安</span>
 				</div>
+				
 				<div class="desc">
-					<p>多年前跟一位铁板烧师傅学的一道家常菜。先将去骨鸡腿干煎到表面金黄，分切成适口大小之后，再做后续的调味动作。最主要的重点就是干煎鸡腿时的耐心等待，一定要等到一面煎到上色香酥，再翻面。</p><br />
-					<p>记得还是厨房新手的时候，我总是在食材下锅后就急着做些什么，要么翻炒，要么翻面移动位置，好像不做这些事情，就不够称职。经过那位铁板烧师傅的提醒，我才恍然大悟，原来很多时候，食材入锅后是需要静置等待的，让热源有足够的时间将食材加热至理想的状态。</p><br />
-					<p>使用大量蒜末葱末做佐料的香煎鸡块，用盐简单提味，味道就很浓郁，最后加入烤得香香的松子，在吃的时候，可以额外享受酥脆的口感，香气也更加倍了。</p><br />
+					<p>${ins.aac105 }</p><br/>
 				</div>
-
 				<div class="kh30"></div>
-				<div class="zuofa">
-					<div class="title"><h2 class="fubiaoti">松子蒜香鸡便当的做法</h2></div>
-					<ol>
-					    <li><span>1</span><p>制作<松子蒜香鸡>：<br>辣椒切圈，松子放入烤箱烘焙。鸡腿去骨，拭干水分。</p></li>
-					    <li><span>10</span><p>开始制作<蒜炒豌豆苗>：<br />蒜片冷油下锅，中火慢慢炒香后下豌豆苗，翻炒一会儿，让油脂均匀黏附在食材上，加入适量清水，加盖焖煮至锅缝飘出白烟后，开盖检视蔬菜熟软状态，如已达喜欢的熟度，加盐调味，炒匀即可。</p><img src="img/menubook/bdea7b9a2aec11e7947d0242ac110002_1280w_1024h.jpg" alt=""></li>
-					</ol>
-				</div>
-				<div style="height: 250px;"><!--有个奇怪的bug，所以加个高度修复。-->
-
-				</div>
-
-				<div class="upload">
-					上传你做的松子蒜香鸡便当
-				</div>
-			<div class="kh30"></div>
+				
+		  <h2>&nbsp; 用料 </h2>
+          <div class="ings">
+          <table class="layui-table" lay-skin="line" style="border:0px">
+          <c:forEach items="${rows2 }" var="ins" varStatus="vs">
+	    	   	  <tr>
+				    <td>${ins.aac603 }</td>
+				    <td>${ins.aac602 }</td>
+				  </tr>
+		  </c:forEach>
+          </table>
+          </div>
+		  
+		   <div class="kh30"></div>
+		   <div class="zuofa">
+		   <div class="title"><h2 class="fubiaoti">${ins.aac102 }的做法</h2></div>
+           <div>
+		      <ol>
+		      <c:forEach items="${rows1 }" var="ins" varStatus="vs">
+		      <li><span>${ins.aac404 }</span><p>${ins.aac402 }</p>
+		      <img src="img/menubook/${ins.aac403 }" width="400px" height="270px"></li>
+			  </c:forEach>
+			  </ol>
+            </div>
+			
 			<div class="question">
-					<div class="title"><h2 class="fubiaoti">松子蒜香鸡便当的答疑</h2></div>
-					关于松子蒜香鸡便当的做法还有疑问？ <a href="cook_question.html">提一个问题</a>
+			<div class="title"><h2 class="fubiaoti">${ins.aac102 }的答疑</h2></div>
+			关于${ins.aac102 }的做法还有疑问？ <a href="cook_question.html">提一个问题</a>
 			</div>
-			<div class="kh30"></div>
+			
+			<div class="upload">上传你做的${ins.aac102 }</div>
+		    </div>
+		    <div class="kh30"></div>
 			</div>
 			<div class="rightcon">
-				<div class="classplace">
-					<div class="title"><h2 class="fubiaoti">松子蒜香鸡便当所在分类</h2></div>
-					<p>便当</p>
-				</div>
-				<div class="kh30"></div>
-				<div class="recommendedmenu">
-					<div class="title"><h2 class="fubiaoti">还没有菜单推荐这个菜谱</h2><a href="">+加入菜单</a></div>
-				</div>
 				<div class="kh30"></div>
 				<div class="look">
 					<div class="title"><h2 class="fubiaoti">随便看看</h2></div>
@@ -140,25 +154,19 @@
 					<span><a href="#">腐乳烧肉</a></span><span><a href="#">素炒蘑菇</a></span>
 				</div>
 				<div class="kh30"></div>
-				<div class="erweimaimg">
-					<img src="img/menubook/erweima.png" alt="">
-				</div>
-				<div class="kh30"></div>
 				<div class="message">
-					<p>该菜谱创建于 2017-04-25</p>
+					<p>该菜谱创建于${ins.aac103 }</p>
 					<p><span>26</span>收藏</p>
 					<p>版权归作者所有，没有作者本人的书面许可任何人不得转载或使用整体或任何部分的内容。 </p>
 				</div>
 			</div>
-
-
 		</div>
 
 		<div class="bottomcon">
 			<div class="conwidth">
 				<div class="kh30"></div>
 				<div class="alsolike">
-					<div class="title"><h2 class="fubiaoti">喜欢松子蒜香鸡便当的也喜欢</h2></div>
+					<div class="title"><h2 class="fubiaoti">喜欢${ins.aac102 }的也喜欢</h2></div>
 						<div class="likemenu">
 							<a href="#">
 								<img src="img/menubook/56f12d74883211e6b87c0242ac110003_2448w_3264h.jpg"/>
@@ -190,7 +198,7 @@
 				</div>
 			</div>
 		</div>
-
+        </form>
   	<div class="conwidth footer"><!----------------页脚---------------->
 		<ul>
 			<li><a href="#">美食生活杂志</a></li>
@@ -201,11 +209,8 @@
 			<li><a href="#">联系我们</a></li>
 			<li><a href="#">意见反馈</a></li>
 			<li><a href="#">隐私声明</a></li>
-		</ul><br />
+		</ul><br/>
 		<p>嘿嘿嘿项目组</p>
   	</div>
-
-        <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/main.js"></script>
 	</body>
 </html>

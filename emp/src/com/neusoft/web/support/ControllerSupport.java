@@ -51,6 +51,25 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
+	 * 查询步骤,用料--dsy
+	 * @throws Exception
+	 */
+	protected final void saveSteps()throws Exception
+	{
+		List<Map<String,String>> rows1=this.services.querySteps();//步骤
+		List<Map<String,String>> rows2=this.services.query();//用料
+		if(rows1.size()>0 && rows2.size()>0)
+		{
+			this.saveAttribute("rows1", rows1);
+			this.saveAttribute("rows2", rows2);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
+	
+	/**
 	 * 单一实例 查询
 	 * @throws Exception
 	 */

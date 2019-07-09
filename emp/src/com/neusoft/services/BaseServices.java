@@ -22,4 +22,10 @@ public interface BaseServices
      {
     	 return null;
      }
+     
+     //dsy 查询步骤,用料
+     default List<Map<String,String>> querySteps()throws Exception
+     {
+    	 return null;
+     }
 }
