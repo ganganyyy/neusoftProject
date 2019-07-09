@@ -130,6 +130,30 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("rows", rows);
 		}
 	}
+	
+	/**
+	 * 获取单一实例
+	 * @author gangan
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstance(String methodName,String msgText)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Object ins= method.invoke(services);
+		if(ins!=null)
+		{
+			this.saveAttribute("ins",  ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
 
 	
 	
