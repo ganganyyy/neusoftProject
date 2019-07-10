@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>个人菜谱 - 美拾</title>
+	<title>上传作品</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/addpro.css"/>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
@@ -83,28 +83,48 @@
 	<div class="konghang"></div>
 	
 	<div class="content">
-		<form id="myform" action="<%=path%>/addPro.html" method="post">					
-			<div class="aa1" style="margin-top: 10px;">
-				<span class="aa2">上传我做的</span> 
-			</div>					
+		<form id="myform" class="layui-form" action="<%=path%>/addPro.html" method="post">					
+			<div class="atitle" style="margin-top: 10px;">
+				<span class="alable">上传我做的</span> 
+			</div>									
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+				<legend>上传图片</legend>
+			</fieldset>
 			<div class="proimg">
-				<span class="aa3">选择图片</span>
-				<div class="aa4">
-					<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-						<legend>拖拽上传</legend>
-					</fieldset> 						 
-					<div class="layui-upload-drag" id="test10">
-						<i class="layui-icon"></i>
-						<p>点击上传，或将文件拖拽到此处</p>
-					</div>
-				</div> 
+				<div class="layui-upload">
+				  <button type="button" class="layui-btn" id="uploadQR"><i class="layui-icon">&#xe67c;</i>选择图片</button>
+				    <div class="layui-upload-list" >
+					    <img class="layui-upload-img" id="demo1" style="width: 92px;height: 92px; margin: 0 10px 10px 0;">
+					    <p id="demoText"></p>
+					</div>	
+									
+					<input type="hidden" id="fileIds"  value="" name="saac204">
+					<input id="credential_hide" name="aac204" type="hidden" lay-verify="credentialOne"
+                           autocomplete="off" class="layui-input">
+				</div>  						 
+              	<div style="color: #c2c2c2;margin:10px 0;">
+              		温馨提示: 每次最多上传一张图片, 单张图片的大小不超过2MB
+              	</div>				
 			</div>					
 			<div class="protext">
-				<span class="aa5">心得</span> 
 				<div>
-					<textarea class="aa6" placeholder="说点什么吧" required></textarea>
+					<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+					<legend>心得</legend>
+				    </fieldset>
+				</div>
+				<div>
+					<textarea class="layui-textarea" rows="10" placeholder="说点什么吧" name="aac203"></textarea>
 				</div>
 			</div>
+			<div class="layui-input-block">
+      			<button id="upload_img" type="button" type="hidden"></button>
+      			<input class="layui-btn" type="submit" name="next"  id="sure"
+      			       value="提交" formaction="<%=path%>/aadPro.html">
+      			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    		</div>
+    		<input type="hidden" name="qaac207" value="${param.aac101}">
+    		<input type="hidden" name="qaac203" value="${param.aac203}">
+    		<input type="hidden" name="qaac204" value="${param.aac204}">    					
 		</form>
 	</div>
 	
@@ -124,19 +144,49 @@
         <script src="js/main.js"></script>
         <script src="layui/layui.js"></script>
         <script>
-			layui.use('upload', function(){
-			  var $ = layui.jquery
-			  ,upload = layui.upload;
-			  
-			  //拖拽上传
-			  upload.render({
-			    elem: '#test10'
-			    ,url: '/upload/'
-			    ,done: function(res){
-			      console.log(res)
-			    }
-			  });
-			});
-		</script>
+	        layui.use(['form', 'element', 'upload'], function () {
+	            var form = layui.form;
+	            var element = layui.element;
+	            var $ = layui.jquery;
+	            var upload = layui.upload;
+		           
+	            upload.render({
+	                elem: '#uploadQR'
+	                , url: 'emp/WebRoot/images'
+	                , accept: 'images'  // 允许上传的文件类型
+	                , size: 2048        // 最大允许上传的文件大小  单位 KB
+	                , auto: false
+	                , bindAction: '#upload_img'
+	                , choose: function (obj) {
+	                	//预读本地文件示例，不支持ie8
+	                    obj.preview(function(index, file, result){
+	                      $('#demo1').attr('src', result); //图片链接（base64）
+	                    });
+	                }
+	                , done: function (res, index, upload) {
+	                    //如果上传失败
+	                    if(res.code > 0){
+	                      return layer.msg('上传失败');
+	                    }
+	                    //上传成功
+	                    $('#credential_hide').val(res.msg); //隐藏输入框赋值
+	                    
+	                }
+	                , error: function (index, upload) {
+	                	//演示失败状态，并实现重传
+	                    var demoText = $('#demoText');
+	                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+	                    demoText.find('.demo-reload').on('click', function(){
+	                      uploadInst.upload();
+	                    });
+	                }
+	            });
+	            $('#sure').click(function () {
+	                $(this).attr({'disabled': 'disabled'});
+	                $('#upload_img').click();//单击隐藏的上传按钮
+	            });
+	                    	            
+	        });
+	</script>
 </body>
 </html>
