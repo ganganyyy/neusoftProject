@@ -90,15 +90,23 @@
 	<form id="myform" action="<%=path%>/details.html" method="post">
 	<input type="submit" name="next" value="查询">
 		<div class="conwidth content clearfix">
-			<h1>${ins.aac102 }<i></i></h1>
+			<h1>${ins.aac102 }</h1>
 			<div class="leftcon">
 				<img src="img/menubook/${ins.aac108 }" style="width:660px;height:440px"/>
 				<div class="cookde">
 					<span class="cooknum">0</span><span>&nbsp;人做过这道菜</span>
 					<div class="fr">
-						<a class="shoucang">点赞</a>
-						<a class="shoucang">评论</a>
-						<a class="shoucang">收藏</a>
+					<c:choose>
+                    <c:when test="${1>0}">   
+                    	<a class="layui-btn layui-btn-danger">修改</a>
+						<a class="layui-btn layui-btn-danger" href="<%=path%>/delreci.html">删除</a>    
+                    </c:when>
+                    <c:otherwise>
+                    	<a class="layui-btn layui-btn-danger">点赞</a>
+						<a class="layui-btn layui-btn-danger">评论</a>
+						<a class="layui-btn layui-btn-danger">收藏</a>
+                    </c:otherwise>
+                    </c:choose>
 					</div>
 				</div>
 				<div class="author">
@@ -166,7 +174,7 @@
 			<div class="conwidth">
 				<div class="kh30"></div>
 				<div class="alsolike">
-					<div class="title"><h2 class="fubiaoti">喜欢${ins.aac102 }的也喜欢</h2></div>
+					<div class="title"><h2 class="fubiaoti">${ins.aac102 }的作品</h2></div>
 						<div class="likemenu">
 							<a href="#">
 								<img src="img/menubook/56f12d74883211e6b87c0242ac110003_2448w_3264h.jpg"/>

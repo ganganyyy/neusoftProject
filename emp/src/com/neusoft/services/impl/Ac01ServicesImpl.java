@@ -9,6 +9,12 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+    private boolean deleteById()throws Exception
+    {
+    	String sql="delete from ac01 where aac101=?";
+    	return this.executeUpdate(sql, "2")>0;
+    }
+	
     public Map<String,String> findById()throws Exception
     {
     	//1.±‡–¥SQL”Ôæ‰
