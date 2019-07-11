@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
 
 <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/main.js"></script>
 <script src="layui/layui.js"></script>
 
@@ -197,7 +198,7 @@
 	<div class="konghang"></div>
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
-	<form id="myform" action="<%=path%>/upload" method="post" enctype="multipart/form-data" >
+	<form id="myform" action="<%=path%>/upreci" method="post" enctype="multipart/form-data" >
 
 		<div class="conwidth content clearfix">
 
@@ -216,12 +217,13 @@
 
 			<div class="kh30"></div>
 			<div class="author">
+			<input type="hidden" name="aac106">
 				<img src="img/menubook/1.jpg" style="width: 50px; height: 50px" /><span>食在心安</span>
 			</div>
 
 			<div class="kh30"></div>
 			<div class="desc">
-				<textarea name="" required lay-verify="required"
+				<textarea name="aac105" required lay-verify="required"
 					placeholder="添加菜谱描述" class="layui-textarea"></textarea>
 			</div>
 
@@ -243,12 +245,14 @@
 				<input class="layui-btn" type="button" value="追加一行"
 					onclick="addings()">
 			</div>
+			
+			<div class="kh30"></div>
 
 			<div class="title">
 				<h2 class="fubiaoti">做法</h2>
 			</div>
-			<div class="kh30"></div>
 			<div id="zuofa">
+			
 				<div class="layui-row">
 					<div class="layui-col-md1">1</div>
 					<div class="layui-col-md3">
@@ -258,7 +262,7 @@
 					<div class="layui-col-md5">
 					<input type="file" onchange="PreviewImage(this,1)" name="images" />
 				<div class="layui-upload">
-				<button type="button" class="layui-btn" name="aac108">上传图片</button>
+				<button type="button" class="layui-btn">上传图片</button>
 				<div id="imgPreview1" class="layui-upload-list" >
 					<img class="layui-upload-img" width="350px" height="250px">
 				</div>
@@ -275,6 +279,7 @@
 				</div>
 				
 				<div class="layui-row">
+				<div class="kh30"></div>
 					<div class="layui-col-md1">2</div>
 					<div class="layui-col-md3">
 						<textarea rows="5" cols="20" placeholder="添加菜谱描述"
@@ -298,13 +303,32 @@
 							onclick="delecttr(this)">删除</a>
 					</div>
 				</div>
-				
 			</div>
+										
+			<div class="layui-row">
 			<input class="layui-btn" type="button" value="追加一步"
-				onclick="addzuofa('zuofa')">
+			onclick="addzuofa('zuofa')">
+			</div>
 
+			 <div class="kh30"></div>
+			  <div class="layui-row">
+			    <div class="fubiaoti">推荐至菜系</div>
+			    <div >
+			      <select style="width:750px;height:30px;" name="aac107">
+			        <option value="09" selected="">不限</option>
+			        <option value="01">川菜</option>
+			        <option value="02">鲁菜</option>
+			        <option value="03">粤菜</option>
+			        <option value="04">苏菜</option>
+			        <option value="05">浙菜</option>
+			        <option value="06">闽菜</option>
+			        <option value="07">湘菜</option>
+			        <option value="08">徽菜</option>
+			      </select>
+			    </div>
+			  </div>
+			
 			<div class="kh30"></div>
-
 			<div class="layui-row">
 				<div class="layui-col-md4 layui-col-md-offset3">
 					<input class="layui-btn" type="submit" value="发布菜谱"

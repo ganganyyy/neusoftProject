@@ -9,7 +9,32 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
-    private boolean deleteById()throws Exception
+    public boolean addReci(Map<String,Object> dto,String aac108)throws Exception
+    {
+//    	//获取当前员工编号
+//      String aac106=Tools.getEmpNumber();
+    	String aac106="1";
+//    	//向DTO添加员工编号
+        dto.put("aac106", aac106);
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
+    			.append("                 aac107,aac108,aac109,aac110)")
+    			.append("          values(?,NOW(),NOW(),?,?,")
+    			.append("                 ?,?,'0','0')")
+    			;
+    	//2.编写参数数组
+    	Object args[]={
+    			dto.get("aac102"),
+    			dto.get("aac105"),
+    			aac106,
+    			dto.get("aac107"),
+    			aac108
+    	};
+        return this.executeUpdate(sql.toString(), args)>0;	
+    }
+	
+    public boolean deleteById()throws Exception
     {
     	String sql="delete from ac01 where aac101=?";
     	return this.executeUpdate(sql, "2")>0;
