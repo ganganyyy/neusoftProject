@@ -17,6 +17,8 @@ width:44px;height:44px;margin-right: .1em;}
 .leftcon .author img{border-radius:50% ;margin-right: 10px;vertical-align: middle;}
 .leftcon .dianzan{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
 text-align:center;font-size:15px;background-color: #DD3915;color: #fff;margin-top: 60px;}
+.leftcon .quxiaozan{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
+text-align:center;font-size:15px;background-color: #ff0000;color: #fff;margin-top: 60px;}
 .leftcon .desc{margin-top: 30px;font-size: 18px;}
 .leftcon .yongliao{margin-top: 10px;font-size: 18px;}
 .leftcon .yongliao a{color: #222;}

@@ -1,9 +1,10 @@
 <%@ page language="java" pageEncoding="GBK" %>
 <%String path=request.getContextPath(); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>个人菜谱 - 美拾</title>
+	<title>作品</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/product.css"/>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
@@ -82,6 +83,7 @@
 	     </div>
 	<div class="konghang"></div>
 
+	<form id="myform" action="<%=path%>/queryPro.html" method="post">
 		<div class="conwidth content clearfix">
 			<div class="leftcon">
 				<div class="ctitle">
@@ -96,16 +98,23 @@
 						<span>${ins.aac102}</span>
 					</div>
 					<div class="fr">
-						<a class="dianzan">赞</a>
+					  <c:choose>
+	     				<c:when test="${ins.aad101!=null}">
+	     				    <a class="quxiaozan" id="canclezan" onclick="cancle('${ins.aac201}')" href="#">已赞</a>							
+						</c:when>
+					    <c:otherwise>
+					    	<a class="dianzan" id="zan" onclick="give('${ins.aac201}')" href="#" >赞</a>
+					    </c:otherwise>
+					  </c:choose>						
 					</div>
 				</div>				
 				<div class="desc">
 					<p name="aac203">${ins.aac203}</p><br/>
 				</div>
 				<div class="kh30"></div>
-		    </div>
+		    </div>		    
 		 </div>
-
+	</form>
  	<div class="conwidth footer"><!----------------页脚---------------->
         <ul>
             <li><a href="#">美食生活杂志</a></li>
@@ -121,5 +130,17 @@
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/main.js"></script>
         <script src="layui/layui.js"></script>
+        <script type="text/javascript">
+        	function give(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/likePro.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+           	function cancle(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/cancleLikePro.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+        </script>
 </body>
 </html>

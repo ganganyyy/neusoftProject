@@ -1,5 +1,6 @@
 package com.neusoft.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,18 +20,20 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     
     //查询某一作品详情
     public Map<String,String> findById()throws Exception
-    {
+    {    	
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,")
     			.append("       a.aac207,c.aac102,b.aab102,b.aab106")
     			.append("  from ac02 a, ab01 b, ac01 c")
-    			.append(" where a.aab101=b.aab101")
-    			.append("   and a.aac207=c.aac101")
+    			.append(" where a.aac207=c.aac101")
     			.append("   and a.aac201=?")
     			;
     	//执行查询
-    	return this.queryForMap(sql.toString(), this.get("aac201"));
+    	Map<String,String> abc = this.queryForMap(sql.toString(), this.get("aac201"));
+    	String likeNumber=likeNumber();
+    	abc.put("aad101", likeNumber);
+    	return abc;
     }
     
     /*
@@ -102,14 +105,14 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     //取消点赞
     private boolean cancleLike()throws Exception
     {
-    	//获取点赞流水号
-    	String aad101="1";
-    	//向DTO添加点赞流水号
-    	this.put("aad101", aad101);
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
     	
-    	String sql1="delete from ad01 where aad101=?";
+    	String sql1="delete from ad01 where aad103='02' and aab101=? and aad104=? ";
     	
-    	Object args1[]={aad101};
+    	Object args1[]={aab101,this.get("aac201")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -122,5 +125,87 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	
     	return this.executeTransaction();
     }
+    //判断是否点赞
+    private String likeNumber()throws Exception
+    { 
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+    	
+    	List<Map<String,String>> rows = new ArrayList<>();
+    	
+    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
+    	
+    	Object args[]={this.get("aac201"),aab101};
+    	
+    	String value = null;
+    	rows = this.queryForList(sql, args);
+        for (Map<String, String> m :rows)
+        {
+            for(Map.Entry<String, String> vo : m.entrySet()){
+                vo.getKey();
+                value=vo.getValue();
+                System.out.println(vo.getKey()+"  "+vo.getValue());
+            }
+        }    	
+		return value;
+    }
     
+    
+    
+    //评论作品
+    private boolean addComment()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+    	    	
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("insert into ad04(aad402,aad403,aad404,aad405)")
+    			.append("          values('02',?,?,?)")
+    			;
+    	//2.编写参数数组
+    	Object args[]={
+    			this.get("aac201"),
+    			this.get("aad404"),
+    			aab101   			
+    	};
+        return this.executeUpdate(sql.toString(), args)>0;	
+    } 
+    
+    //展示评论
+    public List<Map<String,String>> queryComment()throws Exception
+    {
+    	StringBuilder sql=new StringBuilder()
+    			.append("select a.aad404,b.aab102,b.aab106")
+    			.append("  from ad04 a, ab01 b")
+    			.append(" where a.aad405=b.aab101")
+    			.append("   and a.aad402='02' ")
+    			.append("   and a.aad403=? ")
+    			;
+    	Object args[]={
+    			this.get("aac201")   			  			
+    	};
+    	return this.queryForList(sql.toString(),args);
+    }
+    
+    //展示点赞
+    public List<Map<String,String>> queryLike()throws Exception
+    {
+    	StringBuilder sql=new StringBuilder()
+    			.append("select b.aab102,b.aab106")
+    			.append("  from ad01 a, ab01 b")
+    			.append(" where a.aad103='02' ")
+    			.append("   and a.aad104=? ")
+    			;
+    	Object args[]={
+    			this.get("aac201")   			  			
+    	};
+    	return this.queryForList(sql.toString(),args);
+    }
+    
+       
 }
