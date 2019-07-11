@@ -69,6 +69,7 @@ public class BaseServlet extends HttpServlet
         	 toPath="Error";
         	 ex.printStackTrace();
          }
+         
 		request.getRequestDispatcher("/"+toPath+".jsp").forward(request, response);
 	}
 	
@@ -82,6 +83,7 @@ public class BaseServlet extends HttpServlet
 		{
 			//3.将map的每个键值对,转换成request的属性
 			request.setAttribute(entry.getKey(), entry.getValue());
+			System.out.println(entry.getKey()+":"+entry.getValue());
 		}
 		//清除所有的request级属性数据
 		rueqestAttribute.clear();

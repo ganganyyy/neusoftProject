@@ -1,6 +1,7 @@
 package com.neusoft.services.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -66,7 +67,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	   * @return
 	   * @throws Exception
 	   */
-	    private boolean addAb01()throws Exception
+	    public boolean addAb01()throws Exception
 	    {
 	    	String uuid=UUID.randomUUID().toString().replace("-", "").toLowerCase();
 	    	//1.编写SQL语句
@@ -81,6 +82,29 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    			this.get("aab104"),
 	    	};
 	        return this.executeUpdate(sql.toString(), args)>0;	
+	    }
+	    
+	    
+	    /**
+	     * 人气用户
+	     * 根据被关注人数搜索前10名用户
+	     * aab108:被关注人数
+	     * ac01Count:总食谱数
+	     * ac02Count：总作品数
+	     * @return
+	     * @throws Exception
+	     */
+	    public List<Map<String,String>>queryForPopularUsers()throws Exception
+	    {
+	    	StringBuilder sql=new StringBuilder()
+	    			.append("select u.aab101,aab102,aab106,aab108,count(v.aac106) as ac01Count,")
+	    			.append("       count(w.aab101) as ac02Count")
+	    			.append("  from ab01 u left join ac01 v on u.aab101=v.aac106")
+	    			.append("              left join ac02 w on u.aab101=w.aab101")
+	    			.append("  group by u.aab101")
+	    			.append("  order by aab108 desc limit 0,10;");
+	    			
+	    	return this.queryForList(sql.toString());
 	    }
 	    
 	  
