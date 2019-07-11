@@ -15,10 +15,14 @@ width:44px;height:44px;margin-right: .1em;}
 
 .leftcon .author{display:inline-block;font-size: 18px;margin-top: 50px;}
 .leftcon .author img{border-radius:50% ;margin-right: 10px;vertical-align: middle;}
-.leftcon .dianzan{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
+.leftcon .shoucang{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
 text-align:center;font-size:15px;background-color: #DD3915;color: #fff;margin-top: 60px;}
+.leftcon .quxiaocang{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
+text-align:center;font-size:15px;background-color: #808080;color: #fff;margin-top: 60px;}
+.leftcon .dianzan{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
+text-align:center;font-size:15px;background-color: #DD3915;color: #fff;margin-top: 60px;margin-right: 3px;}
 .leftcon .quxiaozan{display:inline-block;width: 100px;height: 44px;line-height: 44px;float: right;
-text-align:center;font-size:15px;background-color: #ff0000;color: #fff;margin-top: 60px;}
+text-align:center;font-size:15px;background-color: #808080;color: #fff;margin-top: 60px;margin-right: 3px;}
 .leftcon .desc{margin-top: 30px;font-size: 18px;}
 
 .leftcon .content-title p{font-size: 25px;font-weight: 700;color:#d5be1e}

@@ -33,6 +33,8 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Map<String,String> abc = this.queryForMap(sql.toString(), this.get("aac201"));
     	String likeNumber=likeNumber();
     	abc.put("aad101", likeNumber);
+    	String collectionNumber=collectionNumber();
+    	abc.put("aad201", collectionNumber);
     	return abc;
     }
     
@@ -85,7 +87,31 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
             for(Map.Entry<String, String> vo : m.entrySet()){
                 vo.getKey();
                 value=vo.getValue();
-                System.out.println(vo.getKey()+"  "+vo.getValue());
+            }
+        }    	
+		return value;
+    }
+    //判断是否收藏
+    private String collectionNumber()throws Exception
+    { 
+    	//获取当前员工编号
+    	//String aab101="1";
+    	//向DTO添加员工编号
+    	//this.put("aab101", aab101);
+    	
+    	List<Map<String,String>> rows = new ArrayList<>();
+    	
+    	String sql="select aad201 from ad02 where aad203='02' and aad301='1' and aad204=?";
+    	
+    	Object args[]={this.get("aac201")};
+    	
+    	String value = null;
+    	rows = this.queryForList(sql, args);
+        for (Map<String, String> m :rows)
+        {
+            for(Map.Entry<String, String> vo : m.entrySet()){
+                vo.getKey();
+                value=vo.getValue();
             }
         }    	
 		return value;
@@ -114,13 +140,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args1[]={
     			aab101,
-    			this.get("aac201"),
+    			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
-    			.append("   set a.aac205=a.aac205+1")
+    			.append("   set a.aac206=a.aac206+1")
     			.append(" where a.aac201=?")
     			;
     	Object args2[]={this.get("aac201")};
@@ -144,7 +170,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
-    			.append("   set a.aac205=a.aac205-1")
+    			.append("   set a.aac206=a.aac206-1")
     			.append(" where a.aac201=?")
     			;
     	Object args2[]={this.get("aac201")};
@@ -206,16 +232,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.queryForList(sql.toString(),args);
     }
     
-    /*
-     * 点赞作品
-     * 1、向点赞表里增加点赞数据
-     * insert into ad01(aab101,aad102,aad103,aad104)
-       values('1',NOW(),'02','1')
-     * 2、更新作品表里的点赞数
-     * UPDATE ac02 a
-       set a.aac205=a.aac205+1
-       WHERE a.aac201=1
-     */
+    // 收藏作品
     private boolean collection()throws Exception
     {
     	//获取当前员工编号
@@ -224,12 +241,11 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	this.put("aab101", aab101);
     	
     	StringBuilder sql1=new StringBuilder()
-    			.append("insert into ad01(aab101,aad102,aad103,aad104)")
-    			.append("          values(?,NOW(),'02',?)")
+    			.append("insert into ad02(aad301,aad202,aad203,aad204)")
+    			.append("          values('1',NOW(),'02',?)")
     			;
     	Object args1[]={
-    			aab101,
-    			this.get("aac201"),
+    			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
     	
@@ -244,7 +260,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
     
-    //取消点赞
+    //取消收藏
     private boolean cancleCollection()throws Exception
     {
     	//获取当前员工编号
@@ -252,7 +268,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	//向DTO添加员工编号
     	this.put("aab101", aab101);
     	
-    	String sql1="delete from ad01 where aad103='02' and aab101=? and aad104=? ";
+    	String sql1="delete from ad02 where aad203='02' and aad301='1' and aad204=? ";
     	
     	Object args1[]={aab101,this.get("aac201")};
     	this.apppendSql(sql1.toString(), args1);

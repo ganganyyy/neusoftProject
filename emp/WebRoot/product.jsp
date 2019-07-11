@@ -99,11 +99,19 @@
 					</div>
 					<div class="fr">
 					  <c:choose>
-	     				<c:when test="${ins.aad101!=null}">
-	     				    <a class="quxiaozan" id="canclezan" onclick="cancle('${ins.aac201}')" href="#">已赞</a>							
+	     				<c:when test="${ins.aad201!=null}">
+	     				    <a class="quxiaocang" id="canclezan" onclick="cancleColl('${ins.aac201}')" href="#">已收藏</a>							
 						</c:when>
 					    <c:otherwise>
-					    	<a class="dianzan" id="zan" onclick="give('${ins.aac201}')" href="#" >赞</a>
+					    	<a class="shoucang" id="zan" onclick="giveColl('${ins.aac201}')" href="#" >收藏</a>
+					    </c:otherwise>
+					  </c:choose>
+					  <c:choose>
+	     				<c:when test="${ins.aad101!=null}">
+	     				    <a class="quxiaozan" id="canclezan" onclick="cancleLike('${ins.aac201}')" href="#">已赞	</a>						
+						</c:when>
+					    <c:otherwise>
+					    	<a class="dianzan" id="zan" onclick="giveLike('${ins.aac201}')" href="#" >赞</a>
 					    </c:otherwise>
 					  </c:choose>						
 					</div>
@@ -146,14 +154,24 @@
         <script src="js/main.js"></script>
         <script src="layui/layui.js"></script>
         <script type="text/javascript">
-        	function give(vaac201) {
+        	function giveLike(vaac201) {
         		var vform = document.getElementById("myform");
         		vform.action="<%=path%>/likePro.html?aac201="+vaac201; 
         		vform.submit();
         	}
-           	function cancle(vaac201) {
+           	function cancleLike(vaac201) {
         		var vform = document.getElementById("myform");
         		vform.action="<%=path%>/cancleLikePro.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+        	function giveColl(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/collectionPro.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+           	function cancleColl(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/cancleColl.html?aac201="+vaac201; 
         		vform.submit();
         	}
         </script>
