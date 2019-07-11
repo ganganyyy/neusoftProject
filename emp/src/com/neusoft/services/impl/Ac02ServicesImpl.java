@@ -64,6 +64,33 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
         return this.executeUpdate(sql.toString(), args)>0;	
     }
     
+    //判断是否点赞
+    private String likeNumber()throws Exception
+    { 
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+    	
+    	List<Map<String,String>> rows = new ArrayList<>();
+    	
+    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
+    	
+    	Object args[]={this.get("aac201"),aab101};
+    	
+    	String value = null;
+    	rows = this.queryForList(sql, args);
+        for (Map<String, String> m :rows)
+        {
+            for(Map.Entry<String, String> vo : m.entrySet()){
+                vo.getKey();
+                value=vo.getValue();
+                System.out.println(vo.getKey()+"  "+vo.getValue());
+            }
+        }    	
+		return value;
+    }
+    
     /*
      * 点赞作品
      * 1、向点赞表里增加点赞数据
@@ -125,35 +152,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	
     	return this.executeTransaction();
     }
-    //判断是否点赞
-    private String likeNumber()throws Exception
-    { 
-    	//获取当前员工编号
-    	String aab101="1";
-    	//向DTO添加员工编号
-    	this.put("aab101", aab101);
-    	
-    	List<Map<String,String>> rows = new ArrayList<>();
-    	
-    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
-    	
-    	Object args[]={this.get("aac201"),aab101};
-    	
-    	String value = null;
-    	rows = this.queryForList(sql, args);
-        for (Map<String, String> m :rows)
-        {
-            for(Map.Entry<String, String> vo : m.entrySet()){
-                vo.getKey();
-                value=vo.getValue();
-                System.out.println(vo.getKey()+"  "+vo.getValue());
-            }
-        }    	
-		return value;
-    }
-    
-    
-    
+   
     //评论作品
     private boolean addComment()throws Exception
     {
@@ -207,5 +206,66 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.queryForList(sql.toString(),args);
     }
     
-       
+    /*
+     * 点赞作品
+     * 1、向点赞表里增加点赞数据
+     * insert into ad01(aab101,aad102,aad103,aad104)
+       values('1',NOW(),'02','1')
+     * 2、更新作品表里的点赞数
+     * UPDATE ac02 a
+       set a.aac205=a.aac205+1
+       WHERE a.aac201=1
+     */
+    private boolean collection()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+    	
+    	StringBuilder sql1=new StringBuilder()
+    			.append("insert into ad01(aab101,aad102,aad103,aad104)")
+    			.append("          values(?,NOW(),'02',?)")
+    			;
+    	Object args1[]={
+    			aab101,
+    			this.get("aac201"),
+    	};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ac02 a")
+    			.append("   set a.aac205=a.aac205+1")
+    			.append(" where a.aac201=?")
+    			;
+    	Object args2[]={this.get("aac201")};
+    	this.apppendSql(sql2.toString(), args2);
+    	
+    	return this.executeTransaction();
+    }
+    
+    //取消点赞
+    private boolean cancleCollection()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+    	
+    	String sql1="delete from ad01 where aad103='02' and aab101=? and aad104=? ";
+    	
+    	Object args1[]={aab101,this.get("aac201")};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ac02 a")
+    			.append("   set a.aac205=a.aac205-1")
+    			.append(" where a.aac201=?")
+    			;
+    	Object args2[]={this.get("aac201")};
+    	this.apppendSql(sql2.toString(), args2);
+    	
+    	return this.executeTransaction();
+    }
+    
 }

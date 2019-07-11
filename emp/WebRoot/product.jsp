@@ -109,10 +109,25 @@
 					</div>
 				</div>				
 				<div class="desc">
-					<p name="aac203">${ins.aac203}</p><br/>
+					<p>${ins.aac203}</p><br/>
 				</div>
-				<div class="kh30"></div>
-		    </div>		    
+				<div class="content-title">
+					<p>评论</p>
+					<div class="content">
+						<div class="info">
+					    	<img src="img/san.jpg" width="45" height="45">					        
+					        <a href="" class="info1">我是用户</a>
+					        <span class="info2">        
+					                                    重庆 | &nbsp;45分钟前 |
+					             <a href=""  class="huifu">回复</a>
+					        </span>				        
+					    </div>
+					    <div class="neirong">
+					         	做的太好了
+					    </div>
+					</div>
+			    </div>								
+		    </div>	    
 		 </div>
 	</form>
  	<div class="conwidth footer"><!----------------页脚---------------->
