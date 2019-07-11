@@ -15,16 +15,21 @@ import java.io.IOException;
 public class UploadServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            FileUtil.upload(req);
-        }catch (LogicException e){
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    {
+        try 
+        {
+            String imgPath=FileUtil.upload(req);
+            System.out.println(imgPath);
+            
+        }
+        catch (LogicException e)
+        {
             //拿到我们的LogicException异常信息
             String Msg=e.getMessage();
             req.setAttribute("errorMsg",Msg);
-            req.getRequestDispatcher("/input.jsp").forward(req,resp);
         }
-
+        req.getRequestDispatcher("/test.jsp").forward(req,resp);
     }
 
 }

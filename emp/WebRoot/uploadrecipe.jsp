@@ -30,7 +30,9 @@
         trobj.appendChild(tdobj);
         tableobj.appendChild(trobj);
     }
+    
     var j=4;
+    var b=j;
     function addzuofa()
     {
         var obj =document.getElementById("zuofa");
@@ -40,12 +42,20 @@
             var rowobj = document.createElement("div");
             var seqobj = document.createElement("div");
             rowobj.className = "layui-row";
-            var b = j++;
+            b = j++;
         	}
     	rowobj.innerHTML="<div class='kh30'></div>"
     	+"<div class='layui-col-md1'>" + b +"</div>"
         +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='添加菜谱描述' style='width:100%;border:0px;height:240px'></textarea></div>"
-        +"<div class='layui-col-md5'><img src='img/menubook/1.jpg' width='400px' height='270px'></div>"
+        +"<div class='layui-col-md5'>"
+        +"<input type='file' onchange='PreviewImage(this, "+b+")' name='images'/>"
+        +"<div class='layui-upload'>"
+        +"<button type='button' class='layui-btn' name='aac108'>上传图片</button>"
+        +"<div class='layui-upload-list' id='imgPreview"+b+"' >"
+        +"<img class='layui-upload-img' width='350px' height='250px'>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
         +"<div class='layui-col-md2'><br><br><br><br><br>&nbsp;&nbsp;<a class='layui-btn layui-btn-danger' onclick='delecttr(this)'>删除</a></div>";
 
         obj.appendChild(rowobj);
@@ -55,37 +65,60 @@
         var tr = obj.parentNode.parentNode;
         tr.parentNode.removeChild(tr);
         }
+
+    //菜谱图片
+    function Image(imgFile) 
+    {
+     var pattern = /(\.*.jpg$)|(\.*.png$)|(\.*.jpeg$)|(\.*.gif$)|(\.*.bmp$)/;      
+     if(!pattern.test(imgFile.value)) 
+     { 
+      alert("系统仅支持jpg/jpeg/png/gif/bmp格式的照片！");  
+      imgFile.focus(); 
+     } 
+     else 
+     { 
+      var path; 
+      if(document.all)//IE 
+      { 
+       imgFile.select(); 
+       path = document.selection.createRange().text; 
+       document.getElementById("imgPreview").innerHTML=""; 
+       document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果 
+      } 
+      else//FF 
+      {
+       path = URL.createObjectURL(imgFile.files[0]);
+       document.getElementById("imgPreview").innerHTML = "<img src=' "+path+" ' width='600px' height='400px'/>";
+      } 
+     } 
+    }
     
-    layui.use('upload', function(){
-    	  var $ = layui.jquery
-    	  ,upload = layui.upload;
-    	  //普通图片上传
-    	  var uploadInst = upload.render({
-    	    elem: '#test1'
-    	    ,url: '/upload/'
-    	    ,before: function(obj){
-    	      //预读本地文件示例，不支持ie8
-    	      obj.preview(function(index, file, result){
-    	        $('#demo1').attr('src', result); //图片链接（base64）
-    	      });
-    	    }
-    	    ,done: function(res){
-    	      //如果上传失败
-    	      if(res.code > 0){
-    	        return layer.msg('上传失败');
-    	      }
-    	      //上传成功
-    	    }
-    	    ,error: function(){
-    	      //演示失败状态，并实现重传
-    	      var demoText = $('#demoText');
-    	      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-    	      demoText.find('.demo-reload').on('click', function(){
-    	        uploadInst.upload();
-    	      });
-    	    }
-    	  })
-    	  });
+    //步骤图片
+    function PreviewImage(imgFile,i) 
+    {
+     var pattern = /(\.*.jpg$)|(\.*.png$)|(\.*.jpeg$)|(\.*.gif$)|(\.*.bmp$)/;      
+     if(!pattern.test(imgFile.value)) 
+     { 
+      alert("系统仅支持jpg/jpeg/png/gif/bmp格式的照片！");  
+      imgFile.focus(); 
+     } 
+     else 
+     { 
+      var path; 
+      if(document.all)//IE 
+      { 
+       imgFile.select(); 
+       path = document.selection.createRange().text; 
+       document.getElementById("imgPreview").innerHTML=""; 
+       document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果 
+      } 
+      else//FF 
+      {
+       path = URL.createObjectURL(imgFile.files[0]);
+       document.getElementById("imgPreview"+ i).innerHTML = "<img src=' "+path+" ' width='350px' height='250px'/>";
+      } 
+     } 
+    }
     </script>
 </head>
 
@@ -165,22 +198,22 @@
 	<div class="konghang"></div>
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
-	<form id="myform" action="<%=path%>/details.html" method="post">
+	<form id="myform" action="<%=path%>/upload" method="post" enctype="multipart/form-data" >
 
 		<div class="conwidth content clearfix">
 
 			<div class="kh30"></div>
-			<input type="text" name="title" required lay-verify="required"
-				placeholder="添加菜谱名称" autocomplete="off" class="layui-input">
+			<input type="text" name="aac102" required lay-verify="required"
+		    placeholder="添加菜谱名称" autocomplete="off" class="layui-input">
 
-			<div class="kh30"></div>
-			<div class="layui-upload">
-				<button type="button" class="layui-btn" id="test1">上传图片</button>
-				<div class="layui-upload-list">
-					<img class="layui-upload-img" width="750px" height="400px">
-					<p id="demoText"></p>
-				</div>
-			</div>
+	<div class="kh30"></div>
+    <input type="file" onchange="Image(this)" name="images"/> 
+	<div class="layui-upload">
+    <button type="submit" class="layui-btn" name="upload" formaction="<%=path%>/upload" formenctype="multipart/form-data">上传图片</button>
+    <div id="imgPreview" class="layui-upload-list">
+    <img class="layui-upload-img" width="600px" height="400px">
+    </div>
+    </div>  
 
 			<div class="kh30"></div>
 			<div class="author">
@@ -224,47 +257,13 @@
 							style="width: 100%; border: 0px; height: 240px"></textarea>
 					</div>
 					<div class="layui-col-md5">
-						<img src="img/menubook/1.jpg" width="400px" height="270px">
-					</div>
-					<div class="layui-col-md2">
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>&nbsp;&nbsp;<a class="layui-btn layui-btn-danger"
-							onclick="delecttr(this)">删除</a>
-					</div>
+					<input type="file" onchange="PreviewImage(this,1)" name="images" />
+				<div class="layui-upload">
+				<button type="button" class="layui-btn" name="aac108">上传图片</button>
+				<div id="imgPreview1" class="layui-upload-list" >
+					<img class="layui-upload-img" width="350px" height="250px">
 				</div>
-
-				<div class="layui-row">
-					<div class="kh30"></div>
-					<div class="layui-col-md1">2</div>
-					<div class="layui-col-md3">
-						<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-							style="width: 100%; border: 0px; height: 240px"></textarea>
-					</div>
-					<div class="layui-col-md5">
-						<img src="img/menubook/1.jpg" width="400px" height="270px">
-					</div>
-					<div class="layui-col-md2">
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>&nbsp;&nbsp;<a class="layui-btn layui-btn-danger"
-							onclick="delecttr(this)">删除</a>
-					</div>
-				</div>
-
-				<div class="layui-row">
-					<div class="kh30"></div>
-					<div class="layui-col-md1">3</div>
-					<div class="layui-col-md3">
-						<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-							style="width: 100%; border: 0px; height: 240px"></textarea>
-					</div>
-					<div class="layui-col-md5">
-						<img src="img/menubook/1.jpg" width="400px" height="270px">
+			    </div>
 					</div>
 					<div class="layui-col-md2">
 						<br>
@@ -283,7 +282,7 @@
 
 			<div class="layui-row">
 				<div class="layui-col-md4 layui-col-md-offset3">
-					<input class="layui-btn" type="button" value="发布菜谱"
+					<input class="layui-btn" type="submit" value="发布菜谱"
 						style="width: 300px; height: 50px;">
 				</div>
 			</div>
