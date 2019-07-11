@@ -40,7 +40,6 @@
         for(var i=1;i<2;i++)
         	{
             var rowobj = document.createElement("div");
-            var seqobj = document.createElement("div");
             rowobj.className = "layui-row";
             b = j++;
         	}
@@ -57,9 +56,9 @@
         +"</div>"
         +"</div>"
         +"<div class='layui-col-md2'><br><br><br><br><br>&nbsp;&nbsp;<a class='layui-btn layui-btn-danger' onclick='delecttr(this)'>É¾³ý</a></div>";
-
         obj.appendChild(rowobj);
     }
+    
     function delecttr(obj)
         {
         var tr = obj.parentNode.parentNode;
@@ -274,6 +273,32 @@
 							onclick="delecttr(this)">É¾³ý</a>
 					</div>
 				</div>
+				
+				<div class="layui-row">
+					<div class="layui-col-md1">2</div>
+					<div class="layui-col-md3">
+						<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
+							style="width: 100%; border: 0px; height: 240px"></textarea>
+					</div>
+					<div class="layui-col-md5">
+					<input type="file" onchange="PreviewImage(this,2)" name="images" />
+				<div class="layui-upload">
+				<button type="button" class="layui-btn" name="aac108">ÉÏ´«Í¼Æ¬</button>
+				<div id="imgPreview2" class="layui-upload-list" >
+					<img class="layui-upload-img" width="350px" height="250px">
+				</div>
+			    </div>
+					</div>
+					<div class="layui-col-md2">
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>&nbsp;&nbsp;<a class="layui-btn layui-btn-danger"
+							onclick="delecttr(this)">É¾³ý</a>
+					</div>
+				</div>
+				
 			</div>
 			<input class="layui-btn" type="button" value="×·¼ÓÒ»²½"
 				onclick="addzuofa('zuofa')">

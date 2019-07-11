@@ -10,6 +10,7 @@ import basic.FileUtil;
 import basic.LogicException;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/upload")
 public class UploadServlet extends HttpServlet {
@@ -19,8 +20,9 @@ public class UploadServlet extends HttpServlet {
     {
         try 
         {
-            String imgPath=FileUtil.upload(req);
-            System.out.println(imgPath);
+            List<String> imgList=FileUtil.upload(req);
+            for(String imgpath:imgList)
+            System.out.println(imgpath);
             
         }
         catch (LogicException e)

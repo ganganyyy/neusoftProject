@@ -8,6 +8,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -17,12 +18,13 @@ public class FileUtil {
     //设置允许接收的文件的格式，我这里设置为只能是图片
     private static final String ALLWED_IMAGE_TYPE ="png,jpg,gif,jpeg";
 
-    public static String upload(HttpServletRequest req) 
+    public static List<String> upload(HttpServletRequest req) 
     {
 
         //解析和检查请求，是否是post方式，默认是二进制流格式
         Boolean isMultipart=ServletFileUpload.isMultipartContent(req);
         String imgPath="";
+        List<String> imageList = new ArrayList<>();
         if (!isMultipart) 
         {
             return null; //如果不是就不用上传了
@@ -41,6 +43,7 @@ public class FileUtil {
             //解析请求
             List<FileItem> items=upload.parseRequest(req);
             //迭代出每一个FileItem
+            
             for (FileItem item : items) 
             {
                 String fileName = item.getFieldName();
@@ -71,7 +74,7 @@ public class FileUtil {
                     item.write(new File(path, RandomName)); //把上传的文件保存到某个文件中
                     
                     imgPath="img/"+RandomName;
-
+                    imageList.add(imgPath);
                     //System.out.println(item.isInMemory());//判断文件资源是否在内存中
                 } 
             } 
@@ -85,6 +88,6 @@ public class FileUtil {
         {
             e.printStackTrace();
         }
-		return imgPath;
+		return imageList;
     }
 }
