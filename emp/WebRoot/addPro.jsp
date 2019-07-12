@@ -95,7 +95,8 @@
 			</fieldset>
 			<div class="proimg">
 				<div class="layui-upload">
-				  <input type="file" onchange="Image(this)" name="images">                  
+				<button type="button" class="layui-btn" id="uploadQR"><i class="layui-icon">&#xe67c;</i>选择图片</button>
+				  <input type="file" onchange="Image(this)" name="images" id="shangchuan">                  
                   <div id="imgPreview" class="layui-upload-list">
 					  <img class="layui-upload-img" width="300px" height="200px">
 				  </div>
@@ -116,8 +117,7 @@
 				</div>
 			</div>
 			<div class="layui-input-block">
-
-      			<input class="layui-btn" type="submit" name="next" id="sure" value="提交" ">
+      			<input class="layui-btn" type="submit" name="next" value="提交" ">
       			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
     		</div>  					
 		</form>
@@ -163,7 +163,14 @@
 		      document.getElementById("imgPreview").innerHTML = "<img src=' "+path+" ' width='300px' height='200px'/>"; 
 		     } 
 		    } 
-		   } 
+		   }
+		   
+		   $(document).ready(function(){
+			    $('#uploadQR').click(function(){
+			        $('#shangchuan').click();
+			    });
+
+			});
 		  </script> 
 </body>
 </html>
