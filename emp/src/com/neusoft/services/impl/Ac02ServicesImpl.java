@@ -24,9 +24,10 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,")
-    			.append("       a.aac207,c.aac102,b.aab102,b.aab106")
+    			.append("       a.aac207,c.aac102,b.aab101,b.aab102,b.aab106")
     			.append("  from ac02 a, ab01 b, ac01 c")
     			.append(" where a.aac207=c.aac101")
+    			.append("   and a.aab101=b.aab101")
     			.append("   and a.aac201=?")
     			;
     	//执行查询
@@ -42,12 +43,17 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
      * 上传作品insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
      * values('1',NOW(),'啊啊啊啊啊啊啊啊啊','img/san.jpg','1', '0','0')
      */
-    private boolean addPro()throws Exception
+    public boolean addPro(Map<String,Object> dto)throws Exception
     {
     	//获取当前员工编号
     	String aab101="1";
     	//向DTO添加员工编号
-    	this.put("aab101", aab101);
+    	dto.put("aab101", aab101);
+    	
+    	//获取菜谱流水号
+    	String aac207="1";
+    	//向DTO添加员工编号
+    	dto.put("aac207", aac207);
     	
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
@@ -59,9 +65,9 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	//2.编写参数数组
     	Object args[]={
     			aab101,
-    			this.get("aac203"),
-    			this.get("aac204"),
-    			this.get("aac207")
+    			dto.get("aac203"),
+    			dto.get("aac204"),
+    			aac207
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }

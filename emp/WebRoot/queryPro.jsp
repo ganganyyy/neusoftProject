@@ -94,7 +94,7 @@
   <div class="conwidth">
   <div class="conwidth survey">
         	<div class="fubiaoti2 clearfix">
-        		<h1 style="font-family:'Microsoft YaHei';font-size:34px ">按照菜谱，秀出你的作品</h1>
+        		<h1 style="font-family:'Microsoft YaHei';font-size:34px;">按照菜谱，秀出你的作品</h1>
         	</div>
         	<div class="kh20"></div>
         	
@@ -105,7 +105,7 @@
 	    	   	 <div class="userproduction">
             		<div class="cover">
             			<a href="#" onclick="onEdit('${ins.aac201}')">
-            				<img src="${ins.aac204}" alt="作品图片" width="300"/>
+            				<img src="${ins.aac204}" alt="作品图片" width="300px" height="240px"/>
             			</a>
             		</div>
         			<p>&nbsp;&nbsp;${ins.aac203}</p>

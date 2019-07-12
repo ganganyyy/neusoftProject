@@ -146,7 +146,7 @@
 		    <div class="rightcon">
 				<div class="delete">
 					<c:choose>
-	     				<c:when test="${true}">
+	     				<c:when test="${ins.aab101=='1'}">
 	     				    <a class="shanchu" id="shan" onclick="shanchu('${ins.aac201}')" href="#">É¾³ý</a>						
 						</c:when>
 					    <c:otherwise>
