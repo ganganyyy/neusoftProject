@@ -25,17 +25,27 @@ public class UpreciServlet extends HttpServlet {
         {
 			Map<String,Object> dto=FileUtil.upload(request);
             List<String> imageList = (List<String>) dto.get("imageList");
-            System.out.println(dto);
+            
+            
             String aac108=imageList.get(0);
+            dto.put("aac108", aac108);
             System.out.println(aac108);
-            String ins;
-            for(int i=1;i<imageList.size();i++)
-            {
-            	ins=imageList.get(i);
-            	System.out.println(ins);
-            }
+            
             Ac01ServicesImpl service=new Ac01ServicesImpl();
             service.addReci(dto,aac108);
+            
+            int aac101=Tools.getSequence("aac101");
+            System.out.println(aac101);
+            dto.put("aac101", aac101);
+            
+            System.out.println(dto);
+            String aac403;
+            for(int i=1;i<imageList.size();i++)
+            {
+            	aac403=imageList.get(i);
+            	//dto.put("aac403", aac403);
+            	//service.addStep(dto);
+            }
             System.out.println("000000000");
         }
         catch (Exception e)

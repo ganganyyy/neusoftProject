@@ -45,13 +45,13 @@
             b = j++;
         	}
     	rowobj.innerHTML="<div class='kh30'></div>"
-    	+"<div class='layui-col-md1'>" + b +"</div>"
-        +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='添加菜谱描述' style='width:100%;border:0px;height:240px'></textarea></div>"
+    	+"<div class='layui-col-md1' name='"+b+"aac404'>"+b+"</div>"
+        +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='添加菜谱描述' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
         +"<div class='layui-col-md5'>"
         +"<input type='file' onchange='PreviewImage(this, "+b+")' name='images'/>"
         +"<div class='layui-upload'>"
         +"<button type='button' class='layui-btn' name='aac108'>上传图片</button>"
-        +"<div class='layui-upload-list' id='imgPreview"+b+"' >"
+        +"<div class='layui-upload-list' id='imgPreview"+b+"'>"
         +"<img class='layui-upload-img' width='350px' height='250px'>"
         +"</div>"
         +"</div>"
@@ -214,101 +214,115 @@
     <img class="layui-upload-img" width="600px" height="400px">
     </div>
     </div>  
+	<div class="kh30"></div>
+	<div class="author">
+	<input type="hidden" name="aac106">
+		<img src="img/menubook/1.jpg" style="width: 50px; height: 50px" /><span>食在心安</span>
+	</div>
 
-			<div class="kh30"></div>
-			<div class="author">
-			<input type="hidden" name="aac106">
-				<img src="img/menubook/1.jpg" style="width: 50px; height: 50px" /><span>食在心安</span>
-			</div>
+	<div class="kh30"></div>
+	<div class="desc">
+		<textarea name="aac105" required lay-verify="required"
+			placeholder="添加菜谱描述" class="layui-textarea"></textarea>
+	</div>
 
-			<div class="kh30"></div>
-			<div class="desc">
-				<textarea name="aac105" required lay-verify="required"
-					placeholder="添加菜谱描述" class="layui-textarea"></textarea>
+	<div class="kh30"></div>
+	<h2>&nbsp; 用料</h2>
+	<div class="ings">
+		<table class="layui-table">
+			<tbody id="ings">
+				<tr>
+					<td><input type="text"
+						style="width: 100%; height: 35px; border: 0px;"></td>
+					<td><input type="text"
+						style="width: 100%; height: 35px; border: 0px;"></td>
+					<td><a class="layui-btn layui-btn-danger"
+						onclick="delecttr(this)">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<input class="layui-btn" type="button" value="追加一行"
+			onclick="addings()">
+	</div>
+	
+	<div class="kh30"></div>
+	<div class="title">
+		<h2 class="fubiaoti">做法</h2>
+	</div>
+	<div id="zuofa">
+		<div class="layui-row">
+			<div class="layui-col-md1" name="aac404">1</div>
+			<div class="layui-col-md3">
+				<textarea rows="5" cols="20" placeholder="添加菜谱描述"
+				style="width: 100%; border: 0px; height: 240px" name="aac402"></textarea>
 			</div>
-
-			<div class="kh30"></div>
-			<h2>&nbsp; 用料</h2>
-			<div class="ings">
-				<table class="layui-table">
-					<tbody id="ings">
-						<tr>
-							<td><input type="text"
-								style="width: 100%; height: 35px; border: 0px;"></td>
-							<td><input type="text"
-								style="width: 100%; height: 35px; border: 0px;"></td>
-							<td><a class="layui-btn layui-btn-danger"
-								onclick="delecttr(this)">删除</a></td>
-						</tr>
-					</tbody>
-				</table>
-				<input class="layui-btn" type="button" value="追加一行"
-					onclick="addings()">
+			<div class="layui-col-md5">
+			<input type="file" onchange="PreviewImage(this,1)" name="images" />
+		<div class="layui-upload">
+		<button type="button" class="layui-btn">上传图片</button>
+		<div id="imgPreview1" class="layui-upload-list" >
+			<img class="layui-upload-img" width="350px" height="250px">
+		</div>
+	    </div>
 			</div>
-			
-			<div class="kh30"></div>
-
-			<div class="title">
-				<h2 class="fubiaoti">做法</h2>
+			<div class="layui-col-md2">
+				<br><br><br><br><br>&nbsp;&nbsp;
+				<a class="layui-btn layui-btn-danger"
+				   onclick="delecttr(this)">删除</a>
 			</div>
-			<div id="zuofa">
-			
-				<div class="layui-row">
-					<div class="layui-col-md1">1</div>
-					<div class="layui-col-md3">
-						<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-							style="width: 100%; border: 0px; height: 240px"></textarea>
-					</div>
-					<div class="layui-col-md5">
-					<input type="file" onchange="PreviewImage(this,1)" name="images" />
-				<div class="layui-upload">
-				<button type="button" class="layui-btn">上传图片</button>
-				<div id="imgPreview1" class="layui-upload-list" >
-					<img class="layui-upload-img" width="350px" height="250px">
-				</div>
-			    </div>
-					</div>
-					<div class="layui-col-md2">
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>&nbsp;&nbsp;<a class="layui-btn layui-btn-danger"
-							onclick="delecttr(this)">删除</a>
-					</div>
-				</div>
-				
-				<div class="layui-row">
-				<div class="kh30"></div>
-					<div class="layui-col-md1">2</div>
-					<div class="layui-col-md3">
-						<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-							style="width: 100%; border: 0px; height: 240px"></textarea>
-					</div>
-					<div class="layui-col-md5">
-					<input type="file" onchange="PreviewImage(this,2)" name="images" />
-				<div class="layui-upload">
-				<button type="button" class="layui-btn" name="aac108">上传图片</button>
-				<div id="imgPreview2" class="layui-upload-list" >
-					<img class="layui-upload-img" width="350px" height="250px">
-				</div>
-			    </div>
-					</div>
-					<div class="layui-col-md2">
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>&nbsp;&nbsp;<a class="layui-btn layui-btn-danger"
-							onclick="delecttr(this)">删除</a>
-					</div>
-				</div>
+		</div>
+		
+		<div class="layui-row">
+		<div class="kh30"></div>
+			<div class="layui-col-md1" name="aac404">2</div>
+			<div class="layui-col-md3">
+				<textarea rows="5" cols="20" placeholder="添加菜谱描述"
+				style="width: 100%; border: 0px; height: 240px" name="aac402"></textarea>
 			</div>
-										
-			<div class="layui-row">
-			<input class="layui-btn" type="button" value="追加一步"
-			onclick="addzuofa('zuofa')">
+			<div class="layui-col-md5">
+			<input type="file" onchange="PreviewImage(this,2)" name="images" />
+		<div class="layui-upload">
+		<button type="button" class="layui-btn">上传图片</button>
+		<div id="imgPreview2" class="layui-upload-list" >
+			<img class="layui-upload-img" width="350px" height="250px">
+		</div>
+	    </div>
 			</div>
+			<div class="layui-col-md2">
+				<br><br><br><br><br>&nbsp;&nbsp;
+				<a class="layui-btn layui-btn-danger"
+				   onclick="delecttr(this)">删除</a>
+			</div>
+		</div>
+		
+		<div class="layui-row">
+		<div class="kh30"></div>
+			<div class="layui-col-md1" name="aac404">3</div>
+			<div class="layui-col-md3">
+				<textarea rows="5" cols="20" placeholder="添加菜谱描述"
+				style="width: 100%; border: 0px; height: 240px" name="aac402"></textarea>
+			</div>
+			<div class="layui-col-md5">
+			<input type="file" onchange="PreviewImage(this,3)" name="images" />
+		<div class="layui-upload">
+		<button type="button" class="layui-btn">上传图片</button>
+		<div id="imgPreview3" class="layui-upload-list" >
+			<img class="layui-upload-img" width="350px" height="250px">
+		</div>
+	    </div>
+			</div>
+			<div class="layui-col-md2">
+				<br><br><br><br><br>&nbsp;&nbsp;
+				<a class="layui-btn layui-btn-danger"
+				   onclick="delecttr(this)">删除</a>
+			</div>
+		</div>
+	</div>
+								
+	<div class="layui-row">
+	<input class="layui-btn" type="button" value="追加一步"
+	onclick="addzuofa('zuofa')">
+	</div>
 
 			 <div class="kh30"></div>
 			  <div class="layui-row">
@@ -335,9 +349,7 @@
 						style="width: 300px; height: 50px;">
 				</div>
 			</div>
-
 		</div>
-
 
 	</form>
 	<div class="conwidth footer">

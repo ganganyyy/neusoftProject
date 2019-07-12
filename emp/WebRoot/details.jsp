@@ -13,6 +13,22 @@
 <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/main.js"></script>
 <script src="layui/layui.js"></script>
+
+<script type="text/javascript">
+function give(vaac201) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/likePro.html?aac201="+vaac201; 
+	vform.submit();
+}
+function cancle(vaac201) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/cancleLikePro.html?aac201="+vaac201; 
+	vform.submit();
+}
+</script>
+
 </head>
 
 <body>
@@ -107,7 +123,16 @@
 									href="<%=path%>/delreci.html">删除</a>
 							</c:when>
 							<c:otherwise>
-								<a class="layui-btn layui-btn-danger">点赞</a>
+							
+						    <c:choose>
+						<c:when test="${ins.aad101!=null}">
+							<a class="quxiaozan" id="canclezan" onclick="cancle('${ins.aac201}')" href="#">已赞</a>							
+						</c:when>
+						<c:otherwise>
+							<a class="dianzan" id="zan" onclick="give('${ins.aac201}')" href="#" >赞</a>
+						</c:otherwise>
+							</c:choose> 
+							
 								<a class="layui-btn layui-btn-danger">评论</a>
 								<a class="layui-btn layui-btn-danger">收藏</a>
 							</c:otherwise>

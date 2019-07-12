@@ -49,6 +49,7 @@ public class FileUtil {
             for (FileItem item : items) 
             {
                 String fileName = item.getFieldName();
+                
                 if (item.isFormField()) 
                 {
                     //普通的表单控件

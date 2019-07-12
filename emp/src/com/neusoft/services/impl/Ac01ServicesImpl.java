@@ -1,26 +1,44 @@
 package com.neusoft.services.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.db.DBUtils;
 import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+	public boolean addStep(Map<String,Object> dto)throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("insert into ac04(aac101,aac402,aac403,aac404)")
+    			.append("          values(?,?,?,?)")
+    			;
+    	//2.编写参数数组
+    	Object args[]={
+    			dto.get("aac101"),
+    			dto.get("aac402"),
+    			dto.get("aac403"),
+    			dto.get("aac404")
+    	};
+        return this.executeUpdate(sql.toString(), args)>0;	
+    }
+	
     public boolean addReci(Map<String,Object> dto,String aac108)throws Exception
     {
-//    	//获取当前员工编号
-//      String aac106=Tools.getEmpNumber();
+        //String aac106=Tools.getEmpNumber();
     	String aac106="1";
-//    	//向DTO添加员工编号
         dto.put("aac106", aac106);
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
     			.append("                 aac107,aac108,aac109,aac110)")
-    			.append("          values(?,NOW(),NOW(),?,?,")
+    			.append("          values(?,NOW(),null,?,?,")
     			.append("                 ?,?,'0','0')")
     			;
     	//2.编写参数数组
