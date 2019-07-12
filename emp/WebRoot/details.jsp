@@ -15,16 +15,28 @@
 <script src="layui/layui.js"></script>
 
 <script type="text/javascript">
-function give(vaac201) 
+function give(vaac101) 
 {
 	var vform = document.getElementById("myform");
-	vform.action="<%=path%>/likePro.html?aac201="+vaac201; 
+	vform.action="<%=path%>/likeReci.html?aac101="+vaac101; 
 	vform.submit();
 }
-function cancle(vaac201) 
+function cancle(vaac101) 
 {
 	var vform = document.getElementById("myform");
-	vform.action="<%=path%>/cancleLikePro.html?aac201="+vaac201; 
+	vform.action="<%=path%>/cancleLikeReci.html?aac101="+vaac101; 
+	vform.submit();
+}
+function shoucang(vaac101) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/shoucangReci.html?aac101="+vaac101; 
+	vform.submit();
+}
+function cancleShoucang(vaac101) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/cancleshoucangReci.html?aac101="+vaac101; 
 	vform.submit();
 }
 </script>
@@ -117,31 +129,40 @@ function cancle(vaac201)
 					<span class="cooknum">0</span><span>&nbsp;人做过这道菜</span>
 					<div class="fr">
 						<c:choose>
-							<c:when test="${1>0}">
+							<c:when test="${0>1}">
 								<a class="layui-btn layui-btn-danger">修改</a>
 								<a class="layui-btn layui-btn-danger"
 									href="<%=path%>/delreci.html">删除</a>
 							</c:when>
 							<c:otherwise>
-							
-						    <c:choose>
+					
+					<c:choose>
 						<c:when test="${ins.aad101!=null}">
-							<a class="quxiaozan" id="canclezan" onclick="cancle('${ins.aac201}')" href="#">已赞</a>							
+							<a class="layui-btn layui-btn-danger" onclick="cancle('${ins.aac101}')">已赞</a>							
 						</c:when>
 						<c:otherwise>
-							<a class="dianzan" id="zan" onclick="give('${ins.aac201}')" href="#" >赞</a>
+							<a class="layui-btn layui-btn-danger" onclick="give('${ins.aac101}')">点赞</a>
 						</c:otherwise>
-							</c:choose> 
+					</c:choose>
+					
+						<a class="layui-btn layui-btn-danger">评论</a>
+						
+					<c:choose>
+						<c:when test="${ins.aad201!=null}">
+							<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}')">已收藏</a>							
+						</c:when>
+						<c:otherwise>
+							<a class="layui-btn layui-btn-danger" onclick="shoucang('${ins.aac101}')">收藏</a>
+						</c:otherwise>
+					</c:choose>
 							
-								<a class="layui-btn layui-btn-danger">评论</a>
-								<a class="layui-btn layui-btn-danger">收藏</a>
 							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
 				<div class="author">
 					<img
-						src="img/menubook/cd9d547428ab11e7947d0242ac110002_271w_209h.jpg" /><span>食在心安</span>
+						src="img/menubook/1.jpg" /><span>食在心安</span>
 				</div>
 
 				<div class="desc">
