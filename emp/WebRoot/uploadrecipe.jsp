@@ -17,7 +17,17 @@
 <script src="js/uploadrecipe.js"></script>
 </head>
 
+
+<style>
+#shangchuan
+{
+    display: none;
+}
+</style>
 <body>
+
+
+
 	<div class="header">
 		<!--------------头部---------------->
 		<div class="conwidth">
@@ -102,9 +112,9 @@
     placeholder="添加菜谱名称" autocomplete="off" class="layui-input">
 
 	<div class="kh30"></div>
-    <input type="file" onchange="Image(this)" name="images"/> 
+    <input type="file" onchange="Image(this)" name="images" id="shangchuan"/> 
 	<div class="layui-upload">
-    <button class="layui-btn">上传图片</button>
+    <button class="layui-btn" id="upload" type="button">上传图片</button>
     <div id="imgPreview" class="layui-upload-list">
     <img class="layui-upload-img" width="600px" height="400px">
     </div>
@@ -284,5 +294,14 @@
 		<br />
 		<p>嘿嘿嘿项目组</p>
 	</div>
+	
+	<script type="text/javascript">
+$(document).ready(function(){
+    $('#upload').click(function(){
+        $('#shangchuan').click();
+    });
+});
+</script>
+	
 </body>
 </html>
