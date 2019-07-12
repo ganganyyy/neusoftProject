@@ -111,7 +111,7 @@ function cancle(vaac201)
 		<div class="conwidth content clearfix">
 			<h1>${ins.aac102 }</h1>
 			<div class="leftcon">
-				<img src="img/menubook/${ins.aac108 }"
+				<img src="${ins.aac108 }"
 					style="width: 660px; height: 440px" />
 				<div class="cookde">
 					<span class="cooknum">0</span><span>&nbsp;人做过这道菜</span>
@@ -171,7 +171,7 @@ function cancle(vaac201)
 						<ol>
 							<c:forEach items="${rows1 }" var="ins" varStatus="vs">
 								<li><span>${ins.aac404 }</span>
-								<p>${ins.aac402 }</p> <img src="img/menubook/${ins.aac403 }"
+								<p>${ins.aac402 }</p> <img src="${ins.aac403}"
 									width="400px" height="270px"></li>
 							</c:forEach>
 						</ol>

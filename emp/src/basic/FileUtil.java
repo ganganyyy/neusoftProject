@@ -55,7 +55,7 @@ public class FileUtil {
                     //普通的表单控件
                     String value = item.getString("GBK");
                     dto.put(fileName, value);
-                    //System.out.println(fileName + "->" + value);
+                    System.out.println(fileName + "->" + value);
                 } 
                 else 
                 {

@@ -26,25 +26,29 @@ public class UpreciServlet extends HttpServlet {
 			Map<String,Object> dto=FileUtil.upload(request);
             List<String> imageList = (List<String>) dto.get("imageList");
             
-            
             String aac108=imageList.get(0);
             dto.put("aac108", aac108);
-            System.out.println(aac108);
             
             Ac01ServicesImpl service=new Ac01ServicesImpl();
-            service.addReci(dto,aac108);
+            service.addReci(dto);
             
             int aac101=Tools.getSequence("aac101");
-            System.out.println(aac101);
             dto.put("aac101", aac101);
             
-            System.out.println(dto);
+            String ings=(String)dto.get("ingsNum");
+            int j=Integer.parseInt(ings);
+            
+            for(int i=1;i<j+1;i++)
+            {
+            	service.addInsg(dto,i);
+            }
+            
             String aac403;
             for(int i=1;i<imageList.size();i++)
             {
             	aac403=imageList.get(i);
-            	//dto.put("aac403", aac403);
-            	//service.addStep(dto);
+            	dto.put("aac403", aac403);
+            	service.addStep(dto,i);
             }
             System.out.println("000000000");
         }
@@ -55,7 +59,6 @@ public class UpreciServlet extends HttpServlet {
             request.setAttribute("errorMsg",Msg);
         }
         request.getRequestDispatcher("/test.jsp").forward(request,response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

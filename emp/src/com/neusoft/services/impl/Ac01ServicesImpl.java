@@ -12,7 +12,23 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
-	public boolean addStep(Map<String,Object> dto)throws Exception
+	public boolean addInsg(Map<String,Object> dto,int i)throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("insert into ac06(aac101,aac602,aac603)")
+    			.append("          values(?,?,?)")
+    			;
+    	//2.编写参数数组
+    	Object args[]={
+    			dto.get("aac101"),
+    			dto.get(i+"aac602"),
+    			dto.get(i+"aac603")
+    	};
+        return this.executeUpdate(sql.toString(), args)>0;	
+    }
+	
+	public boolean addStep(Map<String,Object> dto,int i)throws Exception
     {
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
@@ -22,18 +38,20 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	//2.编写参数数组
     	Object args[]={
     			dto.get("aac101"),
-    			dto.get("aac402"),
+    			dto.get(i+"aac402"),
     			dto.get("aac403"),
-    			dto.get("aac404")
+    			dto.get(i+"aac404")
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }
 	
-    public boolean addReci(Map<String,Object> dto,String aac108)throws Exception
+    public boolean addReci(Map<String,Object> dto)throws Exception
     {
-        //String aac106=Tools.getEmpNumber();
+    	
+        //aac106 当前用户流水号
     	String aac106="1";
         dto.put("aac106", aac106);
+        
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
@@ -45,9 +63,9 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Object args[]={
     			dto.get("aac102"),
     			dto.get("aac105"),
-    			aac106,
+    			dto.get("aac106"),
     			dto.get("aac107"),
-    			aac108
+    			dto.get("aac108")
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }
@@ -68,7 +86,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append(" where a.aac101=?")
     			;
     	//执行查询
-    	return this.queryForMap(sql.toString(), "1");
+    	return this.queryForMap(sql.toString(), "19");
     }
     
 	  public List<Map<String,String>> querySteps()throws Exception
@@ -78,7 +96,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("  from ac04 a")
 	    			.append(" where a.aac101=? order by a.aac404 asc")
 	    			;
-	    	return this.queryForList(sql.toString(), "1");
+	    	return this.queryForList(sql.toString(), "19");
 	  }
 	  
 	  public List<Map<String,String>> query()throws Exception
@@ -88,7 +106,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("  from ac06 a")
 	    			.append(" where a.aac101=?")
 	    			;
-	    	return this.queryForList(sql.toString(), "1");
+	    	return this.queryForList(sql.toString(), "19");
 	  }
     
 }

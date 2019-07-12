@@ -16,36 +16,57 @@
 <script src="layui/layui.js"></script>
 
 <script>
+    
     function addings()
     {
+    	var a=getaac601()+1;
         var tableobj =document.getElementById("ings");
         var trobj =document.createElement("tr");
-        for (var i = 0; i < 2; i++) 
-        {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML="<input type='text' style='width:100%; height:35px;border:0px;'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML="<a class='layui-btn layui-btn-danger' onclick='delecttr(this)'>É¾³ý</a>";
-        trobj.appendChild(tdobj);
+        var tdobj1 = document.createElement("td");
+        tdobj1.innerHTML="<input type='text' style='width:100%; height:35px;border:0px;' name='"+a+"aac603'>";
+        trobj.appendChild(tdobj1);
+        var tdobj2 = document.createElement("td");
+        tdobj2.innerHTML="<input type='text' style='width:100%; height:35px;border:0px;' name='"+a+"aac602'>";
+        trobj.appendChild(tdobj2);
+        var tdobj3 = document.createElement("td");
+        tdobj3.innerHTML="<a class='layui-btn layui-btn-danger' onclick='delecttr(this)'>É¾³ý</a>";
+        trobj.appendChild(tdobj3);
         tableobj.appendChild(trobj);
     }
     
-    var j=4;
-    var b=j;
+    function getaac601()
+    {
+    	var aac601 = document.getElementById("ings").getElementsByTagName("tr").length;
+    	return aac601;
+    }
+    
+    function getingsNum()
+    {
+    	var ingsNum = document.getElementById("ings").getElementsByTagName("tr").length;
+    	document.getElementById("ingsNum").value=ingsNum;
+    	var form = document.getElementById("myform");
+    	form.submit();
+    }
+    
+    function getaac404()
+    {
+    	var aac404 = document.getElementById("zuofa").getElementsByClassName("layui-row").length;
+    	return aac404;
+    }
+
     function addzuofa()
     {
+    	var b=getaac404()+1;
         var obj =document.getElementById("zuofa");
 
         for(var i=1;i<2;i++)
         	{
             var rowobj = document.createElement("div");
             rowobj.className = "layui-row";
-            b = j++;
         	}
     	rowobj.innerHTML="<div class='kh30'></div>"
-    	+"<div class='layui-col-md1' name='"+b+"aac404'>"+b+"</div>"
+    	+"<div class='layui-col-md1'>"+b+"</div>"
+    	+"<input type='hidden' name='"+b+"aac404' value='"+b+"'>"
         +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='Ìí¼Ó²ËÆ×ÃèÊö' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
         +"<div class='layui-col-md5'>"
         +"<input type='file' onchange='PreviewImage(this, "+b+")' name='images'/>"
@@ -200,16 +221,16 @@
 
 	<form id="myform" action="<%=path%>/upreci" method="post" enctype="multipart/form-data" >
 
-		<div class="conwidth content clearfix">
+	<div class="conwidth content clearfix">
 
-			<div class="kh30"></div>
-			<input type="text" name="aac102" required lay-verify="required"
-		    placeholder="Ìí¼Ó²ËÆ×Ãû³Æ" autocomplete="off" class="layui-input">
+	<div class="kh30"></div>
+	<input type="text" name="aac102" required lay-verify="required"
+    placeholder="Ìí¼Ó²ËÆ×Ãû³Æ" autocomplete="off" class="layui-input">
 
 	<div class="kh30"></div>
     <input type="file" onchange="Image(this)" name="images"/> 
 	<div class="layui-upload">
-    <button type="submit" class="layui-btn" name="upload" formaction="<%=path%>/upload" formenctype="multipart/form-data">ÉÏ´«Í¼Æ¬</button>
+    <button class="layui-btn">ÉÏ´«Í¼Æ¬</button>
     <div id="imgPreview" class="layui-upload-list">
     <img class="layui-upload-img" width="600px" height="400px">
     </div>
@@ -228,14 +249,31 @@
 
 	<div class="kh30"></div>
 	<h2>&nbsp; ÓÃÁÏ</h2>
+	<input type="hidden" name="ingsNum" id="ingsNum">
 	<div class="ings">
 		<table class="layui-table">
 			<tbody id="ings">
 				<tr>
 					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;"></td>
+						style="width: 100%; height: 35px; border: 0px;" name="1aac603"></td>
 					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;"></td>
+						style="width: 100%; height: 35px; border: 0px;" name="1aac602"></td>
+					<td><a class="layui-btn layui-btn-danger"
+						onclick="delecttr(this)">É¾³ý</a></td>
+				</tr>
+				<tr>
+					<td><input type="text"
+						style="width: 100%; height: 35px; border: 0px;" name="2aac603"></td>
+					<td><input type="text"
+						style="width: 100%; height: 35px; border: 0px;" name="2aac602"></td>
+					<td><a class="layui-btn layui-btn-danger"
+						onclick="delecttr(this)">É¾³ý</a></td>
+				</tr>
+				<tr>
+					<td><input type="text"
+						style="width: 100%; height: 35px; border: 0px;" name="3aac603"></td>
+					<td><input type="text"
+						style="width: 100%; height: 35px; border: 0px;" name="3aac602"></td>
 					<td><a class="layui-btn layui-btn-danger"
 						onclick="delecttr(this)">É¾³ý</a></td>
 				</tr>
@@ -250,11 +288,13 @@
 		<h2 class="fubiaoti">×ö·¨</h2>
 	</div>
 	<div id="zuofa">
+	    
 		<div class="layui-row">
-			<div class="layui-col-md1" name="aac404">1</div>
+			<div class="layui-col-md1">1</div>
+			<input type="hidden" name="1aac404" value="1">
 			<div class="layui-col-md3">
 				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
-				style="width: 100%; border: 0px; height: 240px" name="aac402"></textarea>
+				style="width: 100%; border: 0px; height: 240px" name="1aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
 			<input type="file" onchange="PreviewImage(this,1)" name="images" />
@@ -274,10 +314,11 @@
 		
 		<div class="layui-row">
 		<div class="kh30"></div>
-			<div class="layui-col-md1" name="aac404">2</div>
+			<div class="layui-col-md1">2</div>
+			<input type="hidden" name="2aac404" value="2">
 			<div class="layui-col-md3">
 				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
-				style="width: 100%; border: 0px; height: 240px" name="aac402"></textarea>
+				style="width: 100%; border: 0px; height: 240px" name="2aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
 			<input type="file" onchange="PreviewImage(this,2)" name="images" />
@@ -297,10 +338,11 @@
 		
 		<div class="layui-row">
 		<div class="kh30"></div>
-			<div class="layui-col-md1" name="aac404">3</div>
+			<div class="layui-col-md1">3</div>
+			<input type="hidden" name="3aac404" value="3">
 			<div class="layui-col-md3">
 				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
-				style="width: 100%; border: 0px; height: 240px" name="aac402"></textarea>
+				style="width: 100%; border: 0px; height: 240px" name="3aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
 			<input type="file" onchange="PreviewImage(this,3)" name="images" />
@@ -317,6 +359,7 @@
 				   onclick="delecttr(this)">É¾³ý</a>
 			</div>
 		</div>
+		
 	</div>
 								
 	<div class="layui-row">
@@ -345,8 +388,8 @@
 			<div class="kh30"></div>
 			<div class="layui-row">
 				<div class="layui-col-md4 layui-col-md-offset3">
-					<input class="layui-btn" type="submit" value="·¢²¼²ËÆ×"
-						style="width: 300px; height: 50px;">
+					<input class="layui-btn" type="button" value="·¢²¼²ËÆ×"
+						style="width: 300px; height: 50px;" onclick="getingsNum()">
 				</div>
 			</div>
 		</div>
