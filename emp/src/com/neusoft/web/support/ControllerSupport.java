@@ -67,6 +67,19 @@ public abstract class ControllerSupport implements BaseController
 		}	
 	}
 	
+	protected final void showComment()throws Exception
+	{
+		List<Map<String,String>> comments=this.services.queryComment();
+		if(comments.size()>0)
+		{
+			this.saveAttribute("comments", comments);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
+	
 	/**
 	 * 通过反射执行更新方法
 	 * @param methodName

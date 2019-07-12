@@ -152,7 +152,7 @@
 		           
 	            upload.render({
 	                elem: '#uploadQR'
-	                , url: 'emp/WebRoot/images'
+	                , url: ''
 	                , accept: 'images'  // 允许上传的文件类型
 	                , size: 2048        // 最大允许上传的文件大小  单位 KB
 	                , auto: false

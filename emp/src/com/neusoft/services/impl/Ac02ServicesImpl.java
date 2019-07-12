@@ -120,12 +120,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     /*
      * 点赞作品
      * 1、向点赞表里增加点赞数据
-     * insert into ad01(aab101,aad102,aad103,aad104)
-       values('1',NOW(),'02','1')
      * 2、更新作品表里的点赞数
-     * UPDATE ac02 a
-       set a.aac205=a.aac205+1
-       WHERE a.aac201=1
      */
     private boolean giveLike()throws Exception
     {
@@ -232,7 +227,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.queryForList(sql.toString(),args);
     }
     
-    // 收藏作品
+    //收藏作品
     private boolean collection()throws Exception
     {
     	//获取当前员工编号
@@ -282,6 +277,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
+    }
+    
+    //删除作品
+    private boolean deleteById()throws Exception
+    {
+    	String sql="delete from ac02 where aac201=?";
+    	return this.executeUpdate(sql, this.get("aac201"))>0;
     }
     
 }

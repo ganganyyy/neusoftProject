@@ -121,21 +121,41 @@
 				</div>
 				<div class="content-title">
 					<p>评论</p>
-					<div class="content">
-						<div class="info">
-					    	<img src="img/san.jpg" width="45" height="45">					        
-					        <a href="" class="info1">我是用户</a>
-					        <span class="info2">        
-					                                    重庆 | &nbsp;45分钟前 |
-					             <a href=""  class="huifu">回复</a>
-					        </span>				        
-					    </div>
-					    <div class="neirong">
-					         	做的太好了
-					    </div>
-					</div>
-			    </div>								
+					<c:forEach items="${comments}" var="ins" varStatus="vs">
+						<div class="content">
+							<div class="info">
+						    	<img src="${ins.aab106}" width="45" height="45">					        
+						        <a href="" class="info1">${ins.aab102}</a>
+						        <span class="info2">        
+						                                    重庆 | &nbsp;45分钟前 |
+						             <a href=""  class="huifu">回复</a>
+						        </span>				        
+						    </div>
+						    <div class="neirong">
+						         	${ins.aad404}
+						    </div>
+						</div>
+					</c:forEach>
+			    </div>		    
+			    <textarea class="layui-textarea" name="aad404" placeholder="说点什么吧"> </textarea>
+			    <div class="anniu">
+			    	<button class="layui-btn" id="pinglun" onclick="publish('${ins.aac201}')">发表评论</button>
+			    	<button type="reset" class="layui-btn layui-btn-primary">清空</button>
+			    </div>						
 		    </div>	    
+		    <div class="rightcon">
+				<div class="delete">
+					<c:choose>
+	     				<c:when test="${true}">
+	     				    <a class="shanchu" id="shan" onclick="shanchu('${ins.aac201}')" href="#">删除</a>						
+						</c:when>
+					    <c:otherwise>
+					    	
+					    </c:otherwise>
+					 </c:choose>
+				</div>	
+			</div>
+		 
 		 </div>
 	</form>
  	<div class="conwidth footer"><!----------------页脚---------------->
@@ -172,6 +192,16 @@
            	function cancleColl(vaac201) {
         		var vform = document.getElementById("myform");
         		vform.action="<%=path%>/cancleColl.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+           	function publish(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/addComPro.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+           	function shanchu(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/delByIdPro.html?aac201="+vaac201; 
         		vform.submit();
         	}
         </script>

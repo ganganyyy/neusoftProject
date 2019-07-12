@@ -23,4 +23,8 @@ public interface BaseServices
     	 return null;
      }
 
+     default List<Map<String,String>> queryComment()throws Exception
+     {
+    	 return null;
+     }
 }
