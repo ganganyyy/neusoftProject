@@ -147,7 +147,8 @@
 				<div class="delete">
 					<c:choose>
 	     				<c:when test="${ins.aab101=='1'}">
-	     				    <a class="shanchu" id="shan" onclick="shanchu('${ins.aac201}')" href="#">É¾³ý</a>						
+	     				    <a class="shanchu" id="shan" onclick="shanchu('${ins.aac201}')" href="#">É¾³ý</a>	
+	     				    <a class="shanchu" id="xuigai" onclick="xuigai('${ins.aac201}')" href="#">ÐÞ¸Ä</a>						
 						</c:when>
 					    <c:otherwise>
 					    	
@@ -202,6 +203,11 @@
            	function shanchu(vaac201) {
         		var vform = document.getElementById("myform");
         		vform.action="<%=path%>/delByIdPro.html?aac201="+vaac201; 
+        		vform.submit();
+        	}
+           	function xuigai(vaac201) {
+        		var vform = document.getElementById("myform");
+        		vform.action="<%=path%>/findByIdPro2.html?aac201="+vaac201; 
         		vform.submit();
         	}
         </script>

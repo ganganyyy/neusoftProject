@@ -86,7 +86,7 @@
 		${msg}
 		<br>
 		<br>
-		<form id="myform" class="layui-form" action="<%=path%>/addPro" method="post" enctype="multipart/form-data">					
+		<form id="myform" class="layui-form" action="<%=path%>/modifyPro" method="post" enctype="multipart/form-data">					
 			<div class="atitle" style="margin-top: 10px;">
 				<span class="alable">上传我做的</span> 
 			</div>									
@@ -95,10 +95,9 @@
 			</fieldset>
 			<div class="proimg">
 				<div class="layui-upload">
-				<button type="button" class="layui-btn" id="uploadQR">选择图片</button>
 				  <input type="file" onchange="Image(this)" name="images" id="shangchuan">                  
                   <div id="imgPreview" class="layui-upload-list">
-					  <img class="layui-upload-img" width="300px" height="200px">
+					  <img src="${ins.aac204}" id="uploadQR" class="layui-upload-img" width="300px" height="200px">
 				  </div>
 				</div>  						 
               	<div style="color: #c2c2c2;margin:10px 0;">
@@ -113,13 +112,14 @@
 				    </fieldset>
 				</div>
 				<div>
-					<textarea class="layui-textarea" rows="10" placeholder="说点什么吧" name="aac203"></textarea>
+					<textarea class="layui-textarea" rows="10" placeholder="说点什么吧" name="aac203">${ins.aac203}</textarea>
 				</div>
 			</div>
 			<div class="layui-input-block">
       			<input class="layui-btn" type="submit" name="next" value="提交" ">
       			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    		</div>  					
+    		</div> 
+    		<input type="hidden" name="aac201" value="${ins.aac201}"> 					
 		</form>
 	</div>
 	

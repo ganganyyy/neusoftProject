@@ -567,13 +567,16 @@ public abstract class JdbcServicesSupport  implements BaseServices
 		{
 			//3.编译SQL
 			pstm=DBUtils.prepareStatement(sql);
+			System.out.println("4");
 			//4.参数赋值
 			int index=1;
 			for(Object param:args)
 			{
 				pstm.setObject(index++, param);
+				System.out.println("5");
 			}
 			//5.执行SQL语句
+			System.out.println("6");
 			return pstm.executeUpdate();
 		}
 		finally

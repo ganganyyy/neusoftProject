@@ -292,4 +292,20 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeUpdate(sql, this.get("aac201"))>0;
     }
     
+    //ÐÞ¸Ä×÷Æ·
+    public boolean modifyPro(Map<String,Object> dto)throws Exception
+    {
+    	StringBuilder sql=new StringBuilder()
+    			.append("update ac02 a")
+    			.append("   set a.aac202=NOW(),a.aac203=?,a.aac204=?")
+    			.append(" where a.aac201=?")
+    			;
+    	Object args[]={
+    			dto.get("aac203"),
+    			dto.get("aac204"),
+    			dto.get("aac201")
+    	};
+    	System.out.println("3");
+    	return this.executeUpdate(sql.toString(), args)>0;
+    }
 }

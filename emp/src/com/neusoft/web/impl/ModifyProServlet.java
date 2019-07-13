@@ -15,8 +15,8 @@ import com.neusoft.system.tools.Tools;
 
 import basic.FileUtil;
 
-@WebServlet("/uploadPro")
-public class UploadProServlet extends HttpServlet {
+@WebServlet("/modifyPro")
+public class ModifyProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -27,16 +27,19 @@ public class UploadProServlet extends HttpServlet {
             List<String> imageList = (List<String>) dto.get("imageList");          
             //图片
             String aac204=imageList.get(0);
-            dto.put("aac204", aac204);           
+            dto.put("aac204", aac204);
+            System.out.println("1");
             Ac02ServicesImpl service=new Ac02ServicesImpl();
-            boolean tag=service.addPro(dto);
+            System.out.println("2");
+            boolean tag=service.modifyPro(dto);
+            System.out.println("7");
             if(tag)
             {
-            	request.setAttribute("msg","作品上传成功");
+            	request.setAttribute("msg","作品修改成功");
             }
             else
             {
-            	request.setAttribute("msg","作品上传失败");
+            	request.setAttribute("msg","作品修改失败");
             }
         }
         catch (Exception e)
@@ -45,7 +48,7 @@ public class UploadProServlet extends HttpServlet {
             String Msg=e.getMessage();
             request.setAttribute("errorMsg",Msg);
         }
-        request.getRequestDispatcher("/addPro.jsp").forward(request,response);
+        request.getRequestDispatcher("/modifyPro.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
