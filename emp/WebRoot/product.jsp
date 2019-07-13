@@ -133,7 +133,6 @@
 						    	<img src="${ins.aab106}" width="45px" height="45px">					        
 						        <a href="" class="info1">${ins.aab102}</a>
 						        <span class="info2">        
-						                                    重庆 | &nbsp;45分钟前 |
 						             <a href=""  class="huifu">回复</a>
 						        </span>				        
 						    </div>

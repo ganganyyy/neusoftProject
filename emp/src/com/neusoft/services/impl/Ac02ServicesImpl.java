@@ -13,9 +13,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     public List<Map<String,String>> query()throws Exception
     {
     	//1.编写SQL语句
-    	String sql="select aac201,aab101,aac202,aac203,aac204,aac207 from ac02";
+    	StringBuilder sql=new StringBuilder()
+    			.append("select aac201,aab101,aac202,aac203,aac204,")
+    			.append("       aac207,aac205,aac206 ")
+    			.append("  from ac02 ")
+    			;
     	//执行查询
-    	return this.queryForList(sql);
+    	return this.queryForList(sql.toString());
     }
     
     //查询某一作品详情
@@ -72,45 +76,79 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
         return this.executeUpdate(sql.toString(), args)>0;	
     }
     
+//    //判断是否点赞
+//    private String likeNumber()throws Exception
+//    { 
+//    	//获取当前员工编号
+//    	String aab101="1";
+//    	//向DTO添加员工编号
+//    	this.put("aab101", aab101);
+//    	
+//    	List<Map<String,String>> rows = new ArrayList<>();
+//    	
+//    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
+//    	
+//    	Object args[]={this.get("aac201"),aab101};
+//    	
+//    	String value = null;
+//    	rows = this.queryForList(sql, args);
+//        for (Map<String, String> m :rows)
+//        {
+//            for(Map.Entry<String, String> vo : m.entrySet()){
+//                vo.getKey();
+//                value=vo.getValue();
+//            }
+//        }    	
+//		return value;
+//    }
+//    //判断是否收藏
+//    private String collectionNumber()throws Exception
+//    { 
+//    	//获取当前员工编号
+//    	//String aab101="1";
+//    	//向DTO添加员工编号
+//    	//this.put("aab101", aab101);
+//    	
+//    	List<Map<String,String>> rows = new ArrayList<>();
+//    	
+//    	String sql="select aad201 from ad02 where aad203='02' and aad301='1' and aad204=?";
+//    	
+//    	Object args[]={this.get("aac201")};
+//    	
+//    	String value = null;
+//    	rows = this.queryForList(sql, args);
+//        for (Map<String, String> m :rows)
+//        {
+//            for(Map.Entry<String, String> vo : m.entrySet()){
+//                vo.getKey();
+//                value=vo.getValue();
+//            }
+//        }    	
+//		return value;
+//    }
+    
+    //判断是否收藏
+    private String collectionNumber()throws Exception
+    { 
+    	String sql="select aad201 from ad02 where aad203='02' and aad301='1' and aad204=?";    	
+    	Object args[]={this.get("aac201")};
+    	return check(sql,args);
+    }
     //判断是否点赞
     private String likeNumber()throws Exception
-    { 
+    {
     	//获取当前员工编号
     	String aab101="1";
     	//向DTO添加员工编号
     	this.put("aab101", aab101);
-    	
-    	List<Map<String,String>> rows = new ArrayList<>();
-    	
-    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
-    	
+    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";    	
     	Object args[]={this.get("aac201"),aab101};
-    	
-    	String value = null;
-    	rows = this.queryForList(sql, args);
-        for (Map<String, String> m :rows)
-        {
-            for(Map.Entry<String, String> vo : m.entrySet()){
-                vo.getKey();
-                value=vo.getValue();
-            }
-        }    	
-		return value;
+    	return check(sql,args);
     }
-    //判断是否收藏
-    private String collectionNumber()throws Exception
-    { 
-    	//获取当前员工编号
-    	//String aab101="1";
-    	//向DTO添加员工编号
-    	//this.put("aab101", aab101);
-    	
+    //判断值
+    private String check(String sql,Object args[])throws Exception
+    {
     	List<Map<String,String>> rows = new ArrayList<>();
-    	
-    	String sql="select aad201 from ad02 where aad203='02' and aad301='1' and aad204=?";
-    	
-    	Object args[]={this.get("aac201")};
-    	
     	String value = null;
     	rows = this.queryForList(sql, args);
         for (Map<String, String> m :rows)
@@ -120,7 +158,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
                 value=vo.getValue();
             }
         }    	
-		return value;
+    	return value;
     }
     
     /*
@@ -128,6 +166,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
      * 1、向点赞表里增加点赞数据
      * 2、更新作品表里的点赞数
      */
+
     private boolean giveLike()throws Exception
     {
     	//获取当前员工编号
