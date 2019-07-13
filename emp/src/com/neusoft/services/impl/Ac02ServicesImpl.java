@@ -219,12 +219,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     }
     
     //展示点赞
-    public List<Map<String,String>> queryLike()throws Exception
+    public List<Map<String,String>> queryLikes()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
     			.append("select b.aab102,b.aab106")
     			.append("  from ad01 a, ab01 b")
-    			.append(" where a.aad103='02' ")
+    			.append(" where a.aab101=b.aab101")
+    			.append("   and a.aad103='02' ")
     			.append("   and a.aad104=? ")
     			;
     	Object args[]={
@@ -263,21 +264,16 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     
     //取消收藏
     private boolean cancleCollection()throws Exception
-    {
-    	//获取当前员工编号
-    	String aab101="1";
-    	//向DTO添加员工编号
-    	this.put("aab101", aab101);
-    	
+    {   	
     	String sql1="delete from ad02 where aad203='02' and aad301='1' and aad204=? ";
     	
-    	Object args1[]={aab101,this.get("aac201")};
-    	this.apppendSql(sql1.toString(), args1);
+    	Object args1[]={this.get("aac201")};
+    	this.apppendSql(sql1, args1);
     	
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205-1")
-    			.append(" where a.aac201=?")
+    			.append(" where a.aac201=? ")
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);

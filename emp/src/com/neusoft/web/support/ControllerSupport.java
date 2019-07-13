@@ -79,6 +79,18 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("msg", "没有符合条件的数据!");
 		}	
 	}
+	protected final void showLikes()throws Exception
+	{
+		List<Map<String,String>> likes=this.services.queryLikes();
+		if(likes.size()>0)
+		{
+			this.saveAttribute("likes", likes);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
 	
 	/**
 	 * 通过反射执行更新方法

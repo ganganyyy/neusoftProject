@@ -7,6 +7,8 @@ public class CancleCollServlet extends ProControllerSupport
 	{
 		this.update("cancleCollection", "È¡ÏûµãÔÞ");
 		this.savePageInstance();
+		this.showLikes();
+		this.showComment();
 		return "product";
 	}
 }

@@ -7,6 +7,8 @@ public class CollectionProServlet extends ProControllerSupport
 	{
 		this.update("collection", "µãÔÞ");
 		this.savePageInstance();
+		this.showLikes();
+		this.showComment();
 		return "product";
 	}
 }

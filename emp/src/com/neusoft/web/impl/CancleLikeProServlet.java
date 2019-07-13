@@ -7,6 +7,8 @@ public class CancleLikeProServlet extends ProControllerSupport
 	{
 		this.update("cancleLike", "È¡ÏûµãÔÞ");
 		this.savePageInstance();
+		this.showLikes();
+		this.showComment();
 		return "product";
 	}
 }

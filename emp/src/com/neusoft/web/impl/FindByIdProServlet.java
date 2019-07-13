@@ -6,6 +6,7 @@ public class FindByIdProServlet extends ProControllerSupport
 	public String execute() throws Exception 
 	{
 		this.savePageInstance();
+		this.showLikes();
 		this.showComment();
 		return "product";
 	}

@@ -119,12 +119,18 @@
 				<div class="desc">
 					<p>${ins.aac203}</p><br/>
 				</div>
+				<div class="like-title">
+					<p>赞</p>
+					<c:forEach items="${likes}" var="ins" varStatus="vs">
+						<a><img src="${ins.aab106}" width="40px" height="40px"></a>				        		        
+					</c:forEach>
+			    </div>
 				<div class="content-title">
 					<p>评论</p>
 					<c:forEach items="${comments}" var="ins" varStatus="vs">
 						<div class="content">
 							<div class="info">
-						    	<img src="${ins.aab106}" width="45" height="45">					        
+						    	<img src="${ins.aab106}" width="45px" height="45px">					        
 						        <a href="" class="info1">${ins.aab102}</a>
 						        <span class="info2">        
 						                                    重庆 | &nbsp;45分钟前 |
