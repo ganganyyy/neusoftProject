@@ -15,6 +15,13 @@
 <script src="layui/layui.js"></script>
 
 <script type="text/javascript">
+function onFind()
+{
+	 var aac101="20";
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/details.html?aac101="+aac101;
+	 vform.submit();
+}
 function give(vaac101) 
 {
 	var vform = document.getElementById("myform");
@@ -103,7 +110,7 @@ function cancleShoucang(vaac101)
 					<li><a href="">作品动态</a></li>
 				</ul>
 				<div class="dengluzhuce fr">
-					<a href=login.html"">登录</a> <a href="register .html">注册</a>
+					<a href=login.html>登录</a> <a href="register .html">注册</a>
 				</div>
 			</div>
 		</div>
@@ -119,14 +126,14 @@ function cancleShoucang(vaac101)
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
 	<form id="myform" action="<%=path%>/details.html" method="post">
-		<input type="submit" name="next" value="查询">
+		<input type="submit" name="next" value="查询" onclick="onFind()">
 		<div class="conwidth content clearfix">
-			<h1>${ins.aac102 }</h1>
+			<h1>${ins.fvalue }&nbsp;&nbsp;${ins.aac102 }</h1>
 			<div class="leftcon">
 				<img src="${ins.aac108 }"
 					style="width: 660px; height: 440px" />
 				<div class="cookde">
-					<span class="cooknum">0</span><span>&nbsp;人做过这道菜</span>
+					<span class="cooknum">${ins.pronum }</span><span>&nbsp;人做过这道菜</span>
 					<div class="fr">
 						<c:choose>
 							<c:when test="${0>1}">
@@ -158,11 +165,13 @@ function cancleShoucang(vaac101)
 							
 							</c:otherwise>
 						</c:choose>
+						
 					</div>
 				</div>
 				<div class="author">
-					<img
-						src="img/menubook/1.jpg" /><span>食在心安</span>
+					<img src="${ins.aab106 }" width="50px" height="50px"/><span>${ins.aab102 }</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a class="layui-btn layui-btn-danger" onclick="shoucang('${ins.aac101}')">关注</a>
 				</div>
 
 				<div class="desc">
@@ -210,7 +219,6 @@ function cancleShoucang(vaac101)
 				<div class="kh30"></div>
 			</div>
 			<div class="rightcon">
-				<div class="kh30"></div>
 				<div class="look">
 					<div class="title">
 						<h2 class="fubiaoti">随便看看</h2>
@@ -222,10 +230,44 @@ function cancleShoucang(vaac101)
 					<span><a href="#">腐乳烧肉</a></span><span><a href="#">素炒蘑菇</a></span>
 				</div>
 				<div class="kh30"></div>
+				
+				<div>
+					<p class="fubiaoti">赞</p><br>
+					<c:forEach items="${likes}" var="ins" varStatus="vs">	
+					<a><img src="${ins.aab106}" width="45px" height="45px" style="border-radius: 50%"></a>
+					</c:forEach>
+			    </div>
+			    
+			 <div class="kh30"></div>
+			    
+			<div>
+			<p class="fubiaoti">评论</p>
+			<c:forEach items="${comments}" var="ins" varStatus="vs">
+                  <div class="content">
+					<div class="info">
+				    	<img src="${ins.aab106}" width="45px" height="45px"style="border-radius: 50%">					        
+				        <a>${ins.aab102}姓名</a>
+				    </div>
+				    <div class="neirong">
+				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				         ${ins.aad404}内容
+				    </div>
+			</div>
+			</c:forEach>
+			</div>
+			    <textarea class="layui-textarea" rows="5" cols="20" placeholder="说点什么吧"
+				style="height: 50px"></textarea>
+				<br>
+			    <div class="anniu">
+			    	<button class="layui-btn" id="pinglun" onclick="publish('${ins.aac201}')">发表评论</button>
+			    	<button type="reset" class="layui-btn layui-btn-primary">清空</button>
+			    </div>
+				
 				<div class="message">
 					<p>该菜谱创建于${ins.aac103 }</p>
 					<p>
-						<span>26</span>收藏
+						<span>${ins.aac110 }</span>收藏
 					</p>
 					<p>版权归作者所有，没有作者本人的书面许可任何人不得转载或使用整体或任何部分的内容。</p>
 				</div>
@@ -236,40 +278,31 @@ function cancleShoucang(vaac101)
 			<div class="conwidth">
 				<div class="kh30"></div>
 				<div class="alsolike">
+				
 					<div class="title">
 						<h2 class="fubiaoti">${ins.aac102 }的作品</h2>
 					</div>
-					<div class="likemenu">
-						<a href="#"> <img
-							src="img/menubook/56f12d74883211e6b87c0242ac110003_2448w_3264h.jpg" />
-							<p class="title">超完美味道超正的蛋挞配方，比KFC的还要嫩还要香~做过最好吃的蛋挞配方</p>
-							<p>FeEl &nbsp;&nbsp;&nbsp;&nbsp; 67778 做过</p>
-						</a>
-					</div>
-					<div class="likemenu">
-						<a href="#"> <img
-							src="img/menubook/7ee9900086f211e6b87c0242ac110003_500w_752h.jpg" />
-							<p class="title">蔓越莓饼干</p>
-							<p>君之 &nbsp;&nbsp;&nbsp;&nbsp; 46737 做过</p>
-						</a>
-					</div>
-					<div class="likemenu">
-						<a href="#"> <img
-							src="img/menubook/4daad8ea877a11e6a9a10242ac110002_469w_701h.jpg" />
-							<p class="title">懒人版糖醋排骨</p>
-							<p>小辞xiaoci &nbsp;&nbsp;&nbsp;&nbsp; 38657 做过</p>
-						</a>
-					</div>
-					<div class="likemenu">
-						<a href="#"> <img
-							src="img/menubook/ed35e338873811e6b87c0242ac110003_450w_600h.jpg" />
-							<p class="title">可乐鸡翅</p>
-							<p>渍 &nbsp;&nbsp;&nbsp;&nbsp; 40401 做过</p>
-						</a>
-					</div>
+					
+					<c:choose>
+						<c:when test="${rows3.size() != 0}">
+						<c:forEach items="${rows3 }" var="ins" varStatus="vs">
+				     	<div class="likemenu">
+						<a href="#"> 
+					        <img src="${ins.aac204 }"/>
+							<p class="title">${ins.aac203 }</p>
+					    </a>
+					    </div>
+				        </c:forEach>
+						</c:when>
+						<c:otherwise>
+							暂未有用户上传作品
+						</c:otherwise>
+					</c:choose>
+
 				</div>
 			</div>
 		</div>
+		
 	</form>
 	<div class="conwidth footer">
 		<!----------------页脚---------------->

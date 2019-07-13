@@ -8,6 +8,7 @@ public class DetailsServlet extends EmpdsyControllerSupport
 	{
 		this.savePageInstance();
 		this.saveSteps();
+		
 		return "details";
 	}
 

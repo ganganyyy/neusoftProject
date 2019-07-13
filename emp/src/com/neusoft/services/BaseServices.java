@@ -23,9 +23,16 @@ public interface BaseServices
     	 return null;
      }
      
-     //dsy 查询步骤,用料
+     //dsy 查询步骤
      default List<Map<String,String>> querySteps()throws Exception
      {
     	 return null;
      }
+     
+     //dsy 查询作品
+     default List<Map<String,String>> queryPro()throws Exception
+     {
+    	 return null;
+     }
+     
 }

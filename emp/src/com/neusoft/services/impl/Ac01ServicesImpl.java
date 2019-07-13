@@ -13,15 +13,14 @@ import com.neusoft.system.tools.Tools;
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
 	
-	//点赞
+	//收藏
 	private boolean shoucang()throws Exception
     {
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad02(aad301,aad202,aad203,aad204)")
     			.append("          values('1',NOW(),'01',?)")
     			;
-    	//食谱流水号 this.get("aac101")=20
-    	Object args1[]={"20"};
+    	Object args1[]={this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -29,7 +28,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("   set a.aac110=a.aac110+1")
     			.append(" where a.aac101=?")
     			;
-    	Object args2[]={"20"};
+    	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
@@ -39,8 +38,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     private boolean cancleShoucang()throws Exception
     {
     	String sql1="delete from ad02 where aad203='01' and aad301='1' and aad204=? ";
-    	//食谱流水号 this.get("aac101")=20
-    	Object args1[]={"20"};
+    	Object args1[]={this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -48,7 +46,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("   set a.aac110=a.aac110-1")
     			.append(" where a.aac101=?")
     			;
-    	Object args2[]={"20"};
+    	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
@@ -61,8 +59,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		
 		String sql="select aad201 from ad02 where aad301='1' and aad203='01' and aad204=? ";
 		
-		//食谱流水号 this.get("aac101")=20
-		Object args[]={"20"};
+		Object args[]={this.get("aac101")};
 		
 		String aad201 = null;
 		String value = null;
@@ -73,7 +70,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	        {
 	            aad201=vo.getKey();
 	            value=vo.getValue();
-	            System.out.println(vo.getKey()+"  "+vo.getValue());
 	        }
 	    }    	
 		return value;
@@ -89,8 +85,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("insert into ad01(aab101,aad102,aad103,aad104)")
     			.append("          values(?,NOW(),'01',?)")
     			;
-    	//食谱流水号 this.get("aac101")=20
-    	Object args1[]={aab101,"20"};
+    	Object args1[]={aab101,this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -98,7 +93,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("   set a.aac109=a.aac109+1")
     			.append(" where a.aac101=?")
     			;
-    	Object args2[]={"20"};
+    	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
@@ -111,8 +106,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	this.put("aab101", aab101);
     	
     	String sql1="delete from ad01 where aad103='01' and aab101=? and aad104=? ";
-    	//食谱流水号 this.get("aac101")=20
-    	Object args1[]={aab101,"20"};
+    	Object args1[]={aab101,this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -120,7 +114,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("   set a.aac109=a.aac109-1")
     			.append(" where a.aac101=?")
     			;
-    	Object args2[]={"20"};
+    	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
@@ -137,8 +131,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		
 		String sql="select aad101 from ad01 where aad103='01' and aad104=? and aab101=? ";
 		
-		//食谱流水号 this.get("aac101")=20
-		Object args[]={"20",aab101};
+		Object args[]={this.get("aac101"),aab101};
 		
 		String aad101 = null;
 		String value = null;
@@ -149,7 +142,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	        {
 	            aad101=vo.getKey();
 	            value=vo.getValue();
-	            //System.out.println(vo.getKey()+"  "+vo.getValue());
 	        }
 	    }    	
 		return value;
@@ -160,21 +152,37 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     {
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
-    			.append("select a.aac102,date_format(a.aac103,'%Y-%m-%d' ) aac103,a.aac104,a.aac105,a.aac106,")
-    			.append("       a.aac107,a.aac108")
-    			.append("  from ac01 a")
-    			.append(" where a.aac101=?")
+    			.append("select a.aac101,a.aac102,date_format(a.aac103,'%Y-%m-%d') aac103,a.aac104,")
+    			.append("       a.aac105,a.aac108,a.aac110,s.fvalue,b.aab102,b.aab106")
+    			.append("  from ac01 a,ab01 b,syscode s")
+    			.append(" where a.aac101=? and s.fcode=a.aac107 and b.aab101=a.aac106")
     			;
     	//执行查询
-    	Map<String,String> recidto = this.queryForMap(sql.toString(), "20");
+    	Map<String,String> recidto = this.queryForMap(sql.toString(), this.get("aac101"));
     	
     	String likeNumber=likeNumber();
     	recidto.put("aad101", likeNumber);
     	String shoucangNumber=shoucangNumber();
     	recidto.put("aad201", shoucangNumber);
+    	Map<String,String> pro=findPro();
+    	String pronum=pro.get("pronum");
+    	recidto.put("pronum", pronum);
     	return recidto;
     }
     
+    //查询作品数
+    public Map<String,String> findPro()throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("select count(c.aac201) pronum")
+    			.append("  from ac01 a,ac02 c")
+    			.append(" where a.aac101=? and a.aac101=c.aac207")
+    			;
+    	//执行查询
+    	return this.queryForMap(sql.toString(), this.get("aac101"));
+    }
+
       //查询步骤
 	  public List<Map<String,String>> querySteps()throws Exception
 	  {
@@ -183,7 +191,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("  from ac04 a")
 	    			.append(" where a.aac101=? order by a.aac404 asc")
 	    			;
-	    	return this.queryForList(sql.toString(), "20");
+	    	return this.queryForList(sql.toString(), this.get("aac101"));
 	  }
 	  
 	  //查询用料
@@ -194,7 +202,18 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("  from ac06 a")
 	    			.append(" where a.aac101=?")
 	    			;
-	    	return this.queryForList(sql.toString(), "20");
+	    	return this.queryForList(sql.toString(), this.get("aac101"));
+	  }
+	  
+	  //查询作品
+	  public List<Map<String,String>> queryPro()throws Exception
+	  {
+	    	StringBuilder sql=new StringBuilder()
+	    			.append("select a.aac203,a.aac204")
+	    			.append("  from ac02 a")
+	    			.append(" where a.aac207=? limit 4")
+	    			;
+	    	return this.queryForList(sql.toString(), this.get("aac101"));
 	  }
     
 	    //删除菜谱

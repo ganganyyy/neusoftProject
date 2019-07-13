@@ -51,21 +51,23 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * 查询步骤,用料--dsy
+	 * 查询步骤,用料,作品--dsy
 	 * @throws Exception
 	 */
 	protected final void saveSteps()throws Exception
 	{
 		List<Map<String,String>> rows1=this.services.querySteps();//步骤
 		List<Map<String,String>> rows2=this.services.query();//用料
+		List<Map<String,String>> rows3=this.services.queryPro();//作品
 		if(rows1.size()>0 && rows2.size()>0)
 		{
 			this.saveAttribute("rows1", rows1);
 			this.saveAttribute("rows2", rows2);
+			this.saveAttribute("rows3", rows3);
 		}
 		else
 		{
-			this.saveAttribute("msg", "没有符合条件的数据!");
+			this.saveAttribute("msg", "网络故障");
 		}	
 	}
 	

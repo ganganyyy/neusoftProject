@@ -16,13 +16,80 @@
 <script src="layui/layui.js"></script>
 <script src="js/uploadrecipe.js"></script>
 </head>
+<script type="text/javascript">
+function addzuofa()
+{
+	var b=getaac404()+1;
+    var obj =document.getElementById("zuofa");
 
+    for(var i=1;i<2;i++)
+    	{
+        var rowobj = document.createElement("div");
+        rowobj.className = "layui-row";
+    	}
+	rowobj.innerHTML="<div class='kh30'></div>"
+	+"<div class='layui-col-md1'>"+b+"</div>"
+	+"<input type='hidden' name='"+b+"aac404' value='"+b+"'>"
+    +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='添加菜谱描述' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
+    +"<div class='layui-col-md5'>"
+    +"<a href='javascript:;' class='file'>上传图片"
+    +"<input type='file' onchange='PreviewImage(this, "+b+")' name='images'/> </a>"
+    +"<div class='layui-upload'>"
+    +"<div class='layui-upload-list' id='imgPreview"+b+"'>"
+    +"<img class='layui-upload-img' width='350px' height='250px'>"
+    +"</div>"
+    +"</div>"
+    +"</div>"
+    +"<div class='layui-col-md2'><br><br><br><br><br>&nbsp;&nbsp;<a class='layui-btn layui-btn-danger' onclick='delecttr(this)'>删除</a></div>";
+    obj.appendChild(rowobj);
+}
+function addings()
+{
+	var a=getaac601()+1;
+    var tableobj =document.getElementById("ings");
+    var trobj =document.createElement("tr");
+    var tdobj1 = document.createElement("td");
+    tdobj1.innerHTML="<input type='text' style='width:100%; height:35px;border:0px;' name='"+a+"aac603'>";
+    trobj.appendChild(tdobj1);
+    var tdobj2 = document.createElement("td");
+    tdobj2.innerHTML="<input type='text' style='width:100%; height:35px;border:0px;' name='"+a+"aac602'>";
+    trobj.appendChild(tdobj2);
+    var tdobj3 = document.createElement("td");
+    tdobj3.innerHTML="<a class='layui-btn layui-btn-danger' onclick='delecttr(this)'>删除</a>";
+    trobj.appendChild(tdobj3);
+    tableobj.appendChild(trobj);
+}
+
+</script>
 
 <style>
-#shangchuan
-{
-    display: none;
+.file {
+    position: relative;
+    display: inline-block;
+    background: #009688;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #F0F0F0;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
 }
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #009688;
+    border-color: #78C3F3;
+    color: #F0F0F0;
+    text-decoration: none;
+}
+
 </style>
 <body>
 
@@ -112,9 +179,11 @@
     placeholder="添加菜谱名称" autocomplete="off" class="layui-input">
 
 	<div class="kh30"></div>
-    <input type="file" onchange="Image(this)" name="images" id="shangchuan"/> 
-	<div class="layui-upload">
-    <button class="layui-btn" id="upload" type="button">上传图片</button>
+    
+    <a href="javascript:;" class="file">上传图片
+    <input type="file" onchange="Image(this)" name="images"/> 
+    </a>
+    <div class="layui-upload">
     <div id="imgPreview" class="layui-upload-list">
     <img class="layui-upload-img" width="600px" height="400px">
     </div>
@@ -181,9 +250,10 @@
 				style="width: 100%; border: 0px; height: 240px" name="1aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
-			<input type="file" onchange="PreviewImage(this,1)" name="images" />
+			<a href="javascript:;" class="file">上传图片
+		    <input type="file" onchange="PreviewImage(this,1)" name="images"/> 
+		    </a>
 		<div class="layui-upload">
-		<button type="button" class="layui-btn">上传图片</button>
 		<div id="imgPreview1" class="layui-upload-list" >
 			<img class="layui-upload-img" width="350px" height="250px">
 		</div>
@@ -205,9 +275,10 @@
 				style="width: 100%; border: 0px; height: 240px" name="2aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
-			<input type="file" onchange="PreviewImage(this,2)" name="images" />
+			<a href="javascript:;" class="file">上传图片
+		    <input type="file" onchange="PreviewImage(this,2)" name="images"/> 
+		    </a>
 		<div class="layui-upload">
-		<button type="button" class="layui-btn">上传图片</button>
 		<div id="imgPreview2" class="layui-upload-list" >
 			<img class="layui-upload-img" width="350px" height="250px">
 		</div>
@@ -229,9 +300,10 @@
 				style="width: 100%; border: 0px; height: 240px" name="3aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
-			<input type="file" onchange="PreviewImage(this,3)" name="images" />
+			<a href="javascript:;" class="file">上传图片
+		    <input type="file" onchange="PreviewImage(this,3)" name="images"/> 
+		    </a>
 		<div class="layui-upload">
-		<button type="button" class="layui-btn">上传图片</button>
 		<div id="imgPreview3" class="layui-upload-list" >
 			<img class="layui-upload-img" width="350px" height="250px">
 		</div>
@@ -294,14 +366,6 @@
 		<br />
 		<p>嘿嘿嘿项目组</p>
 	</div>
-	
-	<script type="text/javascript">
-$(document).ready(function(){
-    $('#upload').click(function(){
-        $('#shangchuan').click();
-    });
-});
-</script>
 	
 </body>
 </html>
