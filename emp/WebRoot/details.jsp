@@ -46,6 +46,18 @@ function cancleShoucang(vaac101)
 	vform.action="<%=path%>/cancleshoucangReci.html?aac101="+vaac101; 
 	vform.submit();
 }
+function guanzhu(vaac101,vaac106) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/guanzhu.html?aac101="+vaac101+"&aac106="+vaac106;
+	vform.submit();
+}
+function cancleGuanzhu(vaac101,vaac106) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/cancleGuanzhu.html?aac101="+vaac101+"&aac106="+vaac106; 
+	vform.submit();
+}
 </script>
 
 </head>
@@ -151,8 +163,6 @@ function cancleShoucang(vaac101)
 							<a class="layui-btn layui-btn-danger" onclick="give('${ins.aac101}')">点赞</a>
 						</c:otherwise>
 					</c:choose>
-					
-						<a class="layui-btn layui-btn-danger">评论</a>
 						
 					<c:choose>
 						<c:when test="${ins.aad201!=null}">
@@ -171,7 +181,16 @@ function cancleShoucang(vaac101)
 				<div class="author">
 					<img src="${ins.aab106 }" width="50px" height="50px"/><span>${ins.aab102 }</span>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a class="layui-btn layui-btn-danger" onclick="shoucang('${ins.aac101}')">关注</a>
+					
+					<c:choose>
+						<c:when test="${ins.aab201!=null}">
+							<a class="layui-btn layui-btn-danger" onclick="cancleGuanzhu('${ins.aac101}','${ins.aac106}')">已关注</a>							
+						</c:when>
+						<c:otherwise>
+							<a class="layui-btn layui-btn-danger" onclick="guanzhu('${ins.aac101}','${ins.aac106}')">关注</a>
+						</c:otherwise>
+					</c:choose>
+					
 				</div>
 
 				<div class="desc">

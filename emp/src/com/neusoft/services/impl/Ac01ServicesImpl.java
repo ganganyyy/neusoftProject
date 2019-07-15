@@ -12,6 +12,101 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+	//关注
+	private boolean guanzhu()throws Exception
+    {
+		//当前账号用户
+		String aab202="1";
+		this.put("aab202", aab202);
+    	
+    	StringBuilder sql1=new StringBuilder()
+    			.append("insert into ab02(aab202,aab203)")
+    			.append("       values(?,?)")
+    			;
+    	Object args1[]={aab202,this.get("aac106")};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	//当前用户关注数加1
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ab01 a")
+    			.append("   set a.aab107=a.aab107+1")
+    			.append(" where a.aab101=?")
+    			;
+    	Object args2[]={aab202};
+    	this.apppendSql(sql2.toString(), args2);
+    	
+    	//菜谱用户被关注数加1
+    	StringBuilder sql3=new StringBuilder()
+    			.append("update ab01 a")
+    			.append("   set a.aab108=a.aab108+1")
+    			.append(" where a.aab101=?")
+    			;
+    	Object args3[]={this.get("aac106")};
+    	this.apppendSql(sql3.toString(), args3);
+    	
+    	return this.executeTransaction();
+    }
+	
+	//取消关注
+	private boolean cancleguanzhu()throws Exception
+    {
+		//当前账号用户
+		String aab202="1";
+		this.put("aab202", aab202);
+    	
+    	StringBuilder sql1=new StringBuilder()
+    			.append("delete from ab02")
+    			.append(" where aab202=? and aab203=?")
+    			;
+    	Object args1[]={aab202,this.get("aac106")};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	//当前用户关注数减1
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ab01 a")
+    			.append("   set a.aab107=a.aab107-1")
+    			.append(" where a.aab101=?")
+    			;
+    	Object args2[]={aab202};
+    	this.apppendSql(sql2.toString(), args2);
+    	
+    	//菜谱用户被关注数减1
+    	StringBuilder sql3=new StringBuilder()
+    			.append("update ab01 a")
+    			.append("   set a.aab108=a.aab108-1")
+    			.append(" where a.aab101=?")
+    			;
+    	Object args3[]={this.get("aac106")};
+    	this.apppendSql(sql3.toString(), args3);
+    	
+    	return this.executeTransaction();
+    }
+	
+    //判断是否关注 value不为空即已关注
+	private String guanzhuNumber()throws Exception
+	{
+		//当前账号用户
+		String aab202="1";
+		this.put("aab202", aab202);
+		
+		List<Map<String,String>> rows = new ArrayList<>();
+		
+		String sql="select aab201 from ab02 where aab202=? and aab203=? ";
+		Object args[]={aab202,this.get("aac106")};
+		
+		String aab201 = null;
+		String value = null;
+		rows = this.queryForList(sql, args);
+	    for (Map<String, String> m :rows)
+	    {
+	        for(Map.Entry<String, String> vo : m.entrySet())
+	        {
+	            aab201=vo.getKey();
+	            value=vo.getValue();
+	        }
+	    }    	
+		return value;
+	}
 	
 	//收藏
 	private boolean shoucang()throws Exception
@@ -153,17 +248,21 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac101,a.aac102,date_format(a.aac103,'%Y-%m-%d') aac103,a.aac104,")
-    			.append("       a.aac105,a.aac108,a.aac110,s.fvalue,b.aab102,b.aab106")
+    			.append("       a.aac105,a.aac108,a.aac110,s.fvalue,b.aab102,b.aab106,a.aac106")
     			.append("  from ac01 a,ab01 b,syscode s")
     			.append(" where a.aac101=? and s.fcode=a.aac107 and b.aab101=a.aac106")
     			;
     	//执行查询
     	Map<String,String> recidto = this.queryForMap(sql.toString(), this.get("aac101"));
+    	this.put("aac106", recidto.get("aac106"));
     	
     	String likeNumber=likeNumber();
     	recidto.put("aad101", likeNumber);
     	String shoucangNumber=shoucangNumber();
     	recidto.put("aad201", shoucangNumber);
+    	String guanzhuNumber=guanzhuNumber();
+    	recidto.put("aab201", guanzhuNumber);
+    	
     	Map<String,String> pro=findPro();
     	String pronum=pro.get("pronum");
     	recidto.put("pronum", pronum);
