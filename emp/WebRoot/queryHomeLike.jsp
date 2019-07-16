@@ -1,13 +1,15 @@
 <%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
+<%String path=request.getContextPath();%>
 <html>
 <head>
-	<title>作品动态</title>
-	<link href="layui/css/layui.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/main.css"/>
-	<link rel="stylesheet" type="text/css" href="css/queryPro.css"/>	
+		<meta charset="GBK">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
+		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+        <link rel="stylesheet" href="css/test.css">
 </head>
 <body>
 	<div class="header">
@@ -80,67 +82,111 @@
 	             </ul>
 	         </div>
 	     </div>
-	<div class="konghang"></div>
-
-    <div class="conwidth">
-    	<div class="conwidth survey">
-        	<div class="fubiaoti2 clearfix">
-        		<h1 style="font-family:'Microsoft YaHei';font-size:34px;">按照菜谱，秀出你的作品</h1>
+	<div class="konghang"></div>   
+        <div class="conwidth">                
+        	<div class="jianjie">
+        		<img src="img/userkitchen/cffd00b5681c11e68b73f960d60360bd.jpg" class="img"/>
+        		<div class="fl">
+        				<h2>一哈有啊的厨房</h2>
+        			   <!-- <span><i class="icon1"></i>2016-3-23 加入</span><br />-->
+        				<div class="guanzhuderen">
+						<div class="x y">
+							<span>关注的人</span><br><a href="#"><span>256</span></a>
+						</div>
+						<div class="x">
+							<span>被关注</span><br><a href="#"><span>775</span></a>
+						</div>
+					</div>
+        				
+        		</div>
+        		<div class="fr">
+					<a href="#"><div class="guanzhu2">关注</div></a>
+        		</div>
         	</div>
-        	<div class="kh20"></div>
         	
-			<div class="userprod clearfix">
-				<form id="myform" method="post">	
+        	<div class="kh20"></div>
+		</div>
+		
+		 <div class="conwidth survey">
+        	<div class="navigation">
+        		<span class="teshu bqcaipu"><a href="#">菜谱</a></span>
+        		<span class="bqzuopin"><a href="#">作品</a></span>
+        		<span class="bqshoucang"><a href="#">收藏</a></span>
+        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
+        		<span class="bqcaidan"><a href="#">活动作品</a></span>
+        	</div>
+
+        	<div class="kh20"></div>
+          <form id="myform" method="post">
+        	<div class="userprod clearfix">
+        		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+					<legend>菜谱</legend>
+				</fieldset>	
 			         <!-- 显示实际查询到的数据 -->
-				     <c:forEach items="${rows }" var="ins" varStatus="vs">
+				     <c:forEach items="${reci}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
-		            			<a href="#" onclick="onEdit('${ins.aac201}')">
-		            				<img src="${ins.aac204}" alt="作品图片" width="300px" height="240px"/>
+		            			<a href="#" onclick="chacaipu('${ins.aac101}')">
+		            				<img src="${ins.aac108}" alt="菜谱图片" width="300px" height="240px"/>
 		            			</a>
 		            		</div>
-		        			<p>&nbsp;&nbsp;${ins.aac203}</p>
-		        			<div class="stars">
-		        				<span class="a">${ins.aac202}</span>
-		        				<span class="b">${ins.aac206}</span>
-		                    	<!----
-		                    	<span class="zanshu"><i class="layui-icon">&#xe6c6;</i>${ins.aac206}</span>
-		                    	<span class="cangshu"><i class="layui-icon">&#xe600;</i>${ins.aac205}</span>                    	 
-		                    	<span class="c">${ins.aac205}</span>
-		                    	------->
+		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
+		        			<div class="stars">		        			    
+		        				<a href="#" onclick="shanchu('${ins.aad101}')">删除</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
-				 </form>
 			  </div>
-	  	</div>
-    </div>
-        
-     <div class="conwidth footer"><!----------------页脚---------------->
-        <ul>
-            <li><a href="#">美食生活杂志</a></li>
-            <li><a href="#">厨房工作</a></li>
-            <li><a href="#">社区指导原则</a></li>
-            <li><a href="#">美拾出版的书</a></li>
-            <li><a href="#">帮助中心</a></li>
-            <li><a href="#">联系我们</a></li>
-            <li><a href="#">意见反馈</a></li>
-            <li><a href="#">隐私声明</a></li>
-        </ul><br />
-    </div>
-
-
-	<script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/main.js" type="text/javascript"></script>
-	<script src="layui/layui.js"></script>
-	<script type="text/javascript">
-      function onEdit(vaac201)
-      {
-    	 var vform = document.getElementById("myform");
-    	 vform.action="<%=path%>/findByIdPro.html?aac201="+vaac201;
-    	 vform.submit();
-      }
-   </script>
-
-</body>
+			  
+			<div class="userprod clearfix">
+        		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+					<legend>作品</legend>
+				</fieldset>	
+			         <!-- 显示实际查询到的数据 -->
+				     <c:forEach items="${pro}" var="ins" varStatus="vs">
+			    	   	 <div class="userproduction">
+		            		<div class="cover">
+		            			<a href="#" onclick="chazuopin('${ins.aac201}')">
+		            				<img src="${ins.aac204}" alt="作品图片" width="300px" height="240px"/>
+		            			</a>
+		            		</div>
+		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
+		        			<div class="stars">		        			    
+		        				<a href="#" onclick="shanchu('${ins.aad101}')">删除</a>
+		        			</div>
+				         </div>
+				      </c:forEach>
+			  </div>  
+			  
+			<div class="userprod clearfix">
+        		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+					<legend>专栏</legend>
+				</fieldset>
+					
+			         <!-- 显示实际查询到的数据 -->
+				     <c:forEach items="${comp}" var="ins" varStatus="vs">
+			    	   	 <div class="userproduction">
+		            		<div class="cover">
+		            			<a href="#" onclick="chazhuanlan('${ins.aac301}')">
+		            				<img src="img/zl.jpg"  width="300px" height="240px"/>
+		            			</a>
+		            		</div>
+		            		<p>&nbsp;&nbsp;${ins.aac302}</p>
+		        			<div class="stars">
+		        				<a href="#" onclick="shanchu('${ins.aad101}')">删除</a>
+		        			</div>
+				         </div>
+				      </c:forEach>
+			  </div>             
+          </form>
+       </div>
+		<script type="text/javascript">
+	      function shanchu(vaad101)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/cancleLike.html?aad101="+vaad101;
+	    	 vform.submit();
+	      }
+	   </script>
+	</body>
 </html>

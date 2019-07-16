@@ -7,8 +7,8 @@ public class LikeProServlet extends ProControllerSupport
 	{
 		this.update("giveLike", "µãÔÞ");
 		this.savePageInstance();
-		this.showLikes();
-		this.showComment();
+		this.getInstanceList("queryComment", "", "comments");
+		this.getInstanceList("queryLikes", "", "likes");
 		return "product";
 	}
 }

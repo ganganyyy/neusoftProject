@@ -7,7 +7,7 @@ public class AddComProServlet extends ProControllerSupport
 	{
 		this.update("addComment", "上传", "上传成功", "");
 		this.savePageInstance();
-		this.showComment();
+		this.getInstanceList("queryComment", "", "comments");
 		return "product";
 	}
 }

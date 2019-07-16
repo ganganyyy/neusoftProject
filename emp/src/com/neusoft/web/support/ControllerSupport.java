@@ -67,31 +67,6 @@ public abstract class ControllerSupport implements BaseController
 		}	
 	}
 	
-	protected final void showComment()throws Exception
-	{
-		List<Map<String,String>> comments=this.services.queryComment();
-		if(comments.size()>0)
-		{
-			this.saveAttribute("comments", comments);
-		}
-		else
-		{
-			this.saveAttribute("msg", "没有符合条件的数据!");
-		}	
-	}
-	protected final void showLikes()throws Exception
-	{
-		List<Map<String,String>> likes=this.services.queryLikes();
-		if(likes.size()>0)
-		{
-			this.saveAttribute("likes", likes);
-		}
-		else
-		{
-			this.saveAttribute("msg", "没有符合条件的数据!");
-		}	
-	}
-	
 	/**
 	 * 通过反射执行更新方法
 	 * @param methodName
@@ -191,4 +166,56 @@ public abstract class ControllerSupport implements BaseController
     {
     	return this.attribute;
     }
+    
+    
+    /**
+	 * 根据方法名获取单一实例
+	 * 编写原因：希望通过传递的方法名来调用
+	 * @author gangan
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstance(String methodName,String msgText,String attributeName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Object ins= method.invoke(services);
+		if(ins!=null)
+		{
+			this.saveAttribute(attributeName,  ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
+	
+	
+	/**
+	 * @author:gangan
+	 * 根据方法名获取批量实例
+	 * 编写原因：希望通过传递的方法名来调用
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstanceList(String methodName,String msgText,String attributeName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		List<Map<String,String>> rows= (List<Map<String, String>>) method.invoke(services);
+		if(rows.size()>0)
+		{
+			this.saveAttribute(attributeName,  rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
 }

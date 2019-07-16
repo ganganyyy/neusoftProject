@@ -75,58 +75,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }
-    
-//    //判断是否点赞
-//    private String likeNumber()throws Exception
-//    { 
-//    	//获取当前员工编号
-//    	String aab101="1";
-//    	//向DTO添加员工编号
-//    	this.put("aab101", aab101);
-//    	
-//    	List<Map<String,String>> rows = new ArrayList<>();
-//    	
-//    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
-//    	
-//    	Object args[]={this.get("aac201"),aab101};
-//    	
-//    	String value = null;
-//    	rows = this.queryForList(sql, args);
-//        for (Map<String, String> m :rows)
-//        {
-//            for(Map.Entry<String, String> vo : m.entrySet()){
-//                vo.getKey();
-//                value=vo.getValue();
-//            }
-//        }    	
-//		return value;
-//    }
-//    //判断是否收藏
-//    private String collectionNumber()throws Exception
-//    { 
-//    	//获取当前员工编号
-//    	//String aab101="1";
-//    	//向DTO添加员工编号
-//    	//this.put("aab101", aab101);
-//    	
-//    	List<Map<String,String>> rows = new ArrayList<>();
-//    	
-//    	String sql="select aad201 from ad02 where aad203='02' and aad301='1' and aad204=?";
-//    	
-//    	Object args[]={this.get("aac201")};
-//    	
-//    	String value = null;
-//    	rows = this.queryForList(sql, args);
-//        for (Map<String, String> m :rows)
-//        {
-//            for(Map.Entry<String, String> vo : m.entrySet()){
-//                vo.getKey();
-//                value=vo.getValue();
-//            }
-//        }    	
-//		return value;
-//    }
-    
+        
     //判断是否收藏
     private String collectionNumber()throws Exception
     { 
@@ -342,5 +291,72 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	};
     	System.out.println("3");
     	return this.executeUpdate(sql.toString(), args)>0;
+    }
+    
+    //查询我点赞的菜谱
+    private List<Map<String,String>> myReciLikes()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+
+    	StringBuilder sql=new StringBuilder()
+    			.append("select a.aad101,b.aac102,b.aac108,b.aac101")    			
+    			.append("  from ad01 a, ac01 b ")
+    			.append(" where a.aad104=b.aac101 ")
+    			.append("   and a.aad103='01' ")
+    			.append("   and a.aab101=?")
+    			;
+    	Object args[]={
+    			aab101   			
+    	};
+    	return this.queryForList(sql.toString(),args);
+    }
+    //查询我点赞的作品
+    private List<Map<String,String>> myProLikes()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+
+    	StringBuilder sql=new StringBuilder()
+    			.append("select a.aad101,b.aac204,b.aac203,b.aac201")    			
+    			.append("  from ad01 a, ac02 b ")
+    			.append(" where a.aad104=b.aac201 ")
+    			.append("   and a.aad103='02' ")
+    			.append("   and a.aab101=?")
+    			;
+    	Object args[]={
+    			aab101   			
+    	};
+    	return this.queryForList(sql.toString(),args);
+    }
+    //查询我点赞的专栏
+    private List<Map<String,String>> myCompLikes()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);
+
+    	StringBuilder sql=new StringBuilder()
+    			.append("select a.aad101,b.aac302,b.aac301")    			
+    			.append("  from ad01 a, ac03 b ")
+    			.append(" where a.aad104=b.aac301 ")
+    			.append("   and a.aad103='03' ")
+    			.append("   and a.aab101=?")
+    			;
+    	Object args[]={
+    			aab101   			
+    	};
+    	return this.queryForList(sql.toString(),args);
+    }
+    //删除点赞
+    private boolean deleteLikes()throws Exception
+    {
+    	String sql="delete from ad01 where aad101=?";
+    	return this.executeUpdate(sql, this.get("aad101"))>0;
     }
 }
