@@ -12,6 +12,20 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+	//评论
+	private boolean comment()throws Exception
+    {
+    	String aab101="1";
+    	this.put("aab101", aab101);
+    	
+    	StringBuilder sql=new StringBuilder()
+    			.append("insert into ad04(aad402,aad403,aad404,aad405)")
+    			.append("          values('01',?,?,?)")
+    			;
+    	Object args[]={this.get("aac101"),this.get("aad404"),aab101};
+    	return this.executeUpdate(sql.toString(), args)>0;
+    }
+	
 	//关注
 	private boolean guanzhu()throws Exception
     {
@@ -315,6 +329,27 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    	return this.queryForList(sql.toString(), this.get("aac101"));
 	  }
     
+	  //查询点赞
+	  public List<Map<String,String>> queryLike()throws Exception
+	  {
+	    	StringBuilder sql=new StringBuilder()
+	    			.append("select b.aab106")
+	    			.append("  from ad01 a,ab01 b")
+	    			.append(" where a.aad103='01' and a.aad104=? and a.aab101=b.aab101")
+	    			;
+	    	return this.queryForList(sql.toString(), this.get("aac101"));
+	  }
+	  
+	  //查询评论
+	  public List<Map<String,String>> queryComment()throws Exception
+	  {
+	    	StringBuilder sql=new StringBuilder()
+	    			.append("select a.aad404,b.aab106,b.aab102")
+	    			.append("  from ad04 a,ab01 b")
+	    			.append(" where a.aad402='01' and a.aad403=? and a.aad405=b.aab101")
+	    			;
+	    	return this.queryForList(sql.toString(), this.get("aac101"));
+	  }
 	    //删除菜谱
 	    public boolean deleteById()throws Exception
 	    {

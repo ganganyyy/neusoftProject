@@ -35,4 +35,16 @@ public interface BaseServices
     	 return null;
      }
      
+     //dsy 查询点赞
+     default List<Map<String,String>> queryLike()throws Exception
+     {
+    	 return null;
+     }
+     
+     //dsy 查询评论
+     default List<Map<String,String>> queryComment()throws Exception
+     {
+    	 return null;
+     }
+     
 }

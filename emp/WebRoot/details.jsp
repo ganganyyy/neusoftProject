@@ -22,6 +22,12 @@ function onFind()
 	 vform.action="<%=path%>/details.html?aac101="+aac101;
 	 vform.submit();
 }
+function publish(vaac101) 
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/commentReci.html?aac101="+vaac101; 
+	vform.submit();
+}
 function give(vaac101) 
 {
 	var vform = document.getElementById("myform");
@@ -252,7 +258,7 @@ function cancleGuanzhu(vaac101,vaac106)
 				
 				<div>
 					<p class="fubiaoti">赞</p><br>
-					<c:forEach items="${likes}" var="ins" varStatus="vs">	
+					<c:forEach items="${rows4}" var="ins" varStatus="vs">	
 					<a><img src="${ins.aab106}" width="45px" height="45px" style="border-radius: 50%"></a>
 					</c:forEach>
 			    </div>
@@ -261,25 +267,25 @@ function cancleGuanzhu(vaac101,vaac106)
 			    
 			<div>
 			<p class="fubiaoti">评论</p>
-			<c:forEach items="${comments}" var="ins" varStatus="vs">
+			<c:forEach items="${rows5}" var="ins" varStatus="vs">
                   <div class="content">
 					<div class="info">
 				    	<img src="${ins.aab106}" width="45px" height="45px"style="border-radius: 50%">					        
-				        <a>${ins.aab102}姓名</a>
+				        <a>${ins.aab102}</a>
 				    </div>
 				    <div class="neirong">
 				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				         ${ins.aad404}内容
+				         ${ins.aad404}
 				    </div>
 			</div>
 			</c:forEach>
 			</div>
 			    <textarea class="layui-textarea" rows="5" cols="20" placeholder="说点什么吧"
-				style="height: 50px"></textarea>
+				style="height: 50px" name="aad404"></textarea>
 				<br>
 			    <div class="anniu">
-			    	<button class="layui-btn" id="pinglun" onclick="publish('${ins.aac201}')">发表评论</button>
+			    	<button class="layui-btn" id="pinglun" onclick="publish('${ins.aac101}')">发表评论</button>
 			    	<button type="reset" class="layui-btn layui-btn-primary">清空</button>
 			    </div>
 				
@@ -304,10 +310,10 @@ function cancleGuanzhu(vaac101,vaac106)
 					
 					<c:choose>
 						<c:when test="${rows3.size() != 0}">
-						<c:forEach items="${rows3 }" var="ins" varStatus="vs">
+						<c:forEach items="${rows3}" var="ins" varStatus="vs">
 				     	<div class="likemenu">
 						<a href="#"> 
-					        <img src="${ins.aac204 }"/>
+					        <img src="${ins.aac204}"/>
 							<p class="title">${ins.aac203 }</p>
 					    </a>
 					    </div>
