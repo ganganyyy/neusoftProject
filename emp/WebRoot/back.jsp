@@ -1,36 +1,21 @@
-<%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<%@ page language="java" contentType="text/html; charset=GBK"
+    pageEncoding="GBK"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-<title>Insert title here</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>开始使用layui</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
+ 
+<!-- 你的HTML代码 -->
+ 
+<script src="layui/layui.js"></script>
 ${msg }
-<br>
-<br>
-<!-- 查询条件区 -->
-<table border="1" width="95%" align="center">
-  <caption>
-    <hr width="160">
-  </caption>
-  <tr>
-    <td></td>
-  </tr>
-</table>
-
-<!-- 数据迭代区 -->
-<table border="1" width="95%" align="center">
-  <tr>
-    <td></td>
-  </tr>
-</table>
-
-<!-- 功能按钮区 -->
-<table border="1" width="95%" align="center">
-  <tr>
-    <td>
-    </td>
-  </tr>
-</table>
+<button type="button" class="layui-btn">一个标准的按钮</button>
+<a href="http://www.layui.com" class="layui-btn">一个可跳转的按钮</a>
 </body>
 </html>

@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+.layui-bg-white a:hover{ background-color:gray; color:white;}
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover {
+	background-color: #e6e6e6;
+	color: black !important;
+}
+.layui-nav-item{ color:black !important;}
+.layui-nav-tree {
+	margin-top:10px;
+	width: 200px;
+	padding: 0;
+	background-color: #e6e6e6;
+	color: black !important;
+	/* font-style: normal; */
+	margin-left:20%;
+}
+.layui-nav-tree .layui-nav-item a:hover{
+
+	background-color: #e6e6e6;
+	color: black !important;
+}
+
+.layui-nav-tree a{
+
+	background-color: white;
+	color: black !important;
+
+}
+.head-img{
+	width:100px;
+	height:100px;
+	border:1px;
+}

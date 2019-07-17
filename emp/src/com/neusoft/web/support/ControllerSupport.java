@@ -67,6 +67,57 @@ public abstract class ControllerSupport implements BaseController
 		}	
 	}
 	
+	
+	/**
+	 * 根据方法名获取单一实例
+	 * 编写原因：希望通过传递的方法名来调用
+	 * @author gangan
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstance(String methodName,String msgText,String attributeName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Object ins= method.invoke(services);
+		if(ins!=null)
+		{
+			this.saveAttribute(attributeName,  ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
+	
+	
+	/**
+	 * @author:gangan
+	 * 根据方法名获取批量实例
+	 * 编写原因：希望通过传递的方法名来调用
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstanceList(String methodName,String msgText,String attributeName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		List<Map<String,String>> rows= (List<Map<String, String>>) method.invoke(services);
+		if(rows.size()>0)
+		{
+			this.saveAttribute(attributeName,  rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
 	/**
 	 * 通过反射执行更新方法
 	 * @param methodName
@@ -82,6 +133,67 @@ public abstract class ControllerSupport implements BaseController
 		return  (boolean)method.invoke(services);
 	}
 	
+	/**
+	 * @author gangan
+	 * 获取一些不需要显示在页面的信息：
+	 * 例如判断信息用于流程控制
+	 * @param methodName
+	 * @return
+	 */
+	protected final Map<String,String> getExtraInfo(String methodName)throws Exception
+	{
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Map<String,String>info=(Map<String, String>)method.invoke(services); 
+		return info;
+	}
+	
+	/**
+	 * 获取单一实例
+	 * @author gangan
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+//	protected final void getInstance(String methodName,String msgText)throws Exception
+//	{
+//		
+//		Method method=this.services.getClass().getDeclaredMethod(methodName);
+//		method.setAccessible(true);
+//		//2.调用方法
+//		Object ins= method.invoke(services);
+//		if(ins!=null)
+//		{
+//			this.saveAttribute("ins",  ins);
+//		}
+//		else
+//		{
+//			this.saveAttribute("msg", msgText);
+//		}
+//	}
+	/**
+	 * 获取单一实例,是否有值在数据库
+	 * @author 33
+	 * @param methodName
+	 * @throws Exception
+	 */
+	protected final boolean getInstance(String methodName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Object ins= method.invoke(services);
+		if(ins!=null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 	/**
 	 * 更新行为的总开关
@@ -97,6 +209,57 @@ public abstract class ControllerSupport implements BaseController
 		String msg=this.executeUpdateMethod(methodName)?"成功!":"失败!";
 		this.saveAttribute("msg", msgText+msg);
 	}
+	
+	protected final boolean updateNoMsg(String methodName)throws Exception
+	{
+		return this.executeUpdateMethod(methodName);
+	}
+	
+	protected final void updateForInfo(String methodName,String msgText,boolean flag)throws Exception
+	{
+		if(flag)
+		{
+		String msg=this.executeUpdateMethod(methodName)?"成功!":"失败!";
+		this.saveAttribute("msg", msgText+msg);
+		}
+		else
+		{
+		String msg = "输入错误的旧密码";
+		this.saveAttribute("msg", msg);
+		}
+	}
+	
+
+	/**
+	 * 带有活动类型的更新行为
+	 * @param utype
+	 * @param typeText
+	 * @param msgText
+	 * @param key
+	 * @throws Exception
+	 */
+	protected final boolean updateForEvent(String methodName,String typeText,String key)throws Exception
+	{
+		String msg=typeText+"失败!";
+    	if(this.executeUpdateMethod(methodName))
+    	{
+    		msg=typeText+"成功!";
+    	}
+    	//Servlet向页面输出数据
+    	this.saveAttribute("msg", msg);
+    	Boolean flag;
+    	if(this.dto.get(key).equals("1"))
+    	{
+    	    flag= true;
+    	}
+    	else
+    	{
+    		flag=false;
+    	}
+    	return flag;
+	}
+	
+
 	
 	/**
 	 * 带有编号的消息提示的更新行为
@@ -117,6 +280,10 @@ public abstract class ControllerSupport implements BaseController
     	this.saveAttribute("msg", msg);
 
 	}
+	
+	
+	
+	
 	
 	/**
 	 * 删除后的数据检索
