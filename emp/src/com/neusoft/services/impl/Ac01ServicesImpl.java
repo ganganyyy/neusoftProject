@@ -12,6 +12,31 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+    //创建收藏夹
+	  public boolean createColl()throws Exception
+	  {
+		  //当前用户流水号
+		  String aab101="1";
+		  StringBuilder sql=new StringBuilder()
+	    			.append("insert into ad03(aab101,aad302,aad303)")
+	    			.append("       values(?,?,?) ")
+	    			;
+		  Object args[]={aab101,this.get("caad302"),"img/1.jpg"};
+	      return this.executeUpdate(sql.toString(), args)>0;
+	  }  
+	//查询收藏夹
+	  public List<Map<String,String>> queryCollections()throws Exception
+	  {
+		  //当前用户流水号
+		  String aab101="1";
+		  StringBuilder sql=new StringBuilder()
+	    			.append("select a.aad301,a.aad302,a.aad303")
+	    			.append("  from ad03 a")
+	    			.append(" where a.aab101=?")
+	    			;
+	      return this.queryForList(sql.toString(), aab101);
+	  }
+	  
 	//评论
 	private boolean comment()throws Exception
     {
@@ -125,11 +150,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	//收藏
 	private boolean shoucang()throws Exception
     {
+		String aab101="1";
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad02(aad301,aad202,aad203,aad204)")
-    			.append("          values('1',NOW(),'01',?)")
+    			.append("       values(?,NOW(),'01',?)")
     			;
-    	Object args1[]={this.get("aac101")};
+    	Object args1[]={this.get("aad301"),this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -140,14 +166,15 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	System.out.println("00000000");
     	return this.executeTransaction();
     }
 	
 	//取消收藏
     private boolean cancleShoucang()throws Exception
     {
-    	String sql1="delete from ad02 where aad203='01' and aad301='1' and aad204=? ";
-    	Object args1[]={this.get("aac101")};
+    	String sql1="delete from ad02 where aad201=? ";
+    	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -164,15 +191,20 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     //判断是否收藏 value不为空即已收藏
 	private String shoucangNumber()throws Exception
 	{
+		String aab101="1";
 		List<Map<String,String>> rows = new ArrayList<>();
 		
-		String sql="select aad201 from ad02 where aad301='1' and aad203='01' and aad204=? ";
-		
-		Object args[]={this.get("aac101")};
+		StringBuilder sql=new StringBuilder()
+		.append("select a.aad201")
+		.append("  from ad02 a left join ad03 b on a.aad301=b.aad301")
+		.append(" where b.aab101=? and a.aad204=?")
+		;		
+
+		Object args[]={aab101,this.get("aac101")};
 		
 		String aad201 = null;
 		String value = null;
-		rows = this.queryForList(sql, args);
+		rows = this.queryForList(sql.toString(), args);
 	    for (Map<String, String> m :rows)
 	    {
 	        for(Map.Entry<String, String> vo : m.entrySet())

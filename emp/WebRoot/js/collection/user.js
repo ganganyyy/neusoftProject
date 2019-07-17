@@ -1,14 +1,5 @@
 (function($) {
 $(function() {
-    /*  基本资料  */
-    // 基本资料性别选项
-    if($('#sex').length) {
-        radioSelect('#sex');
-        $('#sex').on('change', function() {
-            radioSelect('#sex');
-        });
-    }
-
     // 基本资料公开选项
     if($('.user-basedata .contact').length) {
         checkboxSelect('.user-basedata .contact');
@@ -551,6 +542,12 @@ $(function() {
         $(this).parents('.popup').find('.popup-close').click();
     });
 
+    //dsy
+    $('.fr').on('click', '#shoucang', function() {
+        $('.popup-manage').show();
+        centerObj('.popup-manage .popup');
+        $('.popup-manage .popup-ct').scrollUnique();
+    });
     // 展示收藏夹弹窗
     if($('.user-box .btn-manage').length) {
         $('.user-box').on('click', '.btn-collect', function() {

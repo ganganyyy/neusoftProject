@@ -1,4 +1,4 @@
-/*顶部简介*/
+
 .jianjie{padding-top: 30px;height:200px;line-height: 30px;}
 
 .jianjie .img{float:left;width: 160px; height: 160px;border-radius: 160px;}
@@ -20,7 +20,7 @@ font-size: 15px;color: #fff;text-indent: 42px;margin-right: 25px;}
 .jianjie .fr a{font-weight: bold;font-size: 16px;color: #DF2D2A;}
 .jianjie .fr a:hover{background-color: #DD3915;color: #FFFFFF;}
 
-/*导航栏*/	
+
 .navigation{height: 50px;}
 .navigation span{background: #F5F6F5;font-size: 16px;padding: 15px 25px;margin-left: 2px;}
 .navigation span a{color: #222222;}
@@ -28,14 +28,14 @@ font-size: 15px;color: #fff;text-indent: 42px;margin-right: 25px;}
 .navigation span:hover{background: #DD3915;}
 .navigation a:hover{color: #fff;}
 
-/*副标题*/
+
 .fubiaoti2{padding-top: 20px;padding-bottom: 20px;}
 .fubiaoti2 h2{float:left;}
 .fubiaoti2 span{font-weight: bold;font-size: 13px;display:inline-block;margin-top: 8px;}
 .fubiaoti2 a{color: #DF2D2A;}
 .fubiaoti2 a:hover{background-color: #DD3915;color: #FFFFFF;}
 
-/*userproduction用户作品*/
+
 .b:before,.c:before{content: '';background:url(../img/userkitchen/icon4.png);padding: 0 6px;
 margin-right: 5px;}
 
@@ -47,7 +47,7 @@ margin-right: 5px;}
 .userproduction .name{display: inline;font-size:16px;color: #dd3915;margin: 5px;width: 280px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
 .userproduction .name:hover{background: #DD3915;color:#fff;}
 .userproduction p{margin:0 10px;}
-.userproduction .stars{margin: 10px;color:#909090;font-size:12px;}
+.userproduction .stars{margin: 10px;color:#909090;font-size:12px;float:right;}
 .userproduction .stars span{color:#909090;font-size:12px;display: inline-block;margin-right:20px;}
 .userproduction .stars a{color:#909090;font-size:12px;}
 .userproduction .stars a:hover{background: #909090;color: #fff;}

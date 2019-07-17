@@ -14,6 +14,13 @@
 <script src="js/main.js"></script>
 <script src="layui/layui.js"></script>
 
+<link rel="stylesheet" href="css/collection/common.css">
+<link rel="stylesheet" href="css/collection/page.css">
+<link rel="stylesheet" href="css/collection/user.css">
+
+<script src="js/collection/jquery-1.9.1.min.js" type="text/javascript" charset="GBK"></script>
+<script src="js/collection/common.js" type="text/javascript" charset="GBK"></script>
+<script src="js/collection/user.js" type="text/javascript" charset="GBK"></script>
 <script type="text/javascript">
 function onFind()
 {
@@ -40,16 +47,16 @@ function cancle(vaac101)
 	vform.action="<%=path%>/cancleLikeReci.html?aac101="+vaac101; 
 	vform.submit();
 }
-function shoucang(vaac101) 
+function shoucang(vaac101,vaad301) 
 {
 	var vform = document.getElementById("myform");
-	vform.action="<%=path%>/shoucangReci.html?aac101="+vaac101; 
+	vform.action="<%=path%>/shoucangReci.html?aac101="+vaac101+"&aad301="+vaad301; 
 	vform.submit();
 }
-function cancleShoucang(vaac101) 
+function cancleShoucang(vaac101,vaad201) 
 {
 	var vform = document.getElementById("myform");
-	vform.action="<%=path%>/cancleshoucangReci.html?aac101="+vaac101; 
+	vform.action="<%=path%>/cancleshoucangReci.html?aac101="+vaac101+"&aad201="+vaad201; 
 	vform.submit();
 }
 function guanzhu(vaac101,vaac106) 
@@ -172,10 +179,10 @@ function cancleGuanzhu(vaac101,vaac106)
 						
 					<c:choose>
 						<c:when test="${ins.aad201!=null}">
-							<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}')">已收藏</a>							
+							<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}','${ins.aad201}')">已收藏</a>							
 						</c:when>
 						<c:otherwise>
-							<a class="layui-btn layui-btn-danger" onclick="shoucang('${ins.aac101}')">收藏</a>
+						    <a class="layui-btn layui-btn-danger" id="shoucang" href="javascript:;">收藏</a>
 						</c:otherwise>
 					</c:choose>
 							
@@ -327,6 +334,38 @@ function cancleGuanzhu(vaac101,vaac106)
 				</div>
 			</div>
 		</div>
+		
+		 <!--收藏夹弹窗 start-->
+        <div class="popup-box popup-manage">
+            <div class="popup">
+                <div class="popup-tit">添加至收藏夹</div>
+                <span class="popup-close icon-close"></span>
+                <div class="popup-ct">
+                <input type="hidden" name="scaac101" id="scaac101">
+                    <div class="txt-box">
+                        <input type="text" maxlength="15" 
+                               style="width:250px;height:33px;" name="caad302">
+                        <button class="layui-btn" onclick="create()">创建</button>
+                    </div>
+                    <ul class="list" id="popup-manage-list">			
+		<c:choose>
+			<c:when test="${rows.size() != 0}">
+			<c:forEach items="${rows}" var="insi" varStatus="vs">
+            <li onclick="shoucang('${ins.aac101}','${insi.aad301}')">
+            <input type="text" value="${insi.aad302}"class="input" disabled>
+            </li>
+        </c:forEach>
+		</c:when>
+		<c:otherwise>
+		暂无收藏夹
+		</c:otherwise>
+		</c:choose>
+		
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--收藏夹弹窗 end-->
 		
 	</form>
 	<div class="conwidth footer">
