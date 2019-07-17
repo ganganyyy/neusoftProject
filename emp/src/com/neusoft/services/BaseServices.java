@@ -22,4 +22,9 @@ public interface BaseServices
      {
     	 return null;
      }
+
+//	default Map<String, String> addVoteOption()throws Exception
+//	{
+//		return null;
+//	};
 }
