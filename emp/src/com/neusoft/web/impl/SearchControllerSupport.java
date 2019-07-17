@@ -25,7 +25,7 @@ public abstract class SearchControllerSupport extends ControllerSupport {
 	protected String getIntanceListForOption()throws Exception
 	{
 		
-		this.getInstanceList("queryForOption", "搜索内容不存在");
+		this.getInstanceList("queryForOption", "搜索内容不存在","rows");
 		Map<String,String>extraInfo=this.getExtraInfo("getOption");
 		String huntOption=extraInfo.get("huntOption");
 		String backPage=null;
@@ -40,5 +40,6 @@ public abstract class SearchControllerSupport extends ControllerSupport {
 	    return backPage;
 		
 	}
+	
 
 }

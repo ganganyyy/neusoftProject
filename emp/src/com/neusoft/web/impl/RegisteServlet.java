@@ -5,7 +5,7 @@ public class RegisteServlet extends Ab01ControllerSupport {
 	
 	@Override
 	public String execute() throws Exception {
-		this.getInstance("findByTel", "该手机号还未注册");
+		this.getInstance("findByTel", "该手机号还未注册","ins");
 		if(this.checkIns())
 		{
 			//手机号已被注册

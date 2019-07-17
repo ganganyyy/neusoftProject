@@ -36,30 +36,38 @@ public class SessionFilter extends HttpServlet implements Filter {
 		
 		String servletPath=request.getServletPath();
 		System.out.println(servletPath);
-		if(servletPath.equals("/mainPage.jsp")||servletPath.equals("/login.html")
-				||servletPath.equals("/registe.html")||servletPath.equals("/registe.jsp")
-				||servletPath.equals("/getVerify.html")||servletPath.equals("/result.jsp"))
+		
+		
+		if(servletPath.equals("/mainPage.jsp")||servletPath.equals("/login.do")
+				||servletPath.equals("/registe.do")||servletPath.equals("/registe.jsp")
+				||servletPath.equals("/getVerify.do")||servletPath.equals("/result.jsp")
+				||servletPath.equals("/login.jsp")||servletPath.contains("css")||
+				servletPath.contains("js")||servletPath.contains("layui")||
+				servletPath.contains("img"))
 		{
 			//首页、登陆、注册全部放行
 			chain.doFilter(request, response);
+			
 			return;
 		}
 		
 	    //直接访问除mainPage.jsp的页面需先进行登录
-		if(session.getAttribute("aab101")==null)
+		if(session.getAttribute("aab101Self")==null)
 		{
 			System.out.println("请先登录，跳转到登录页面");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		else
 		{
-			System.out.println("用户已经登录，用户类型为："+session.getAttribute("aab105"));
+			System.out.println("用户已经登录，用户类型为："+session.getAttribute("aab105Self"));
 			chain.doFilter(request, response);
 		}
 
 		//TODO:根据aab105进行权限控制，展示页面
 	}
 
+	
+	
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub

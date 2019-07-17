@@ -11,9 +11,9 @@ public class LatestMenuServlet extends SearchControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		//查询所有的菜谱
-		this.getInstanceList("queryForLatestMenu", "获取最近流行菜谱不存在");
+		this.getInstanceList("queryForLatestMenu", "获取最近流行菜谱不存在","rows");
 		
-		return null;
+		return "latestMenuList";
 	}
 
 }

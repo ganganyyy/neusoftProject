@@ -52,8 +52,9 @@ public abstract class Ab01ControllerSupport extends ControllerSupport {
 			System.out.println("Ab01ControllerSupport:saveUserInfo³ö´í");
 			return;
 		}
-		this.saveAttribute("aab101", ab01.get("aab101"));
-		this.saveAttribute("aab105", ab01.get("aab105"));
+		System.out.println("saveUserInfo:"+ab01.get("aab101"));
+		this.saveAttribute("aab101Self", ab01.get("aab101"));
+		this.saveAttribute("aab105Self", ab01.get("aab105"));
 	}
 
 	

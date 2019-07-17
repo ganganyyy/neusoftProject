@@ -10,7 +10,7 @@ public class GetVerifyServlet extends Ab01ControllerSupport {
 	static String verifyCode=null;
 	@Override
 	public String execute() throws Exception {
-		this.getInstance("getVerify", "短信验证码发送");
+		this.getInstance("getVerify", "获取短信验证码失败","ins");
 		return "registe";
 	}
 

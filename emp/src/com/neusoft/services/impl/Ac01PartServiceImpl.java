@@ -30,6 +30,7 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 	public  List<Map<String,String>> queryForOption()throws Exception
 	{
 		String inputHunt=(String) this.get("inputHunt");
+		System.out.println("inputHunt: "+inputHunt);
 		String huntOption=getOption().get("huntOption");
 		System.out.println(huntOption);
 		//分词结果存入keyList
@@ -40,11 +41,15 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 			//搜索用户
 			return this.queryForAb01(keyList);
 		}
-		else
+		else if(huntOption.equals("ac01"))
 		{
 			System.out.println("返回数据："+this.queryForAc01(keyList));
 			//搜索食谱表
 			return this.queryForAc01(keyList);
+		}
+		else
+		{
+			return new ArrayList<Map<String,String>>();
 		}
 	}
 	
@@ -140,14 +145,72 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 	 */
 	public  List<Map<String,String>> queryForLatestMenu()throws Exception
 	{
+		System.out.println("session中获取流水号："+this.get("aab101Self"));
+		
 		StringBuilder sql=new StringBuilder()
-				.append("select u.aac101,u.aac102,u.aac108,v.aab102,count(w.aac207) as ac02Count")
+				.append("select u.aac101,u.aac102,u.aac103,u.aac108,v.aab102,count(w.aac207) as ac02Count")
 				.append("  from ac01 u left join ab01 v on u.aac106=v.aab101")
 				.append("  left join ac02 w on u.aac101=w.aac207")
 				.append("  group by u.aac101")
 				.append("  order by ac02Count desc");
 		return this.queryForList(sql.toString());
 		
+	}
+	
+	
+	/**
+	 * 食谱排行榜
+	 * 两种标准：收藏数:0|点赞数:1
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String,String>>queryForPopularMenu()throws Exception
+	{
+		String option=(String)this.get("option");
+		if(option.equals("0"))
+		{
+			//查询收藏排行榜
+			return this.queryForPopularMenuByAd02();
+		}
+		else if(option.equals("1"))
+		{
+			//查询点赞排行榜
+			return this.queryForPopulatMenuByAd01();
+		}
+		else
+		{
+			return new ArrayList<Map<String,String>>();
+		}
+		
+	}
+	/**
+	 * 根据收藏查询食谱
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String,String>>queryForPopularMenuByAd02()throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+					.append("select aac101,aac102,aac108,aac110,aab101,aab102")
+					.append("  from ac01 u left join ab01 v on u.aac106=v.aab101")
+					.append("  order by aac110 desc;");
+
+		return this.queryForList(sql.toString());
+	}
+	
+	/**
+	 * 根据点赞收藏食谱
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String,String>>queryForPopulatMenuByAd01()throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select aac101,aac102,aac108,aac109,aab101,aab102")
+				.append("  from ac01 u left join ab01 v on u.aac106=v.aab101")
+				.append("  order by aac109 desc;");
+		
+		return this.queryForList(sql.toString());
 	}
 	
 	

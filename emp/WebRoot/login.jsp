@@ -3,19 +3,82 @@
 <%String path=request.getContextPath();%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
+<title>µÇÂ¼Ò³Ãæ</title>
+<link rel="stylesheet" href="./layui/css/layui.css" media="all">
+<link rel="stylesheet" href="./define/css/style.css" media="all">
+<!-- <script src="js/jquery.min.js" type="text/javascript"></script> -->
+
+
 </head>
-<body>
-<form action="<%=path%>/login.html" method="post">
-ÊÖ»úºÅÂë£º<input type="text" name="aab104" required>
-ÃÜÂë£º<input type="text" name="aab103" required>
-<input type="submit" name="next">Ìá½»
-${msg }
-<br/>
-${aab101 }
-<br/>
-${aab105 }
+<body class="layui-bg-gray">
+<div class="layui-container"  style="width:550px;margin-top:100px;" >
+<fieldset class="layui-elem-field layui-field-title" style="width:550px">
+  <legend align="center">µÇÂ¼</legend>
+  <div class="layui-field-box" align="center" style="font-size: 12px;color:#c2c2c2">
+
+	Ð¡ÐÜ½ÐÄã×ö²Ë
+	ºÙºÙºÙÐ¡×é³öÆ·
+  </div>
+</fieldset>
+</br>
+
+<form class="layui-form" action="" method="post"> <!-- ÌáÊ¾£ºÈç¹ûÄã²»ÏëÓÃform£¬Äã¿ÉÒÔ»»³ÉdivµÈÈÎºÎÒ»¸öÆÕÍ¨ÔªËØ -->
+  <div class="layui-form-item">
+    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i></label>
+    <div class="layui-input-block">
+      <input type="text" name="aab104" placeholder="ÇëÊäÈëÊÖ»úºÅÂë" autocomplete="off" class="layui-input" lay-verify="phone|required">	  
+    </div>
+  </div>
+   <div class="layui-form-item">
+    <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i></label>
+    <div class="layui-input-block">
+      <input type="text" name="aab103" placeholder="ÇëÊäÈëÃÜÂë" autocomplete="off" class="layui-input" lay-verify="required">	  
+    </div>
+  </div>
+   <div class="layui-form-item">
+   <div class="layui-inline">
+	   <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i></label>
+   <div class="layui-input-inline"  >
+      <input type="text" name="" placeholder="ÇëÊäÈëÑéÖ¤Âë" autocomplete="off" class="layui-input" >
+   </div>
+	<div class="layui-input-inline">
+	  <!--ÑéÖ¤ÂëÍ¼Æ¬-->
+	 
+	</div>
+	</div>
+  </div>
+  
+ <div class="layui-input-item">
+   <div class="layui-input-block layui-row">
+ 		<div class="layui-col-md6">
+ 			<button class="layui-btn" lay-submit lay-filter="*" style="width:100%" >Á¢¼´Ìá½»</button>
+ 		</div>
+ 		<div class="layui-col-md5 layui-col-md-offset1">
+ 			<button type="reset" class="layui-btn layui-btn-primary" style="width:100%"  >ÖØÖÃ</button>
+ 		</div>
+   </div>
+ </div>
+  <!-- ¸ü¶à±íµ¥½á¹¹ÅÅ°æÇëÒÆ²½ÎÄµµ×ó²à¡¾Ò³ÃæÔªËØ-±íµ¥¡¿Ò»ÏîÔÄÀÀ -->
+  
+  <fieldset class="layui-elem-field layui-field-title" style="width:550px">
+    <legend align="center"></legend>
+    <div class="layui-field-box layui-row" style="font-size: 12px;margin-left: 110px;">
+  
+	<div class="layui-col-md6">
+  	<a href="registe.jsp">Á¢¼´×¢²á</a>
+    </div>
+	<div class="layui-col-md6">
+	<a onclick="" style="float:right;margin-right: 50px;">Íü¼ÇÃÜÂë£¿</a>
+	</div>
+  </fieldset>
 </form>
+</div>
+<script src="./layui/layui.js"></script>
+<script src="js/login.js" type="text/javascript"></script>
+
+
+
+
 </body>
 </html>

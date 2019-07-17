@@ -10,18 +10,21 @@ public class LoginServlet extends Ab01ControllerSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		this.getInstance("findById", "该用户不存在");
+		System.out.println("enter loginServlet");
+		this.getInstance("findById", "提示：用户名或密码错误！","ins");
 		if(this.checkIns())
 		{
 			//用户存在
 			this.saveUserInfo();
 			//TODO：跳到首页
-			return "login";
+			return "mainPageAfterLogin";
 		}
 		else
 		{
-		return "login";
+			System.out.println("return login2");
+		return "login2";
 		}
 	}
 
+	
 }

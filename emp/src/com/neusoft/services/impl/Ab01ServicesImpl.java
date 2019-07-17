@@ -72,9 +72,9 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    	String uuid=UUID.randomUUID().toString().replace("-", "").toLowerCase();
 	    	//1.编写SQL语句
 	    	StringBuilder sql=new StringBuilder()
-	    			.append("insert into ab01(aab102,aab103,aab104,aab105,aab106)")
-	    			.append("          values(?,?,?,'01','默认图片地址')")
-	    			;
+	    			.append("insert into ab01(aab102,aab103,aab104,aab105,aab106,")
+	    			.append("				  aab107,aab108)")
+	    			.append("				  values(?,?,?,'01','默认图片地址',0,0);");
 	    	//2.编写参数数组
 	    	Object args[]={
 	    			uuid,
@@ -84,7 +84,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	        return this.executeUpdate(sql.toString(), args)>0;	
 	    }
 	    
-	    
+	   
 	    /**
 	     * 人气用户
 	     * 根据被关注人数搜索前10名用户
