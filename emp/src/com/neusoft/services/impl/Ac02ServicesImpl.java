@@ -94,7 +94,32 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Object args[]={this.get("aac201"),aab101};
     	return check(sql,args);
     }
-    //判断值
+    //获得作品的用户流水号
+    private String authorNumber()throws Exception
+    {
+    	String sql="select aab101 from ac02 where aac201=? ";    	
+    	Object args[]={this.get("aac201")};
+    	return check(sql,args);
+    }    
+    //获得当前用户的用户名
+    private String userName()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101);   	
+    	String sql="select aab102 from ab01 where aab101=? ";    	
+    	Object args[]={aab101};
+    	return check(sql,args);
+    }
+    
+    /**
+     * 执行查询单值语句
+     * @param sql
+     * @param args
+     * @return 查询得到的唯一的值
+     * @throws Exception
+     */
     private String check(String sql,Object args[])throws Exception
     {
     	List<Map<String,String>> rows = new ArrayList<>();
@@ -110,12 +135,23 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return value;
     }
     
+    private Object[] xiaoxi(String msg)throws Exception
+    {
+    	//当前作品的用户号
+    	String authorNumber = authorNumber();
+    	//当前用户的名字
+    	String userName=userName();
+    	String text=userName+msg;
+    	Object args[]={authorNumber,text};
+    	return args;
+    }
+    
     /*
      * 点赞作品
      * 1、向点赞表里增加点赞数据
      * 2、更新作品表里的点赞数
+     * 3、向消息列表添加数据
      */
-
     private boolean giveLike()throws Exception
     {
     	//获取当前员工编号
@@ -141,6 +177,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("给你的作品点了赞");
+    	this.apppendSql(sql3.toString(), args3);  
+    	
     	return this.executeTransaction();
     }
     
@@ -165,6 +208,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("取消了给你的作品的点赞");
+    	this.apppendSql(sql3.toString(), args3);  
+    	
     	return this.executeTransaction();
     }
    
@@ -177,17 +227,26 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	this.put("aab101", aab101);
     	    	
     	//1.编写SQL语句
-    	StringBuilder sql=new StringBuilder()
+    	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad04(aad402,aad403,aad404,aad405)")
     			.append("          values('02',?,?,?)")
     			;
     	//2.编写参数数组
-    	Object args[]={
+    	Object args1[]={
     			this.get("aac201"),
     			this.get("aad404"),
     			aab101   			
     	};
-        return this.executeUpdate(sql.toString(), args)>0;	
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args2[]=xiaoxi("评论了你的作品");
+    	this.apppendSql(sql2.toString(), args2); 
+    	
+    	return this.executeTransaction();
     } 
     
     //展示评论
@@ -247,6 +306,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("收藏了你的作品");
+    	this.apppendSql(sql3.toString(), args3); 
+    	
     	return this.executeTransaction();
     }
     
@@ -265,6 +331,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
+    	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("取消了对你的作品的收藏");
+    	this.apppendSql(sql3.toString(), args3); 
     	
     	return this.executeTransaction();
     }
@@ -289,7 +362,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			dto.get("aac204"),
     			dto.get("aac201")
     	};
-    	System.out.println("3");
     	return this.executeUpdate(sql.toString(), args)>0;
     }
     
