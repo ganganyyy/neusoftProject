@@ -86,7 +86,6 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
     	return this.batchUpdate(sql, idlist);
     }
 
-
     public Map<String,String> findById()throws Exception
     {
     	//1.编写SQL语句
@@ -100,8 +99,6 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
     	//执行查询
     	return this.queryForMap(sql.toString(), this.get("aab101"));
     }
-    
-    
       /**
        * 不定条件查询
        * @return

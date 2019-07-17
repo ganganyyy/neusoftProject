@@ -51,6 +51,72 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
+	 * 根据方法名获取单一实例
+	 * 编写原因：希望通过传递的方法名来调用
+	 * @author gangan
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstance(String methodName,String msgText,String attributeName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Object ins= method.invoke(services);
+		if(ins!=null)
+		{
+			this.saveAttribute(attributeName,  ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
+	
+	
+	/**
+	 * @author:gangan
+	 * 根据方法名获取批量实例
+	 * 编写原因：希望通过传递的方法名来调用
+	 * @param methodName
+	 * @param msgText
+	 * @throws Exception
+	 */
+	protected final void getInstanceList(String methodName,String msgText,String attributeName)throws Exception
+	{
+		
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		List<Map<String,String>> rows= (List<Map<String, String>>) method.invoke(services);
+		if(rows.size()>0)
+		{
+			this.saveAttribute(attributeName,  rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", msgText);
+		}	
+	}
+	/**
+	 * @author gangan
+	 * 获取一些不需要显示在页面的信息：
+	 * 例如判断信息用于流程控制
+	 * @param methodName
+	 * @return
+	 */
+	protected final Map<String,String> getExtraInfo(String methodName)throws Exception
+	{
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Map<String,String>info=(Map<String, String>)method.invoke(services); 
+		return info;
+	}
+	
+	/**
 	 * 查询步骤,用料,作品--dsy
 	 * @throws Exception
 	 */
