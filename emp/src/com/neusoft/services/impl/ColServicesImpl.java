@@ -7,7 +7,6 @@ import com.neusoft.services.JdbcServicesSupport;
 
 public class ColServicesImpl extends JdbcServicesSupport 
 {
-	
       //≤È—Ø ’≤ÿº–
 	  public List<Map<String,String>> queryCollections()throws Exception
 	  {

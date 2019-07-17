@@ -97,13 +97,13 @@ function create()
 			<c:when test="${rows.size() != 0}">
 			<c:forEach items="${rows}" var="ins" varStatus="vs">
                  <li>
-                         <a href="收藏夹-展开.html">
+                         <a href="">
                          <span class="img-box">
                              <img src="${ins.aad303}" width="280" height="173">
                          </span>
-                     </a>
+                         </a>
                      <div class="user">
-                     <a href="收藏夹-展开.html"><strong>${ins.aad302}</strong></a>
+                     <a href=""><strong>${ins.aad302}</strong></a>
                      <div class="fr manage">
                          <a href="javascript:;"><span class="icon-uedit"></span></a>
                          <ul class="manage-list">
