@@ -71,6 +71,12 @@ function cancleGuanzhu(vaac101,vaac106)
 	vform.action="<%=path%>/cancleGuanzhu.html?aac101="+vaac101+"&aac106="+vaac106; 
 	vform.submit();
 }
+function create(vaac101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/creAndColl.html?aac101="+vaac101;
+	 vform.submit();
+}
 </script>
 
 </head>
@@ -341,11 +347,10 @@ function cancleGuanzhu(vaac101,vaac106)
                 <div class="popup-tit">添加至收藏夹</div>
                 <span class="popup-close icon-close"></span>
                 <div class="popup-ct">
-                <input type="hidden" name="scaac101" id="scaac101">
                     <div class="txt-box">
                         <input type="text" maxlength="15" 
                                style="width:250px;height:33px;" name="caad302">
-                        <button class="layui-btn" onclick="create()">创建</button>
+                        <button class="layui-btn" onclick="create('${ins.aac101}')">创建</button>
                     </div>
                     <ul class="list" id="popup-manage-list">			
 		<c:choose>

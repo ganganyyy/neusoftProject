@@ -12,7 +12,7 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
-    //创建收藏夹
+      //创建并插入收藏夹
 	  public boolean createColl()throws Exception
 	  {
 		  //当前用户流水号
@@ -22,7 +22,26 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("       values(?,?,?) ")
 	    			;
 		  Object args[]={aab101,this.get("caad302"),"img/1.jpg"};
-	      return this.executeUpdate(sql.toString(), args)>0;
+		  this.apppendSql(sql.toString(), args);
+		  
+		  int aad301=Tools.getSequence("aad301");
+		  
+	    	StringBuilder sql1=new StringBuilder()
+	    			.append("insert into ad02(aad301,aad202,aad203,aad204)")
+	    			.append("       values(?,NOW(),'01',?)")
+	    			;
+	    	Object args1[]={aad301,this.get("aac101")};
+	    	this.apppendSql(sql1.toString(), args1);
+	    	
+	    	StringBuilder sql2=new StringBuilder()
+	    			.append("update ac01 a")
+	    			.append("   set a.aac110=a.aac110+1")
+	    			.append(" where a.aac101=?")
+	    			;
+	    	Object args2[]={this.get("aac101")};
+	    	this.apppendSql(sql2.toString(), args2);
+		  
+	      return this.executeTransaction();
 	  }  
 	//查询收藏夹
 	  public List<Map<String,String>> queryCollections()throws Exception
@@ -166,7 +185,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
-    	System.out.println("00000000");
     	return this.executeTransaction();
     }
 	

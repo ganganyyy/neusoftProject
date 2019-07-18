@@ -1,12 +1,12 @@
 package com.neusoft.web.impl;
 
-public class ShoucangReciServlet extends EmpdsyControllerSupport 
+public class CreAndCollServlet extends EmpdsyControllerSupport 
 {
 
 	@Override
 	public String execute() throws Exception 
 	{
-		this.update("shoucang", "收藏");
+		this.update("createColl", "创建");
 		this.getInstanceList("queryCollections", "收藏夹", "rows");
 		this.savePageInstance();
 		this.saveSteps();
