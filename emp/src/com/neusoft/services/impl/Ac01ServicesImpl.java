@@ -13,29 +13,73 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
-	   //获取收藏夹图片
-	   public String getImg()
-	   {
-		   Random ran = new Random();
-		   int i = ran.nextInt(5);
-		      switch(i)
-		      {
-		         case 1:
-		            return "img/collection/01.jpeg";
-		         case 2:
-		        	return "img/collection/02.jpg";
-		         case 3:
-		        	return "img/collection/03.jpg";
-		         case 4:
-			        return "img/collection/04.jpg";
-		         case 5:
-			        return "img/collection/05.jpeg";
-		         default:
-		        	return "img/collection/06.jpg";
-		      }
-		   }
+    private Object[] xiaoxi(String msg)throws Exception
+    {
+    	//当前作品的用户号
+    	String authorNumber = authorNumber();
+    	//当前登录用户
+    	String userName=userName();
+    	String text=userName+msg;
+    	Object args[]={authorNumber,text};
+    	return args;
+    }
+	
+    //获得菜谱的用户流水号
+    private String authorNumber()throws Exception
+    {
+    	String sql="select aac106 from ac01 where aac101=? ";    	
+    	Object args[]={this.get("aac101")};
+    	return check(sql,args);
+    }
+    
+    //获得当前用户的用户名
+    private String userName()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";	
+    	String sql="select aab102 from ab01 where aab101=? ";    	
+    	Object args[]={aab101};
+    	return check(sql,args);
+    }
+
+    private String check(String sql,Object args[])throws Exception
+    {
+    	List<Map<String,String>> rows = new ArrayList<>();
+    	String value = null;
+    	rows = this.queryForList(sql, args);
+        for (Map<String, String> m :rows)
+        {
+            for(Map.Entry<String, String> vo : m.entrySet()){
+                vo.getKey();
+                value=vo.getValue();
+            }
+        }    	
+    	return value;
+    }
+	
+    //获取收藏夹图片
+    public String getImg()
+    {
+	   Random ran = new Random();
+	   int i = ran.nextInt(5);
+	      switch(i)
+	      {
+	         case 1:
+	            return "img/collection/01.jpeg";
+	         case 2:
+	        	return "img/collection/02.jpg";
+	         case 3:
+	        	return "img/collection/03.jpg";
+	         case 4:
+		        return "img/collection/04.jpg";
+	         case 5:
+		        return "img/collection/05.jpeg";
+	         default:
+	        	return "img/collection/06.jpg";
+	      }
+	   }
       //创建并插入收藏夹
-	  public boolean createColl()throws Exception
+      public boolean createColl()throws Exception
 	  {
 		  //当前用户流水号
 		  String aab101="1";
@@ -66,7 +110,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	      return this.executeTransaction();
 	  }  
 	//查询收藏夹
-	  public List<Map<String,String>> queryCollections()throws Exception
+	 public List<Map<String,String>> queryCollections()throws Exception
 	  {
 		  //当前用户流水号
 		  String aab101="1";
@@ -89,7 +133,16 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("          values('01',?,?,?)")
     			;
     	Object args[]={this.get("aac101"),this.get("aad404"),aab101};
-    	return this.executeUpdate(sql.toString(), args)>0;
+    	this.apppendSql(sql.toString(), args);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args2[]=xiaoxi("评论了你的菜谱");
+    	this.apppendSql(sql2.toString(), args2); 
+    	
+    	return this.executeTransaction();
     }
 	
 	//关注
@@ -123,6 +176,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			;
     	Object args3[]={this.get("aac106")};
     	this.apppendSql(sql3.toString(), args3);
+    	
+    	StringBuilder sql4=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args4[]=xiaoxi("关注了你");
+    	this.apppendSql(sql4.toString(), args4);
     	
     	return this.executeTransaction();
     }
@@ -207,6 +267,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("收藏了你的作品");
+    	this.apppendSql(sql3.toString(), args3);
+    	
     	return this.executeTransaction();
     }
 	
@@ -276,6 +343,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
+    	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("给你的菜谱点了赞");
+    	this.apppendSql(sql3.toString(), args3);
     	
     	return this.executeTransaction();
     }

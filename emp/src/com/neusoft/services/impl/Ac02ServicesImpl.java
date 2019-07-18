@@ -32,7 +32,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    }
 	}
 
-	
 	//查询所有作品
     public List<Map<String,String>> query()throws Exception
     {
@@ -422,7 +421,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	     return this.executeTransaction();
 	}
 
-    
     //取消收藏
     private boolean cancleCollection()throws Exception
     {   	
