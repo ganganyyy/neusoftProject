@@ -11,13 +11,13 @@ public abstract class ControllerSupport implements BaseController
 {
 
 	/*****************************************
-	 * 	        ÒµÎñÂß¼­×é¼þ¼°¼Ü¹¹×¢Èë
+	 * 	        Òµï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¹ï¿½×¢ï¿½ï¿½
 	 *****************************************/
 	
 	private BaseServices services=null;
 	
 	/**
-	 * ×ÓÀàÍ¨¹ý¸Ã·½·¨,ÎªServices±äÁ¿´«µÝÒýÓÃµÄ¾ßÌåÀà¶ÔÏó
+	 * ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½,ÎªServicesï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param services
 	 */
 	protected void setServices(BaseServices services)
@@ -31,10 +31,10 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/*****************************************
-	 * 	        ×ÓÀàÒµÎñÁ÷³Ì·â×°
+	 * 	        ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½×°
 	 *****************************************/
 	/**
-	 * Êý¾ÝÅúÁ¿²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 * @throws Exception
 	 */
 	protected final void savePageData()throws Exception
@@ -46,14 +46,14 @@ public abstract class ControllerSupport implements BaseController
 		}
 		else
 		{
-			this.saveAttribute("msg", "Ã»ÓÐ·ûºÏÌõ¼þµÄÊý¾Ý!");
+			this.saveAttribute("msg", "Ã»ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 		}	
 	}
 		
 	/**
 	 * @author:gangan
-	 * ¸ù¾Ý·½·¨Ãû»ñÈ¡ÅúÁ¿ÊµÀý
-	 * ±àÐ´Ô­Òò£ºÏ£ÍûÍ¨¹ý´«µÝµÄ·½·¨ÃûÀ´µ÷ÓÃ
+	 * ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+	 * ï¿½ï¿½Ð´Ô­ï¿½ï¿½Ï£ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param methodName
 	 * @param msgText
 	 * @throws Exception
@@ -63,7 +63,7 @@ public abstract class ControllerSupport implements BaseController
 		
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.µ÷ÓÃ·½·¨
+		//2.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
 		List<Map<String,String>> rows= (List<Map<String, String>>) method.invoke(services);
 		if(rows.size()>0)
 		{
@@ -76,8 +76,8 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * ¸ù¾Ý·½·¨Ãû»ñÈ¡µ¥Ò»ÊµÀý
-	 * ±àÐ´Ô­Òò£ºÏ£ÍûÍ¨¹ý´«µÝµÄ·½·¨ÃûÀ´µ÷ÓÃ
+	 * ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ò»Êµï¿½ï¿½
+	 * ï¿½ï¿½Ð´Ô­ï¿½ï¿½Ï£ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @author gangan
 	 * @param methodName
 	 * @param msgText
@@ -88,7 +88,7 @@ public abstract class ControllerSupport implements BaseController
 		
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.µ÷ÓÃ·½·¨
+		//2.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
 		Object ins= method.invoke(services);
 		if(ins!=null)
 		{
@@ -102,8 +102,8 @@ public abstract class ControllerSupport implements BaseController
 	
 	/**
 	 * @author gangan
-	 * »ñÈ¡Ò»Ð©²»ÐèÒªÏÔÊ¾ÔÚÒ³ÃæµÄÐÅÏ¢£º
-	 * ÀýÈçÅÐ¶ÏÐÅÏ¢ÓÃÓÚÁ÷³Ì¿ØÖÆ
+	 * ï¿½ï¿½È¡Ò»Ð©ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½
 	 * @param methodName
 	 * @return
 	 */
@@ -111,13 +111,13 @@ public abstract class ControllerSupport implements BaseController
 	{
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.µ÷ÓÃ·½·¨
+		//2.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
 		Map<String,String>info=(Map<String, String>)method.invoke(services); 
 		return info;
 	}
 	
 	/**
-	 * µ¥Ò»ÊµÀý ²éÑ¯
+	 * ï¿½ï¿½Ò»Êµï¿½ï¿½ ï¿½ï¿½Ñ¯
 	 * @throws Exception
 	 */
 	protected final void savePageInstance()throws Exception
@@ -129,30 +129,30 @@ public abstract class ControllerSupport implements BaseController
 		}
 		else
 		{
-			this.saveAttribute("msg", "ÌáÊ¾:¸ÃÊý¾ÝÒÑÉ¾³ý»ò½ûÖ¹·ÃÎÊ!");
+			this.saveAttribute("msg", "ï¿½ï¿½Ê¾:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½!");
 		}	
 	}
 	
 	/**
-	 * Í¨¹ý·´ÉäÖ´ÐÐ¸üÐÂ·½·¨
+	 * Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð¸ï¿½ï¿½Â·ï¿½ï¿½ï¿½
 	 * @param methodName
 	 * @return
 	 * @throws Exception
 	 */
 	private boolean executeUpdateMethod(String methodName)throws Exception
 	{
-		//1.»ñÈ¡ÐèÒªµ÷ÓÃµÄ·½·¨¶ÔÏó
+		//1.ï¿½ï¿½È¡ï¿½ï¿½Òªï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.µ÷ÓÃ·½·¨
+		//2.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
 		return  (boolean)method.invoke(services);
 	}
 	
 	
 	/**
-	 * ¸üÐÂÐÐÎªµÄ×Ü¿ª¹Ø
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½
 	 * <
-	 *   ¼òµ¥ÏûÏ¢ÌáÊ¾
+	 *   ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾
 	 * >
 	 * @param utype
 	 * @param msgText
@@ -160,12 +160,12 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void update(String methodName,String msgText)throws Exception
 	{
-		String msg=this.executeUpdateMethod(methodName)?"³É¹¦!":"Ê§°Ü!";
+		String msg=this.executeUpdateMethod(methodName)?"ï¿½É¹ï¿½!":"Ê§ï¿½ï¿½!";
 		this.saveAttribute("msg", msgText+msg);
 	}
 	
 	/**
-	 * ´øÓÐ±àºÅµÄÏûÏ¢ÌáÊ¾µÄ¸üÐÂÐÐÎª
+	 * ï¿½ï¿½ï¿½Ð±ï¿½Åµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Îª
 	 * @param utype
 	 * @param typeText
 	 * @param msgText
@@ -174,18 +174,18 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void update(String methodName,String typeText,String msgText,String key)throws Exception
 	{
-		String msg=typeText+"Ê§°Ü!";
+		String msg=typeText+"Ê§ï¿½ï¿½!";
     	if(this.executeUpdateMethod(methodName))
     	{
     		msg=msgText+"[ <msg> "+this.dto.get(key)+" </msg> ]";
     	}
-    	//ServletÏòÒ³ÃæÊä³öÊý¾Ý
+    	//Servletï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	this.saveAttribute("msg", msg);
 
 	}
 	
 	/**
-	 * É¾³ýºóµÄÊý¾Ý¼ìË÷
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	protected final void savePageDataForDelete()throws Exception
@@ -200,14 +200,14 @@ public abstract class ControllerSupport implements BaseController
 	
 	
 	/*****************************************
-	 * 	        Êý¾ÝÊäÈëÁ÷
+	 * 	        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 *****************************************/
 	private Map<String,Object> dto=null;
     @Override
     public final void setMapDto(Map<String, Object> dto) 
     {
         this.dto=dto;	
-        //Í¬²½ÎªServices´«µÝDTO
+        //Í¬ï¿½ï¿½ÎªServicesï¿½ï¿½ï¿½ï¿½DTO
         this.services.setMapDto(dto);
         
     }
@@ -219,7 +219,7 @@ public abstract class ControllerSupport implements BaseController
 
     
 	/*****************************************
-	 * 	        Êý¾ÝÊä³öÁ÷
+	 * 	        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 *****************************************/
     private Map<String,Object> attribute=new HashMap<>();
     protected final void  saveAttribute(String key,Object value)
