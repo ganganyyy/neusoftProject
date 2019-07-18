@@ -117,31 +117,6 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * 查询步骤,用料,作品--dsy
-	 * @throws Exception
-	 */
-	protected final void saveSteps()throws Exception
-	{
-		List<Map<String,String>> rows1=this.services.querySteps();//步骤
-		List<Map<String,String>> rows2=this.services.query();//用料
-		List<Map<String,String>> rows3=this.services.queryPro();//作品
-		List<Map<String,String>> rows4=this.services.queryLike();//点赞
-		List<Map<String,String>> rows5=this.services.queryComment();//评论
-		if(rows1.size()>0 && rows2.size()>0)
-		{
-			this.saveAttribute("rows1", rows1);
-			this.saveAttribute("rows2", rows2);
-			this.saveAttribute("rows3", rows3);
-			this.saveAttribute("rows4", rows4);
-			this.saveAttribute("rows5", rows5);
-		}
-		else
-		{
-			this.saveAttribute("msg", "网络故障");
-		}	
-	}
-	
-	/**
 	 * 单一实例 查询
 	 * @throws Exception
 	 */
