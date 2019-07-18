@@ -7,7 +7,7 @@
 		<meta charset="GBK">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
-		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
+		<link rel="stylesheet" type="text/css" href="css/home_like.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">        
 </head>
 <body>
