@@ -15,8 +15,8 @@
 <script src="layui/layui.js"></script>
 
 <link rel="stylesheet" href="css/collection/common.css">
-<link rel="stylesheet" href="css/collection/page.css">
-<link rel="stylesheet" href="css/collection/user.css">
+<!--  <link rel="stylesheet" href="css/collection/page.css">-->
+<!--<link rel="stylesheet" href="css/collection/user.css">-->
 
 <script src="js/collection/jquery-1.9.1.min.js" type="text/javascript" charset="GBK"></script>
 <script src="js/collection/common.js" type="text/javascript" charset="GBK"></script>

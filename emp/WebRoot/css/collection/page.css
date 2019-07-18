@@ -218,54 +218,54 @@
 .so-designer li .dis:hover .h{display:inline}
 .so-designer li .pic{width:auto;float:right;clear:none;font-size:0;margin:0;padding:0}
 .so-designer li .pic img{margin:0 0 0 15px;width:180px;height:110px;-webkit-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
-.content-tit{padding:50px 0 22px;*zoom:1}
-.content-tit:after{display:block;clear:both;height:0;content:"\200B"}
-.content-tit:after{display:block;clear:both;height:0;content:"\200B"}
-.content-tit .title{display:block;height:auto;padding:0;line-height:35px;font-size:24px;color:#333;font-weight:400}
-.content-tit .title h1{font-size:24px}
-.content-tit .title .icon-recommend{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:-3px 0 0 2px;font-size:22px}
-.content-tit .title .yellow{color:#ff701b}
-.content-tit .times{line-height:32px;color:#aaa;font-size:12px}
-.content-tit .infos{padding:6px 0 0;line-height:32px;color:#ccc;font-size:0}
-.content-tit .infos a{font-size:14px;color:#999}
-.content-tit .infos .icon-xian{font-size:12px;margin:0 25px;color:#ccc}
-.content-tit .infos em{font-size:12px;margin-right:40px;color:#aaa}
-.content-tit .infos em span{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:-3px 20px 0 0;color:#ccc;font-size:13px}
-.content-tit .infos em span.icon-view{font-size:16px}
-.content-tit .infos em span.icon-praise2{font-size:15px}
-.content-tit .infos .copy{font-size:14px;margin:0 50px;color:#999}
-.content-tit .designer{padding:11px 0 0}
-.content-tit .designer .img img{width:86px;height:86px;-webkit-border-radius:50%;-ms-border-radius:50%;-moz-border-radius:50%;border-radius:50%}
-.content-tit .designer .info{margin-left:100px;font-size:0}
-.content-tit .designer .info .name{line-height:28px;font-size:16px;color:#666}
-.content-tit .designer .info .name a{color:#333}
-.content-tit .designer .info .name a:hover{color:#0084ff}
-.content-tit .designer .info .name img{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:-3px 0 0 6px;width:17px}
-.content-tit .designer .info .adress{overflow:hidden;height:20px;line-height:20px;font-size:12px;color:#999}
-.content-tit .designer .info .btn{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;width:84px;height:28px;line-height:28px;margin:8px 0 0;color:#fff;text-align:center;font-size:14px;-webkit-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
-.content-tit .designer .info .btn-upload,.content-tit .designer .info .btn-letter{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;width:84px;height:28px;line-height:28px;margin:8px 0 0;color:#fff;text-align:center;font-size:14px;-webkit-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
-.content-tit .designer .info .btn-upload{width:130px;height:36px;line-height:36px;margin:16px 0 0}
-.content-tit .designer .info .btn-blue{background:#0084ff;border:1px solid #0084ff}
-.content-tit .designer .info .btn-blue:hover{background:#0f92fb;border:1px solid #0f92fb}
-.content-tit .designer .info .btn-blue.dis{border:1px solid #ddd;color:#666;background:none}
-.content-tit .designer .info .btn-blue.dis:hover{border:1px solid #ddd;color:#666;background:none}
-.content-tit .designer .info .btn-letter{color:#666;margin-left:10px;border:1px solid #ddd}
-.content-tit .designer .info .btn-letter:hover{border:1px solid #999}
-.content-box{border-top:1px solid #f1f1f1}
-.content-box .join-lan{text-align:center}
-.content-box .join-lan a{font-size:14px;color:#898989}
-.content-box .join-lan a:hover{text-decoration:underline;color:#0084ff}
-.content-box.bg-black{margin-bottom:70px;background:#000;color:#999}
-.content-box.bg-black .join-lan a{color:#666}
-.content-box.bg-black .join-lan a:hover{color:#0084ff}
-.content-box.bg-black .content{padding-bottom:110px}
-.content-box.bg-black .picview a{color:#0084ff}
-.content-box.bg-black .picview a:hover{color:#0f92fb}
-.content-box.bg-black .line-link{padding-top:30px}
-.content-box.bg-black .line-link span{color:#0084ff}
-.content-box.bg-black .line-link a:hover span{color:#0f92fb}
-.content-box.bg-black .ct-video p a{color:#666}
-.content-box.bg-black .ct-video p a:hover{color:#ccc}
+-tit{padding:50px 0 22px;*zoom:1}
+-tit:after{display:block;clear:both;height:0;content:"\200B"}
+-tit:after{display:block;clear:both;height:0;content:"\200B"}
+-tit .title{display:block;height:auto;padding:0;line-height:35px;font-size:24px;color:#333;font-weight:400}
+-tit .title h1{font-size:24px}
+-tit .title .icon-recommend{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:-3px 0 0 2px;font-size:22px}
+-tit .title .yellow{color:#ff701b}
+-tit .times{line-height:32px;color:#aaa;font-size:12px}
+-tit .infos{padding:6px 0 0;line-height:32px;color:#ccc;font-size:0}
+-tit .infos a{font-size:14px;color:#999}
+-tit .infos .icon-xian{font-size:12px;margin:0 25px;color:#ccc}
+-tit .infos em{font-size:12px;margin-right:40px;color:#aaa}
+-tit .infos em span{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:-3px 20px 0 0;color:#ccc;font-size:13px}
+-tit .infos em span.icon-view{font-size:16px}
+-tit .infos em span.icon-praise2{font-size:15px}
+-tit .infos .copy{font-size:14px;margin:0 50px;color:#999}
+-tit .designer{padding:11px 0 0}
+-tit .designer .img img{width:86px;height:86px;-webkit-border-radius:50%;-ms-border-radius:50%;-moz-border-radius:50%;border-radius:50%}
+-tit .designer .info{margin-left:100px;font-size:0}
+-tit .designer .info .name{line-height:28px;font-size:16px;color:#666}
+-tit .designer .info .name a{color:#333}
+-tit .designer .info .name a:hover{color:#0084ff}
+-tit .designer .info .name img{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;margin:-3px 0 0 6px;width:17px}
+-tit .designer .info .adress{overflow:hidden;height:20px;line-height:20px;font-size:12px;color:#999}
+-tit .designer .info .btn{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;width:84px;height:28px;line-height:28px;margin:8px 0 0;color:#fff;text-align:center;font-size:14px;-webkit-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+-tit .designer .info .btn-upload,-tit .designer .info .btn-letter{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;width:84px;height:28px;line-height:28px;margin:8px 0 0;color:#fff;text-align:center;font-size:14px;-webkit-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+-tit .designer .info .btn-upload{width:130px;height:36px;line-height:36px;margin:16px 0 0}
+-tit .designer .info .btn-blue{background:#0084ff;border:1px solid #0084ff}
+-tit .designer .info .btn-blue:hover{background:#0f92fb;border:1px solid #0f92fb}
+-tit .designer .info .btn-blue.dis{border:1px solid #ddd;color:#666;background:none}
+-tit .designer .info .btn-blue.dis:hover{border:1px solid #ddd;color:#666;background:none}
+-tit .designer .info .btn-letter{color:#666;margin-left:10px;border:1px solid #ddd}
+-tit .designer .info .btn-letter:hover{border:1px solid #999}
+-box{border-top:1px solid #f1f1f1}
+-box .join-lan{text-align:center}
+-box .join-lan a{font-size:14px;color:#898989}
+-box .join-lan a:hover{text-decoration:underline;color:#0084ff}
+-box.bg-black{margin-bottom:70px;background:#000;color:#999}
+-box.bg-black .join-lan a{color:#666}
+-box.bg-black .join-lan a:hover{color:#0084ff}
+-box.bg-black {padding-bottom:110px}
+-box.bg-black .picview a{color:#0084ff}
+-box.bg-black .picview a:hover{color:#0f92fb}
+-box.bg-black .line-link{padding-top:30px}
+-box.bg-black .line-link span{color:#0084ff}
+-box.bg-black .line-link a:hover span{color:#0f92fb}
+-box.bg-black .ct-video p a{color:#666}
+-box.bg-black .ct-video p a:hover{color:#ccc}
 .praise-box{position:relative;width:110px;margin:40px auto 0}
 .praise-box .at-gz{display:none;position:absolute;top:120px;left:50%;z-index:99;margin-left:-95px;width:190px;text-align:center;background:#fff;-webkit-box-shadow:0 0 11px #cccccc;-ms-box-shadow:0 0 11px #cccccc;-moz-box-shadow:0 0 11px #cccccc;box-shadow:0 0 11px #cccccc;-webkit-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
 .praise-box .at-gz .bdsharebuttonbox{padding:10px 0;text-align:center;font-size:0}
