@@ -6,8 +6,10 @@
 <head>
 <title>系统消息</title>
 <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+
 <link rel="stylesheet" href="define/css/stylegan.css" media="all">
 <link rel="stylesheet" href="css/message.css">
+
 
 <script type="text/javascript">
     function toUpgrade()

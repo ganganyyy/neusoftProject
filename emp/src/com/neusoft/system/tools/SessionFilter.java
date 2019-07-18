@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * 用于检查session中用户流水号、用户权限
  */
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class SessionFilter extends HttpServlet implements Filter {
 
 
