@@ -245,13 +245,6 @@ function create(vaac101)
 						</ol>
 					</div>
 
-					<div class="question">
-						<div class="title">
-							<h2 class="fubiaoti">${ins.aac102 }的答疑</h2>
-						</div>
-						关于${ins.aac102 }的做法还有疑问？ <a href="cook_question.html">提一个问题</a>
-					</div>
-
 					<div class="upload">上传你做的${ins.aac102 }</div>
 				</div>
 				<div class="kh30"></div>

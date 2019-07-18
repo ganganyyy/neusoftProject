@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.db.DBUtils;
@@ -12,6 +13,27 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+	   //获取收藏夹图片
+	   public String getImg()
+	   {
+		   Random ran = new Random();
+		   int i = ran.nextInt(5);
+		      switch(i)
+		      {
+		         case 1:
+		            return "img/collection/01.jpeg";
+		         case 2:
+		        	return "img/collection/02.jpg";
+		         case 3:
+		        	return "img/collection/03.jpg";
+		         case 4:
+			        return "img/collection/04.jpg";
+		         case 5:
+			        return "img/collection/05.jpeg";
+		         default:
+		        	return "img/collection/06.jpg";
+		      }
+		   }
       //创建并插入收藏夹
 	  public boolean createColl()throws Exception
 	  {
@@ -21,7 +43,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
 	    			;
-		  Object args[]={aab101,this.get("caad302"),"img/1.jpg"};
+		  Object args[]={aab101,this.get("caad302"),getImg()};
 		  this.apppendSql(sql.toString(), args);
 		  
 		  int aad301=Tools.getSequence("aad301");
