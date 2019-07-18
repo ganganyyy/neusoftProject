@@ -37,7 +37,7 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 		Object args[]={
 				this.get("aab102"),
 				this.get("aab103"),
-				this.get("aab101")
+				this.get("aab101Self")
 		};
 		
 		return this.executeUpdate(sql.toString(), args)>0;
@@ -58,8 +58,7 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 				;
 		
 		Object args[]={
-				//this.get("aab101"),
-				"1",
+				this.get("aab101Self"),
 				"02",
 				"用户申请升级",
 				"03"	
@@ -75,8 +74,8 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 	{
 
 		String sql ="update ab01 set aab105=02 where aab101=?";
-		return this.executeUpdate(sql, 1)>0;
-		//return this.executeUpdate(sql, this.get("aab101"))>0;
+		//return this.executeUpdate(sql, 1)>0;
+		return this.executeUpdate(sql, this.get("aab101Self"))>0;
 	}
 	
 	
@@ -109,8 +108,8 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 				.append(" where aac106=?")
 				;
 		
-		Map<String,String> map=this.queryForMap(sql.toString(),1);
-		//Map<String,String> map=this.queryForMap(sql.toString(),this.get("aab101"));
+		//Map<String,String> map=this.queryForMap(sql.toString(),1);
+		Map<String,String> map=this.queryForMap(sql.toString(),this.get("aab101Self"));
 		
 		int total=Integer.parseInt(map.get("total"));
 		System.out.println("食谱的点赞数和收藏数"+total);
@@ -126,8 +125,8 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 				.append("  from ac02")
 				.append(" where aab101=?")
 				;
-		//Map<String,String> map = this.queryForMap(sql.toString(), this.get("aab101"));
-		Map<String,String> map = this.queryForMap(sql.toString(), 1);
+		Map<String,String> map = this.queryForMap(sql.toString(), this.get("aab101Self"));
+		//Map<String,String> map = this.queryForMap(sql.toString(), 1);
 		int total=Integer.parseInt(map.get("total"));
 		System.out.println("作品的点赞数和收藏数"+total);
 		return total;
@@ -140,8 +139,8 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 	private int countSubscribe()throws Exception
 	{
 		String sql = "select aab108 from ab01 where aab101=?";
-		Map<String,String> map=this.queryForMap(sql, 1);
-		//Map<String,String> map=this.queryForMap(sql, this.get("aab101"));
+		//Map<String,String> map=this.queryForMap(sql, 1);
+		Map<String,String> map=this.queryForMap(sql, this.get("aab101Self"));
 		int total=Integer.parseInt(map.get("aab108"));
 		System.out.println("用户的被关注数"+total);
 		return total;

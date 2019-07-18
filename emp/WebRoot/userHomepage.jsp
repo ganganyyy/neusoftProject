@@ -10,7 +10,7 @@
 ${msg}
 <br>
 <br>
-<form action="<%=path%>/upgradeCount.html?aae101=1" method="post">
+<form action="<%=path%>/upgradeCount.html?aae101="+${aab101Self}" method="post">
 
      <input type="submit" name="next" value="查看用户分数">
      <input type="submit" name="next" value="获取所有我关住的人" 

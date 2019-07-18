@@ -38,7 +38,7 @@ public class HomeRecipeServicesImpl extends JdbcServicesSupport
 	{
 		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 		
-		return this.queryForMap(sql,this.get("aab101"));
+		return this.queryForMap(sql,this.get("aab101Self"));
 		//return this.queryForList(sql.toString(),1);
 	}
 //	

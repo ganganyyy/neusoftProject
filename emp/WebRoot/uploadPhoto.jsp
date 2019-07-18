@@ -8,10 +8,46 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="layui/css/layui.css"/>
+        <link rel="stylesheet" href="css/message.css">
+    <script type="text/javascript">
+    function toUpgrade()
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/upgradeCount.html";
+  	 vform.submit();
+    } 
+    function toMessage()
+    {
+    	var vform = document.getElementById("myform");
+     	vform.action="<%=path%>/queryMessage.html";
+     	vform.submit();
+    }
+    function toPhoto()
+    {
+    	var vform = document.getElementById("myform");
+     	vform.action="<%=path%>/queryPhoto.html";
+     	vform.submit();
+    }
+ 
+    </script> 
 	</head>
 	<body>
-	<div class="layui-container" style="margin-top:50px;margin-left:30%; width:40%">
-        <form class="layui-form" action="<%=path%>/uploadPhoto" enctype="multipart/form-data" method="post">
+	
+	<div class="layui-container" style="margin-top:50px;margin-left:10%; width:80%">
+         <form id="myform" class="layui-form" action="<%=path%>/uploadPhoto" enctype="multipart/form-data" method="post">
+        <div class="layui-row">
+         <div class="layui-col-md3" style="margin-top: 30px;">
+		 <img src="${ins.aab106 }" class="head-img">
+		<ul class="layui-nav layui-nav-tree" lay-filter="test">
+<li class="layui-nav-item" ><a href="personalInfo.jsp"><i class="layui-icon layui-icon-set" style="font-size: 20px; color: #89bcaf;"></i>  个人信息设置</a></li>
+<li class="layui-nav-item layui-this" ><a href="#" onclick="toPhoto();"><i class="layui-icon layui-icon-picture-fine" style="font-size: 20px; color: #89bcaf;"></i>  修改头像</a></li>
+<li class="layui-nav-item" ><a href="#" onclick="toUpgrade();"><i class="layui-icon layui-icon-diamond" style="font-size: 20px; color: #89bcaf;"></i>  申请升级</a></li>
+<li class="layui-nav-item"><a href="#" onclick="toMessage();"><i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #89bcaf;"></i>  系统消息</a></li>
+
+		</ul> 
+		 </div>
+        <div class="layui-col-md9">
+       
 		
 		<div class="layui-form-item">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
@@ -20,24 +56,25 @@
 		</div>
 		 
 		<div class="layui-form-item"> 
-		<div class="layui-upload">
+		<div class="layui-upload" style="width: 350px;style="margin-left: 20%;width: 60%;">
 		 
-		   <button type="button" class="layui-btn" id="choose" style="margin-left: 20%;width: 60%;">选择文件</button>
+		   <button type="button" class="layui-btn" id="choose" style="margin-left: 40%;width: 100%;">选择文件</button>
 		   
 		  <div class="layui-upload-list">
 		  	<!--预览图片-->
-		    <img class="layui-upload-img" id="demo1" style="margin-left: 20%;width: 60%;">
+		    <img class="layui-upload-img" id="demo1" style="margin-left: 40%;width: 100%;">
 		    <!--提示上传信息-->
 		    <p id="demoText"></p>
 		  </div>
-		 
+		 <button class="layui-btn" id="uploadBtn" style="margin-left: 40%;width: 100%;">提交</button>
 		</div>   
+		
 		</div>
 		
 		
 		
 		 <div class="layui-form-item">        
-                <button class="layui-btn" id="uploadBtn" style="margin-left: 20%;width: 60%;">提交</button>
+                
           </div>
 		
 		
@@ -95,6 +132,9 @@
 				  });
 			});
 		</script>
+		
+		</div>
+		</div>
 		</form>
 		</div>
 	</body>

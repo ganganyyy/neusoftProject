@@ -1,14 +1,12 @@
 package com.neusoft.web.impl;
 
-public class QueryMessageServlet extends MessageControllerSupport
+public class QueryPhotoServlet extends MessageControllerSupport 
 {
-
 	@Override
 	public String execute() throws Exception 
 	{
 		this.savePageInstance();
-		this.savePageData();
-		return "message";
+		return "uploadPhoto";
 	}
 
 }

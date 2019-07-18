@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * 用于检查session中用户流水号、用户权限
  */
 
-//@WebFilter("/*")
+@WebFilter("/*")
 public class SessionFilter extends HttpServlet implements Filter {
 
 
@@ -41,9 +41,7 @@ public class SessionFilter extends HttpServlet implements Filter {
 		if(servletPath.equals("/mainPage.jsp")||servletPath.equals("/login.do")
 				||servletPath.equals("/registe.do")||servletPath.equals("/registe.jsp")
 				||servletPath.equals("/getVerify.do")||servletPath.equals("/result.jsp")
-				||servletPath.equals("/login.jsp")||servletPath.contains("css")||
-				servletPath.contains("js")||servletPath.contains("layui")||
-				servletPath.contains("img"))
+				||servletPath.equals("/login.jsp"))
 		{
 			//首页、登陆、注册全部放行
 			chain.doFilter(request, response);

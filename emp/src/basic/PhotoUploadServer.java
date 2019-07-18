@@ -34,7 +34,7 @@ public class PhotoUploadServer extends HttpServlet{
         String result = "";
         
         //上传文件的保存目录
-        String savePath = "D:\\work\\emp\\WebRoot\\images";
+        String savePath = "D:\\work\\empMerge\\WebRoot\\img\\head";
         //上传时生成的临时文件保存目录
         String tempPath = "D:\\testImage\\tmp";
 
@@ -166,11 +166,12 @@ public class PhotoUploadServer extends HttpServlet{
         String gsonString=processRequest(request, response);
         //Map<String,Object> map = new HashMap<String, Object>();
         dto = new Gson().fromJson(gsonString,Map.class);
-        
+        String aab101Self=(String) request.getSession().getAttribute("aab101Self");
        this.setMapDto(dto);
+       this.dto.put("aab101Self", aab101Self);
         this.addPhoto();
-        
-        request.getRequestDispatcher("back.jsp").forward(request, response);
+
+        request.getRequestDispatcher("message.jsp").forward(request, response);
      
        
         
@@ -189,7 +190,7 @@ public class PhotoUploadServer extends HttpServlet{
 		String sql = "update ab01 set aab106=? where aab101=?";
 		Object args[]={
 			this.dto.get("fileName"),
-			1 //这里是用户流水号
+			this.dto.get("aab101Self")
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}

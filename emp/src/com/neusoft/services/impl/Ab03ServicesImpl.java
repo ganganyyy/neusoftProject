@@ -14,12 +14,12 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				.append("  from ab03")
 				.append(" where aab101=?")
 				;
-		return this.queryForList(sql.toString(), this.get("aab101"));
+		return this.queryForList(sql.toString(), this.get("aab101Self"));
 	}
 	
 	private boolean deleteById()throws Exception
 	{
-		String sql ="delete from ab03 where aab301=?";
+		String sql ="delete from ab03 where aab301=?";	
 		return this.executeUpdate(sql, this.get("aab301"))>0;
 	}
 	
@@ -29,5 +29,12 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		String idlist[]=this.getIdList("idlist");
 		return this.batchUpdate(sql,idlist);
 	}
+	
+	public Map<String,String> findById()throws Exception
+	{
+		String sql ="select aab106 from ab01 where aab101=?";
+		return this.queryForMap(sql, this.get("aab101Self"));
+	}
+	
 
 }
