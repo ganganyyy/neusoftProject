@@ -83,29 +83,31 @@
 	         </div>
 	     </div>
 	<div class="konghang"></div>   
-        <div class="conwidth">                
-        	<div class="jianjie">
-        		<img src="img/userkitchen/cffd00b5681c11e68b73f960d60360bd.jpg" class="img"/>
-        		<div class="fl">
-        				<h2>一哈有啊的厨房</h2>
-        			   <!-- <span><i class="icon1"></i>2016-3-23 加入</span><br />-->
-        				<div class="guanzhuderen">
-						<div class="x y">
-							<span>关注的人</span><br><a href="#"><span>256</span></a>
-						</div>
-						<div class="x">
-							<span>被关注</span><br><a href="#"><span>775</span></a>
-						</div>
-					</div>
-        				
-        		</div>
-        		<div class="fr">
-					<a href="#"><div class="guanzhu2">关注</div></a>
-        		</div>
-        	</div>
-        	
-        	<div class="kh20"></div>
-		</div>
+                <c:if test="${ins!=null }">
+				<div class="conwidth">
+				<div class="jianjie">
+				<img src="${ins.aab106 }" class="img"/>
+				<div class="fl">
+				<h2>${ins.aab102 }的厨房</h2>
+				<!-- <span><i class="icon1"></i>2016-3-23 加入</span><br />-->
+				<div class="guanzhuderen">
+				<div class="x y">
+				<span>关注的人</span><br><a href="#"><span>${ins.aab107 }</span></a>
+				</div>
+				<div class="x">
+				<span>被关注</span><br><a href="#"><span>${ins.aab108 }</span></a>
+				</div>
+				</div>
+				
+				</div>
+				<div class="fr">
+				<a href="#"><div class="guanzhu2">关注</div></a>
+				</div>
+				</div>
+				
+				<div class="kh20"></div>
+				</div>
+				</c:if>
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
@@ -118,6 +120,7 @@
 
         	<div class="kh20"></div>
           <form id="myform" method="post">
+            <input type="hidden" name="aad301" value="${param.aad301}">
         	<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 					<legend>菜谱</legend>
@@ -132,7 +135,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
 		        			<div class="stars">		        			    
-		        				<a href="#" onclick="shanchu('${ins.aad101}')">删除</a>
+		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">删除</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -152,7 +155,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
 		        			<div class="stars">		        			    
-		        				<a href="#" onclick="shanchu('${ins.aad101}')">删除</a>
+		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">删除</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -173,7 +176,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac302}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanchu('${ins.aad101}')">删除</a>
+		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">删除</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -181,10 +184,10 @@
           </form>
        </div>
 		<script type="text/javascript">
-	      function shanchu(vaad101)
+	      function shanchu(vaad201,vaac01,vaad203)
 	      {
 	    	 var vform = document.getElementById("myform");
-	    	 vform.action="<%=path%>/cancleLike.html?aad101="+vaad101;
+	    	 vform.action="<%=path%>/cancleColl.html?aad201="+vaad201+"&aac01="+vaac01+"&aad203="+vaad203;
 	    	 vform.submit();
 	      }
 	   </script>

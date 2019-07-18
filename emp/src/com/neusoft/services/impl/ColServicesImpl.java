@@ -8,20 +8,61 @@ import com.neusoft.services.JdbcServicesSupport;
 
 public class ColServicesImpl extends JdbcServicesSupport 
 {
-	//取消作品收藏
-    private boolean cancleCollection()throws Exception
-    {   	
-    	String sql1="delete from ad02 where aad203='02' and aad301='1' and aad204=? ";
+	public Map<String,String> findById()throws Exception
+	{
+	String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
+
+	return this.queryForMap(sql,this.get("aab101Self"));
+	//return this.queryForList(sql.toString(),1);
+	}
+    //取消收藏
+    private boolean deleteColle()throws Exception
+    {
+    	String tag=(String)this.get("aad203");
     	
-    	Object args1[]={this.get("aac201")};
-    	this.apppendSql(sql1, args1);
+    	if(tag=="01")
+    	{
+    		return canclePro();
+    	}
+    	if(tag=="02")
+    	{
+    		return cancleReci();
+    	}
+    	else
+    	{
+    		return cancleComp();
+    	}
+    }
+	//取消专栏收藏
+    private boolean cancleComp()throws Exception
+    {   	
+    	String sql1="delete from ad02 where aad201=? ";
+    	Object args1[]={this.get("aad201")};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ac03 a")
+    			.append("   set a.aac309=a.aac309-1")
+    			.append(" where a.aac301=? ")
+    			;
+    	Object args2[]={this.get("aac01")};
+    	this.apppendSql(sql2.toString(), args2);
+    	
+    	return this.executeTransaction();
+    }
+	//取消作品收藏
+    private boolean canclePro()throws Exception
+    {   	
+    	String sql1="delete from ad02 where aad201=? ";
+    	Object args1[]={this.get("aad201")};
+    	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205-1")
     			.append(" where a.aac201=? ")
     			;
-    	Object args2[]={this.get("aac201")};
+    	Object args2[]={this.get("aac01")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
@@ -30,8 +71,8 @@ public class ColServicesImpl extends JdbcServicesSupport
 	//取消菜谱收藏
     private boolean cancleReci()throws Exception
     {
-    	String sql1="delete from ad02 where aad203='01' and aad301='1' and aad204=? ";
-    	Object args1[]={this.get("aac101")};
+    	String sql1="delete from ad02 where aad201=? ";
+    	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -39,7 +80,7 @@ public class ColServicesImpl extends JdbcServicesSupport
     			.append("   set a.aac110=a.aac110-1")
     			.append(" where a.aac101=?")
     			;
-    	Object args2[]={this.get("aac101")};
+    	Object args2[]={this.get("aac01")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
@@ -49,7 +90,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	  public List<Map<String,String>> queryCollReci()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
-	    			.append("select b.aac101,b.aac102,b.aac108")
+	    			.append("select a.aad201,a.aad203,b.aac101,b.aac102,b.aac108")
 	    			.append("  from ad02 a,ac01 b")
 	    			.append(" where a.aad301=? and a.aad203='01' and a.aad204=b.aac101")
 	    			;
@@ -60,7 +101,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	  public List<Map<String,String>> queryCollPro()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
-	    			.append("select b.aac201,b.aac203,b.aac204")
+	    			.append("select a.aad201,a.aad203,b.aac201,b.aac203,b.aac204")
 	    			.append("  from ad02 a,ac02 b")
 	    			.append(" where a.aad301=? and a.aad203='02' and a.aad204=b.aac201")
 	    			;
@@ -71,7 +112,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	  public List<Map<String,String>> queryCollComp()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
-	    			.append("select b.aac301,b.aac302")
+	    			.append("select a.aad201,a.aad203,b.aac301,b.aac302")
 	    			.append("  from ad02 a,ac03 b")
 	    			.append(" where a.aad301=? and a.aad203='03' and a.aad204=b.aac301")
 	    			;

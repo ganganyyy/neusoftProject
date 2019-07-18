@@ -6,6 +6,7 @@ public class CollectServlet extends ColControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
+		this.savePageInstance();
 		this.getInstanceList("queryCollections", " ’≤ÿº–", "rows");
 		return "collection";
 	}

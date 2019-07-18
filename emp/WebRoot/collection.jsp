@@ -70,7 +70,32 @@ function create()
         </div>
         <!--   为头部留下控行       -->
         <div class="konghang"></div>
-        <div class="conwidth">
+        <c:if test="${ins!=null }">
+		<div class="conwidth">
+		
+		<div class="jianjie">
+		<img src="${ins.aab106 }" class="img"/>
+		<div class="fl">
+		<h2>${ins.aab102 }的厨房</h2>
+		<!-- <span><i class="icon1"></i>2016-3-23 加入</span><br />-->
+		<div class="guanzhuderen">
+		<div class="x y">
+		<span>关注的人</span><br><a href="#"><span>${ins.aab107 }</span></a>
+		</div>
+		<div class="x">
+		<span>被关注</span><br><a href="#"><span>${ins.aab108 }</span></a>
+		</div>
+		</div>
+		
+		</div>
+		<div class="fr">
+		<a href="#"><div class="guanzhu2">关注</div></a>
+		</div>
+		</div>
+		
+		<div class="kh20"></div>
+		</div>
+		</c:if>
         <div class="kh20"></div>
 		</div>
 		
