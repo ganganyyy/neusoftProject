@@ -88,13 +88,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     {
     	//获取当前员工编号
     	String aab101="1";
-    	//向DTO添加员工编号
-    	dto.put("aab101", aab101);
-    	
-    	//获取菜谱流水号
-    	String aac207="1";
-    	//向DTO添加员工编号
-    	dto.put("aac207", aac207);
     	
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
@@ -108,7 +101,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			aab101,
     			dto.get("aac203"),
     			dto.get("aac204"),
-    			aac207
+    			dto.get("aac207")
     	};
         return this.executeUpdate(sql.toString(), args)>0;	
     }

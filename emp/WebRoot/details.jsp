@@ -242,10 +242,12 @@ function create(vaac101)
 								<p>${ins.aac402 }</p> <img src="${ins.aac403}"
 									width="400px" height="270px"></li>
 							</c:forEach>
+							<li></li>
 						</ol>
 					</div>
 
-					<div class="upload">上传你做的${ins.aac102 }</div>
+                    <br>
+					<div class="upload"><a href="<%=path%>/addPro.jsp?aac207=${ins.aac101}">上传你做的${ins.aac102 }</a></div>
 				</div>
 				<div class="kh30"></div>
 			</div>
