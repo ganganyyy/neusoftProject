@@ -54,14 +54,14 @@ public class FileUtil
                     String [] allowedImagetype=ALLWED_IMAGE_TYPE.split(",");
                     if (!Arrays.asList(allowedImagetype).contains(ext)) 
                     {
-                        throw  new LogicException("你上传的不是图片，请重新上传图片");
+                        throw  new LogicException("false");
                     }
 
                     String RandomName = UUID.randomUUID().toString()+"."+FilenameUtils.getExtension(item.getName());
                     //System.out.println(fileName + "->" + FilenameUtils.getName(item.getName()));
                     //String path=req.getServletContext().getRealPath("/img");
                     
-                    String path="D:/github/neusoftProject/emp/WebRoot/img";//路径根据需求更改
+                    String path="D:/github/neusoftProject/emp/WebRoot/img";
                     
                     item.write(new File(path, RandomName));
                     
