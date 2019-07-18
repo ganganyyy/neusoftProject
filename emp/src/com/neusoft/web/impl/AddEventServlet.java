@@ -13,7 +13,7 @@ public class AddEventServlet extends EventControllerSupport
 		}
 		else
 		{
-		return "addEvent";
+		return "queryEvent";
 		}
 	}
 
