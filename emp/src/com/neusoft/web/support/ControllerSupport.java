@@ -218,4 +218,21 @@ public abstract class ControllerSupport implements BaseController
 			this.saveAttribute("msg", msgText);
 		}	
 	}
+	
+	/**
+	 * @author gangan
+	 * 获取一些不需要显示在页面的信息：
+	 * 例如判断信息用于流程控制
+	 * @param methodName
+	 * @return
+	 */
+	protected final Map<String,String> getExtraInfo(String methodName)throws Exception
+	{
+		Method method=this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		//2.调用方法
+		Map<String,String>info=(Map<String, String>)method.invoke(services); 
+		return info;
+	}
+	
 }

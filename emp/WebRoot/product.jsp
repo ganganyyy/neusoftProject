@@ -229,7 +229,7 @@
         	}
            	function cancleColl(vaac201,vaad201) {
         		var vform = document.getElementById("myform");
-        		vform.action="<%=path%>/cancleColl.html?aac201="+vaac201+"&aad201="+vaad201; 
+        		vform.action="<%=path%>/cancleCollPro.html?aac201="+vaac201+"&aad201="+vaad201; 
         		vform.submit();
         	}
            	function publish(vaac201) {
@@ -250,7 +250,7 @@
            	function create(vaac201)
            	{
            		 var vform = document.getElementById("myform");
-           		 vform.action="<%=path%>/creAndColl.html?aac201="+vaac201;
+           		 vform.action="<%=path%>/creCollPro.html?aac201="+vaac201;
            		 vform.submit();
            	}
         </script>

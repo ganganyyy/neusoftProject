@@ -1,11 +1,11 @@
 package com.neusoft.web.impl;
 
-public class CreAndCollServlet extends ProControllerSupport 
+public class CancleCollProServlet extends ProControllerSupport 
 {
 	@Override
 	public String execute() throws Exception
 	{
-		this.update("createColl", "收藏");
+		this.update("cancleCollection", "取消收藏");
 		this.savePageInstance();
 		this.getInstanceList("queryComment", "", "comments");
 		this.getInstanceList("queryLikes", "", "likes");
