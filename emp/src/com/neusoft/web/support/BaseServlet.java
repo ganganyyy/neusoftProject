@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.neusoft.services.impl.Ac02ServicesImpl;
+
 
 @WebServlet("*.html")
 public class BaseServlet extends HttpServlet 
@@ -62,6 +64,7 @@ public class BaseServlet extends HttpServlet
      		Map<String,Object> rueqestAttribute=controller.getAttribute();
      		//织入属性处理切片
      		this.parseRueqestAttribute(request, rueqestAttribute);
+     					
          }	
          catch(Exception ex)
          {

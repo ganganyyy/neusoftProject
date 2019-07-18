@@ -8,7 +8,7 @@ public interface BaseServices
      void setMapDto(Map<String,Object> dto);
      
      /**
-      * 接口的默认实现
+      * 锟接口碉拷默锟斤拷实锟斤拷
       * @return
       * @throws Exception
       */
