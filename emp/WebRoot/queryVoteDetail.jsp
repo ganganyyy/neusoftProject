@@ -64,9 +64,8 @@
         		<div class="fr">
         			<div class="apply">
         			<div class="kh30"></div>
-        			<!-- <button onclick="checkApply('${param.aae101}','${ins.aab101}')">参加活动</button>
-        		 -->
-        		 <button onclick="checkApply('${param.aae101}',1)">参加活动</button>
+        			 <button onclick="checkApply('${param.aae101}','${ins.aab101}')">参加活动</button>
+        
         		</div>
         		
         	</div>

@@ -11,6 +11,15 @@
 <script type="text/javascript" src="./define/js/move-top.js"></script>
 		<script type="text/javascript" src="./define/js/easing.js"></script>
 		<script src="./define/js/jquery.min.js"></script>
+		<script type="text/javascript">
+		function toMessage()
+    {
+    	var vform = document.getElementById("myform");
+     	vform.action="<%=path%>/queryMessage.html";
+     	vform.submit();
+    }
+		</script>
+		
 		
 </head>
 <body>
@@ -21,7 +30,7 @@
 	<div class="layui-row">
 		<div class="layui-col-md4 layui-col-md-offset3">
 			
-				<form class="layui-form" action="<%=path%>/search.html" style="margin-top: 25px" method="post">
+				<form class="layui-form" id="myform" action="<%=path%>/search.html" style="margin-top: 25px" method="post">
 				<div class="layui-input-item">
 				 <div class="layui-input-block layui-row ">
 					<div class ="layui-col-md1">
@@ -55,7 +64,7 @@
 		  			<ul class="toggle-menu">
 						<li></li>
 		  				<li><a class="active" href="mainPage.jsp">主页</a></li>
-		  				<li><a  href="menu.html">个人空间</a></li>
+		  				<li><a  href="#" onclick="toMessage();">系统消息</a></li>
 		  				<li><a  href="blog.html">用户问答</a></li>
 		  				<li><a  href="typo.html">专栏文章</a></li>
 		  				<li><a  href="contact.html">联系我们</a></li>

@@ -9,7 +9,9 @@ public class UpgradeCountServlet extends PersonalControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
+		
 		this.savePageInstance();
+		this.getInstance("findByIdPhoto", "", "photo");
 		return "upgrade";
 	}
 

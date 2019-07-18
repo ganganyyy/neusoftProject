@@ -6,7 +6,6 @@
 <head>
 <title>系统消息</title>
 <link rel="stylesheet" href="layui/css/layui.css"  media="all">
-
 <link rel="stylesheet" href="define/css/stylegan.css" media="all">
 <link rel="stylesheet" href="css/message.css">
 
@@ -30,6 +29,25 @@
      	vform.action="<%=path%>/queryPhoto.html";
      	vform.submit();
     }
+    var count=0;
+    function onSelect(vstate)
+    {
+  	  vstate?count++:count--;
+  	  var vdel=document.getElementById("del");
+  	  vdel.disabled=(count==0);
+    }
+    function toInfo()
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/queryPersonalInfo.html";
+  	 vform.submit();
+    } 
+    function onDel(vaab301)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/delByIdMessage.html?aab301="+vaab301;
+  	 vform.submit();
+    } 
  
     </script> 
 </head>
@@ -44,7 +62,7 @@
 <ul class="layui-nav layui-nav-tree" lay-filter="test" >
 
 <!-- <ul class="layui-nav layui-nav-tree layui-nav-side" style="margin-top: 20px;">-->
-<li class="layui-nav-item" ><a href="personalInfo.jsp"><i class="layui-icon layui-icon-set" style="font-size: 20px; color: #89bcaf;"></i>  个人信息设置</a></li>
+<li class="layui-nav-item" ><a href="#" onclick="toInfo();"><i class="layui-icon layui-icon-set" style="font-size: 20px; color: #89bcaf;"></i>  个人信息设置</a></li>
 <li class="layui-nav-item" ><a href="#" onclick="toPhoto();"><i class="layui-icon layui-icon-picture-fine" style="font-size: 20px; color: #89bcaf;"></i>  修改头像</a></li>
 <li class="layui-nav-item" ><a href="#" onclick="toUpgrade();"><i class="layui-icon layui-icon-diamond" style="font-size: 20px; color: #89bcaf;"></i>  申请升级</a></li>
 <li class="layui-nav-item layui-this"><a href="#" onclick="toMessage();"><i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #89bcaf;"></i>  系统消息</a></li>
@@ -58,10 +76,12 @@
 </fieldset>
   <table class="layui-table">
     <colgroup>
-      <col width="150">
-      <col width="150">
+      <col width="100">
+      <col width="250">
       <col width="200">
-      <col>
+      <col width="150">
+      <col width="50">
+    
     </colgroup>
     <thead>
       <tr>
@@ -73,23 +93,42 @@
       </tr> 
     </thead>
     <c:if test="${rows!=null }">
-    <c:forEach items="${rows }" var="ins" varStatus="vs">
+    
     <tbody>
+    <c:forEach items="${rows }" var="ins" varStatus="vs">
       <tr>
-        <td>${ins.aab301 }</td>
-        <td>${ins.aab302 }</td>
-        <td>${ins.aab303 }</td>
+      
+        <td><input type="checkbox" name="idlist" value="${ins.aab301 }"
+				             onclick="onSelect(this.checked)"></td>
+        <c:if test="${ins.aab303==0 }">
+        <td><a herf="#" class="colorA">${ins.aab302 }</a></td>
+        </c:if>
+        <c:if test="${ins.aab303==1 }">
+        <td><a herf="#">${ins.aab302 }</a></td>
+        </c:if>
         <td>${ins.aab304 }</td>
+        <c:if test="${ins.aab303==0 }">
+        <td style="color:#df2e2e;"><i class="layui-icon layui-icon-face-smile"></i>未查看</td>
+        </c:if>
+        <c:if test="${ins.aab303==1 }">
+        <td >已查看</td>
+        </c:if>
+        <td> <button type="button" onclick="onDel('${ins.aab301}')" class="layui-btn layui-btn-sm layui-btn-green">
+        <i class="layui-icon layui-icon-delete"></i>删除</button></td>
+         
       </tr>
-
-   
+      </c:forEach>
 
     </tbody>
-    </c:forEach>
+   
     </c:if>
   </table>
+    
+   <input type="submit" class="layui-btn layui-btn-sm layui-btn-green-fr" id="del" value="删除已选" 
+	              formaction="<%=path%>/delMessage.html"  disabled="disabled">
+        
   </div>
-  
+ 
 </div>
 </form>
           

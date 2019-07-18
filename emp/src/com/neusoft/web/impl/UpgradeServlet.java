@@ -14,7 +14,7 @@ public class UpgradeServlet extends PersonalControllerSupport
 		{
 			this.update("applyUpdate", "总分未达500分,提交升级申请");
 		}
-		return "userHomepage";
+		return "message";
 	}
 
 }

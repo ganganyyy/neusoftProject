@@ -159,8 +159,14 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 				.append("               left join ab01 c on a.aac106=c.aab101")
 				.append("  where a.aac106=?")
 				;
-		return this.queryForMap(sql.toString(),this.get("aae101"));
+		return this.queryForMap(sql.toString(),this.get("aab101Self"));
 		//return this.queryForList(sql.toString(),this.get("aab101"));
+	}
+	
+	public Map<String,String> findByIdPhoto()throws Exception
+	{
+		String sql ="select aab106 from ab01 where aab101=?";
+		return this.queryForMap(sql, this.get("aab101Self"));
 	}
 	
 

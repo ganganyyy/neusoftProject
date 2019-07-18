@@ -18,7 +18,7 @@ public class VoteServicesImpl extends JdbcServicesSupport
 				;
 		Object args[]={
 				this.get("aae101"),
-				1
+				this.get("aab101Self")
 				//this.get("aab101") ºŸ…Ë1”√ªß
 		};
 		System.out.println("queryForMap"+this.queryForMap(sql.toString(), args));
