@@ -249,7 +249,7 @@ public class Tools
    			 pstm2.setObject(1, ++currentVal);
    			 pstm2.setObject(2, pkname);
    			 pstm2.executeUpdate();
-   			 
+   		
    		 }
    		 else
    		 {
