@@ -8,6 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/product.css"/>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/collection/common.css">
+	<script src="js/collection/jquery-1.9.1.min.js" type="text/javascript" charset="GBK"></script>
+	<script src="js/collection/common.js" type="text/javascript" charset="GBK"></script>
+	<script src="js/collection/user.js" type="text/javascript" charset="GBK"></script>
 </head>
 
 <body>
@@ -89,7 +93,7 @@
 				<div class="ctitle">
 					<span>${ins.aac102}&nbsp;的作品</span>
 				</div>
-				<img src="${ins.aac204}"/>
+				<img src="${ins.aac204}" width="650px" height="440px"/>
 				<div>
 					<div class="author">				
 						<img src="${ins.aab106}" width="100px"/>
@@ -100,10 +104,10 @@
 					<div class="fr">
 					  <c:choose>
 	     				<c:when test="${ins.aad201!=null}">
-	     				    <a class="quxiaocang" id="canclezan" onclick="cancleColl('${ins.aac201}')" href="#">已收藏</a>							
+	     				    <a class="quxiaocang" id="canclezan" onclick="cancleColl('${ins.aac201}','${ins.aad201}')" href="javascript:;">已收藏</a>							
 						</c:when>
 					    <c:otherwise>
-					    	<a class="shoucang" id="zan" onclick="giveColl('${ins.aac201}')" href="#" >收藏</a>
+					    	<a class="shoucang" id="shoucang" href="javascript:;">收藏</a>
 					    </c:otherwise>
 					  </c:choose>
 					  <c:choose>
@@ -115,6 +119,35 @@
 					    </c:otherwise>
 					  </c:choose>						
 					</div>
+					<!--收藏夹弹窗 start-->
+			        <div class="popup-box popup-manage">
+			            <div class="popup">
+			                <div class="popup-tit">添加至收藏夹</div>
+			                <span class="popup-close icon-close"></span>
+			                <div class="popup-ct">
+			                    <div class="txt-box">
+			                        <input type="text" maxlength="15" 
+			                               style="width:250px;height:33px;" name="caad302">
+			                        <button class="layui-btn" onclick="create('${ins.aac201}')">创建</button>
+			                    </div>
+			                    <ul class="list" id="popup-manage-list">			
+									<c:choose>
+										<c:when test="${Collections.size() != 0}">
+										<c:forEach items="${Collections}" var="insi" varStatus="vs">
+							            <li onclick="giveColl('${ins.aac201}','${insi.aad301}')">
+							            <input type="text" value="${insi.aad302}"class="input" disabled>
+							            </li>
+								        </c:forEach>
+										</c:when>
+										<c:otherwise>
+										暂无收藏夹
+										</c:otherwise>
+									</c:choose>					
+			                    </ul>
+			                </div>
+			            </div>
+			        </div>
+			        <!--收藏夹弹窗 end-->
 				</div>				
 				<div class="desc">
 					<p>${ins.aac203}</p><br/>
@@ -161,7 +194,6 @@
 					 </c:choose>
 				</div>	
 			</div>
-		 
 		 </div>
 	</form>
  	<div class="conwidth footer"><!----------------页脚---------------->
@@ -190,14 +222,14 @@
         		vform.action="<%=path%>/cancleLikePro.html?aac201="+vaac201; 
         		vform.submit();
         	}
-        	function giveColl(vaac201) {
+        	function giveColl(vaac201,vaad301) {
         		var vform = document.getElementById("myform");
-        		vform.action="<%=path%>/collectionPro.html?aac201="+vaac201; 
+        		vform.action="<%=path%>/collectionPro.html?aac201="+vaac201+"&aad301="+vaad301; 
         		vform.submit();
         	}
-           	function cancleColl(vaac201) {
+           	function cancleColl(vaac201,vaad201) {
         		var vform = document.getElementById("myform");
-        		vform.action="<%=path%>/cancleColl.html?aac201="+vaac201; 
+        		vform.action="<%=path%>/cancleColl.html?aac201="+vaac201+"&aad201="+vaad201; 
         		vform.submit();
         	}
            	function publish(vaac201) {
@@ -215,6 +247,12 @@
         		vform.action="<%=path%>/findByIdPro2.html?aac201="+vaac201; 
         		vform.submit();
         	}
+           	function create(vaac201)
+           	{
+           		 var vform = document.getElementById("myform");
+           		 vform.action="<%=path%>/creAndColl.html?aac201="+vaac201;
+           		 vform.submit();
+           	}
         </script>
 </body>
 </html>

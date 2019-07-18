@@ -5,7 +5,7 @@ public class CollectionProServlet extends ProControllerSupport
 	@Override
 	public String execute() throws Exception
 	{
-		this.update("collection", "µ„‘ﬁ");
+		this.update("collection", " ’≤ÿ");
 		this.savePageInstance();
 		this.getInstanceList("queryComment", "", "comments");
 		this.getInstanceList("queryLikes", "", "likes");

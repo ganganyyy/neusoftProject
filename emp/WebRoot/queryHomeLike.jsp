@@ -8,8 +8,7 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
-		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
-        <link rel="stylesheet" href="css/test.css">
+		<link rel="stylesheet" href="layui/css/layui.css"  media="all">        
 </head>
 <body>
 	<div class="header">
@@ -132,7 +131,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
 		        			<div class="stars">		        			    
-		        				<a href="#" onclick="shanchu('${ins.aad101}')">É¾³ý</a>
+		        				<a href="#" onclick="shancaipu('${ins.aac101}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -152,7 +151,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
 		        			<div class="stars">		        			    
-		        				<a href="#" onclick="shanchu('${ins.aad101}')">É¾³ý</a>
+		        				<a href="#" onclick="shanzuopin('${ins.aac201}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -173,7 +172,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac302}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanchu('${ins.aad101}')">É¾³ý</a>
+		        				<a href="#" onclick="shanzhuanlan('${ins.aac301}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -181,10 +180,22 @@
           </form>
        </div>
 		<script type="text/javascript">
-	      function shanchu(vaad101)
+	      function shancaipu(vaac101)
 	      {
 	    	 var vform = document.getElementById("myform");
-	    	 vform.action="<%=path%>/cancleLike.html?aad101="+vaad101;
+	    	 vform.action="<%=path%>/cancleLike.html?aac101="+vaac101+"&aad103=01";
+	    	 vform.submit();
+	      }
+	      function shanzuopin(vaac201)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/cancleLike.html?aac201="+vaac201+"&aad103=02";
+	    	 vform.submit();
+	      }
+	      function shanzhuanlan(vaac301)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/cancleLike.html?aac301="+vaac301+"&aad103=03";
 	    	 vform.submit();
 	      }
 	   </script>

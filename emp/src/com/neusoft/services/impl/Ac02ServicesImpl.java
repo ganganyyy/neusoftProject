@@ -3,12 +3,36 @@ package com.neusoft.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
 
 public class Ac02ServicesImpl extends JdbcServicesSupport 
 {	
+	   //获取收藏夹图片
+	public String getImg()
+	{
+		Random ran = new Random();
+	    int i = ran.nextInt(5);
+	    switch(i)
+	    {
+	         case 1:
+	            return "img/collection/01.jpeg";
+			 case 2:
+				return "img/collection/02.jpg";
+			 case 3:
+				return "img/collection/03.jpg";
+			 case 4:
+			    return "img/collection/04.jpg";
+			 case 5:
+			    return "img/collection/05.jpeg";
+			 default:
+				return "img/collection/06.jpg";
+	    }
+	}
+
+	
 	//查询所有作品
     public List<Map<String,String>> query()throws Exception
     {
@@ -42,6 +66,19 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	abc.put("aad201", collectionNumber);
     	return abc;
     }
+    //查询收藏夹
+	public List<Map<String,String>> queryCollections()throws Exception
+	{
+		 //当前用户流水号
+		 String aab101="1";
+		 StringBuilder sql=new StringBuilder()
+	    		.append("select a.aad301,a.aad302,a.aad303")
+	    		.append("  from ad03 a")
+	    		.append(" where a.aab101=?")
+	    		;
+	     return this.queryForList(sql.toString(), aab101);
+	 }
+
     
     /*
      * 上传作品insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
@@ -78,10 +115,20 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
         
     //判断是否收藏
     private String collectionNumber()throws Exception
-    { 
-    	String sql="select aad201 from ad02 where aad203='02' and aad301='1' and aad204=?";    	
-    	Object args[]={this.get("aac201")};
-    	return check(sql,args);
+    {
+    	//获取当前员工编号
+    	String aab101="1";
+    	//向DTO添加员工编号
+    	this.put("aab101", aab101); 
+    	StringBuilder sql=new StringBuilder()
+		    		.append("select aad201 from ad02 a left join ad03 b")
+		    		.append("  on a.aad301=b.aad301")
+		    		.append(" where a.aad203='02'")
+		    		.append("   and a.aad204=?")
+		    		.append("   and b.aab101=?")
+		    		;
+    	Object args[]={this.get("aac201"),aab101};
+    	return check(sql.toString(),args);
     }
     //判断是否点赞
     private String likeNumber()throws Exception
@@ -187,8 +234,8 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
     
-    //取消点赞
-    private boolean cancleLike()throws Exception
+    //取消作品点赞
+    private boolean cancleProLike()throws Exception
     {
     	//获取当前员工编号
     	String aab101="1";
@@ -207,13 +254,46 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
+    	    	
+    	return this.executeTransaction();
+    }
+    //取消菜谱点赞
+    private boolean cancleReciLike()throws Exception
+    {
+    	String aab101="1";
+    	this.put("aab101", aab101);
     	
-    	StringBuilder sql3=new StringBuilder()
-    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
-    			.append("          values(?,?,'00',NOW())")
+    	String sql1="delete from ad01 where aad103='01' and aab101=? and aad104=? ";
+    	Object args1[]={aab101,this.get("aac101")};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ac01 a")
+    			.append("   set a.aac109=a.aac109-1")
+    			.append(" where a.aac101=?")
     			;
-    	Object args3[]=xiaoxi("取消了给你的作品的点赞");
-    	this.apppendSql(sql3.toString(), args3);  
+    	Object args2[]={this.get("aac101")};
+    	this.apppendSql(sql2.toString(), args2);
+    	
+    	return this.executeTransaction();
+    }
+    //取消专栏点赞
+    private boolean cancleCompLike()throws Exception
+    {
+    	String aab101="1";
+    	this.put("aab101", aab101);
+    	
+    	String sql1="delete from ad01 where aad103='03' and aab101=? and aad104=? ";
+    	Object args1[]={aab101,this.get("aac101")};
+    	this.apppendSql(sql1.toString(), args1);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("update ac03 a")
+    			.append("   set a.aac308=a.aac308-1")
+    			.append(" where a.aac301=?")
+    			;
+    	Object args2[]={this.get("aac301")};
+    	this.apppendSql(sql2.toString(), args2);
     	
     	return this.executeTransaction();
     }
@@ -291,9 +371,10 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad02(aad301,aad202,aad203,aad204)")
-    			.append("          values('1',NOW(),'02',?)")
+    			.append("          values(?,NOW(),'02',?)")
     			;
     	Object args1[]={
+    			this.get("aad301"),
     			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
@@ -316,12 +397,45 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
     
+    //创建并插入收藏夹
+	public boolean createColl()throws Exception
+	{
+		 //当前用户流水号
+		 String aab101="1";
+		 StringBuilder sql=new StringBuilder()
+	    			.append("insert into ad03(aab101,aad302,aad303)")
+	    			.append("       values(?,?,?) ")
+	    			;
+		 Object args[]={aab101,this.get("caad302"),getImg()};
+		 this.apppendSql(sql.toString(), args);
+		  
+		 int aad301=Tools.getSequence("aad301");
+		  
+	     StringBuilder sql1=new StringBuilder()
+	    			.append("insert into ad02(aad301,aad202,aad203,aad204)")
+	    			.append("       values(?,NOW(),'02',?)")
+	    			;
+	     Object args1[]={aad301,this.get("aac201")};
+	     this.apppendSql(sql1.toString(), args1);
+	    	
+	     StringBuilder sql2=new StringBuilder()
+	    			.append("update ac02 a")
+	    			.append("   set a.aac205=a.aac205+1")
+	    			.append(" where a.aac201=?")
+	    			;
+	     Object args2[]={this.get("aac201")};
+	     this.apppendSql(sql2.toString(), args2);
+		  
+	     return this.executeTransaction();
+	}
+
+    
     //取消收藏
     private boolean cancleCollection()throws Exception
     {   	
-    	String sql1="delete from ad02 where aad203='02' and aad301='1' and aad204=? ";
-    	
-    	Object args1[]={this.get("aac201")};
+    	String sql1="delete from ad02 where aad201=? ";
+    	   	
+    	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1, args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -331,13 +445,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
-    	StringBuilder sql3=new StringBuilder()
-    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
-    			.append("          values(?,?,'00',NOW())")
-    			;
-    	Object args3[]=xiaoxi("取消了对你的作品的收藏");
-    	this.apppendSql(sql3.toString(), args3); 
     	
     	return this.executeTransaction();
     }
@@ -425,10 +532,22 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	};
     	return this.queryForList(sql.toString(),args);
     }
+     
     //删除点赞
     private boolean deleteLikes()throws Exception
     {
-    	String sql="delete from ad01 where aad101=?";
-    	return this.executeUpdate(sql, this.get("aad101"))>0;
+    	String tag=(String)this.get("aad103");
+    	if(tag.equals("01"))
+    	{
+    		return cancleReciLike();
+    	}
+    	if(tag.equals("02"))
+    	{
+    		return cancleProLike();
+    	}
+    	else
+    	{
+    		return cancleCompLike();
+    	}
     }
 }
