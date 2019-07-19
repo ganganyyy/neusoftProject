@@ -6,7 +6,28 @@ $(document).ready(function(){
 	exeUserOnline();
 
 });
-
+/**
+ * 跳转到个人中心
+ * @param vaab101
+ * @returns
+ */
+function personal(vaab101)
+{
+	var vform = document.getElementById("myform");
+ 	vform.action="/emp/queryMessage.html?aab101="+vaab101;
+ 	vform.submit();
+}
+/**
+ * 跳转到我的厨房
+ * @param vaab101
+ * @returns
+ */
+function kitchen(vaab101)
+{
+	var vform = document.getElementById("myform");
+ 	vform.action="/emp/queryHomeRecipe.html?aab101="+vaab101;
+ 	vform.submit();
+}
 /**
  * 跳转
  * @returns
@@ -14,7 +35,7 @@ $(document).ready(function(){
 function toMessage()
 {
 	var vform = document.getElementById("myform");
- 	vform.action="<%=path%>/queryMessage.html";
+ 	vform.action="/emp/queryMessage.html";
  	vform.submit();
 }
 
@@ -58,7 +79,7 @@ function exeUserOnline(){
 		dataType:'json',
 		success:function(data){
 
-			alert("success");
+			//alert("success");
 			var html;
 			if(data.msg==undefined||data.msg==""||data.msg==null)
 			{

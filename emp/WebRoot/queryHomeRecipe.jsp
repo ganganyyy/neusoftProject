@@ -33,9 +33,21 @@
         }
         function onSub(vaab101)
         {
-      	 var vform = document.getElementById("myform");
-      	 vform.action="<%=path%>/addSubscribe.html?aab101="+vaab101;
-      	 vform.submit();
+        	$.ajax({
+        		url:'/emp/addSubscribe.do',
+        		type:'post',
+        		data:{
+        			"aab101":vaab101
+        		},
+        		dataType:'json',
+        		success:function(data){
+        			 window.location.href="queryHomeRecipe.html?aab101="+vaab101;
+        		},
+        		error:function(data){
+        			
+        			alert("Ã· æ£∫Õ¯¬Áπ ’œ£°");
+        		}
+        	});	
         }
         </script>
 	
