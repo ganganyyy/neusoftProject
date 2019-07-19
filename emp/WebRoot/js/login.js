@@ -26,13 +26,14 @@ layui.use(['form','layer'], function(){
 	           }
 	           else
 	           { 
-	        	   layer.alert(obj.msg, {icon: 5});    	
+	        	  
+	        	   layer.alert(obj.msg, {icon: 5});   
 	           } 
 	       }
 	   	  , error:function(obj){
 				
-	   		  alert("fail");
-	   		window.location.href="Error.jsp";
+	   		layer.alert("提示：网络故障！", {icon: 5});   
+	   		
 			}
 	}); 
 	  return false;//阻止表单跳转

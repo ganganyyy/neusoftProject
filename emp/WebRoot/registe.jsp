@@ -1,3 +1,4 @@
+<!-- author:刘诗滢 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath();%>
 <html>
@@ -12,7 +13,7 @@
   <legend align="center">注册</legend>
   <div class="layui-field-box" align="center" style="font-size: 12px;color:#c2c2c2">
 
-	小熊叫你做菜
+	小熊教你做菜
 	嘿嘿嘿小组出品
   </div>
 </fieldset>
@@ -28,7 +29,7 @@
    <div class="layui-form-item">
     <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i></label>
     <div class="layui-input-block">
-      <input type="text" name="aab103" placeholder="请输入密码" autocomplete="off" class="layui-input" lay-verify="required">	  
+      <input type="text" name="aab103" placeholder="请输入密码" autocomplete="off" class="layui-input" lay-verify="aab103">	  
     </div>
   </div>
   <div class="layui-form-item">
@@ -41,7 +42,7 @@
    <div class="layui-form-item">
    <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i></label>
     <div class="layui-inline" >
-      <input type="text" name="inputCode" placeholder="请输入验证码" autocomplete="off" class="layui-input"  lay-verify="required"
+      <input type="text" name="inputCode" placeholder="请输入验证码" autocomplete="off" class="layui-input"  lay-verify="inputCode"
 	  style="width:235px">
     </div>
 	<div class="layui-inline" style="position: absolute;margin-left: 10px;">
@@ -78,6 +79,6 @@
 </form>
 </div>
 <script src="./layui/layui.js"></script>
-<script src="js/registe.js" type="text/javascript"></script>
+<script src="js/registe.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@
   <legend align="center">登录</legend>
   <div class="layui-field-box" align="center" style="font-size: 12px;color:#c2c2c2">
 
-	小熊叫你做菜
+	小熊教你做菜
 	嘿嘿嘿小组出品
   </div>
 </fieldset>
@@ -35,18 +35,6 @@
     <div class="layui-input-block">
       <input type="text" name="aab103" placeholder="请输入密码" autocomplete="off" class="layui-input" lay-verify="required">	  
     </div>
-  </div>
-   <div class="layui-form-item">
-   <div class="layui-inline">
-	   <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i></label>
-   <div class="layui-input-inline"  >
-      <input type="text" name="" placeholder="请输入验证码" autocomplete="off" class="layui-input" >
-   </div>
-	<div class="layui-input-inline">
-	  <!--验证码图片-->
-	 
-	</div>
-	</div>
   </div>
   
  <div class="layui-input-item">
@@ -69,13 +57,13 @@
   	<a href="registe.jsp">立即注册</a>
     </div>
 	<div class="layui-col-md6">
-	<a onclick="" style="float:right;margin-right: 50px;">忘记密码？</a>
+	
 	</div>
   </fieldset>
 </form>
 </div>
 <script src="./layui/layui.js"></script>
-<script src="js/login.js" type="text/javascript"></script>
+<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 
 
 
