@@ -78,6 +78,11 @@ public class BaseServlet2 extends HttpServlet
      		{
      			this.saveSesseion(request,rueqestAttribute);
      		}
+     		//如果是退出登录将用户流水号移出session
+     		if(returnValue!=null&&returnValue.equals("exit"))
+     		{
+     			this.removeSession(request.getSession());
+     		}
      		this.writeToPage(response, rueqestAttribute);
          }	
          catch(Exception ex)
@@ -124,6 +129,12 @@ public class BaseServlet2 extends HttpServlet
 		session.setAttribute("aab105Self",rueqestAttribute.get("aab105Self"));
 		System.out.println("session:"+session.getAttribute("aab101Self")+":"+session.getAttribute("aab105Self"));
 
+	}
+	
+	private void removeSession(HttpSession session)
+	{
+		session.removeAttribute("aab101Self");
+		session.removeAttribute("aab105Self");
 	}
 	
 	/**

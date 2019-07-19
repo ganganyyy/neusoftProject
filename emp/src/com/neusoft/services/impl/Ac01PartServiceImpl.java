@@ -241,10 +241,22 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 	          String natureStr = terms.get(i).getNatureStr(); //拿到词性
 	          //TODO:不确定需不需要把英文再分成单个字母 
 	          if(expectedNature.contains(natureStr)) {
-	             System.out.println(word + ":" + natureStr);
-	             keyList.add(word);
-	            }
-	        }
+	        	 if(natureStr.equals("en"))
+	        	 {	
+	        		char[] list= word.toCharArray();
+	        		System.out.println("list:"+list);
+	        		for(char item:list)
+	        		{
+	        			keyList.add(item+"");
+	        		}
+	        	 }
+	        	 else
+	        	 {
+		             System.out.println(word + ":" + natureStr);
+		             keyList.add(word);
+	        	 }
+	          }
+	     }
 		return keyList;
 	}
 	

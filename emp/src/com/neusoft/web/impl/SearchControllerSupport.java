@@ -7,7 +7,7 @@ import com.neusoft.web.support.ControllerSupport;
 
 /**
  * Ö÷Ò³Ä£¿é
- * @author gangan
+ * @author ÁõÊ«äÞ
  *
  */
 public abstract class SearchControllerSupport extends ControllerSupport {

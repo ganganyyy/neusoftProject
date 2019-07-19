@@ -1,4 +1,6 @@
-
+/**
+ * @author:刘诗滢
+ */
 $(document).ready(function(){
 	exeActivity();
 	exeLatestMenu();
@@ -34,7 +36,7 @@ function exeLatestMenu(){
 					+'<div class="layui-card">'
 					+'<div class="layui-card-header" style="text-align: center;font-size: 18px;">'+data.rows[i].aac102+'</div>'
 					+'<div class="layui-card-body" align="center" style="font-size: 13px;">'
-					+'<img src="'+data.rows[i].aac108+'" style="widtn:180px;height:100px;">'
+					+'<a href="#"><img src="'+data.rows[i].aac108+'" style="widtn:180px;height:100px;"></a>'
 					+'<p><a href="#">'+data.rows[i].aab102+'</a>创建&nbsp;&nbsp;'+data.rows[i].ac02count+'做过</p>'
 					+'<a href="#">read more</a>'
 					+'</br>'
@@ -78,7 +80,7 @@ function exePopularUsers(){
 				html+='<div class="layui-card">'
 					 +'<div class="layui-card-body layui-row layui-col-space10" align="center" style="font-size: 13px;">'
 					 +'<div class="layui-col-md7">'
-					 +'<img class="layui-nav-img" src="'+data.rows[i].aab106+'" style="width:100px;height: 80px;border:1px">'
+					 +'<a href="#"><img class="layui-nav-img" src="'+data.rows[i].aab106+'" style="width:100px;height: 80px;border:1px"></a>'
 					 +'</div>'
 					 +'<div class="layui-col-md5">'
 					 +'<a href="/emp/registe.do?aac101=${ins.aab101}">'+data.rows[i].aab102+'</a><span>'+data.rows[i].aab108+'关注</span>'

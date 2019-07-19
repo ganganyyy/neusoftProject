@@ -88,6 +88,7 @@ public abstract class ControllerSupport implements BaseController
 		if(ins!=null)
 		{
 			this.saveAttribute(attributeName,  ins);
+			System.out.println("getInstance:"+ins);
 		}
 		else
 		{

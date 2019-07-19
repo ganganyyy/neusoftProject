@@ -10,7 +10,7 @@ import com.neusoft.web.support.ControllerSupport;
 
 /**
  * µÇÂ¼×¢²áÄ£¿éµÄsupport
- * @author gangan
+ * @author ÁõÊ«äŞ
  *
  */
 public abstract class Ab01ControllerSupport extends ControllerSupport {

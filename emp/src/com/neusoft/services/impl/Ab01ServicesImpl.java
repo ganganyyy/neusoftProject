@@ -23,6 +23,22 @@ import com.neusoft.system.tools.Tools;
 public class Ab01ServicesImpl extends JdbcServicesSupport {
 
 	
+	
+	public Map<String,String>findByAab101()throws Exception
+	{
+		if(this.get("aab101Self")==null)
+		{
+			return null;
+		}
+		StringBuilder sql=new StringBuilder()
+				.append("select a.aab101,a.aab102,a.aab105,a.aab106")
+    			.append("  from ab01 a")
+    			.append(" where a.aab101=?;")
+    			;	
+		return this.queryForMap(sql.toString(), this.get("aab101Self"));
+	}
+	
+	
 	/**
 	 * 登录
 	 * 根据手机号码、密码验证用户

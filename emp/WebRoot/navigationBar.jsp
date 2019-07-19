@@ -1,3 +1,4 @@
+<!-- author:刘诗滢 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath();%>
 <!DOCTYPE html>
@@ -9,16 +10,9 @@
 <link href="./define/css/styles.css" rel="stylesheet">
 	<!-- animation-effect -->
 <script type="text/javascript" src="./define/js/move-top.js"></script>
-		<script type="text/javascript" src="./define/js/easing.js"></script>
-		<script src="./define/js/jquery.min.js"></script>
-		<script type="text/javascript">
-		function toMessage()
-    {
-    	var vform = document.getElementById("myform");
-     	vform.action="<%=path%>/queryMessage.html";
-     	vform.submit();
-    }
-		</script>
+<script type="text/javascript" src="./define/js/easing.js"></script>
+<script src="./define/js/jquery.min.js"></script>
+<script src="js/nacigationBar.js" type="text/javascript" charset="utf-8"></script>
 		
 		
 </head>
@@ -34,7 +28,7 @@
 				<div class="layui-input-item">
 				 <div class="layui-input-block layui-row ">
 					<div class ="layui-col-md1">
-						<select name="huntOption" lay-verify="required" >
+						<select name="huntOption" lay-verify="required" lay-filter="sch" >
 							<option value="ac01" style="color:#63707E;">搜食谱</option>
 							<option value="ab01" style="color:#63707E;">搜用户</option>
 						</select>
@@ -56,9 +50,9 @@
 			
 		</div>
 
-		<div style="float: right;margin-right: 0; margin-top: 25px;">
+		<!-- <div  style="float:right;margin-top: 25px;"> -->
 	
-		  	<div class="nav-icon">		
+		  	<div class="nav-icon"  style="float:right;margin-top: 25px;" >		
 		  	<a href="#" class="navicon"></a>
 		  		<div class="toggle">
 		  			<ul class="toggle-menu">
@@ -79,9 +73,24 @@
 		  	  $('.toggle').toggleClass('toggle--active');
 		  	});
 		  	</script>
+		  	
+		  	<li class="layui-nav-item" style="margin-top:0px" id="userLi">
+		    <a href="" style="color:black;"><img src="${aab106 }" class="layui-nav-img" id="userIcon"></a>
+		    <dl class="layui-nav-child">
+		      <dd><a href="javascript:;">个人中心</a></dd>
+		      <dd><a href="javascript:;">个人空间</a></dd>
+		      <dd><a onclick="exit();">退了</a></dd>
+		    </dl>
+		   </li>
 		  </div>
-		</div>
-	</div>
+		
+		
+		
+	
+		<!-- 用户小人 -->
+		
+	
+<!-- 	</div> -->
 </ul>
 
 
@@ -108,6 +117,17 @@ layui.use(['element','form'], function(){
     layer.msg(elem.text());
   });
 
+  form.on('select(sch)', function(data){
+		 var input=document.getElementsByName("inputHunt")[0];
+		 if(data.value=="ab01")
+		 {
+			 input.placeholder="搜索用户";
+		 }
+		 else
+		 {
+			 input.placeholder="搜索食谱";
+		 }
+	});      
 });
 
 
