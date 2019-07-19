@@ -1,5 +1,8 @@
 package com.neusoft.web.impl;
-
+/**
+ * 用户批量删除系统消息
+ * @author 吴佳珊
+ */
 public class DelMessageServlet extends MessageControllerSupport 
 {
 

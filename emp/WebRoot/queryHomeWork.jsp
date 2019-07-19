@@ -1,7 +1,8 @@
-</html><%@ page language="java" pageEncoding="GBK"%>
+<!-- author:吴佳珊 -->
+<%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@ include file="navigationBar.jsp" %>
 <html>
 	<head>
 		<meta charset="GBK">
@@ -9,22 +10,39 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+		<link rel="stylesheet" href="define/css/stylegan.css" media="all">
         <link rel="stylesheet" href="css/test.css">
         <script type="text/javascript">
         function getRecipe(vaab101)
         {
       	 var vform = document.getElementById("myform");
-      	 vform.action="<%=path%>/queryHomeRecipe.html?aab101=1";
+      	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
       	 vform.submit();
         }
-        
+        function getSub(vaab101)
+        {
+      	 var vform = document.getElementById("myform");
+      	 vform.action="<%=path%>/queryAllSubscribe.html?aab101="+vaab101;
+      	 vform.submit();
+        }
+        function getSubByMe(vaab101)
+        {
+      	 var vform = document.getElementById("myform");
+      	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
+      	 vform.submit();
+        }
+        function onSub(vaab101)
+        {
+      	 var vform = document.getElementById("myform");
+      	 vform.action="<%=path%>/addSubscribe.html?aab101="+vaab101;
+      	 vform.submit();
+        }
         </script>
 	</head>
 	<body>
 	<form id="myform" action="<%=path%>/queryEvent.html" method="post">
            <div class="layui-container" style="margin-top:50px;margin-left:15%; width:70%">
         <!--   为头部留下控行       -->
-        <div class="konghang"></div>
         <c:if test="${ins!=null }">
        <div class="conwidth">
         
@@ -36,17 +54,20 @@
         			   <!-- <span><i class="icon1"></i>2016-3-23 加入</span><br />-->
         				<div class="guanzhuderen">
 						<div class="x y">
-							<span>关注的人</span><br><a href="#"><span>${ins.aab107 }</span></a>
+							<span>关注的人</span><br><a href="#" onclick="getSub('${param.aab101}');"><span>${ins.aab107 }</span></a>
 						</div>
 						<div class="x">
-							<span>被关注</span><br><a href="#"><span>${ins.aab108 }</span></a>
+							<span>被关注</span><br><a href="#" onclick="getSubByMe('${param.aab101}');"><span>${ins.aab108 }</span></a>
 						</div>
 					</div>
         				
         		</div>
+        		<c:if test="${sessionScope.aab101Self!=param.aab101 }">
         		<div class="fr">
-					<a href="#"><div class="guanzhu2">关注</div></a>
+					<a href="#" onclick="onSub('${param.aab101}');"><div class="guanzhu2">关注</div></a>
         		</div>
+        		</c:if>
+        		
         	</div>
         	
         	<div class="kh20"></div>
@@ -55,7 +76,7 @@
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="bqcaipu"><a href="#"  onclick="getRecipe('${ins.aab101}')">菜谱</a></span>
+        		<span class="bqcaipu"><a href="#"  onclick="getRecipe('${param.aab101}')">菜谱</a></span>
         		<span class="teshu bqzuopin"><a href="#">作品</a></span>
         		<span class="bqshoucang"><a href="#">收藏</a></span>
         		<span class="bqliuyanban"><a href="#">点赞</a></span>

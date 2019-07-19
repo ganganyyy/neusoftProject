@@ -1,5 +1,8 @@
 package com.neusoft.web.impl;
-
+/**
+ * ÐÞ¸ÄÍ·Ïñ
+ * @author Îâ¼ÑÉº
+ */
 public class QueryPhotoServlet extends MessageControllerSupport 
 {
 	@Override

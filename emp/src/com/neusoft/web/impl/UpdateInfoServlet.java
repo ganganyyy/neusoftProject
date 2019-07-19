@@ -1,5 +1,8 @@
 package com.neusoft.web.impl;
-
+/**
+ * 更新个人信息
+ * @author 吴佳珊
+ */
 public class UpdateInfoServlet extends PersonalControllerSupport 
 {
 

@@ -5,6 +5,10 @@ import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
 
+/**
+ * 用户信息修改,用户总分,申请升级
+ * @author 吴佳珊
+ */
 public class HomepageServicesImpl extends JdbcServicesSupport 
 {
 	private boolean checkPassword()throws Exception
@@ -147,7 +151,7 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 	}
 	
 	/**
-	 *搜索所有活动
+	 *搜索用户总分
 	 */
 	public Map<String,String> findById()throws Exception
 	{

@@ -1,5 +1,8 @@
 package com.neusoft.web.impl;
-
+/**
+ * 投票检查是否投过,今日之内没投过则可以投票
+ * @author 吴佳珊
+ */
 public class AddVoteServlet extends VoteControllerSupport 
 {
 

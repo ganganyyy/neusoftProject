@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
-
+/**
+ * 系统消息管理
+ * @author 吴佳珊
+ */
 public class Ab03ServicesImpl extends JdbcServicesSupport 
 {
 	public List<Map<String,String>>query()throws Exception

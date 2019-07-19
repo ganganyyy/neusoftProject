@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
-
+/**
+ * 个人厨房 我的作品
+ * @author 吴佳珊
+ */
 public class HomeWorkServicesImpl extends JdbcServicesSupport 
 {
 	public List<Map<String,String>> query()throws Exception
@@ -25,11 +28,6 @@ public class HomeWorkServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql,this.get("aab101"));
 		//return this.queryForList(sql.toString(),1);
 	}
-	
-//	private boolean deleteById()throws Exception
-//	{
-//		String sql = "";
-//		return this.executeUpdate(sql, args)>0;
-//	}
+
 
 }

@@ -65,7 +65,7 @@
 		<div class="layui-form-item"> 
 		<div class="layui-upload" style="width: 350px;style="margin-left: 20%;width: 60%;">
 		 
-		   <button type="button" class="layui-btn" id="choose" style="background: #89bcaf;margin-left: 40%;width: 100%;">选择文件</button>
+		   <button type="button" class="layui-btn" id="choose" style="background: #89bcaf;margin-left: 40%;width: 100%;">选择图片</button>
 		   
 		  <div class="layui-upload-list">
 		  	<!--预览图片-->

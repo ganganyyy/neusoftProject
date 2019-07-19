@@ -5,11 +5,12 @@ import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
-
+/**
+ * 系统管理员 增加活动 管理活动
+ * @author 吴佳珊
+ */
 public class Ae01ServicesImpl extends JdbcServicesSupport 
 {
-	
-	
 	private boolean addEvent()throws Exception
 	{
 		//编写SQL语句
@@ -28,7 +29,6 @@ public class Ae01ServicesImpl extends JdbcServicesSupport
     			this.get("aae107")
     	};
 		return this.executeUpdate(sql.toString(), args)>0;
-				
 	}
 	
 	private boolean addEventOption()throws Exception
@@ -44,8 +44,6 @@ public class Ae01ServicesImpl extends JdbcServicesSupport
 				.append("          values(?,?,?,?,CURRENT_TIMESTAMP())")
 				;
 		//编写参数数组
-//		System.out.println(this.get("1aae203"));
-//		System.out.println(this.get("2aae203"));
 		Object args1[]={
     			this.get("aae101"),
     			1,
@@ -63,10 +61,7 @@ public class Ae01ServicesImpl extends JdbcServicesSupport
 	boolean flag=this.executeUpdate(sql1.toString(), args1)>0;
     flag=flag&&this.executeUpdate(sql1.toString(), args2)>0;
     return flag;
-				
 	}
-	
-
 	
 	/**
 	 *搜索所有活动

@@ -1,17 +1,25 @@
+<!-- author:吴佳珊 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@ include file="navigationBar.jsp" %>
 <html>
 <head>
 <title>Insert title here</title>
  <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="define/css/stylegan.css" media="all">
  <link rel="stylesheet" href="css/test.css">
  <script type="text/javascript">
- function onDel(vaab203)
+ function onDel(vaab201,vaab101)
  {
 	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/delByIdSub.html?aab203="+vaab203;
+	 vform.action="<%=path%>/delByIdSub.html?aab201="+vaab201+"&aab101="+vaab101;
+	 vform.submit();
+ }
+ function onGo(vaab101)
+ {
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
 	 vform.submit();
  } 
  </script>
@@ -21,7 +29,7 @@
 ${msg}
 <br>
 <br>
-<form id="myform" action="<%=path%>/upgrade.html" method="post">
+<form id="myform" method="post">
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
   <legend>关注的人列表</legend>
@@ -32,7 +40,7 @@ ${msg}
 <c:if test="${rows!=null }">
 <c:forEach items="${rows }" var="ins">
 
-<div class="layui-col-md4 layui-col-sm6">
+<div class="layui-col-md4 layui-col-sm6">	
 <div class="layadmin-contact-box">
 <div class="layui-col-md4 layui-col-sm6">
 <div class="layadmin-text-center">
@@ -40,15 +48,17 @@ ${msg}
 </div>
 </div>
 <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
-          <a href="javascript:;">
+          <a href="#" onclick="onGo('${ins.aab101}')">
             <h3 class="layadmin-title">
               <strong>${ins.aab102 }</strong>
             </h3>
           </a>
-          <button class="layui-btn layui-btn-sm caller-fr" onclick="onDel('${ins.aab101}')">
+          <c:if test="${sessionScope.aab101Self==param.aab101 }">
+          <button class="layui-btn layui-btn-sm caller-fr" onclick="onDel('${ins.aab201}','${ins.aab101}')">
             <i class="layui-icon layui-icon-close"></i>
-                         取消关注
+             取消关注
           </button>
+          </c:if>
 </div>
 </div>
 </div>

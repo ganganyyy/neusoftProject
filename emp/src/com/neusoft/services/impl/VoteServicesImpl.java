@@ -5,7 +5,10 @@ import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
-
+/**
+ * 投票资格检查,投票
+ * @author 吴佳珊
+ */
 public class VoteServicesImpl extends JdbcServicesSupport 
 {
 	private Map<String, String> checkByIdVote()throws Exception

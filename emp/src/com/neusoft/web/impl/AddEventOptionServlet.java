@@ -1,5 +1,8 @@
 package com.neusoft.web.impl;
-
+/**
+ * 添加活动选项
+ * @author 吴佳珊
+ */
 public class AddEventOptionServlet extends EventControllerSupport 
 {
 

@@ -1,7 +1,6 @@
-package basic;
+package com.neusoft.web.impl;
 
 import com.google.gson.Gson;
-import com.neusoft.services.BaseServices;
 import com.neusoft.system.db.DBUtils;
 
 import java.io.*;
@@ -19,13 +18,18 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-@WebServlet("/uploadPhoto")
-public class PhotoUploadServer extends HttpServlet{
+/**
+ * 上传用户活动 
+ * @author 吴佳珊
+ *
+ */
+@WebServlet("/uploadtest")
+public class FileUploadServlet extends HttpServlet{
 
     protected String processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/json;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/json;charset=GBK");
+        request.setCharacterEncoding("GBK");
         
         PrintWriter pw = response.getWriter();
         
@@ -34,11 +38,7 @@ public class PhotoUploadServer extends HttpServlet{
         String result = "";
         
         //上传文件的保存目录
-        String t=Thread.currentThread().getContextClassLoader().getResource("").getPath();
-        int num=t.indexOf(".metadata");
-        String path=t.substring(1,num).replace('/', '\\')+"emp\\WebRoot\\img\\head";
-        System.out.println(path);
-        String savePath = path;
+        String savePath = "C:\\Users\\HP\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
         //上传时生成的临时文件保存目录
         String tempPath = "D:\\testImage\\tmp";
 
@@ -60,7 +60,7 @@ public class PhotoUploadServer extends HttpServlet{
         ServletFileUpload upload = new ServletFileUpload(factory);
 
         //解决上传文件名的中文乱码
-        upload.setHeaderEncoding("UTF-8");
+        upload.setHeaderEncoding("GBK");
         //3、判断提交上来的数据是否是上传表单的数据
 //        if (!ServletFileUpload.isMultipartContent(request)) {
 //            //按照传统方式获取数据
@@ -81,7 +81,7 @@ public class PhotoUploadServer extends HttpServlet{
                 if (item.isFormField()) {
                     String name = item.getFieldName();
                     //解决普通输入项的数据的中文乱码问题
-                    String value = item.getString("UTF-8");
+                    String value = item.getString("GBK");
                     //value = new String(value.getBytes("iso8859-1"),"UTF-8");
 //                   System.out.println(name + "=" + value);
                     resultMap.put(name, value);
@@ -135,7 +135,7 @@ public class PhotoUploadServer extends HttpServlet{
                     item.delete();
                     
                     //resultMap.put("no", 1);
-                    resultMap.put("msg", "头像上传成功！");
+                    resultMap.put("msg", "文件上传成功！");
                     resultMap.put("uuid", UUID.randomUUID().toString().replaceAll("-", ""));
                     
                     result = new Gson().toJson(resultMap);
@@ -143,7 +143,7 @@ public class PhotoUploadServer extends HttpServlet{
                 }
             }
         } catch (FileUploadException ex) {
-            Logger.getLogger(FileUploadServer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
         	
             pw.print(result);
@@ -165,18 +165,11 @@ public class PhotoUploadServer extends HttpServlet{
     	try
     	{
     	
-   
-    	
         String gsonString=processRequest(request, response);
-        //Map<String,Object> map = new HashMap<String, Object>();
         dto = new Gson().fromJson(gsonString,Map.class);
-        String aab101Self=(String) request.getSession().getAttribute("aab101Self");
-       this.setMapDto(dto);
-       this.dto.put("aab101Self", aab101Self);
-        this.addPhoto();
-
-        request.getRequestDispatcher("message.jsp").forward(request, response);
-     
+        this.setMapDto(dto);
+        this.addVoteOption();
+        request.getRequestDispatcher("back.jsp").forward(request, response);
        
         
     	}
@@ -188,15 +181,25 @@ public class PhotoUploadServer extends HttpServlet{
     	}
    
     private Map<String,Object> dto=null;
-    private boolean addPhoto() throws Exception
+    private boolean addVoteOption() throws Exception
 	{
 		
-		String sql = "update ab01 set aab106=? where aab101=?";
+		StringBuilder sql = new StringBuilder()
+				.append("insert into ae02(aae101,aae203,aae202,aae204,aae205,")
+				.append("                 aab101)")
+				.append("          values(?,?,?,?,CURRENT_TIMESTAMP(),")
+				.append("                 ?)")
+				;
+		System.out.println("中文乱码"+this.dto.get("desc"));
 		Object args[]={
+			this.dto.get("aae101"),
+			this.dto.get("desc"),
+			0, //票数是0票
 			this.dto.get("fileName"),
-			this.dto.get("aab101Self")
+			1 //这里是用户流水号
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
+		
 	}
 	/**
 	 * 为Services传递DTO

@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
-
+/**
+ * Ë­¹Ø×¢ÎÒ
+ * @author Îâ¼ÑÉº
+ */
 public class SubMeServicesImpl extends JdbcServicesSupport 
 {
 
@@ -15,7 +18,7 @@ public class SubMeServicesImpl extends JdbcServicesSupport
 				.append("  from ab01 a left join ab02 b on a.aab101=b.aab202") 
 				.append(" where b.aab203=?") 
 				;
-		return this.queryForList(sql.toString(), 3);
+		return this.queryForList(sql.toString(), this.get("aab101"));
 	}
 	
 }

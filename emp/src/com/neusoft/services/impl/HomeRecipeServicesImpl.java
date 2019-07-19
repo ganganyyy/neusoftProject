@@ -4,23 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
-
+/**
+ * 个人厨房我的菜谱
+ * @author 吴佳珊
+ */
 public class HomeRecipeServicesImpl extends JdbcServicesSupport 
 {
-
-//	public List<Map<String,String>> query()throws Exception
-//	{
-//		StringBuilder sql = new StringBuilder()
-//				.append("select a.aac102,a.aac108,b.aab102,b.aab106")
-//				.append("  from (ac01 a left join ab01 b on a.aac106=b.aab101)") 
-//				.append(" where aac106=?")
-//				;
-//		
-//		return this.queryForList(sql.toString(),this.get("aab101"));
-//		//return this.queryForList(sql.toString(),1);
-//	}
-	
-	
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -38,14 +27,8 @@ public class HomeRecipeServicesImpl extends JdbcServicesSupport
 	{
 		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 		
-		return this.queryForMap(sql,this.get("aab101Self"));
+		return this.queryForMap(sql,this.get("aab101"));
 		//return this.queryForList(sql.toString(),1);
 	}
-//	
-//	private boolean deleteById()throws Exception
-//	{
-//		String sql ="";
-//		return this.executeUpdate(sql, args)>0;
-//	}
-	
+
 }

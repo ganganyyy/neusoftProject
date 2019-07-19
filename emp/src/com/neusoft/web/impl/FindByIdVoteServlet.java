@@ -1,11 +1,10 @@
 package com.neusoft.web.impl;
-
+/**
+ * 查询某一个活动的所有投票选项的详情
+ * @author 吴佳珊
+ */
 public class FindByIdVoteServlet extends VoteControllerSupport 
 {
-
-	/**
-	 * 查询投票选项的详情页面
-	 */
 	@Override
 	public String execute() throws Exception 
 	{
