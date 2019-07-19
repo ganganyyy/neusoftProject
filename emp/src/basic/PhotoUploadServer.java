@@ -34,7 +34,11 @@ public class PhotoUploadServer extends HttpServlet{
         String result = "";
         
         //上传文件的保存目录
-        String savePath = "D:\\work\\empMerge\\WebRoot\\img\\head";
+        String t=Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        int num=t.indexOf(".metadata");
+        String path=t.substring(1,num).replace('/', '\\')+"emp\\WebRoot\\img\\head";
+        System.out.println(path);
+        String savePath = path;
         //上传时生成的临时文件保存目录
         String tempPath = "D:\\testImage\\tmp";
 
