@@ -9,13 +9,6 @@ import com.neusoft.system.tools.Tools;
 public class Ae01ServicesImpl extends JdbcServicesSupport 
 {
 	
-//	private boolean todayVoted()throws Exception
-//	{
-//	
-//		StringBuilder sql = new StringBuilder()
-//				.append("")
-//				
-//	}
 	
 	private boolean addEvent()throws Exception
 	{
@@ -81,7 +74,8 @@ public class Ae01ServicesImpl extends JdbcServicesSupport
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select aae101,aae102,aae103,aae104,aae105")
+				.append("select aae101,aae102,aae103,aae104,aae105,")
+				.append("       aae107")
 				.append("  from ae01")
 				.append(" order by aae104 desc")
 				;
