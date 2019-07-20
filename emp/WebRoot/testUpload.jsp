@@ -2,7 +2,7 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String Path=request.getContextPath(); %>
+<%@ include file="navigationBar.jsp" %>
 <html>
 <head>
         <title>JSP Page</title>
@@ -14,7 +14,7 @@
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
   			<legend>添加个人参赛作品</legend>
 		</fieldset>
-            <form class="layui-form" action="<%=Path%>/uploadtest" enctype="multipart/form-data" method="post">
+            <form class="layui-form" action="<%=path%>/uploadtest" enctype="multipart/form-data" method="post">
             <input hidden="true" id="aae101" name="aae101" value="${param.aae101 }"/>
                 
                 <div class="layui-form-item layui-form-text">
