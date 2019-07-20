@@ -13,7 +13,7 @@ public class HomeRecipeServicesImpl extends JdbcServicesSupport
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select a.aac102,a.aac108")
+				.append("select a.aac102,a.aac108,a.aac101")
 				.append("  from (ac01 a left join ab01 b on a.aac106=b.aab101)") 
 				.append(" where aac106=?")
 				;
