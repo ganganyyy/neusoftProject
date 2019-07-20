@@ -22,7 +22,7 @@
 	嘿嘿嘿小组出品
   </div>
 </fieldset>
-</br>
+<br>
 
 <form class="layui-form" action="" method="post"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
   <div class="layui-form-item">
