@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 
-public class myarticleservicesimpl extends JdbcServicesSupport {
+public class myarticleservicesimpl extends JdbcServicesSupport1 {
 
 	public myarticleservicesimpl(Map<String, Object> dto) {
 		super(dto);

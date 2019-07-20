@@ -14,9 +14,13 @@ import com.neusoft.system.db.DBUtils;
  *抽象类:可以包含抽象方法的类 
  *
  */
-public abstract class JdbcServicesSupport  implements BaseServices
+public abstract class JdbcServicesSupport1  implements BaseServices
 {
 
+	public JdbcServicesSupport1(Map<String, Object> dto)
+	{
+		this.dto=dto;
+	}
 	
 	
 	/**************************************************************

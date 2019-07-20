@@ -4,8 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 
-public class upfindByIdservicesimpl extends JdbcServicesSupport 
+public class upfindByIdservicesimpl extends JdbcServicesSupport1 
 {
 
 	public upfindByIdservicesimpl(Map<String, Object> dto)

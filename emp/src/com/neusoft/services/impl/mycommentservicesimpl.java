@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 
-public class mycommentservicesimpl extends JdbcServicesSupport {
+public class mycommentservicesimpl extends JdbcServicesSupport1 {
 
 	public mycommentservicesimpl(Map<String, Object> dto) {
 		super(dto);

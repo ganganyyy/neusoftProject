@@ -3,8 +3,9 @@ package com.neusoft.services.impl;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 
-public class findByIdmyarticleservicesimpl extends JdbcServicesSupport 
+public class findByIdmyarticleservicesimpl extends JdbcServicesSupport1 
 {
 
 	public findByIdmyarticleservicesimpl(Map<String, Object> dto) {
