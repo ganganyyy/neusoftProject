@@ -10,6 +10,27 @@
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
         <link rel="stylesheet" href="css/test.css">
+        
+<script type="text/javascript">
+function chacaipu(vaac101)
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/details.html?aac101="+vaac101; 
+	vform.submit();
+}
+function chazuopin(vaac201)
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/findByIdPro.html?aac201="+vaac201; 
+	vform.submit();
+}
+function chazhuanlan(vaac301)
+{
+	var vform = document.getElementById("myform");
+	vform.action="<%=path%>/browsefindByIdarticle.html?aac201="+vaac301; 
+	vform.submit();
+}
+</script>
 </head>
 <body>
 	<div class="header">
@@ -113,7 +134,7 @@
         	<div class="navigation">
         		<span class="teshu bqcaipu"><a href="#">菜谱</a></span>
         		<span class="bqzuopin"><a href="#">作品</a></span>
-        		<span class="bqshoucang"><a href="#">收藏</a></span>
+        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
         		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
         		<span class="bqcaidan"><a href="#">活动作品</a></span>
         	</div>
@@ -129,7 +150,7 @@
 				     <c:forEach items="${reci}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
-		            			<a href="#" onclick="chacaipu('${ins.aac101}')">
+		            			<a onclick="chacaipu('${ins.aac101}')">
 		            				<img src="${ins.aac108}" alt="菜谱图片" width="300px" height="240px"/>
 		            			</a>
 		            		</div>
