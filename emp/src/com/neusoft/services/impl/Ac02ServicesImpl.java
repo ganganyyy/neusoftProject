@@ -478,10 +478,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     //查询我点赞的菜谱
     private List<Map<String,String>> myReciLikes()throws Exception
     {
-    	//获取当前员工编号
-    	String aab101="1";
-    	//向DTO添加员工编号
-    	this.put("aab101", aab101);
+    	
 
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aad101,b.aac102,b.aac108,b.aac101")    			
@@ -490,19 +487,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad103='01' ")
     			.append("   and a.aab101=?")
     			;
-    	Object args[]={
-    			aab101   			
-    	};
-    	return this.queryForList(sql.toString(),args);
+    
+    	return this.queryForList(sql.toString(),this.get("aab101"));
     }
     //查询我点赞的作品
     private List<Map<String,String>> myProLikes()throws Exception
     {
-    	//获取当前员工编号
-    	String aab101="1";
-    	//向DTO添加员工编号
-    	this.put("aab101", aab101);
-
+    	
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aad101,b.aac204,b.aac203,b.aac201")    			
     			.append("  from ad01 a, ac02 b ")
@@ -510,19 +501,12 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad103='02' ")
     			.append("   and a.aab101=?")
     			;
-    	Object args[]={
-    			aab101   			
-    	};
-    	return this.queryForList(sql.toString(),args);
+    	
+    	return this.queryForList(sql.toString(),this.get("aab101"));
     }
     //查询我点赞的专栏
     private List<Map<String,String>> myCompLikes()throws Exception
     {
-    	//获取当前员工编号
-    	String aab101="1";
-    	//向DTO添加员工编号
-    	this.put("aab101", aab101);
-
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aad101,b.aac302,b.aac301")    			
     			.append("  from ad01 a, ac03 b ")
@@ -530,10 +514,8 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad103='03' ")
     			.append("   and a.aab101=?")
     			;
-    	Object args[]={
-    			aab101   			
-    	};
-    	return this.queryForList(sql.toString(),args);
+    	
+    	return this.queryForList(sql.toString(),this.get("aab101"));
     }
      
     //删除点赞

@@ -38,10 +38,28 @@ function chazhuanlan(vaac301)
 	vform.action="<%=path%>/browsefindByIdarticle.html?aac201="+vaac301; 
 	vform.submit();
 }
+function getRecipe(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
+	 vform.submit();
+}
 function getWork(vaab101)
 {
 	 var vform = document.getElementById("myform");
 	 vform.action="<%=path%>/queryHomeWork.html?aab101="+vaab101;
+	 vform.submit();
+}
+function getCol(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/collect.html?aab101="+vaab101;
+	 vform.submit();
+}
+function getLike(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/myLikes.html?aab101="+vaab101;
 	 vform.submit();
 }
 function getSub(vaab101)
@@ -56,97 +74,10 @@ function getSubByMe(vaab101)
 	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
 	 vform.submit();
 }
-function onSub(vaab101)
-{
-	$.ajax({
-		url:'/emp/addSubscribe.do',
-		type:'post',
-		data:{
-			"aab101":vaab101
-		},
-		dataType:'json',
-		success:function(data){
-			 window.location.href="queryHomeRecipe.html?aab101="+vaab101;
-		},
-		error:function(data){
-			
-			alert("提示：网络故障！");
-		}
-	});	
-}
 </script>
 </head>
 <body>
-	<div class="header">
-		<div class="conwidth">
-			<h1 class="fl"><a href="">美<span>拾</span></a></h1>
-			<div class="search fl" id="search-box">
-				<form action="#" method="get" target="_blank" >
-					<input type="text" placeholder="搜索菜谱、食材"
-						id="sreach-input" class="search-text fl"/>
-					<input type="button" value="搜菜谱" class="search-btn fl"/>
-				</form>
-			</div>
-			<div class="nav fr">
-			<ul>
-	                  <li><a href="">首页</a></li>
-	                  <li class="menu-class"><a href="">菜谱分类</a>
-	                      <div class="topbar-menu">
-	                          <ul class="plain">
-	                          <li class='topbar-menu-head'>常用主题</li>
-	                          <li><a href="menu_class.html" >家常菜</a></li>
-	                          <li><a href="menu_class.html" >快手菜</a></li>
-	                          <li><a href="menu_class.html" >下饭菜</a></li>
-	                          <li><a href="menu_class.html" >早餐</a></li>
-	                          <li><a href="menu_class.html" >减肥</a></li>
-	                          <li><a href="menu_class.html" >汤羹</a></li>
-	                          <li><a href="menu_class.html" >烘焙</a></li>
-	                          <li><a href="menu_class.html" >小吃</a></li>
-	                          </ul>
-	                          <ul class="plain">
-	                          <li class='topbar-menu-head'>常见食材</li>
-	                          <li><a href="menu_class.html" >猪肉</a></li>
-	                          <li><a href="menu_class.html" >鸡肉</a></li>
-	                          <li><a href="menu_class.html" >牛肉</a></li>
-	                          <li><a href="menu_class.html" >鱼</a></li>
-	                          <li><a href="menu_class.html" >鸡蛋</a></li>
-	                          <li><a href="menu_class.html" >土豆</a></li>
-	                          <li><a href="menu_class.html" >茄子</a></li>
-	                          <li><a href="menu_class.html" >豆腐</a></li>
-	                          </ul>
-	                          <ul class="plain">
-	                          <li class='topbar-menu-head'>时令食材</li>
-	                          <li><a href="menu_class.html" >春笋</a></li>
-	                          <li><a href="menu_class.html" >笋</a></li>
-	                          <li><a href="menu_class.html" >豌豆</a></li>
-	                          <li><a href="menu_class.html" >草莓</a></li>
-	                          <li><a href="menu_class.html" >金桔</a></li>
-	                          <li><a href="menu_class.html" >菠菜</a></li>
-	                          <li><a href="menu_class.html" >冬笋</a></li>
-	                          <li><a href="menu_class.html" >韭菜</a></li>
-	                          </ul>
-	                          <div class="span">
-	                          <span><a href="">查看全部分类</a></span>
-	                          </div>
-	                      </div>
-	                  </li>
-	                  <li><a href="">菜单</a></li>
-	                 <li><a href="<%=path%>/queryPro.html">作品动态</a></li>
-	               
-	             </ul>
-		<div class="dengluzhuce fr">
-			<a href="login.html">登录</a>
-			<a href="register .html">注册</a>
-		</div>
-		</div>
-	</div>
-	         <div class="suggest" id="sreach-suggest"><!---搜索智能提示suggest-->
-	             <ul>
-	                 <li>搜"  "相关用户</li>
-	                 <li>搜"  "相关菜单</li>
-	             </ul>
-	         </div>
-	     </div>
+	
 	<div class="konghang"></div>   
                 <c:if test="${ins!=null }">
 				<div class="conwidth">
@@ -176,10 +107,10 @@ function onSub(vaab101)
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
         		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
-        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
-        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
+        		<span class="teshu bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
         	</div>
 
         	<div class="kh20"></div>

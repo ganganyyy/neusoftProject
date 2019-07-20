@@ -37,7 +37,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	{
 	String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 
-	return this.queryForMap(sql,this.get("aab101Self"));
+	return this.queryForMap(sql,this.get("aab101"));
 	}
     //取消收藏
     private boolean deleteColle()throws Exception
@@ -146,14 +146,13 @@ public class ColServicesImpl extends JdbcServicesSupport
       //查询收藏夹
 	  public List<Map<String,String>> queryCollections()throws Exception
 	  {
-		  //当前用户流水号
-		  String aab101="1";
+		  
 		  StringBuilder sql=new StringBuilder()
 	    			.append("select a.aad301,a.aad302,a.aad303")
 	    			.append("  from ad03 a")
 	    			.append(" where a.aab101=?")
 	    			;
-	      return this.queryForList(sql.toString(), aab101);
+	      return this.queryForList(sql.toString(), this.get("aab101"));
 	  }
 	  
       //收藏夹重命名
@@ -183,12 +182,12 @@ public class ColServicesImpl extends JdbcServicesSupport
 	  public boolean createColl()throws Exception
 	  {
 		  //当前用户流水号
-		  String aab101="1";
+		  //String aab101="1";
 		  StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
 	    			;
-		  Object args[]={aab101,this.get("caad302"),getImg()};
+		  Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
 	      return this.executeUpdate(sql.toString(), args)>0;
 	  }
 }

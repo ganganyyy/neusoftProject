@@ -68,10 +68,28 @@ function create()
 	 vform.action="<%=path%>/creColl.html";
 	 vform.submit();
 }
+function getRecipe(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
+	 vform.submit();
+}
 function getWork(vaab101)
 {
 	 var vform = document.getElementById("myform");
 	 vform.action="<%=path%>/queryHomeWork.html?aab101="+vaab101;
+	 vform.submit();
+}
+function getCol(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/collect.html?aab101="+vaab101;
+	 vform.submit();
+}
+function getLike(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/myLikes.html?aab101="+vaab101;
 	 vform.submit();
 }
 function getSub(vaab101)
@@ -86,24 +104,7 @@ function getSubByMe(vaab101)
 	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
 	 vform.submit();
 }
-function onSub(vaab101)
-{
-	$.ajax({
-		url:'/emp/addSubscribe.do',
-		type:'post',
-		data:{
-			"aab101":vaab101
-		},
-		dataType:'json',
-		success:function(data){
-			 window.location.href="queryHomeRecipe.html?aab101="+vaab101;
-		},
-		error:function(data){
-			
-			alert("提示：网络故障！");
-		}
-	});	
-}
+
 </script>
 
 	</head>
@@ -113,7 +114,6 @@ function onSub(vaab101)
         <div class="layui-container" style="margin-top:50px;margin-left:15%; width:70%">
         </div>
         <!--   为头部留下控行       -->
-        <div class="konghang"></div>
         <c:if test="${ins!=null }">
 		<div class="conwidth">
 		
@@ -132,12 +132,8 @@ function onSub(vaab101)
 		</div>
 		
 		</div>
-		<div class="fr">
-		<a href="#"><div class="guanzhu2">关注</div></a>
-		</div>
 		</div>
 		
-		<div class="kh20"></div>
 		</div>
 		</c:if>
         <div class="kh20"></div>
@@ -146,10 +142,10 @@ function onSub(vaab101)
 		 <div class="conwidth survey">
 		 
         	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
         		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
-        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
-        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
+        		<span class="teshu  bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
         	</div>
             
         <div class="wrap user-box">

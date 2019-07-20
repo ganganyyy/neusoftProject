@@ -15,28 +15,41 @@
         <script type="text/javascript">
         function getRecipe(vaab101)
         {
-      	 var vform = document.getElementById("myform");
-      	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
-      	 vform.submit();
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getWork(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/queryHomeWork.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getCol(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/collect.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getLike(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/myLikes.html?aab101="+vaab101;
+        	 vform.submit();
         }
         function getSub(vaab101)
         {
-      	 var vform = document.getElementById("myform");
-      	 vform.action="<%=path%>/queryAllSubscribe.html?aab101="+vaab101;
-      	 vform.submit();
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/queryAllSubscribe.html?aab101="+vaab101;
+        	 vform.submit();
         }
         function getSubByMe(vaab101)
         {
-      	 var vform = document.getElementById("myform");
-      	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
-      	 vform.submit();
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
+        	 vform.submit();
         }
-        function onSub(vaab101)
-        {
-      	 var vform = document.getElementById("myform");
-      	 vform.action="<%=path%>/addSubscribe.html?aab101="+vaab101;
-      	 vform.submit();
-        }
+        
         </script>
 	</head>
 	<body>
@@ -72,10 +85,10 @@
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
-        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
-        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
-        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
+        		<span class="teshu bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
+        		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
         	</div>
 
         	<div class="kh20"></div>
