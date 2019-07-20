@@ -28,11 +28,8 @@ public class ModifyProServlet extends HttpServlet {
             //图片
             String aac204=imageList.get(0);
             dto.put("aac204", aac204);
-            System.out.println("1");
             Ac02ServicesImpl service=new Ac02ServicesImpl();
-            System.out.println("2");
             boolean tag=service.modifyPro(dto);
-            System.out.println("7");
             if(tag)
             {
             	request.setAttribute("msg","作品修改成功");

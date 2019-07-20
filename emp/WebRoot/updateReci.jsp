@@ -1,11 +1,12 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath(); %>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>上传菜谱</title>
+<title>修改菜谱</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/menu_book.css" />
 <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
@@ -14,7 +15,7 @@
 <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/main.js"></script>
 <script src="layui/layui.js"></script>
-<script src="js/uploadrecipe.js"></script>
+<script src="js/updatereci.js"></script>
 </head>
 <script type="text/javascript">
 function addzuofa()
@@ -29,6 +30,7 @@ function addzuofa()
     	}
 	rowobj.innerHTML="<div class='kh30'></div>"
 	+"<div class='layui-col-md1'>"+b+"</div>"
+	+"<input type='hidden' name='"+b+"aac401'>"
 	+"<input type='hidden' name='"+b+"aac404' value='"+b+"'>"
     +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='添加菜谱描述' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
     +"<div class='layui-col-md5'>"
@@ -47,6 +49,9 @@ function addings()
 	var a=getaac601()+1;
     var tableobj =document.getElementById("ings");
     var trobj =document.createElement("tr");
+    var tdobj4 = document.createElement("td");
+    tdobj4.innerHTML="<input type='hidden' name='"+a+"aac601'>";
+    trobj.appendChild(tdobj4);
     var tdobj1 = document.createElement("td");
     tdobj1.innerHTML="<input type='text' style='width:100%; height:35px;border:0px;' name='"+a+"aac603'>";
     trobj.appendChild(tdobj1);
@@ -55,6 +60,7 @@ function addings()
     trobj.appendChild(tdobj2);
     tableobj.appendChild(trobj);
 }
+
 </script>
 
 <style>
@@ -87,6 +93,7 @@ function addings()
 
 </style>
 <body>
+
 	<div class="header">
 		<!--------------头部---------------->
 		<div class="conwidth">
@@ -162,13 +169,14 @@ function addings()
 	<div class="konghang"></div>
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
-	<form id="myform" action="<%=path%>/upreci" method="post" enctype="multipart/form-data" >
+	<form id="myform" action="<%=path%>/updateReci" method="post" enctype="multipart/form-data" >
 
 	<div class="conwidth content clearfix">
 
 	<div class="kh30"></div>
+	<input type="hidden" name="aac101" value="${ins.aac101 }">
 	<input type="text" name="aac102" required lay-verify="required"
-    placeholder="添加菜谱名称" autocomplete="off" class="layui-input">
+    placeholder="添加菜谱名称" autocomplete="off" class="layui-input" value="${ins.aac102 }">
 
 	<div class="kh30"></div>
     
@@ -177,50 +185,41 @@ function addings()
     </a>
     <div class="layui-upload">
     <div id="imgPreview" class="layui-upload-list">
-    <img class="layui-upload-img" width="600px" height="400px">
+    <img class="layui-upload-img" width="600px" height="400px" src="${ins.aac108 }">
     </div>
     </div>  
 	<div class="kh30"></div>
 	<div class="author">
 	<input type="hidden" name="aac106">
-		<img src="img/menubook/1.jpg" style="width: 50px; height: 50px" /><span>食在心安</span>
+		<img src="${ins.aab106 }" style="width: 50px; height: 50px;border-radius:50%;"/><span>${ins.aab102 }</span>
 	</div>
 
 	<div class="kh30"></div>
 	<div class="desc">
-		<textarea name="aac105" required lay-verify="required"
-			placeholder="添加菜谱描述" class="layui-textarea"></textarea>
+		<textarea name="aac105" placeholder="添加菜谱描述" class="layui-textarea" >${ins.aac105 }</textarea>
 	</div>
 
 	<div class="kh30"></div>
 	<h2>&nbsp; 用料</h2>
+	
 	<input type="hidden" name="ingsNum" id="ingsNum">
+	<input type="hidden" name="aac601count" value="${ins.aac601count }">
 	<div class="ings">
-		<table class="layui-table">
-			<tbody id="ings">
+		<table class="layui-table" lay-skin="line" style="border: 0px">
+		<tbody id="ings">
+			<c:forEach items="${rows2 }" var="ins" varStatus="vs">
 				<tr>
-					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;" name="1aac603"></td>
-					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;" name="1aac602"></td>
+				<td><input type="hidden" name="${vs.count }aac601" value="${ins.aac601 }"></td>
+					<td><input type="text"style="width: 100%; height: 35px; 
+					border: 0px;" name="${vs.count }aac603"value="${ins.aac603 }"></td>
+					<td><input type="text"style="width: 100%; height: 35px; 
+					border: 0px;" name="${vs.count }aac602"value="${ins.aac602 }"></td>
 				</tr>
-				<tr>
-					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;" name="2aac603"></td>
-					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;" name="2aac602"></td>
-				</tr>
-				<tr>
-					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;" name="3aac603"></td>
-					<td><input type="text"
-						style="width: 100%; height: 35px; border: 0px;" name="3aac602"></td>
-					
-				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 		<input class="layui-btn" type="button" value="追加一行"
-			onclick="addings()">
+			   onclick="addings()">
 	</div>
 	
 	<div class="kh30"></div>
@@ -228,69 +227,28 @@ function addings()
 		<h2 class="fubiaoti">做法</h2>
 	</div>
 	<div id="zuofa">
-	    
+	<input type="hidden" name="aac401count" value="${ins.aac401count }">
+	    <c:forEach items="${rows1 }" var="ins" varStatus="vs">				
 		<div class="layui-row">
-			<div class="layui-col-md1">1</div>
-			<input type="hidden" name="1aac404" value="1">
+			<div class="layui-col-md1">${ins.aac404 }</div>
+			<input type="hidden" name="${vs.count }aac401" value="${ins.aac401 }">
+			<input type="hidden" name="${vs.count }aac404" value="1">
 			<div class="layui-col-md3">
 				<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-				style="width: 100%; border: 0px; height: 240px" name="1aac402"></textarea>
+				style="width: 100%; border: 0px; height: 240px" name="${vs.count }aac402">${ins.aac402 }</textarea>
 			</div>
 			<div class="layui-col-md5">
 			<a href="javascript:;" class="file">上传图片
-		    <input type="file" onchange="PreviewImage(this,1)" name="images"/> 
+		    <input type="file" onchange="PreviewImage(this,'${vs.count }')" name="images"/> 
 		    </a>
-		<div class="layui-upload">
-		<div id="imgPreview1" class="layui-upload-list" >
-			<img class="layui-upload-img" width="350px" height="250px">
-		</div>
-	    </div>
+			<div class="layui-upload">
+			<div id="imgPreview${vs.count }" class="layui-upload-list" >
+				<img src="${ins.aac403}" class="layui-upload-img" width="350px" height="250px">
 			</div>
-			
-		</div>
-		
-		<div class="layui-row">
-		<div class="kh30"></div>
-			<div class="layui-col-md1">2</div>
-			<input type="hidden" name="2aac404" value="2">
-			<div class="layui-col-md3">
-				<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-				style="width: 100%; border: 0px; height: 240px" name="2aac402"></textarea>
+		    </div>
 			</div>
-			<div class="layui-col-md5">
-			<a href="javascript:;" class="file">上传图片
-		    <input type="file" onchange="PreviewImage(this,2)" name="images"/> 
-		    </a>
-		<div class="layui-upload">
-		<div id="imgPreview2" class="layui-upload-list" >
-			<img class="layui-upload-img" width="350px" height="250px">
 		</div>
-	    </div>
-			</div>
-			
-		</div>
-		
-		<div class="layui-row">
-		<div class="kh30"></div>
-			<div class="layui-col-md1">3</div>
-			<input type="hidden" name="3aac404" value="3">
-			<div class="layui-col-md3">
-				<textarea rows="5" cols="20" placeholder="添加菜谱描述"
-				style="width: 100%; border: 0px; height: 240px" name="3aac402"></textarea>
-			</div>
-			<div class="layui-col-md5">
-			<a href="javascript:;" class="file">上传图片
-		    <input type="file" onchange="PreviewImage(this,3)" name="images"/> 
-		    </a>
-		<div class="layui-upload">
-		<div id="imgPreview3" class="layui-upload-list" >
-			<img class="layui-upload-img" width="350px" height="250px">
-		</div>
-	    </div>
-			</div>
-			
-		</div>
-		
+		</c:forEach>
 	</div>
 								
 	<div class="layui-row">
@@ -302,17 +260,8 @@ function addings()
 			  <div class="layui-row">
 			    <div class="fubiaoti">推荐至菜系</div>
 			    <div >
-			      <select style="width:750px;height:30px;" name="aac107">
-			        <option value="09" selected="">不限</option>
-			        <option value="01">川菜</option>
-			        <option value="02">鲁菜</option>
-			        <option value="03">粤菜</option>
-			        <option value="04">苏菜</option>
-			        <option value="05">浙菜</option>
-			        <option value="06">闽菜</option>
-			        <option value="07">湘菜</option>
-			        <option value="08">徽菜</option>
-			      </select>
+			      <e:select name="aac107" style="width:750px;height:30px;"
+						value="川菜:01,鲁菜:02,粤菜:03,苏菜:04,浙菜:05,闽菜:06,湘菜:07,徽菜:08" defval="${ins.aac107 }" />
 			    </div>
 			  </div>
 			

@@ -168,9 +168,9 @@ function create(vaac101)
 					<div class="fr">
 						<c:choose>
 							<c:when test="${0>1}">
-								<a class="layui-btn layui-btn-danger">ÐÞ¸Ä</a>
+								<a class="layui-btn layui-btn-danger" href="<%=path%>/updateDetail.html?aac101=${ins.aac101}">ÐÞ¸Ä</a>
 								<a class="layui-btn layui-btn-danger"
-									href="<%=path%>/delreci.html">É¾³ý</a>
+									href="<%=path%>/delreci.html?aac101=${ins.aac101}">É¾³ý</a>
 							</c:when>
 							<c:otherwise>
 					

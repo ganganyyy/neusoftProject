@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.neusoft.services.impl.Ac01ServicesImpl;
 import com.neusoft.system.tools.Tools;
+import com.neusoft.web.support.ControllerSupport;
 
 import basic.FileUtil;
 
-@WebServlet("/upreci")
-public class UpreciServlet extends HttpServlet {
+@WebServlet("/updateReci")
+public class UpdateReciServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -25,29 +26,39 @@ public class UpreciServlet extends HttpServlet {
         {
 			Map<String,Object> dto=FileUtil.upload(request);
             List<String> imageList = (List<String>) dto.get("imageList");
-            
             String aac108=imageList.get(0);
             dto.put("aac108", aac108);
             Ac01ServicesImpl service=new Ac01ServicesImpl();
-            service.addReci(dto);
-            int aac101=Tools.getSequence("aac101");
-            dto.put("aac101", aac101);
+            service.updateReci(dto);
             
             String ings=(String)dto.get("ingsNum");
             int j=Integer.parseInt(ings);
-            
-            for(int i=1;i<j+1;i++)
+            String aac601count=(String)dto.get("aac601count");
+            int aac601num=Integer.parseInt(aac601count);
+        	for(int i=1;i<aac601num+1;i++)
+            {
+            	service.updateInsg(dto,i);
+            }
+        	for(int i=aac601num+1;i<j+1;i++)
             {
             	service.addInsg(dto,i);
             }
-            
+        	String aac401count=(String)dto.get("aac401count");
+            int aac401num=Integer.parseInt(aac401count);
             String aac403;
-            for(int i=1;i<imageList.size();i++)
-            {
-            	aac403=imageList.get(i);
-            	dto.put("aac403", aac403);
-            	service.addStep(dto,i);
-            }
+	    	for(int x=1;x<aac401num+1;x++)
+	    	{
+	    		aac403=imageList.get(x);
+	    		dto.put("aac403", aac403);
+	    		service.updateStep(dto,x);
+	    	}
+	    	for(int x=aac401num+1;x<imageList.size();x++)
+	        {
+	    		aac403=imageList.get(x);
+	    		dto.put("aac403", aac403);
+	        	service.addStep(dto,x);
+	        }
+            System.out.println("000000000");
         }
         catch (Exception e)
         {
