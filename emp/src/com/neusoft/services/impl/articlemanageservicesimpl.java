@@ -90,7 +90,7 @@ public class articlemanageservicesimpl extends JdbcServicesSupport1
 				.append("	 from ag01 x  , syscode  a  ")
 				.append(" where aag103=01 and aag102=? and x.aag108=a.fcode and a.fname='aag108' ");
 		List<Object> paramlist=new ArrayList<>();
-		paramlist.add(3);//此处应动态获取流水号  暂用固定值
+		this.get("aab101Self");//此处应动态获取流水号  暂用固定值
 		
 		if(this.isNotNull(aag104))
 		{

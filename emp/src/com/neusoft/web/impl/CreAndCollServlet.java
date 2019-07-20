@@ -1,3 +1,4 @@
+//author:董淑媛
 package com.neusoft.web.impl;
 
 public class CreAndCollServlet extends EmpdsyControllerSupport 
@@ -5,9 +6,7 @@ public class CreAndCollServlet extends EmpdsyControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		System.out.println("7777777");
 		this.update("createColl", "创建");
-		System.out.println("666666666");
 		this.savePageInstance();
 		this.getInstanceList("queryCollections", "收藏夹", "rows");
 		this.getInstanceList("querySteps", "步骤", "rows1");//步骤

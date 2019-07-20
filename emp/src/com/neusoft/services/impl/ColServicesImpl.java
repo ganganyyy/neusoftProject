@@ -1,4 +1,4 @@
-//author:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//author:¶­ÊçæÂ
 package com.neusoft.services.impl;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	{
 	String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 
-	return this.queryForMap(sql,this.get("aab101"));
+	return this.queryForMap(sql,this.get("aab101Self"));
 	}
     //È¡ï¿½ï¿½ï¿½Õ²ï¿½
     private boolean deleteColle()throws Exception
