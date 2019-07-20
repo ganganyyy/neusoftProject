@@ -15,14 +15,11 @@ import org.apache.naming.java.javaURLContextFactory;
 
 import com.mysql.jdbc.ResultSetMetaData;
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 import com.neusoft.system.db.DBUtils;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParameterList;
 
-import sun.security.util.PropertyExpander.ExpandException;
-
-public class articlemanageservicesimpl extends JdbcServicesSupport 
+public class articlemanageservicesimpl extends JdbcServicesSupport1
 {
 	
 	public articlemanageservicesimpl(Map<String, Object> dto) 

@@ -8,8 +8,9 @@ import org.apache.catalina.webresources.AbstractFileResourceSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 
-public class addarticleservicesimpl extends JdbcServicesSupport 
+public class addarticleservicesimpl extends JdbcServicesSupport1 
 {
      
 	public addarticleservicesimpl(Map<String, Object> dto) 

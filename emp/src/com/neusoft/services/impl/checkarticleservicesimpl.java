@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 import com.neusoft.system.db.DBUtils;
 
-public class checkarticleservicesimpl extends JdbcServicesSupport
+public class checkarticleservicesimpl extends JdbcServicesSupport1
 {
 
 	public checkarticleservicesimpl(Map<String, Object> dto) 

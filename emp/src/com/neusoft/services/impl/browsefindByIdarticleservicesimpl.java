@@ -4,8 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.services.JdbcServicesSupport1;
 
-public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport 
+public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport1 
 {
    
 	public browsefindByIdarticleservicesimpl(Map<String, Object> dto) 

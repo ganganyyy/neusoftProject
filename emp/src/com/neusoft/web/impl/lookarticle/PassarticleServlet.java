@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.neusoft.services.impl.checkarticleservicesimpl;
 import com.neusoft.services.impl.lookarticleservicesimpl;
 import com.neusoft.system.tools.Tools;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 
 
 @WebServlet("/passarticle.html")
