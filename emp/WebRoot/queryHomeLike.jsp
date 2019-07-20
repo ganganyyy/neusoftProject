@@ -1,4 +1,4 @@
-<!-- author:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+<!-- author:º«½ðÀû -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -61,14 +61,13 @@
         	<div class="jianjie">
         		<img src="${ins.aab106 }" class="img"/>
         		<div class="fl">
-        				<h2>${ins.aab102 }ï¿½Ä³ï¿½ï¿½ï¿½</h2>
-        			   <!-- <span><i class="icon1"></i>2016-3-23 ï¿½ï¿½ï¿½ï¿½</span><br />-->
+        				<h2>${ins.aab102 }µÄ³ø·¿</h2>
         				<div class="guanzhuderen">
 						<div class="x y">
-							<span>ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½</span><br><a href="#" onclick="getSub('${param.aab101}');"><span>${ins.aab107 }</span></a>
+							<span>¹Ø×¢µÄÈË</span><br><a href="#" onclick="getSub('${param.aab101}');"><span>${ins.aab107 }</span></a>
 						</div>
 						<div class="x">
-							<span>ï¿½ï¿½ï¿½ï¿½×¢</span><br><a href="#" onclick="getSubByMe('${param.aab101}');"><span>${ins.aab108 }</span></a>
+							<span>±»¹Ø×¢</span><br><a href="#" onclick="getSubByMe('${param.aab101}');"><span>${ins.aab108 }</span></a>
 						</div>
 					</div>
 
@@ -82,29 +81,28 @@
 
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">ï¿½ï¿½ï¿½ï¿½</a></span>
-        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">ï¿½ï¿½Æ·</a></span>
-        		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">ï¿½Õ²ï¿½</a></span>
-        		<span class="teshu bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">ï¿½ï¿½ï¿½ï¿½</a></span>
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">²ËÆ×</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">×÷Æ·</a></span>
+        		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">ÊÕ²Ø</a></span>
+        		<span class="teshu bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">µãÔÞ</a></span>
         	</div>
 
         	<div class="kh20"></div>
 
         	<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>ï¿½ï¿½ï¿½ï¿½</legend>
+					<legend>²ËÆ×</legend>
 				</fieldset>
-			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${reci}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chacaipu('${ins.aac101}')">
-		            				<img src="${ins.aac108}" alt="ï¿½ï¿½ï¿½ï¿½Í¼Æ¬" width="300px" height="240px"/>
+		            				<img src="${ins.aac108}" alt="²ËÆ×Í¼Æ¬" width="300px" height="240px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shancaipu('${ins.aac101}')">É¾ï¿½ï¿½</a>
+		        				<a href="#" onclick="shancaipu('${ins.aac101}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -112,19 +110,18 @@
 
 			<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>ï¿½ï¿½Æ·</legend>
+					<legend>×÷Æ·</legend>
 				</fieldset>
-			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${pro}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chazuopin('${ins.aac201}')">
-		            				<img src="${ins.aac204}" alt="ï¿½ï¿½Æ·Í¼Æ¬" width="300px" height="240px"/>
+		            				<img src="${ins.aac204}" alt="×÷Æ·Í¼Æ¬" width="300px" height="240px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanzuopin('${ins.aac201}')">É¾ï¿½ï¿½</a>
+		        				<a href="#" onclick="shanzuopin('${ins.aac201}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -132,10 +129,8 @@
 
 			<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>×¨ï¿½ï¿½</legend>
+					<legend>×¨À¸</legend>
 				</fieldset>
-
-			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${comp}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
@@ -145,7 +140,7 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac302}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanzhuanlan('${ins.aac301}')">É¾ï¿½ï¿½</a>
+		        				<a href="#" onclick="shanzhuanlan('${ins.aac301}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
