@@ -126,6 +126,8 @@ function create(vaac101)
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
 					<c:choose>
+					     <c:when test="${ins.aac106!=sessionScope.aab101Self}">
+					<c:choose>
 						<c:when test="${ins.aab201!=null}">
 							<a class="layui-btn layui-btn-danger" onclick="cancleGuanzhu('${ins.aac101}','${ins.aac106}')">ÒÑ¹Ø×¢</a>							
 						</c:when>
@@ -133,7 +135,10 @@ function create(vaac101)
 							<a class="layui-btn layui-btn-danger" onclick="guanzhu('${ins.aac101}','${ins.aac106}')">¹Ø×¢</a>
 						</c:otherwise>
 					</c:choose>
-					
+					     </c:when>
+					     <c:otherwise>
+					     </c:otherwise>
+					</c:choose>
 				</div>
 
 				<div class="desc">
