@@ -104,9 +104,13 @@ function exePopularUsers(){
 	});	
 }
 
+/**
+ * 获取活动模块
+ * @returns
+ */
 function exeActivity(){
 	$.ajax({
-		url:'/emp/LatestMenu.do.do',
+		url:'/emp/queryAllVote.do',
 		type:'post',
 		data:{
 			
@@ -118,7 +122,7 @@ function exeActivity(){
 				+'<fieldset class="layui-elem-field layui-field-title" style="width: 100%;">'
 				+'<legend style="font-size: 15px; text-align: center;">活动公告栏</legend>'
 				+'<div class="layui-field-box" >'
-				+'<a href="#"  style="font-size: 16px;color:#63707E;float:right">see more</a>'
+				+'<a href="/emp/queryAllVote.html"  style="font-size: 13px;color:#63707E;float:right">see more</a>'
 				+'</div>'
 				+'</fieldset>'
 				+'</div>';
@@ -126,10 +130,15 @@ function exeActivity(){
 			{	
 				html+='<div class="layui-row">'
 					 +'<div class="layui-card">'
-					 +'<div class="layui-card-header" style="text-align:center;">'+data.rows[i].aac102
+					 +'<div class="layui-card-header" style="text-align:center;">'+data.rows[i].aae102
 					 +'</div>'
 					 +'<div class="layui-card-body">'
-					 +data.rows[i].aac102.substring(0,20)+'...<a href="#" style="float:right;color:#c2c2c2">more details</a>'
+					 +data.rows[i].aae103.substring(0,20)
+					 +'<br/>'
+					 +'起止日期：'+data.rows[i].aae104
+					 +'<br/>'
+					 +'截至日期：'+data.rows[i].aae105
+					 +'<a onclick="ActiDetail('+data.rows[i].aae101+');" style="float:right;color:#c2c2c2">more details</a>'
 					 +'</div>'
 					 +'</div>'
 					 +'</div>';

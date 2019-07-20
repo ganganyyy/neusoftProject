@@ -12,7 +12,7 @@ public class AllMenuServlet extends SearchControllerSupport {
 		System.out.println("enter Servlet");
 		this.getInstanceList("queryMenuForType", "没有对应食谱信息", "rows");
 		this.getInstance("queryForType", "没有该菜系类型", "ins");
-		return "AllMenu";
+		return "allMenu";
 	}
 
 }

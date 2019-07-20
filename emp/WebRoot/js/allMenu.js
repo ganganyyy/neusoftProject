@@ -1,15 +1,7 @@
 /**
  * @author:刘诗滢
  */
-function selectType(type)
-{
-	
-	var form=document.getElementById("typeForm");
-	form.action="/emp/allMenu.html?aac107="+type;
-	alert("/emp/allMenu.html?aac107="+type)
-	form.submit();
-	
-}
+
 
 layui.use(['element','carousel','form'], function(){
 	
