@@ -117,10 +117,6 @@ function addings()
     </div>
     </div>  
 	<div class="kh30"></div>
-	<div class="author">
-	<input type="hidden" name="aac106">
-		<img src="img/menubook/1.jpg" style="width: 50px; height: 50px" /><span>食在心安</span>
-	</div>
 
 	<div class="kh30"></div>
 	<div class="desc">

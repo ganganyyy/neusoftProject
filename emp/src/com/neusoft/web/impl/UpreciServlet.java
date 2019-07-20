@@ -23,6 +23,7 @@ public class UpreciServlet extends HttpServlet {
 	{
 		try 
         {
+			System.out.println("9999999");
 			Map<String,Object> dto=FileUtil.upload(request);
             List<String> imageList = (List<String>) dto.get("imageList");
             
