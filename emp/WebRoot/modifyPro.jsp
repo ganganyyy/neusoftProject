@@ -89,7 +89,7 @@
 		<form id="myform" class="layui-form" action="<%=path%>/modifyPro" method="post" enctype="multipart/form-data">					
 			<div class="atitle" style="margin-top: 10px;">
 				<span class="alable">上传我做的</span> 
-			</div>									
+			</div>								
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 				<legend>上传图片</legend>
 			</fieldset>
@@ -98,6 +98,7 @@
 				  <input type="file" onchange="Image(this)" name="images" id="shangchuan">                  
                   <div id="imgPreview" class="layui-upload-list">
 					  <img src="${ins.aac204}" id="uploadQR" class="layui-upload-img" width="300px" height="200px">
+					  <input type="hidden" name="aac204" value="${ins.aac204}">
 				  </div>
 				</div>  						 
               	<div style="color: #c2c2c2;margin:10px 0;">
