@@ -475,7 +475,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	//÷¥––≤È—Ø
     	Map<String,String> recidto = this.queryForMap(sql.toString(), this.get("aac101"));
     	this.put("aac106", recidto.get("aac106"));
-    	System.out.println("");
     	String likeNumber=likeNumber();
     	recidto.put("aad101", likeNumber);
     	String shoucangNumber=shoucangNumber();
