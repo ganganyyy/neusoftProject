@@ -110,7 +110,7 @@
         	<div class="navigation">
         		<span class="teshu bqcaipu"><a href="#">菜谱</a></span>
         		<span class="bqzuopin"><a href="#">作品</a></span>
-        		<span class="bqshoucang"><a href="#">收藏</a></span>
+        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
         		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
         		<span class="bqcaidan"><a href="#">活动作品</a></span>
         	</div>
@@ -196,6 +196,24 @@
 	      {
 	    	 var vform = document.getElementById("myform");
 	    	 vform.action="<%=path%>/cancleLike.html?aac301="+vaac301+"&aad103=03";
+	    	 vform.submit();
+	      }
+	      function chacaipu(vaac101)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/details.html?aac101="+vaac101;
+	    	 vform.submit();
+	      }
+	      function chazuopin(vaac201)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/findByIdPro.html?aac201="+vaac201;
+	    	 vform.submit();
+	      }
+	      function chazhuanlan(vaac301)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/browsefindByIdarticle.html?aac301="+vaac301;
 	    	 vform.submit();
 	      }
 	   </script>
