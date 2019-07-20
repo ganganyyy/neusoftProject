@@ -7,6 +7,7 @@ public class RenameServlet extends ColControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("rename", "ÖØÃüÃû");
+		this.savePageInstance();
 		this.getInstanceList("queryCollections", "ÊÕ²Ø¼Ð", "rows");
 		return "collection";
 	}

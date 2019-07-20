@@ -83,20 +83,20 @@ function getSubByMe(vaab101)
 				<div class="jianjie">
 				<img src="${ins.aab106 }" class="img"/>
 				<div class="fl">
-				<h2>${ins.aab102 }ï¿½Ä³ï¿½ï¿½ï¿½</h2>
+				<h2>${ins.aab102 }µÄ³ø·¿</h2>
 				<!-- <span><i class="icon1"></i>2016-3-23 ï¿½ï¿½ï¿½ï¿½</span><br />-->
 				<div class="guanzhuderen">
 				<div class="x y">
-				<span>ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½</span><br><a href="#"><span>${ins.aab107 }</span></a>
+				<span>¹Ø×¢µÄÈË</span><br><a href="#"><span>${ins.aab107 }</span></a>
 				</div>
 				<div class="x">
-				<span>ï¿½ï¿½ï¿½ï¿½×¢</span><br><a href="#"><span>${ins.aab108 }</span></a>
+				<span>±»¹Ø×¢</span><br><a href="#"><span>${ins.aab108 }</span></a>
 				</div>
 				</div>
 
 				</div>
 				<div class="fr">
-				<a href="#"><div class="guanzhu2">ï¿½ï¿½×¢</div></a>
+				<a href="#"><div class="guanzhu2">¹Ø×¢</div></a>
 				</div>
 				</div>
 
@@ -106,10 +106,10 @@ function getSubByMe(vaab101)
 
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">ï¿½ï¿½ï¿½ï¿½</a></span>
-        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">ï¿½ï¿½Æ·</a></span>
-        		<span class="teshu bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">ï¿½Õ²ï¿½</a></span>
-        		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">ï¿½ï¿½ï¿½ï¿½</a></span>
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${sessionScope.aab101Self}')">²ËÆ×</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${sessionScope.aab101Self}')">×÷Æ·</a></span>
+        		<span class="teshu bqshoucang"><a href="#" onclick="getCol('${sessionScope.aab101Self}')">ÊÕ²Ø</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getLike('${sessionScope.aab101Self}')">µãÔÞ</a></span>
         	</div>
 
         	<div class="kh20"></div>
@@ -117,9 +117,8 @@ function getSubByMe(vaab101)
             <input type="hidden" name="aad301" value="${param.aad301}">
         	<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>ï¿½ï¿½ï¿½ï¿½</legend>
+					<legend>²ËÆ×</legend>
 				</fieldset>
-			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${reci}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
@@ -129,7 +128,7 @@ function getSubByMe(vaab101)
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">É¾ï¿½ï¿½</a>
+		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -137,9 +136,8 @@ function getSubByMe(vaab101)
 
 			<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>ï¿½ï¿½Æ·</legend>
+					<legend>×÷Æ·</legend>
 				</fieldset>
-			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${pro}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
@@ -149,7 +147,7 @@ function getSubByMe(vaab101)
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">É¾ï¿½ï¿½</a>
+		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
@@ -157,10 +155,9 @@ function getSubByMe(vaab101)
 
 			   <div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>×¨ï¿½ï¿½</legend>
+					<legend>×¨À¸</legend>
 				</fieldset>
 
-			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${comp}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
@@ -170,7 +167,7 @@ function getSubByMe(vaab101)
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac302}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">É¾ï¿½ï¿½</a>
+		        				<a href="#" onclick="shanchu('${ins.aad201}','${ins.aac301}','${ins.aad203}')">É¾³ý</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
