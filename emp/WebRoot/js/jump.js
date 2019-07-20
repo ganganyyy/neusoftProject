@@ -9,7 +9,7 @@
  */
 function personal(vaab101)
 {
-	var vform = document.getElementById("myform");
+	var vform = document.getElementById("SearchForm");
  	vform.action="/emp/queryMessage.html?aab101="+vaab101;
  	vform.submit();
 }
@@ -22,7 +22,7 @@ function personal(vaab101)
 function toMenuDetail(aac101)
 {
 
-	var form=document.getElementById("myform");
+	var form=document.getElementById("SearchForm");
 	//alert("/emp/details.html?aac101="+aac101);
 	form.action="/emp/details.html?aac101="+aac101;
 	form.submit();
@@ -36,7 +36,7 @@ function toMenuDetail(aac101)
  */
 function kitchen(vaab101)
 {
-	var vform = document.getElementById("myform");
+	var vform = document.getElementById("SearchForm");
 	//alert("/emp/queryHomeRecipe.html?aab101="+vaab101);
  	vform.action="/emp/queryHomeRecipe.html?aab101="+vaab101;
  	vform.submit();
@@ -51,7 +51,7 @@ function kitchen(vaab101)
 function selectType(type)
 {
 	//changeClass("option2");
-	var form=document.getElementById("myform");
+	var form=document.getElementById("SearchForm");
 	form.action="/emp/allMenu.html?aac107="+type;
 	form.submit();
 	
@@ -83,7 +83,7 @@ function changeClass(id)
  */
 function ActiDetail(vaae101)
 {
-	var vform = document.getElementById("myform");
+	var vform = document.getElementById("SearchForm");
 	//alert("/emp/queryVoteDetail.html?aae101="+vaae101);
  	vform.action="/emp/queryVoteDetail.html?aae101="+vaae101;
  	vform.submit();
