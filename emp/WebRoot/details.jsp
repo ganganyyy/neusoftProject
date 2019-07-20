@@ -26,13 +26,6 @@
 <script src="js/collection/common.js" type="text/javascript" charset="GBK"></script>
 <script src="js/collection/user.js" type="text/javascript" charset="GBK"></script>
 <script type="text/javascript">
-function onFind()
-{
-	 var aac101="20";
-	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/details.html?aac101="+aac101;
-	 vform.submit();
-}
 function publish(vaac101) 
 {
 	var vform = document.getElementById("myform");
@@ -90,7 +83,6 @@ function create(vaac101)
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
 	<form id="myform" action="<%=path%>/details.html" method="post">
-		<input type="submit" name="next" value="查询" onclick="onFind()">
 		<div class="conwidth content clearfix">
 			<h1>${ins.fvalue }&nbsp;&nbsp;${ins.aac102 }</h1>
 			<div class="leftcon">
