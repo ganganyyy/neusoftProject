@@ -60,7 +60,7 @@
 		  				<li><a  href="mainPage.jsp" id="option1">主页</a></li>
 		  				<li><a  onclick='selectType("01");' id="option2">食谱一览</a></li>
 		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
-		  				<li><a  href="/emp/browsefindByIdarticle.html" id="option4">专栏文章</a></li>
+		  				<li><a  href="/emp/browsearticle.jsp" id="option4">专栏文章</a></li>
 		  				<li><a  href="contact.html" id="option5">联系我们</a></li>
 						<li></li>
 						<li></li>

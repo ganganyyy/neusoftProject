@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.PassWord;
 import com.neusoft.system.tools.SmsUtil;
 import com.neusoft.system.tools.Tools;
 
@@ -54,7 +55,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    			;
 	    	
 	    	//执锟叫诧拷询
-	    	return this.queryForMap(sql.toString(), this.get("aab103"),this.get("aab104"));
+	    	return this.queryForMap(sql.toString(), PassWord.conduct(this.get("aab103")),this.get("aab104"));
 	    }
 	  
 	  /**
@@ -90,11 +91,11 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    	StringBuilder sql=new StringBuilder()
 	    			.append("insert into ab01(aab102,aab103,aab104,aab105,aab106,")
 	    			.append("				  aab107,aab108)")
-	    			.append("				  values(?,?,?,'01','默锟斤拷图片锟斤拷址',0,0);");
+	    			.append("				  values(?,?,?,'01','',0,0);");
 	    	//2.锟斤拷写锟斤拷锟斤拷锟斤拷锟斤拷
 	    	Object args[]={
 	    			uuid,
-	    			this.get("aab103"),
+	    			PassWord.conduct(this.get("aab103")),
 	    			this.get("aab104"),
 	    	};
 	        return this.executeUpdate(sql.toString(), args)>0;	
