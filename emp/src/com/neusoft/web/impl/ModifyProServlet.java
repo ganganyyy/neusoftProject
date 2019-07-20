@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.neusoft.services.impl.Ac02ServicesImpl;
 
 import basic.FileUtil;
-
+/**
+ * 作品更改
+ * @author 韩金利
+ */
 @WebServlet("/modifyPro")
 public class ModifyProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

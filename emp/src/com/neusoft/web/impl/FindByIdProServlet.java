@@ -1,5 +1,9 @@
 package com.neusoft.web.impl;
 
+/**
+ * 查询作品详情
+ * @author 韩金利
+ */
 public class FindByIdProServlet extends ProControllerSupport 
 {
 	@Override

@@ -7,12 +7,15 @@ import java.util.Random;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
+/**
+ * ï¿½ï¿½Æ·ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
+ * @author ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ */
+public class Ac02ServicesImpl extends JdbcServicesSupport
+{
 
-public class Ac02ServicesImpl extends JdbcServicesSupport 
-{	
-	
 	/**
-     * ÉºÉºÍ·Ïñ
+     * ÉºÉºÍ·ï¿½ï¿½
      * @return
      * @throws Exception
      */
@@ -21,8 +24,8 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 		return this.queryForMap(sql,this.get("aab101"));
 	}
-    
-	   //»ñÈ¡ÊÕ²Ø¼ÐÍ¼Æ¬
+
+	   //ï¿½ï¿½È¡ï¿½Õ²Ø¼ï¿½Í¼Æ¬
 	public String getImg()
 	{
 		Random ran = new Random();
@@ -44,24 +47,24 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    }
 	}
 
-	//²éÑ¯ËùÓÐ×÷Æ·
+	//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
     public List<Map<String,String>> query()throws Exception
     {
-    	//1.±àÐ´SQLÓï¾ä
+    	//1.ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
     	StringBuilder sql=new StringBuilder()
     			.append("select aac201,aab101,aac202,aac203,aac204,")
     			.append("       aac207,aac205,aac206 ")
     			.append("  from ac02 ")
     			;
-    	//Ö´ÐÐ²éÑ¯
+    	//Ö´ï¿½Ð²ï¿½Ñ¯
     	return this.queryForList(sql.toString());
     }
-    
-    
-    //²éÑ¯Ä³Ò»×÷Æ·ÏêÇé
+
+
+    //ï¿½ï¿½Ñ¯Ä³Ò»ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
     public Map<String,String> findById()throws Exception
-    {    	
-    	//1.±àÐ´SQLÓï¾ä
+    {
+    	//1.ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,")
     			.append("       a.aac207,c.aac102,b.aab101,b.aab102,b.aab106")
@@ -70,7 +73,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aab101=b.aab101")
     			.append("   and a.aac201=?")
     			;
-    	//Ö´ÐÐ²éÑ¯
+    	//Ö´ï¿½Ð²ï¿½Ñ¯
     	Map<String,String> abc = this.queryForMap(sql.toString(), this.get("aac201"));
     	String likeNumber=likeNumber();
     	abc.put("aad101", likeNumber);
@@ -78,52 +81,44 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	abc.put("aad201", collectionNumber);
     	return abc;
     }
-    //²éÑ¯ÊÕ²Ø¼Ð
+    //ï¿½ï¿½Ñ¯ï¿½Õ²Ø¼ï¿½
 	public List<Map<String,String>> queryCollections()throws Exception
 	{
-		 //µ±Ç°ÓÃ»§Á÷Ë®ºÅ
-		 String aab101="1";
 		 StringBuilder sql=new StringBuilder()
 	    		.append("select a.aad301,a.aad302,a.aad303")
 	    		.append("  from ad03 a")
 	    		.append(" where a.aab101=?")
 	    		;
-	     return this.queryForList(sql.toString(), aab101);
+	     return this.queryForList(sql.toString(), this.get("aab101Self"));
 	 }
 
-    
+
     /*
-     * ÉÏ´«×÷Æ·insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
-     * values('1',NOW(),'°¡°¡°¡°¡°¡°¡°¡°¡°¡','img/san.jpg','1', '0','0')
+     * ï¿½Ï´ï¿½ï¿½ï¿½Æ·insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
+     * values('1',NOW(),'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','img/san.jpg','1', '0','0')
      */
     public boolean addPro(Map<String,Object> dto)throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//1.±àÐ´SQLÓï¾ä
+    	//1.ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ac02(aab101,aac202,aac203,aac204,aac207,")
     			.append("                 aac205,aac206)")
     			.append("          values(?,NOW(),?,?,?,")
     			.append("                 '0','0')")
     			;
-    	//2.±àÐ´²ÎÊýÊý×é
+    	//2.ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	Object args[]={
-    			aab101,
+    			this.get("aab101Self"),
     			dto.get("aac203"),
     			dto.get("aac204"),
     			dto.get("aac207")
     	};
-        return this.executeUpdate(sql.toString(), args)>0;	
+        return this.executeUpdate(sql.toString(), args)>0;
     }
-        
-    //ÅÐ¶ÏÊÇ·ñÊÕ²Ø
+
+    //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Õ²ï¿½
     private String collectionNumber()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101); 
     	StringBuilder sql=new StringBuilder()
 		    		.append("select aad201 from ad02 a left join ad03 b")
 		    		.append("  on a.aad301=b.aad301")
@@ -131,44 +126,36 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 		    		.append("   and a.aad204=?")
 		    		.append("   and b.aab101=?")
 		    		;
-    	Object args[]={this.get("aac201"),aab101};
+    	Object args[]={this.get("aac201"),this.get("aab101Self")};
     	return check(sql.toString(),args);
     }
-    //ÅÐ¶ÏÊÇ·ñµãÔÞ
+    //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
     private String likeNumber()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101);
-    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";    	
-    	Object args[]={this.get("aac201"),aab101};
+    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
+    	Object args[]={this.get("aac201"),this.get("aab101Self")};
     	return check(sql,args);
     }
-    //»ñµÃ×÷Æ·µÄÓÃ»§Á÷Ë®ºÅ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
     private String authorNumber()throws Exception
     {
-    	String sql="select aab101 from ac02 where aac201=? ";    	
+    	String sql="select aab101 from ac02 where aac201=? ";
     	Object args[]={this.get("aac201")};
     	return check(sql,args);
-    }    
-    //»ñµÃµ±Ç°ÓÃ»§µÄÓÃ»§Ãû
+    }
+    //ï¿½ï¿½Ãµï¿½Ç°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
     private String userName()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101);   	
-    	String sql="select aab102 from ab01 where aab101=? ";    	
-    	Object args[]={aab101};
+    	String sql="select aab102 from ab01 where aab101=? ";
+    	Object args[]={this.get("aab101Self")};
     	return check(sql,args);
     }
-    
+
     /**
-     * Ö´ÐÐ²éÑ¯µ¥ÖµÓï¾ä
+     * Ö´ï¿½Ð²ï¿½Ñ¯ï¿½ï¿½Öµï¿½ï¿½ï¿½
      * @param sql
      * @param args
-     * @return ²éÑ¯µÃµ½µÄÎ¨Ò»µÄÖµ
+     * @return ï¿½ï¿½Ñ¯ï¿½Ãµï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½Öµ
      * @throws Exception
      */
     private String check(String sql,Object args[])throws Exception
@@ -182,44 +169,39 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
                 vo.getKey();
                 value=vo.getValue();
             }
-        }    	
+        }
     	return value;
     }
-    
+
     private Object[] xiaoxi(String msg)throws Exception
     {
-    	//µ±Ç°×÷Æ·µÄÓÃ»§ºÅ
+    	//ï¿½ï¿½Ç°ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
     	String authorNumber = authorNumber();
-    	//µ±Ç°ÓÃ»§µÄÃû×Ö
+    	//ï¿½ï¿½Ç°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	String userName=userName();
     	String text=userName+msg;
     	Object args[]={authorNumber,text};
     	return args;
     }
-    
+
     /*
-     * µãÔÞ×÷Æ·
-     * 1¡¢ÏòµãÔÞ±íÀïÔö¼ÓµãÔÞÊý¾Ý
-     * 2¡¢¸üÐÂ×÷Æ·±íÀïµÄµãÔÞÊý
-     * 3¡¢ÏòÏûÏ¢ÁÐ±íÌí¼ÓÊý¾Ý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
+     * 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
+     * 3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     private boolean giveLike()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101);
-    	
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad01(aab101,aad102,aad103,aad104)")
     			.append("          values(?,NOW(),'02',?)")
     			;
     	Object args1[]={
-    			aab101,
+    			this.get("aab101Self"),
     			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac206=a.aac206+1")
@@ -227,30 +209,25 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	StringBuilder sql3=new StringBuilder()
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args3[]=xiaoxi("¸øÄãµÄ×÷Æ·µãÁËÔÞ");
-    	this.apppendSql(sql3.toString(), args3);  
-    	
+    	Object args3[]=xiaoxi("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+    	this.apppendSql(sql3.toString(), args3);
+
     	return this.executeTransaction();
     }
-    
-    //È¡Ïû×÷Æ·µãÔÞ
+
+    //È¡ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
     private boolean cancleProLike()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101);
-    	
     	String sql1="delete from ad01 where aad103='02' and aab101=? and aad104=? ";
-    	
-    	Object args1[]={aab101,this.get("aac201")};
+
+    	Object args1[]={this.get("aab101Self"),this.get("aac201")};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac206=a.aac206-1")
@@ -258,82 +235,37 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	    	
+
     	return this.executeTransaction();
     }
-    //È¡Ïû²ËÆ×µãÔÞ
-    private boolean cancleReciLike()throws Exception
-    {
-    	String aab101="1";
-    	this.put("aab101", aab101);
-    	
-    	String sql1="delete from ad01 where aad103='01' and aab101=? and aad104=? ";
-    	Object args1[]={aab101,this.get("aac101")};
-    	this.apppendSql(sql1.toString(), args1);
-    	
-    	StringBuilder sql2=new StringBuilder()
-    			.append("update ac01 a")
-    			.append("   set a.aac109=a.aac109-1")
-    			.append(" where a.aac101=?")
-    			;
-    	Object args2[]={this.get("aac101")};
-    	this.apppendSql(sql2.toString(), args2);
-    	
-    	return this.executeTransaction();
-    }
-    //È¡Ïû×¨À¸µãÔÞ
-    private boolean cancleCompLike()throws Exception
-    {
-    	String aab101="1";
-    	this.put("aab101", aab101);
-    	
-    	String sql1="delete from ad01 where aad103='03' and aab101=? and aad104=? ";
-    	Object args1[]={aab101,this.get("aac101")};
-    	this.apppendSql(sql1.toString(), args1);
-    	
-    	StringBuilder sql2=new StringBuilder()
-    			.append("update ac03 a")
-    			.append("   set a.aac308=a.aac308-1")
-    			.append(" where a.aac301=?")
-    			;
-    	Object args2[]={this.get("aac301")};
-    	this.apppendSql(sql2.toString(), args2);
-    	
-    	return this.executeTransaction();
-    }
-   
-    //ÆÀÂÛ×÷Æ·
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
     private boolean addComment()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101);
-    	    	
-    	//1.±àÐ´SQLÓï¾ä
+    	//1.ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad04(aad402,aad403,aad404,aad405)")
     			.append("          values('02',?,?,?)")
     			;
-    	//2.±àÐ´²ÎÊýÊý×é
+    	//2.ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	Object args1[]={
     			this.get("aac201"),
     			this.get("aad404"),
-    			aab101   			
+    			this.get("aab101Self")
     	};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args2[]=xiaoxi("ÆÀÂÛÁËÄãµÄ×÷Æ·");
-    	this.apppendSql(sql2.toString(), args2); 
-    	
+    	Object args2[]=xiaoxi("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·");
+    	this.apppendSql(sql2.toString(), args2);
+
     	return this.executeTransaction();
-    } 
-    
-    //Õ¹Ê¾ÆÀÂÛ
+    }
+
+    //Õ¹Ê¾ï¿½ï¿½ï¿½ï¿½
     public List<Map<String,String>> queryComment()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -344,12 +276,12 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad403=? ")
     			;
     	Object args[]={
-    			this.get("aac201")   			  			
+    			this.get("aac201")
     	};
     	return this.queryForList(sql.toString(),args);
     }
-    
-    //Õ¹Ê¾µãÔÞ
+
+    //Õ¹Ê¾ï¿½ï¿½ï¿½ï¿½
     public List<Map<String,String>> queryLikes()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -360,19 +292,14 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad104=? ")
     			;
     	Object args[]={
-    			this.get("aac201")   			  			
+    			this.get("aac201")
     	};
     	return this.queryForList(sql.toString(),args);
     }
-    
-    //ÊÕ²Ø×÷Æ·
+
+    //ï¿½Õ²ï¿½ï¿½ï¿½Æ·
     private boolean collection()throws Exception
     {
-    	//»ñÈ¡µ±Ç°Ô±¹¤±àºÅ
-    	String aab101="1";
-    	//ÏòDTOÌí¼ÓÔ±¹¤±àºÅ
-    	this.put("aab101", aab101);
-    	
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad02(aad301,aad202,aad203,aad204)")
     			.append("          values(?,NOW(),'02',?)")
@@ -382,7 +309,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205+1")
@@ -390,38 +317,58 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	StringBuilder sql3=new StringBuilder()
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args3[]=xiaoxi("ÊÕ²ØÁËÄãµÄ×÷Æ·");
-    	this.apppendSql(sql3.toString(), args3); 
-    	
+    	Object args3[]=xiaoxi("ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·");
+    	this.apppendSql(sql3.toString(), args3);
+
     	return this.executeTransaction();
     }
-    
-    //´´½¨²¢²åÈëÊÕ²Ø¼Ð
+
+	//ï¿½ï¿½È¡ï¿½Õ²Ø¼ï¿½Í¼Æ¬
+	public String getImg()
+	{
+		Random ran = new Random();
+	    int i = ran.nextInt(5);
+	    switch(i)
+	    {
+	         case 1:
+	            return "img/collection/01.jpeg";
+			 case 2:
+				return "img/collection/02.jpg";
+			 case 3:
+				return "img/collection/03.jpg";
+			 case 4:
+			    return "img/collection/04.jpg";
+			 case 5:
+			    return "img/collection/05.jpeg";
+			 default:
+				return "img/collection/06.jpg";
+	    }
+	}
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ²Ø¼ï¿½
 	public boolean createColl()throws Exception
 	{
-		 //µ±Ç°ÓÃ»§Á÷Ë®ºÅ
-		 String aab101="1";
 		 StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
 	    			;
-		 Object args[]={aab101,this.get("caad302"),getImg()};
+		 Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
 		 this.apppendSql(sql.toString(), args);
-		  
+
 		 int aad301=Tools.getSequence("aad301");
-		  
+
 	     StringBuilder sql1=new StringBuilder()
 	    			.append("insert into ad02(aad301,aad202,aad203,aad204)")
 	    			.append("       values(?,NOW(),'02',?)")
 	    			;
 	     Object args1[]={aad301,this.get("aac201")};
 	     this.apppendSql(sql1.toString(), args1);
-	    	
+
 	     StringBuilder sql2=new StringBuilder()
 	    			.append("update ac02 a")
 	    			.append("   set a.aac205=a.aac205+1")
@@ -429,18 +376,18 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    			;
 	     Object args2[]={this.get("aac201")};
 	     this.apppendSql(sql2.toString(), args2);
-		  
+
 	     return this.executeTransaction();
 	}
 
-    //È¡ÏûÊÕ²Ø
+    //È¡ï¿½ï¿½ï¿½Õ²ï¿½
     private boolean cancleCollection()throws Exception
-    {   	
+    {
     	String sql1="delete from ad02 where aad201=? ";
-    	   	
+
     	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1, args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205-1")
@@ -448,18 +395,18 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	return this.executeTransaction();
     }
-    
-    //É¾³ý×÷Æ·
+
+    //É¾ï¿½ï¿½ï¿½ï¿½Æ·
     private boolean deleteById()throws Exception
     {
     	String sql="delete from ac02 where aac201=?";
     	return this.executeUpdate(sql, this.get("aac201"))>0;
     }
-    
-    //ÐÞ¸Ä×÷Æ·
+
+    //ï¿½Þ¸ï¿½ï¿½ï¿½Æ·
     public boolean modifyPro(Map<String,Object> dto)throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -474,51 +421,51 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	};
     	return this.executeUpdate(sql.toString(), args)>0;
     }
-    
-    //²éÑ¯ÎÒµãÔÞµÄ²ËÆ×
+
+    //ï¿½ï¿½Ñ¯ï¿½Òµï¿½ï¿½ÞµÄ²ï¿½ï¿½ï¿½
     private List<Map<String,String>> myReciLikes()throws Exception
     {
-    	
+
 
     	StringBuilder sql=new StringBuilder()
-    			.append("select a.aad101,b.aac102,b.aac108,b.aac101")    			
+    			.append("select a.aad101,b.aac102,b.aac108,b.aac101")
     			.append("  from ad01 a, ac01 b ")
     			.append(" where a.aad104=b.aac101 ")
     			.append("   and a.aad103='01' ")
     			.append("   and a.aab101=?")
     			;
-    
+
     	return this.queryForList(sql.toString(),this.get("aab101"));
     }
-    //²éÑ¯ÎÒµãÔÞµÄ×÷Æ·
+    //ï¿½ï¿½Ñ¯ï¿½Òµï¿½ï¿½Þµï¿½ï¿½ï¿½Æ·
     private List<Map<String,String>> myProLikes()throws Exception
     {
-    	
+
     	StringBuilder sql=new StringBuilder()
-    			.append("select a.aad101,b.aac204,b.aac203,b.aac201")    			
+    			.append("select a.aad101,b.aac204,b.aac203,b.aac201")
     			.append("  from ad01 a, ac02 b ")
     			.append(" where a.aad104=b.aac201 ")
     			.append("   and a.aad103='02' ")
     			.append("   and a.aab101=?")
     			;
-    	
+
     	return this.queryForList(sql.toString(),this.get("aab101"));
     }
-    //²éÑ¯ÎÒµãÔÞµÄ×¨À¸
+    //ï¿½ï¿½Ñ¯ï¿½Òµï¿½ï¿½Þµï¿½×¨ï¿½ï¿½
     private List<Map<String,String>> myCompLikes()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
-    			.append("select a.aad101,b.aac302,b.aac301")    			
+    			.append("select a.aad101,b.aac302,b.aac301")
     			.append("  from ad01 a, ac03 b ")
     			.append(" where a.aad104=b.aac301 ")
     			.append("   and a.aad103='03' ")
     			.append("   and a.aab101=?")
     			;
-    	
+
     	return this.queryForList(sql.toString(),this.get("aab101"));
     }
-     
-    //É¾³ýµãÔÞ
+
+    //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private boolean deleteLikes()throws Exception
     {
     	String tag=(String)this.get("aad103");

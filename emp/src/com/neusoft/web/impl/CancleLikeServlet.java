@@ -1,6 +1,10 @@
 package com.neusoft.web.impl;
 
-public class CancleLikeServlet extends ProControllerSupport 
+/**
+ * 管理点赞
+ * @author 韩金利
+ */
+public class CancleLikeServlet extends LikeControllerSupport 
 {
 	@Override
 	public String execute() throws Exception

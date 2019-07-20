@@ -1,4 +1,4 @@
-//author:¶­ÊçæÂ
+//author:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 package com.neusoft.services.impl;
 
 import java.util.ArrayList;
@@ -8,9 +8,9 @@ import java.util.Random;
 
 import com.neusoft.services.JdbcServicesSupport;
 
-public class ColServicesImpl extends JdbcServicesSupport 
+public class ColServicesImpl extends JdbcServicesSupport
 {
-	   //»ñÈ¡ÊÕ²Ø¼ÐÍ¼Æ¬
+	   //ï¿½ï¿½È¡ï¿½Õ²Ø¼ï¿½Í¼Æ¬
 	   public String getImg()
 	   {
 		   Random ran = new Random();
@@ -31,19 +31,19 @@ public class ColServicesImpl extends JdbcServicesSupport
 		        	return "img/collection/06.jpg";
 		      }
 		   }
-	
-	//²éÑ¯ÓÃ»§
+
+	//ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
 	public Map<String,String> findById()throws Exception
 	{
 	String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 
 	return this.queryForMap(sql,this.get("aab101"));
 	}
-    //È¡ÏûÊÕ²Ø
+    //È¡ï¿½ï¿½ï¿½Õ²ï¿½
     private boolean deleteColle()throws Exception
     {
     	String tag=(String)this.get("aad203");
-    	
+
     	if(tag=="01")
     	{
     		return canclePro();
@@ -57,13 +57,13 @@ public class ColServicesImpl extends JdbcServicesSupport
     		return cancleComp();
     	}
     }
-	//È¡Ïû×¨À¸ÊÕ²Ø
+	//È¡ï¿½ï¿½×¨ï¿½ï¿½ï¿½Õ²ï¿½
     private boolean cancleComp()throws Exception
-    {   	
+    {
     	String sql1="delete from ad02 where aad201=? ";
     	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac03 a")
     			.append("   set a.aac309=a.aac309-1")
@@ -71,16 +71,16 @@ public class ColServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac01")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	return this.executeTransaction();
     }
-	//È¡Ïû×÷Æ·ÊÕ²Ø
+	//È¡ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Õ²ï¿½
     private boolean canclePro()throws Exception
-    {   	
+    {
     	String sql1="delete from ad02 where aad201=? ";
     	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205-1")
@@ -88,17 +88,17 @@ public class ColServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac01")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	return this.executeTransaction();
     }
 
-	//È¡Ïû²ËÆ×ÊÕ²Ø
+	//È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ²ï¿½
     private boolean cancleReci()throws Exception
     {
     	String sql1="delete from ad02 where aad201=? ";
     	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac01 a")
     			.append("   set a.aac110=a.aac110-1")
@@ -106,11 +106,11 @@ public class ColServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac01")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	return this.executeTransaction();
     }
-    
-	  //²éÑ¯²ËÆ×
+
+	  //ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	  public List<Map<String,String>> queryCollReci()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -120,8 +120,8 @@ public class ColServicesImpl extends JdbcServicesSupport
 	    			;
 	      return this.queryForList(sql.toString(),this.get("aad301"));
 	  }
-	  
-	  //²éÑ¯×÷Æ·
+
+	  //ï¿½ï¿½Ñ¯ï¿½ï¿½Æ·
 	  public List<Map<String,String>> queryCollPro()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -131,8 +131,8 @@ public class ColServicesImpl extends JdbcServicesSupport
 	    			;
 	      return this.queryForList(sql.toString(),this.get("aad301"));
 	  }
-	  
-	  //²éÑ¯×¨À¸
+
+	  //ï¿½ï¿½Ñ¯×¨ï¿½ï¿½
 	  public List<Map<String,String>> queryCollComp()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -142,11 +142,11 @@ public class ColServicesImpl extends JdbcServicesSupport
 	    			;
 	      return this.queryForList(sql.toString(),this.get("aad301"));
 	  }
-	
-      //²éÑ¯ÊÕ²Ø¼Ð
+
+      //ï¿½ï¿½Ñ¯ï¿½Õ²Ø¼ï¿½
 	  public List<Map<String,String>> queryCollections()throws Exception
 	  {
-		  
+
 		  StringBuilder sql=new StringBuilder()
 	    			.append("select a.aad301,a.aad302,a.aad303")
 	    			.append("  from ad03 a")
@@ -154,8 +154,8 @@ public class ColServicesImpl extends JdbcServicesSupport
 	    			;
 	      return this.queryForList(sql.toString(), this.get("aab101"));
 	  }
-	  
-      //ÊÕ²Ø¼ÐÖØÃüÃû
+
+      //ï¿½Õ²Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	  public boolean rename()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -166,8 +166,8 @@ public class ColServicesImpl extends JdbcServicesSupport
 		  Object args[]={this.get("raad302"),this.get("raad301")};
 	      return this.executeUpdate(sql.toString(), args)>0;
 	  }
-	  
-      //É¾³ýÊÕ²Ø¼Ð
+
+      //É¾ï¿½ï¿½ï¿½Õ²Ø¼ï¿½
 	  public boolean deleteColl()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -178,10 +178,10 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.executeUpdate(sql.toString(), args)>0;
 	  }
 
-      //´´½¨ÊÕ²Ø¼Ð
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Õ²Ø¼ï¿½
 	  public boolean createColl()throws Exception
 	  {
-		  //µ±Ç°ÓÃ»§Á÷Ë®ºÅ
+		  //ï¿½ï¿½Ç°ï¿½Ã»ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
 		  //String aab101="1";
 		  StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")

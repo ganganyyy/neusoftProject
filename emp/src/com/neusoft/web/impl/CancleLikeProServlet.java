@@ -1,5 +1,9 @@
 package com.neusoft.web.impl;
 
+/**
+ * 取消作品点赞
+ * @author 韩金利
+ */
 public class CancleLikeProServlet extends ProControllerSupport
 {
 	@Override

@@ -26,13 +26,6 @@
 <script src="js/collection/common.js" type="text/javascript" charset="GBK"></script>
 <script src="js/collection/user.js" type="text/javascript" charset="GBK"></script>
 <script type="text/javascript">
-function onFind()
-{
-	 var aac101="20";
-	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/details.html?aac101="+aac101;
-	 vform.submit();
-}
 function publish(vaac101) 
 {
 	var vform = document.getElementById("myform");
@@ -90,7 +83,6 @@ function create(vaac101)
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
 	<form id="myform" action="<%=path%>/details.html" method="post">
-		<input type="submit" name="next" value="查询" onclick="onFind()">
 		<div class="conwidth content clearfix">
 			<h1>${ins.fvalue }&nbsp;&nbsp;${ins.aac102 }</h1>
 			<div class="leftcon">
@@ -100,31 +92,29 @@ function create(vaac101)
 					<span class="cooknum">${ins.pronum }</span><span>&nbsp;人做过这道菜</span>
 					<div class="fr">
 						<c:choose>
-							<c:when test="${0>1}">
-								<a class="layui-btn layui-btn-danger" href="<%=path%>/updateDetail.html?aac101=${ins.aac101}">修改</a>
-								<a class="layui-btn layui-btn-danger"
-									href="<%=path%>/delreci.html?aac101=${ins.aac101}">删除</a>
+							<c:when test="${ins.aac106!=sessionScope.aab101Self}">	
+			<c:choose>
+				<c:when test="${ins.aad101!=null}">
+					<a class="layui-btn layui-btn-danger" onclick="cancle('${ins.aac101}')">已赞</a>							
+				</c:when>
+				<c:otherwise>
+					<a class="layui-btn layui-btn-danger" onclick="give('${ins.aac101}')">点赞</a>
+				</c:otherwise>
+			</c:choose>
+				
+			<c:choose>
+				<c:when test="${ins.aad201!=null}">
+					<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}','${ins.aad201}')">已收藏</a>							
+				</c:when>
+				<c:otherwise>
+				    <a class="layui-btn layui-btn-danger" id="shoucang" href="javascript:;">收藏</a>
+				</c:otherwise>
+			</c:choose>
 							</c:when>
 							<c:otherwise>
-					
-					<c:choose>
-						<c:when test="${ins.aad101!=null}">
-							<a class="layui-btn layui-btn-danger" onclick="cancle('${ins.aac101}')">已赞</a>							
-						</c:when>
-						<c:otherwise>
-							<a class="layui-btn layui-btn-danger" onclick="give('${ins.aac101}')">点赞</a>
-						</c:otherwise>
-					</c:choose>
-						
-					<c:choose>
-						<c:when test="${ins.aad201!=null}">
-							<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}','${ins.aad201}')">已收藏</a>							
-						</c:when>
-						<c:otherwise>
-						    <a class="layui-btn layui-btn-danger" id="shoucang" href="javascript:;">收藏</a>
-						</c:otherwise>
-					</c:choose>
-							
+			<a class="layui-btn layui-btn-danger" href="<%=path%>/updateDetail.html?aac101=${ins.aac101}">修改</a>
+			<a class="layui-btn layui-btn-danger"
+			   href="<%=path%>/delreci.html?aac101=${ins.aac101}">删除</a>
 							</c:otherwise>
 						</c:choose>
 						

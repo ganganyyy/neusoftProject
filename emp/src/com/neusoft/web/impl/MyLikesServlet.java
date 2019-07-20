@@ -1,6 +1,10 @@
 package com.neusoft.web.impl;
 
-public class MyLikesServlet extends ProControllerSupport 
+/**
+ * 我的点赞
+ * @author 韩金利
+ */
+public class MyLikesServlet extends LikeControllerSupport 
 {
 	@Override
 	public String execute() throws Exception 
