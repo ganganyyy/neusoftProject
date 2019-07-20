@@ -120,12 +120,12 @@
         		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">µãÔÞ</a></span>
         	</div>
         
-        <c:if test="${sessionScope.aab101Self!=param.aab101 }">
+        <c:if test="${sessionScope.aab101Self==param.aab101 }">
         	<div class="kh40">
         	<button type="button" onclick="addRecipe();" class="guanzhu3">
             <i class="layui-icon layui-icon-add-1"></i>´´½¨²ËÆ×</button>	
         	</div>
-        	</c:if>
+        </c:if>
         	<div class="layui-row layui-col-space25">
 
 <c:if test="${rows!=null }">
