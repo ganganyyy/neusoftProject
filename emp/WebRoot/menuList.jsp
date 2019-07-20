@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="./define/css/stylegan.css" media="all">
 <link href="./define/css/styles.css" rel="stylesheet">
 <script type="text/javascript" src="./define/js/move-top.js"></script>
-		<script type="text/javascript" src="./define/js/easing.js"></script>
-		<script src="./define/js/jquery.min.js"></script>
-		
+<script type="text/javascript" src="./define/js/easing.js"></script>
+<script src="./define/js/jquery.min.js"></script>
+<script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -29,15 +29,19 @@
 					<div class="layui-card">
 						<div class="layui-card-header" style="text-align: center;font-size: 18px;">${ins.aac102}</div>
 						<div class="layui-card-body" align="center" style="font-size: 13px;">
+							<a onclick="toMenuDetail('${ins.aac101}')">
 							<img src="${ins.aac108}" style="width:100%;height: 100%;">
+							</a>
 							<br/>
 							用料<span>${ins.ingredientstr}</span>
 							<br/>
+							<a onclick="kitchen('${ins.aab101}')">
 							${ins.aab102 }  创建
+							</a>
 							<br/>
 							<span>${ins.aac110}收藏</span><span>${ins.aac109}点赞</span>
 							<br/>
-							<a  href="/emp/registe.do?aac101=${ins.aac101}">
+							<a onclick="toMenuDetail('${ins.aac101}')">
 								read more ${ins.aac101}
 							</a>			
 						</div>

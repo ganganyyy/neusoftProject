@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="./define/js/easing.js"></script>
 		<script src="./define/js/jquery.min.js"></script>
 		
+		<script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -29,13 +30,15 @@
 					<div class="layui-card">
 						
 						<div class="layui-card-body" align="center" style="font-size: 13px;">
+							<a onclick="kitchen('${ins.aab101}')">
 							<img class="layui-nav-img" src="${ins.aab106}" style="width:100px;height: 80px;">
+							</a>
 							<br/>
-							<a href="/emp/registe.do?aac101=${ins.aab101}">${ins.aab102}</a>
+							<a onclick="kitchen('${ins.aab101}')">${ins.aab102}</a>
 							<p><span>${ins.ac01count}食谱</span><span>${ins.ac02count}作品</span></p>
 							<p><span>${ins.aab107}关注</span><span>${ins.aab108}被关注</span></p>
 							<br/>
-							<a  href="/emp/registe.do?aac101=${ins.aab101}">
+							<a onclick="kitchen('${ins.aab101}')">
 								read more ${ins.aac101}
 							</a>			
 						</div>
