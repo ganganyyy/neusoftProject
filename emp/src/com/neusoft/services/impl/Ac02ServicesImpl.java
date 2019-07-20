@@ -8,41 +8,25 @@ import java.util.Random;
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
 /**
- * 锟斤拷品锟斤拷夭锟斤拷锟�
- * @author 锟斤拷锟斤拷锟斤拷
+ * 作品相关
+ * @author 韩金利
  */
 public class Ac02ServicesImpl extends JdbcServicesSupport
 {
-
-	/**
-     * 珊珊头锟斤拷
-     * @return
-     * @throws Exception
-     */
-    public Map<String,String> findByIdForPhoto()throws Exception
-	{
-		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
-		return this.queryForMap(sql,this.get("aab101"));
-	}
-
-	//锟斤拷询锟斤拷锟斤拷锟斤拷品
+    //查询所有作品
     public List<Map<String,String>> query()throws Exception
     {
-    	//1.锟斤拷写SQL锟斤拷锟�
     	StringBuilder sql=new StringBuilder()
     			.append("select aac201,aab101,aac202,aac203,aac204,")
     			.append("       aac207,aac205,aac206 ")
     			.append("  from ac02 ")
     			;
-    	//执锟叫诧拷询
     	return this.queryForList(sql.toString());
     }
 
-
-    //锟斤拷询某一锟斤拷品锟斤拷锟斤拷
+    //查询某一作品详情
     public Map<String,String> findById()throws Exception
     {
-    	//1.锟斤拷写SQL锟斤拷锟�
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,")
     			.append("       a.aac207,c.aac102,b.aab101,b.aab102,b.aab106")
@@ -51,7 +35,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aab101=b.aab101")
     			.append("   and a.aac201=?")
     			;
-    	//执锟叫诧拷询
     	Map<String,String> abc = this.queryForMap(sql.toString(), this.get("aac201"));
     	String likeNumber=likeNumber();
     	abc.put("aad101", likeNumber);
@@ -59,7 +42,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	abc.put("aad201", collectionNumber);
     	return abc;
     }
-    //锟斤拷询锟秸藏硷拷
+    //查询收藏夹
 	public List<Map<String,String>> queryCollections()throws Exception
 	{
 		 StringBuilder sql=new StringBuilder()
@@ -72,19 +55,17 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 
 
     /*
-     * 锟较达拷锟斤拷品insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
-     * values('1',NOW(),'锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷','img/san.jpg','1', '0','0')
+     * 上传作品insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
+     * values('1',NOW(),'啊啊啊啊啊啊啊啊啊','img/san.jpg','1', '0','0')
      */
     public boolean addPro(Map<String,Object> dto)throws Exception
     {
-    	//1.锟斤拷写SQL锟斤拷锟�
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ac02(aab101,aac202,aac203,aac204,aac207,")
     			.append("                 aac205,aac206)")
     			.append("          values(?,NOW(),?,?,?,")
     			.append("                 '0','0')")
     			;
-    	//2.锟斤拷写锟斤拷锟斤拷锟斤拷锟斤拷
     	Object args[]={
     			this.get("aab101Self"),
     			dto.get("aac203"),
@@ -94,7 +75,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
         return this.executeUpdate(sql.toString(), args)>0;
     }
 
-    //锟叫讹拷锟角凤拷锟秸诧拷
+    //判断是否收藏
     private String collectionNumber()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -107,21 +88,21 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Object args[]={this.get("aac201"),this.get("aab101Self")};
     	return check(sql.toString(),args);
     }
-    //锟叫讹拷锟角凤拷锟斤拷锟�
+    //判断是否点赞
     private String likeNumber()throws Exception
     {
     	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
     	Object args[]={this.get("aac201"),this.get("aab101Self")};
     	return check(sql,args);
     }
-    //锟斤拷锟斤拷锟狡凤拷锟斤拷没锟斤拷锟剿拷锟�
+    //获得作品的用户流水号
     private String authorNumber()throws Exception
     {
     	String sql="select aab101 from ac02 where aac201=? ";
     	Object args[]={this.get("aac201")};
     	return check(sql,args);
     }
-    //锟斤拷玫锟角帮拷没锟斤拷锟斤拷没锟斤拷锟�
+    //获得当前用户的用户名
     private String userName()throws Exception
     {
     	String sql="select aab102 from ab01 where aab101=? ";
@@ -130,10 +111,10 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     }
 
     /**
-     * 执锟叫诧拷询锟斤拷值锟斤拷锟�
+     * 执行查询单值语句
      * @param sql
      * @param args
-     * @return 锟斤拷询锟矫碉拷锟斤拷唯一锟斤拷值
+     * @return 查询得到的唯一的值
      * @throws Exception
      */
     private String check(String sql,Object args[])throws Exception
@@ -153,9 +134,9 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 
     private Object[] xiaoxi(String msg)throws Exception
     {
-    	//锟斤拷前锟斤拷品锟斤拷锟矫伙拷锟斤拷
+    	//当前作品的用户号
     	String authorNumber = authorNumber();
-    	//锟斤拷前锟矫伙拷锟斤拷锟斤拷锟斤拷
+    	//当前用户的名字
     	String userName=userName();
     	String text=userName+msg;
     	Object args[]={authorNumber,text};
@@ -163,10 +144,10 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     }
 
     /*
-     * 锟斤拷锟斤拷锟斤拷品
-     * 1锟斤拷锟斤拷锟斤拷薇锟斤拷锟斤拷锟斤拷拥锟斤拷锟斤拷锟斤拷锟�
-     * 2锟斤拷锟斤拷锟斤拷锟斤拷品锟斤拷锟斤拷牡锟斤拷锟斤拷锟�
-     * 3锟斤拷锟斤拷锟斤拷息锟叫憋拷锟斤拷锟斤拷锟斤拷锟斤拷
+     * 点赞作品
+     * 1、向点赞表里增加点赞数据
+     * 2、更新作品表里的点赞数
+     * 3、向消息列表添加数据
      */
     private boolean giveLike()throws Exception
     {
@@ -192,13 +173,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args3[]=xiaoxi("锟斤拷锟斤拷锟斤拷锟狡凤拷锟斤拷锟斤拷锟�");
+    	Object args3[]=xiaoxi("给你的作品点了赞");
     	this.apppendSql(sql3.toString(), args3);
 
     	return this.executeTransaction();
     }
 
-    //取锟斤拷锟斤拷品锟斤拷锟斤拷
+    //取消作品点赞
     private boolean cancleProLike()throws Exception
     {
     	String sql1="delete from ad01 where aad103='02' and aab101=? and aad104=? ";
@@ -217,15 +198,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
 
-    //锟斤拷锟斤拷锟斤拷品
+    //评论作品
     private boolean addComment()throws Exception
     {
-    	//1.锟斤拷写SQL锟斤拷锟�
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad04(aad402,aad403,aad404,aad405)")
     			.append("          values('02',?,?,?)")
     			;
-    	//2.锟斤拷写锟斤拷锟斤拷锟斤拷锟斤拷
     	Object args1[]={
     			this.get("aac201"),
     			this.get("aad404"),
@@ -237,13 +216,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args2[]=xiaoxi("锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟狡�");
+    	Object args2[]=xiaoxi("评论了你的作品");
     	this.apppendSql(sql2.toString(), args2);
 
     	return this.executeTransaction();
     }
 
-    //展示锟斤拷锟斤拷
+    //展示评论
     public List<Map<String,String>> queryComment()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -259,7 +238,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.queryForList(sql.toString(),args);
     }
 
-    //展示锟斤拷锟斤拷
+    //展示点赞
     public List<Map<String,String>> queryLikes()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -275,7 +254,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.queryForList(sql.toString(),args);
     }
 
-    //锟秸诧拷锟斤拷品
+    //收藏作品
     private boolean collection()throws Exception
     {
     	StringBuilder sql1=new StringBuilder()
@@ -300,14 +279,14 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args3[]=xiaoxi("锟秸诧拷锟斤拷锟斤拷锟斤拷锟狡�");
+    	Object args3[]=xiaoxi("收藏了你的作品");
     	this.apppendSql(sql3.toString(), args3);
 
     	return this.executeTransaction();
     }
 
 
-	//锟斤拷取锟秸藏硷拷图片
+	//收藏夹图片
 	public String getImg()
 	{
 		Random ran = new Random();
@@ -329,7 +308,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    }
 	}
 
-
+	//创建并插入收藏夹
 	public boolean createColl()throws Exception
 	{
 		 StringBuilder sql=new StringBuilder()
@@ -360,12 +339,12 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	 Object args3[]=xiaoxi("�ղ��������Ʒ");
+    	 Object args3[]=xiaoxi("收藏了你的作品");
     	 this.apppendSql(sql3.toString(), args3); 
 	     return this.executeTransaction();
 	}
 
-    //取锟斤拷锟秸诧拷
+    //取消收藏
     private boolean cancleCollection()throws Exception
     {
     	String sql1="delete from ad02 where aad201=? ";
@@ -384,14 +363,14 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
 
-    //删锟斤拷锟斤拷品
+    //删除作品
     private boolean deleteById()throws Exception
     {
     	String sql="delete from ac02 where aac201=?";
     	return this.executeUpdate(sql, this.get("aac201"))>0;
     }
 
-    //锟睫革拷锟斤拷品
+    //修改作品
     public boolean modifyPro(Map<String,Object> dto)throws Exception
     {
     	StringBuilder sql=new StringBuilder()
