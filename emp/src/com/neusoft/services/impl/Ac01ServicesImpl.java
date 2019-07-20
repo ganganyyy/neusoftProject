@@ -175,6 +175,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
 	    			;
+		  System.out.println(this.get("aab101Self"));
 		  Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
 		  this.apppendSql(sql.toString(), args);
 		  
@@ -469,12 +470,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("select a.aac101,a.aac102,date_format(a.aac103,'%Y-%m-%d') aac103,a.aac104,")
     			.append("       a.aac105,a.aac107,a.aac108,a.aac110,s.fvalue,b.aab102,b.aab106,a.aac106")
     			.append("  from ac01 a,ab01 b,syscode s")
-    			.append(" where a.aac101=? and s.fcode=a.aac107 and b.aab101=a.aac106")
+    			.append(" where a.aac101=? and s.fcode=a.aac107 and b.aab101=a.aac106 and s.fname='aac107'")
     			;
     	//÷¥––≤È—Ø
     	Map<String,String> recidto = this.queryForMap(sql.toString(), this.get("aac101"));
     	this.put("aac106", recidto.get("aac106"));
-    	
+    	System.out.println("");
     	String likeNumber=likeNumber();
     	recidto.put("aad101", likeNumber);
     	String shoucangNumber=shoucangNumber();

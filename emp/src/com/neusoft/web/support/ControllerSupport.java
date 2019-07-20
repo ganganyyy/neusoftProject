@@ -43,7 +43,6 @@ public abstract class ControllerSupport implements BaseController
 		if(rows.size()>0)
 		{
 			this.saveAttribute("rows", rows);
-			System.out.println("有执行query");
 		}
 		else
 		{
@@ -61,7 +60,6 @@ public abstract class ControllerSupport implements BaseController
 		if(ins!=null)
 		{
 			this.saveAttribute("ins",  ins);
-			System.out.println("有执行findById");
 		}
 		else
 		{
@@ -88,7 +86,6 @@ public abstract class ControllerSupport implements BaseController
 		if(ins!=null)
 		{
 			this.saveAttribute(attributeName,  ins);
-			System.out.println("getInstance:"+ins);
 		}
 		else
 		{
@@ -257,7 +254,6 @@ public abstract class ControllerSupport implements BaseController
 		if(rows.size()>0)
 		{
 			this.saveAttribute(attributeName,  rows);
-			//System.out.println("getInstanceList："+rows);
 		}
 		else
 		{
@@ -314,8 +310,5 @@ public abstract class ControllerSupport implements BaseController
     public final Map<String, Object> getAttribute() 
     {
     	return this.attribute;
-    }
-    
-    
-    
+    } 
 }
