@@ -121,7 +121,7 @@
 		    <div class="rightcon">
 				<div class="delete">
 					<c:choose>
-	     				<c:when test="${ins.aab101=='1'}">
+	     				<c:when test="${ins.aab101==sessionScope.aab101Self}">
 	     				    <a class="shanchu" id="shan" onclick="shanchu('${ins.aac201}')" href="#">É¾³ý</a>	
 	     				    <a class="shanchu" id="xuigai" onclick="xuigai('${ins.aac201}')" href="#">ÐÞ¸Ä</a>						
 						</c:when>
