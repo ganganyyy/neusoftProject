@@ -213,6 +213,9 @@ public class Tools
 		return dto;
 	}
 	
+	
+	
+	
 	 /**
 	  * 获取主键值 
 	  * @param pkname

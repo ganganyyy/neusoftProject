@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.neusoft.services.impl.Ac02ServicesImpl;
 
@@ -62,6 +63,7 @@ public class BaseServlet extends HttpServlet
      		 ***********************************************************/
      		//解析属性
      		Map<String,Object> rueqestAttribute=controller.getAttribute();
+     		
      		//织入属性处理切片
      		this.parseRueqestAttribute(request, rueqestAttribute);
      					
@@ -72,6 +74,7 @@ public class BaseServlet extends HttpServlet
         	 toPath="Error";
         	 ex.printStackTrace();
          }
+         
 		request.getRequestDispatcher("/"+toPath+".jsp").forward(request, response);
 	}
 	
@@ -85,6 +88,7 @@ public class BaseServlet extends HttpServlet
 		{
 			//3.将map的每个键值对,转换成request的属性
 			request.setAttribute(entry.getKey(), entry.getValue());
+			System.out.println(entry.getKey()+":"+entry.getValue());
 		}
 		//清除所有的request级属性数据
 		rueqestAttribute.clear();
@@ -127,11 +131,23 @@ public class BaseServlet extends HttpServlet
 				dto.put(entry.getKey(), value);
 			}	
 		}
+		this.addAab101(dto, request.getSession());
 		//System.out.println(dto);
 		return dto;
 	}
 
-
+	/**
+	 * 从Session中取出用户流水号和用户类型
+	 * 放入dto中
+	 * @param dto
+	 * @param session
+	 */
+	private void addAab101(Map<String,Object>dto,HttpSession session)
+	{
+		dto.put("aab101Self", session.getAttribute("aab101Self"));
+		dto.put("aab105Self", session.getAttribute("aab101Self"));
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		this.doGet(request, response);
