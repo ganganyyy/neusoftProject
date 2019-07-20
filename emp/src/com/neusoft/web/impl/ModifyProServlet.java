@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.neusoft.services.impl.Ac02ServicesImpl;
 import com.neusoft.system.tools.Tools;
 
-import basic.FileUtil;
+import basic.FileUtil2;
 
 @WebServlet("/modifyPro")
 public class ModifyProServlet extends HttpServlet {
@@ -21,18 +21,20 @@ public class ModifyProServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		String aac201=null;
 		try 
         {
-			Map<String,Object> dto=FileUtil.upload(request);
-            List<String> imageList = (List<String>) dto.get("imageList");          
-            //图片
-            String aac204=imageList.get(0);
-            dto.put("aac204", aac204);
-            System.out.println("1");
+			Map<String,Object> dto=FileUtil2.upload(request);
+			if(dto.get("imageList")!=null)
+			{
+	            List<String> imageList = (List<String>) dto.get("imageList");          
+	            //图片
+	            String aac204=imageList.get(0);
+	           	dto.put("aac204", aac204);
+			}
+			aac201=(String)dto.get("aac201");
             Ac02ServicesImpl service=new Ac02ServicesImpl();
-            System.out.println("2");
             boolean tag=service.modifyPro(dto);
-            System.out.println("7");
             if(tag)
             {
             	request.setAttribute("msg","作品修改成功");
@@ -48,7 +50,7 @@ public class ModifyProServlet extends HttpServlet {
             String Msg=e.getMessage();
             request.setAttribute("errorMsg",Msg);
         }
-        request.getRequestDispatcher("/modifyPro.jsp").forward(request,response);
+        request.getRequestDispatcher("/findByIdPro.html?aac201="+aac201).forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.neusoft.services.impl.Ac02ServicesImpl;
 import com.neusoft.system.tools.Tools;
 
-import basic.FileUtil;
+import basic.FileUtil2;
 
 @WebServlet("/addPro")
 public class AddProServlet extends HttpServlet {
@@ -23,7 +23,7 @@ public class AddProServlet extends HttpServlet {
 	{
 		try 
         {
-			Map<String,Object> dto=FileUtil.upload(request);
+			Map<String,Object> dto=FileUtil2.upload(request);
             List<String> imageList = (List<String>) dto.get("imageList");          
             //ͼƬ
             String aac204=imageList.get(0);

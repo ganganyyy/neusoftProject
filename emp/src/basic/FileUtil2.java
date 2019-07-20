@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class FileUtil {
+public class FileUtil2 {
 
     private static final String ALLWED_IMAGE_TYPE ="png,jpg,gif,jpeg";
 
@@ -39,12 +39,11 @@ public class FileUtil {
             for (FileItem item : items) 
             {
                 String fileName = item.getFieldName();
-                
                 if (item.isFormField()) 
                 {
                     String value = item.getString("GBK");
                     dto.put(fileName, value);
-                    System.out.println(fileName + "->" + value);
+                    //System.out.println(fileName + "->" + value);
                 } 
                 else 
                 {
@@ -52,17 +51,16 @@ public class FileUtil {
                     String [] allowedImagetype=ALLWED_IMAGE_TYPE.split(",");
                     if (!Arrays.asList(allowedImagetype).contains(ext)) 
                     {
-                        throw  new LogicException("false");
-                    }
-
-                    String RandomName = UUID.randomUUID().toString()+"."+FilenameUtils.getExtension(item.getName());
-                    
-                    String path="D:/neu_workspace/neusoftProject/emp/WebRoot/img";
-                    
-                    item.write(new File(path, RandomName)); 
-                    
-                    imgPath="img/"+RandomName;
-                    imageList.add(imgPath);
+                    	imageList=null;
+                    } 
+                	if(FilenameUtils.getExtension(item.getName())!="")
+                	{
+                        String RandomName = UUID.randomUUID().toString()+"."+FilenameUtils.getExtension(item.getName());
+                        String path="D:/github/neusoftProject/emp/WebRoot/img";//路径根据需求更改
+                        item.write(new File(path, RandomName));
+                        imgPath="img/"+RandomName;
+                        imageList.add(imgPath);
+                	}
                 } 
                 dto.put("imageList", imageList);
             } 
