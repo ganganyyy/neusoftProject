@@ -11,13 +11,13 @@ public abstract class ControllerSupport implements BaseController
 {
 
 	/*****************************************
-	 * 	        ҵ���߼�������ܹ�ע��
+	 * 	        业锟斤拷锟竭硷拷锟斤拷锟斤拷锟斤拷芄锟阶拷锟�
 	 *****************************************/
 	
 	private BaseServices services=null;
 	
 	/**
-	 * ����ͨ���÷���,ΪServices�����������õľ��������
+	 * 锟斤拷锟斤拷通锟斤拷锟矫凤拷锟斤拷,为Services锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟矫的撅拷锟斤拷锟斤拷锟斤拷锟�
 	 * @param services
 	 */
 	protected void setServices(BaseServices services)
@@ -31,10 +31,10 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/*****************************************
-	 * 	        ����ҵ�����̷�װ
+	 * 	        锟斤拷锟斤拷业锟斤拷锟斤拷锟教凤拷装
 	 *****************************************/
 	/**
-	 * ����������ѯ
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷询
 	 * @throws Exception
 	 */
 	protected final void savePageData()throws Exception
@@ -43,82 +43,16 @@ public abstract class ControllerSupport implements BaseController
 		if(rows.size()>0)
 		{
 			this.saveAttribute("rows", rows);
-			System.out.println("��ִ��query");
+			System.out.println("有执行query");
 		}
 		else
 		{
-			this.saveAttribute("msg", "û�з�������������!");
-		}	
-	}
-		
-	/**
-	 * @author:gangan
-	 * ���ݷ�������ȡ����ʵ��
-	 * ��дԭ��ϣ��ͨ�����ݵķ�����������
-	 * @param methodName
-	 * @param msgText
-	 * @throws Exception
-	 */
-	protected final void getInstanceList(String methodName,String msgText,String attributeName)throws Exception
-	{
-		
-		Method method=this.services.getClass().getDeclaredMethod(methodName);
-		method.setAccessible(true);
-		//2.���÷���
-		List<Map<String,String>> rows= (List<Map<String, String>>) method.invoke(services);
-		if(rows.size()>0)
-		{
-			this.saveAttribute(attributeName,  rows);
-		}
-		else
-		{
-			this.saveAttribute("msg", msgText);
+			this.saveAttribute("msg", "没锟叫凤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷!");
 		}	
 	}
 	
 	/**
-	 * ���ݷ�������ȡ��һʵ��
-	 * ��дԭ��ϣ��ͨ�����ݵķ�����������
-	 * @author gangan
-	 * @param methodName
-	 * @param msgText
-	 * @throws Exception
-	 */
-	protected final void getInstance(String methodName,String msgText,String attributeName)throws Exception
-	{
-		
-		Method method=this.services.getClass().getDeclaredMethod(methodName);
-		method.setAccessible(true);
-		//2.���÷���
-		Object ins= method.invoke(services);
-		if(ins!=null)
-		{
-			this.saveAttribute(attributeName,  ins);
-		}
-		else
-		{
-			this.saveAttribute("msg", msgText);
-		}	
-	}
-	
-	/**
-	 * @author gangan
-	 * ��ȡһЩ����Ҫ��ʾ��ҳ�����Ϣ��
-	 * �����ж���Ϣ�������̿���
-	 * @param methodName
-	 * @return
-	 */
-	protected final Map<String,String> getExtraInfo(String methodName)throws Exception
-	{
-		Method method=this.services.getClass().getDeclaredMethod(methodName);
-		method.setAccessible(true);
-		//2.���÷���
-		Map<String,String>info=(Map<String, String>)method.invoke(services); 
-		return info;
-	}
-	
-	/**
-	 * ��һʵ�� ��ѯ
+	 * 锟斤拷一实锟斤拷 锟斤拷询
 	 * @throws Exception
 	 */
 	protected final void savePageInstance()throws Exception
@@ -127,18 +61,18 @@ public abstract class ControllerSupport implements BaseController
 		if(ins!=null)
 		{
 			this.saveAttribute("ins",  ins);
-			System.out.println("��ִ��findById");
+			System.out.println("有执行findById");
 		}
 		else
 		{
-			this.saveAttribute("msg", "��ʾ:��������ɾ�����ֹ����!");
+			this.saveAttribute("msg", "锟斤拷示:锟斤拷锟斤拷锟斤拷锟斤拷删锟斤拷锟斤拷锟街癸拷锟斤拷锟�!");
 		}	
 	}
 	
 	
 	/**
-	 * ���ݷ�������ȡ��һʵ��
-	 * ��дԭ��ϣ��ͨ�����ݵķ�����������
+	 * 根据方法名获取单一实例
+	 * 编写原因：希望通过传递的方法名来调用
 	 * @author gangan
 	 * @param methodName
 	 * @param msgText
@@ -149,7 +83,7 @@ public abstract class ControllerSupport implements BaseController
 		
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.���÷���
+		//2.调用方法
 		Object ins= method.invoke(services);
 		if(ins!=null)
 		{
@@ -163,24 +97,24 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * ͨ������ִ�и��·���
+	 * 通锟斤拷锟斤拷锟斤拷执锟叫革拷锟铰凤拷锟斤拷
 	 * @param methodName
 	 * @return
 	 * @throws Exception
 	 */
 	private boolean executeUpdateMethod(String methodName)throws Exception
 	{
-		//1.��ȡ��Ҫ���õķ�������
+		//1.锟斤拷取锟斤拷要锟斤拷锟矫的凤拷锟斤拷锟斤拷锟斤拷
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.���÷���
+		//2.锟斤拷锟矫凤拷锟斤拷
 		return  (boolean)method.invoke(services);
 	}
 	
 
 	
 	/**
-	 * ��ȡ��һʵ��,�Ƿ���ֵ�����ݿ�
+	 * 获取单一实例,是否有值在数据库
 	 * @author 33
 	 * @param methodName
 	 * @throws Exception
@@ -190,7 +124,7 @@ public abstract class ControllerSupport implements BaseController
 		
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.���÷���
+		//2.调用方法
 		Object ins= method.invoke(services);
 		if(ins!=null)
 		{
@@ -203,9 +137,9 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * ������Ϊ���ܿ���
+	 * 锟斤拷锟斤拷锟斤拷为锟斤拷锟杰匡拷锟斤拷
 	 * <
-	 *   ����Ϣ��ʾ
+	 *   锟斤拷锟斤拷息锟斤拷示
 	 * >
 	 * @param utype
 	 * @param msgText
@@ -213,7 +147,7 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void update(String methodName,String msgText)throws Exception
 	{
-		String msg=this.executeUpdateMethod(methodName)?"�ɹ�!":"ʧ��!";
+		String msg=this.executeUpdateMethod(methodName)?"锟缴癸拷!":"失锟斤拷!";
 		this.saveAttribute("msg", msgText+msg);
 	}
 	
@@ -226,19 +160,19 @@ public abstract class ControllerSupport implements BaseController
 	{
 		if(flag)
 		{
-		String msg=this.executeUpdateMethod(methodName)?"�ɹ�!":"ʧ��!";
+		String msg=this.executeUpdateMethod(methodName)?"成功!":"失败!";
 		this.saveAttribute("msg", msgText+msg);
 		}
 		else
 		{
-		String msg = "�������ľ�����";
+		String msg = "输入错误的旧密码";
 		this.saveAttribute("msg", msg);
 		}
 	}
 	
 
 	/**
-	 * ���л���͵ĸ�����Ϊ
+	 * 带有活动类型的更新行为
 	 * @param utype
 	 * @param typeText
 	 * @param msgText
@@ -247,12 +181,12 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final boolean updateForEvent(String methodName,String typeText,String key)throws Exception
 	{
-		String msg=typeText+"ʧ��!";
+		String msg=typeText+"失败!";
     	if(this.executeUpdateMethod(methodName))
     	{
-    		msg=typeText+"�ɹ�!";
+    		msg=typeText+"成功!";
     	}
-    	//Servlet��ҳ���������
+    	//Servlet向页面输出数据
     	this.saveAttribute("msg", msg);
     	Boolean flag;
     	if(this.dto.get(key).equals("1"))
@@ -269,7 +203,7 @@ public abstract class ControllerSupport implements BaseController
 
 	
 	/**
-	 * ���б�ŵ���Ϣ��ʾ�ĸ�����Ϊ
+	 * 锟斤拷锟叫憋拷诺锟斤拷锟较拷锟绞撅拷母锟斤拷锟斤拷锟轿�
 	 * @param utype
 	 * @param typeText
 	 * @param msgText
@@ -278,12 +212,12 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void update(String methodName,String typeText,String msgText,String key)throws Exception
 	{
-		String msg=typeText+"ʧ��!";
+		String msg=typeText+"失锟斤拷!";
     	if(this.executeUpdateMethod(methodName))
     	{
     		msg=msgText+"[ <msg> "+this.dto.get(key)+" </msg> ]";
     	}
-    	//Servlet��ҳ���������
+    	//Servlet锟斤拷页锟斤拷锟斤拷锟斤拷锟斤拷锟�
     	this.saveAttribute("msg", msg);
 
 	}
@@ -291,7 +225,7 @@ public abstract class ControllerSupport implements BaseController
 	
 	
 	/**
-	 * ɾ��������ݼ���
+	 * 删锟斤拷锟斤拷锟斤拷锟斤拷菁锟斤拷锟�
 	 * @throws Exception
 	 */
 	protected final void savePageDataForDelete()throws Exception
@@ -307,8 +241,8 @@ public abstract class ControllerSupport implements BaseController
 	
 	/**
 	 * @author:gangan
-	 * ���ݷ�������ȡ����ʵ��
-	 * ��дԭ��ϣ��ͨ�����ݵķ�����������
+	 * 根据方法名获取批量实例
+	 * 编写原因：希望通过传递的方法名来调用
 	 * @param methodName
 	 * @param msgText
 	 * @throws Exception
@@ -318,12 +252,12 @@ public abstract class ControllerSupport implements BaseController
 		
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.���÷���
+		//2.调用方法
 		List<Map<String,String>> rows= (List<Map<String, String>>) method.invoke(services);
 		if(rows.size()>0)
 		{
 			this.saveAttribute(attributeName,  rows);
-			//System.out.println("getInstanceList��"+rows);
+			//System.out.println("getInstanceList："+rows);
 		}
 		else
 		{
@@ -334,8 +268,8 @@ public abstract class ControllerSupport implements BaseController
 	
 	/**
 	 * @author gangan
-	 * ��ȡһЩ����Ҫ��ʾ��ҳ�����Ϣ��
-	 * �����ж���Ϣ�������̿���
+	 * 获取一些不需要显示在页面的信息：
+	 * 例如判断信息用于流程控制
 	 * @param methodName
 	 * @return
 	 */
@@ -343,20 +277,20 @@ public abstract class ControllerSupport implements BaseController
 	{
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.���÷���
+		//2.调用方法
 		Map<String,String>info=(Map<String, String>)method.invoke(services); 
 		return info;
 	}
 	
 	/*****************************************
-	 * 	        ����������
+	 * 	        锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 	 *****************************************/
 	private Map<String,Object> dto=null;
     @Override
     public final void setMapDto(Map<String, Object> dto) 
     {
         this.dto=dto;	
-        //ͬ��ΪServices����DTO
+        //同锟斤拷为Services锟斤拷锟斤拷DTO
         this.services.setMapDto(dto);
         
     }
@@ -368,7 +302,7 @@ public abstract class ControllerSupport implements BaseController
 
     
 	/*****************************************
-	 * 	        ���������
+	 * 	        锟斤拷锟斤拷锟斤拷锟斤拷锟�
 	 *****************************************/
     private Map<String,Object> attribute=new HashMap<>();
     protected final void  saveAttribute(String key,Object value)

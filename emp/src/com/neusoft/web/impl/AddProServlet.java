@@ -15,6 +15,10 @@ import com.neusoft.system.tools.Tools;
 
 import basic.FileUtil;
 
+/**
+ * 上传作品
+ * @author 韩金利
+ */
 @WebServlet("/addPro")
 public class AddProServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

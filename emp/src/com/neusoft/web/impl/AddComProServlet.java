@@ -1,5 +1,9 @@
 package com.neusoft.web.impl;
 
+/**
+ * 作品评论
+ * @author 韩金利
+ */
 public class AddComProServlet extends ProControllerSupport 
 {
 	@Override
