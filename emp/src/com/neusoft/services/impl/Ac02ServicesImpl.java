@@ -10,6 +10,18 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac02ServicesImpl extends JdbcServicesSupport 
 {	
+	
+	/**
+     * 珊珊头像
+     * @return
+     * @throws Exception
+     */
+    public Map<String,String> findByIdForPhoto()throws Exception
+	{
+		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
+		return this.queryForMap(sql,this.get("aab101"));
+	}
+    
 	   //获取收藏夹图片
 	public String getImg()
 	{
@@ -44,6 +56,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	//执行查询
     	return this.queryForList(sql.toString());
     }
+    
     
     //查询某一作品详情
     public Map<String,String> findById()throws Exception

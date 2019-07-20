@@ -96,17 +96,18 @@
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#">菜谱</a></span>
+        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
         		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
-        		<span class="bqshoucang"><a href="#">收藏</a></span>
-        		<span class="bqliuyanban"><a href="#">点赞</a></span>
+        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
+        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
         	</div>
         
+        <c:if test="${sessionScope.aab101Self!=param.aab101 }">
         	<div class="kh40">
         	<button type="button" onclick="addRecipe();" class="guanzhu3">
             <i class="layui-icon layui-icon-add-1"></i>创建菜谱</button>	
         	</div>
-        	
+        	</c:if>
         	<div class="layui-row layui-col-space25">
 
 <c:if test="${rows!=null }">

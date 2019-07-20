@@ -62,11 +62,7 @@
 					</div>
         				
         		</div>
-        		<c:if test="${sessionScope.aab101Self!=param.aab101 }">
-        		<div class="fr">
-					<a href="#" onclick="onSub('${param.aab101}');"><div class="guanzhu2">关注</div></a>
-        		</div>
-        		</c:if>
+        		
         		
         	</div>
         	
@@ -76,10 +72,10 @@
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="bqcaipu"><a href="#"  onclick="getRecipe('${param.aab101}')">菜谱</a></span>
-        		<span class="teshu bqzuopin"><a href="#">作品</a></span>
-        		<span class="bqshoucang"><a href="#">收藏</a></span>
-        		<span class="bqliuyanban"><a href="#">点赞</a></span>
+        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
+        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
+        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
         	</div>
 
         	<div class="kh20"></div>

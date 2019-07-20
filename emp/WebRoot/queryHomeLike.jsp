@@ -11,112 +11,43 @@
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">        
 </head>
 <body>
-	<div class="header">
-		<div class="conwidth">
-			<h1 class="fl"><a href="">美<span>拾</span></a></h1>
-			<div class="search fl" id="search-box">
-				<form action="#" method="get" target="_blank" >
-					<input type="text" placeholder="搜索菜谱、食材"
-						id="sreach-input" class="search-text fl"/>
-					<input type="button" value="搜菜谱" class="search-btn fl"/>
-				</form>
-			</div>
-			<div class="nav fr">
-			<ul>
-	                  <li><a href="">首页</a></li>
-	                  <li class="menu-class"><a href="">菜谱分类</a>
-	                      <div class="topbar-menu">
-	                          <ul class="plain">
-	                          <li class='topbar-menu-head'>常用主题</li>
-	                          <li><a href="menu_class.html" >家常菜</a></li>
-	                          <li><a href="menu_class.html" >快手菜</a></li>
-	                          <li><a href="menu_class.html" >下饭菜</a></li>
-	                          <li><a href="menu_class.html" >早餐</a></li>
-	                          <li><a href="menu_class.html" >减肥</a></li>
-	                          <li><a href="menu_class.html" >汤羹</a></li>
-	                          <li><a href="menu_class.html" >烘焙</a></li>
-	                          <li><a href="menu_class.html" >小吃</a></li>
-	                          </ul>
-	                          <ul class="plain">
-	                          <li class='topbar-menu-head'>常见食材</li>
-	                          <li><a href="menu_class.html" >猪肉</a></li>
-	                          <li><a href="menu_class.html" >鸡肉</a></li>
-	                          <li><a href="menu_class.html" >牛肉</a></li>
-	                          <li><a href="menu_class.html" >鱼</a></li>
-	                          <li><a href="menu_class.html" >鸡蛋</a></li>
-	                          <li><a href="menu_class.html" >土豆</a></li>
-	                          <li><a href="menu_class.html" >茄子</a></li>
-	                          <li><a href="menu_class.html" >豆腐</a></li>
-	                          </ul>
-	                          <ul class="plain">
-	                          <li class='topbar-menu-head'>时令食材</li>
-	                          <li><a href="menu_class.html" >春笋</a></li>
-	                          <li><a href="menu_class.html" >笋</a></li>
-	                          <li><a href="menu_class.html" >豌豆</a></li>
-	                          <li><a href="menu_class.html" >草莓</a></li>
-	                          <li><a href="menu_class.html" >金桔</a></li>
-	                          <li><a href="menu_class.html" >菠菜</a></li>
-	                          <li><a href="menu_class.html" >冬笋</a></li>
-	                          <li><a href="menu_class.html" >韭菜</a></li>
-	                          </ul>
-	                          <div class="span">
-	                          <span><a href="">查看全部分类</a></span>
-	                          </div>
-	                      </div>
-	                  </li>
-	                  <li><a href="">菜单</a></li>
-	                 <li><a href="<%=path%>/queryPro.html">作品动态</a></li>
-	               
-	             </ul>
-		<div class="dengluzhuce fr">
-			<a href="login.html">登录</a>
-			<a href="register .html">注册</a>
-		</div>
-		</div>
-	</div>
-	         <div class="suggest" id="sreach-suggest"><!---搜索智能提示suggest-->
-	             <ul>
-	                 <li>搜"  "相关用户</li>
-	                 <li>搜"  "相关菜单</li>
-	             </ul>
-	         </div>
-	     </div>
-	<div class="konghang"></div>   
-        <div class="conwidth">                
+	  <form id="myform" method="post">
+       <c:if test="${ins!=null }">
+        <div class="conwidth">
+        
+        
         	<div class="jianjie">
-        		<img src="img/userkitchen/cffd00b5681c11e68b73f960d60360bd.jpg" class="img"/>
+        		<img src="${ins.aab106 }" class="img"/>
         		<div class="fl">
-        				<h2>一哈有啊的厨房</h2>
+        				<h2>${ins.aab102 }的厨房</h2>
         			   <!-- <span><i class="icon1"></i>2016-3-23 加入</span><br />-->
         				<div class="guanzhuderen">
 						<div class="x y">
-							<span>关注的人</span><br><a href="#"><span>256</span></a>
+							<span>关注的人</span><br><a href="#" onclick="getSub('${param.aab101}');"><span>${ins.aab107 }</span></a>
 						</div>
 						<div class="x">
-							<span>被关注</span><br><a href="#"><span>775</span></a>
+							<span>被关注</span><br><a href="#" onclick="getSubByMe('${param.aab101}');"><span>${ins.aab108 }</span></a>
 						</div>
 					</div>
         				
         		</div>
-        		<div class="fr">
-					<a href="#"><div class="guanzhu2">关注</div></a>
-        		</div>
+        		
         	</div>
         	
         	<div class="kh20"></div>
 		</div>
+		</c:if>
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#">菜谱</a></span>
-        		<span class="bqzuopin"><a href="#">作品</a></span>
-        		<span class="bqshoucang"><a href="#">收藏</a></span>
+        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
+        		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
         		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
-        		<span class="bqcaidan"><a href="#">活动作品</a></span>
         	</div>
 
         	<div class="kh20"></div>
-          <form id="myform" method="post">
+         
         	<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 					<legend>菜谱</legend>
@@ -177,8 +108,9 @@
 				         </div>
 				      </c:forEach>
 			  </div>             
-          </form>
+         
        </div>
+        </form>
 		<script type="text/javascript">
 	      function shancaipu(vaac101)
 	      {
@@ -199,5 +131,6 @@
 	    	 vform.submit();
 	      }
 	   </script>
+	   
 	</body>
 </html>

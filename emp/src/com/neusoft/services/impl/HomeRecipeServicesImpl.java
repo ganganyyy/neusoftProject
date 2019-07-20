@@ -30,7 +30,7 @@ public class HomeRecipeServicesImpl extends JdbcServicesSupport
 		//return this.queryForList(sql.toString(),1);
 	}
 
-	 //判断是否关注 value不为空即已关注
+	 //判断是否关注 
 	private Map<String, String> ifSub()throws Exception
 	{
 		String sql="select aab201 from ab02 where aab202=? and aab203=? ";

@@ -38,6 +38,42 @@ function chazhuanlan(vaac301)
 	vform.action="<%=path%>/browsefindByIdarticle.html?aac201="+vaac301; 
 	vform.submit();
 }
+function getWork(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/queryHomeWork.html?aab101="+vaab101;
+	 vform.submit();
+}
+function getSub(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/queryAllSubscribe.html?aab101="+vaab101;
+	 vform.submit();
+}
+function getSubByMe(vaab101)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
+	 vform.submit();
+}
+function onSub(vaab101)
+{
+	$.ajax({
+		url:'/emp/addSubscribe.do',
+		type:'post',
+		data:{
+			"aab101":vaab101
+		},
+		dataType:'json',
+		success:function(data){
+			 window.location.href="queryHomeRecipe.html?aab101="+vaab101;
+		},
+		error:function(data){
+			
+			alert("提示：网络故障！");
+		}
+	});	
+}
 </script>
 </head>
 <body>
@@ -140,11 +176,10 @@ function chazhuanlan(vaac301)
 		
 		 <div class="conwidth survey">
         	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#">菜谱</a></span>
-        		<span class="bqzuopin"><a href="#">作品</a></span>
+        		<span class="teshu bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
         		<span class="bqshoucang"><a href="<%=path%>/collect.html">收藏</a></span>
         		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">点赞</a></span>
-        		<span class="bqcaidan"><a href="#">活动作品</a></span>
         	</div>
 
         	<div class="kh20"></div>
