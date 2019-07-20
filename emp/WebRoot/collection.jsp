@@ -74,8 +74,6 @@ function create()
 	<body>
 
         <form id="myform" method="post">
-        <div class="layui-container" style="margin-top:50px;margin-left:15%; width:70%">
-        </div>
         <!--   为头部留下控行       -->
         <div class="konghang"></div>
         <c:if test="${ins!=null }">
