@@ -214,6 +214,27 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 	}
 	
 	
+	public List<Map<String,String>>queryMenuForType()throws Exception
+	{
+	
+		System.out.println(this.get("aac107"));
+		StringBuilder sql=new StringBuilder()
+				.append("select aac101,aac102,aac105,aac107,aac108,aab101,aab102,fvalue,s.fcode")
+				.append("  from ac01 u left join ab01 v on u.aac106=v.aab101")
+				.append("  left join syscode s on u.aac107=s.fcode")
+				.append("  where  s.fname='aac107' and aac107=?");
+		return this.queryForList(sql.toString(), this.get("aac107"));
+		
+	}
+	
+	public Map<String,String>queryForType()throws Exception
+	{
+		String sql="select fvalue from syscode where fname='aac107' and fcode=?";
+		return this.queryForMap(sql,this.get("aac107"));
+				
+	}
+	
+	
 	/**
 	 * 将输入短语进行分词
 	 * @param input

@@ -11,6 +11,7 @@ public class QueryHomeRecipeServlet extends HomeRecipeControllerSupport
 	{
 		this.savePageInstance();
 		this.savePageData();
+		this.getInstance("ifSub", "ÊÇ·ñ¹Ø×¢¹ý", "sub");
 		return "queryHomeRecipe";
 	}
 
