@@ -176,7 +176,7 @@ public class PhotoUploadServlet extends HttpServlet{
        this.dto.put("aab101Self", aab101Self);
         this.addPhoto();
 
-        request.getRequestDispatcher("message.jsp").forward(request, response);
+        request.getRequestDispatcher("/QueryMessage.html?aab101="+aab101Self).forward(request, response);
      
        
         
