@@ -80,7 +80,6 @@
         		<span class="teshu bqzuopin"><a href="#">作品</a></span>
         		<span class="bqshoucang"><a href="#">收藏</a></span>
         		<span class="bqliuyanban"><a href="#">点赞</a></span>
-        		<span class="bqcaidan"><a href="#">活动作品</a></span>
         	</div>
 
         	<div class="kh20"></div>
@@ -103,11 +102,6 @@
               <strong>${ins.aac102 }</strong>
             </h3>
           </a>
-          <!-- <button class="layui-btn layui-btn-sm caller-fr" onclick="onDel('${ins.aab101}')">
-            <i class="layui-icon layui-icon-close"></i>
-                         删除食谱
-          </button>
-           -->
 </div>
 </div>
 </div>

@@ -26,9 +26,18 @@ public class HomeRecipeServicesImpl extends JdbcServicesSupport
 	public Map<String,String> findById()throws Exception
 	{
 		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
-		
 		return this.queryForMap(sql,this.get("aab101"));
 		//return this.queryForList(sql.toString(),1);
 	}
 
+	 //判断是否关注 value不为空即已关注
+	private Map<String, String> ifSub()throws Exception
+	{
+		String sql="select aab201 from ab02 where aab202=? and aab203=? ";
+		Object args[]={
+				this.get("aab101Self"),
+				this.get("aab101")
+				};
+		return this.queryForMap(sql, args);
+	}
 }
