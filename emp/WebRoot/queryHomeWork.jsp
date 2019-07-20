@@ -49,7 +49,12 @@
         	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
         	 vform.submit();
         }
-        
+        function chazuopin(vaac201)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/findByIdPro.html?aac201="+vaac201;
+	    	 vform.submit();
+	      }
         </script>
 	</head>
 	<body>
@@ -102,11 +107,11 @@
 <div class="layadmin-contact-box">
 <div class="layui-col-md12">
 <div class="layadmin-text-center">
-      <img src="${ins.aac204 }" style="border-radius:0%;margin-bottom:15px;">
+      <img src="${ins.aac204 }" onclick="chazuopin('${ins.aac201}')" style="border-radius:0%;margin-bottom:15px;">
 </div>
 </div>
 <div class="layui-col-md12">
-          <a href="javascript:;">
+          <a href="#" onclick="chazuopin('${ins.aac201}')">
             <h3 style="color:#d3c5a1;text-align:center;">
               <strong>${ins.aac102 }</strong>
             </h3>

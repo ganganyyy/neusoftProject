@@ -1,3 +1,4 @@
+//author:¶­ÊçæÂ
 package com.neusoft.web.impl;
 
 import java.io.IOException;
@@ -55,7 +56,7 @@ public class UpreciServlet extends HttpServlet {
             String Msg=e.getMessage();
             request.setAttribute("errorMsg",Msg);
         }
-        request.getRequestDispatcher("/test.jsp").forward(request,response);
+        request.getRequestDispatcher("/mainPage.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

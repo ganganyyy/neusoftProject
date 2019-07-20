@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
 		<link rel="stylesheet" href="define/css/stylegan.css" media="all">
         <link rel="stylesheet" href="css/test.css">
-        <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
         function getRecipe(vaab101)
         {
@@ -68,6 +67,13 @@
         		}
         	});	
         }
+        function toMenuDetail(vaac101)
+        {
+        	var form=document.getElementById("myform");
+        	form.action="<%=path%>/details.html?aac101="+vaac101;
+        	form.submit();
+        }
+        
         </script>
 	
 	</head>
@@ -136,7 +142,7 @@
 <div class="layadmin-contact-box">
 <div class="layui-col-md12">
 <div class="layadmin-text-center">
-      <img src="${ins.aac108 }" style="border-radius:0px;margin-bottom:15px;">
+      <img src="${ins.aac108 }" onclick="toMenuDetail('${ins.aac101}')" style="border-radius:0px;margin-bottom:15px;">
 </div>
 </div>
 <div class="layui-col-md12">

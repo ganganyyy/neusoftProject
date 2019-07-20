@@ -13,7 +13,7 @@ public class HomeWorkServicesImpl extends JdbcServicesSupport
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select a.aac102,c.aac204,b.aab102,b.aab106")
+				.append("select a.aac102,c.aac204,c.aac201,b.aab102,b.aab106")
 				.append("  from (ac02 c join ac01 a on c.aac207=a.aac101)")
 				.append("              join ab01 b on a.aac106=b.aab101")
 				.append(" where c.aab101=?")

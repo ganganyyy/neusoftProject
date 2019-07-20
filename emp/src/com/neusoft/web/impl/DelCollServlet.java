@@ -1,3 +1,4 @@
+//author:¶­ÊçæÂ
 package com.neusoft.web.impl;
 
 public class DelCollServlet extends ColControllerSupport 
@@ -7,6 +8,7 @@ public class DelCollServlet extends ColControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("deleteColl", "É¾³ý");
+		this.savePageInstance();
 		this.getInstanceList("queryCollections", "ÊÕ²Ø¼Ð", "rows");
 		return "collection";
 	}

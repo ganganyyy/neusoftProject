@@ -23,7 +23,7 @@ public class addarticleservicesimpl extends JdbcServicesSupport1
 		String sql =" select aab105 from ab01 where aab101=? ";
 		Object args[]=
 			{
-					3//用户流水号		
+				this.get("aab101Self")//用户流水号		
 			};
 		return  this.queryForMap(sql, args);
 		
@@ -41,7 +41,7 @@ public class addarticleservicesimpl extends JdbcServicesSupport1
 		 //参数
 		Object args[]=
 			{
-					3,//此处应动态获取，暂用固定值
+					this.get("aab101Self"),//此处应动态获取，暂用固定值
 					"01",//
 					this.get("aag104"),
 					this.get("aag105"),
