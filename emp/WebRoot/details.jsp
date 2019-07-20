@@ -72,6 +72,7 @@ function create(vaac101)
 {
 	 var vform = document.getElementById("myform");
 	 vform.action="<%=path%>/creAndColl.html?aac101="+vaac101;
+	 alert(vform.action);
 	 vform.submit();
 }
 </script>
@@ -82,7 +83,7 @@ function create(vaac101)
 	<div class="konghang"></div>
 	<!--因为头部固定而需要设置高度空行把内容撑下去-->
 
-	<form id="myform" action="<%=path%>/details.html" method="post">
+	<form id="myform" method="post">
 		<div class="conwidth content clearfix">
 			<h1>${ins.fvalue }&nbsp;&nbsp;${ins.aac102 }</h1>
 			<div class="leftcon">

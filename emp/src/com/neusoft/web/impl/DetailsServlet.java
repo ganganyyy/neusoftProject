@@ -6,6 +6,7 @@ public class DetailsServlet extends EmpdsyControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
+		System.out.println("9999999999");
 		this.savePageInstance();
 		this.getInstanceList("queryCollections", " ’≤ÿº–", "rows");
 		this.getInstanceList("querySteps", "≤Ω÷Ë", "rows1");//≤Ω÷Ë

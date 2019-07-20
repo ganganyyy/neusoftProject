@@ -8,28 +8,41 @@ import java.util.Random;
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
 /**
- * ×÷Æ·Ïà¹Ø²Ù×÷
- * @author º«½ğÀû
+ * é”Ÿæ–¤æ‹·å“é”Ÿæ–¤æ‹·å¤­é”Ÿæ–¤æ‹·é”Ÿï¿½
+ * @author é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
  */
-public class Ac02ServicesImpl extends JdbcServicesSupport 
-{	
-	//²éÑ¯ËùÓĞ×÷Æ·
+public class Ac02ServicesImpl extends JdbcServicesSupport
+{
+
+	/**
+     * çŠçŠå¤´é”Ÿæ–¤æ‹·
+     * @return
+     * @throws Exception
+     */
+    public Map<String,String> findByIdForPhoto()throws Exception
+	{
+		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
+		return this.queryForMap(sql,this.get("aab101"));
+	}
+
+	//é”Ÿæ–¤æ‹·è¯¢é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å“
     public List<Map<String,String>> query()throws Exception
     {
-    	//1.±àĞ´SQLÓï¾ä
+    	//1.é”Ÿæ–¤æ‹·å†™SQLé”Ÿæ–¤æ‹·é”Ÿï¿½
     	StringBuilder sql=new StringBuilder()
     			.append("select aac201,aab101,aac202,aac203,aac204,")
     			.append("       aac207,aac205,aac206 ")
     			.append("  from ac02 ")
     			;
-    	//Ö´ĞĞ²éÑ¯
+    	//æ‰§é”Ÿå«è¯§æ‹·è¯¢
     	return this.queryForList(sql.toString());
     }
-    
-    //²éÑ¯Ä³Ò»×÷Æ·ÏêÇé
+
+
+    //é”Ÿæ–¤æ‹·è¯¢æŸä¸€é”Ÿæ–¤æ‹·å“é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     public Map<String,String> findById()throws Exception
-    {    	
-    	//1.±àĞ´SQLÓï¾ä
+    {
+    	//1.é”Ÿæ–¤æ‹·å†™SQLé”Ÿæ–¤æ‹·é”Ÿï¿½
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac201,a.aab101,a.aac202,a.aac203,a.aac204,")
     			.append("       a.aac207,c.aac102,b.aab101,b.aab102,b.aab106")
@@ -38,7 +51,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aab101=b.aab101")
     			.append("   and a.aac201=?")
     			;
-    	//Ö´ĞĞ²éÑ¯
+    	//æ‰§é”Ÿå«è¯§æ‹·è¯¢
     	Map<String,String> abc = this.queryForMap(sql.toString(), this.get("aac201"));
     	String likeNumber=likeNumber();
     	abc.put("aad101", likeNumber);
@@ -46,7 +59,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	abc.put("aad201", collectionNumber);
     	return abc;
     }
-    //²éÑ¯ÊÕ²Ø¼Ğ
+    //é”Ÿæ–¤æ‹·è¯¢é”Ÿç§¸è—ç¡·æ‹·
 	public List<Map<String,String>> queryCollections()throws Exception
 	{
 		 StringBuilder sql=new StringBuilder()
@@ -57,31 +70,31 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	     return this.queryForList(sql.toString(), this.get("aab101Self"));
 	 }
 
-    
+
     /*
-     * ÉÏ´«×÷Æ·insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
-     * values('1',NOW(),'°¡°¡°¡°¡°¡°¡°¡°¡°¡','img/san.jpg','1', '0','0')
+     * é”Ÿè¾ƒè¾¾æ‹·é”Ÿæ–¤æ‹·å“insert into ac02(aab101,aac202,aac203,aac204,aac207,aac205,aac206)
+     * values('1',NOW(),'é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·','img/san.jpg','1', '0','0')
      */
     public boolean addPro(Map<String,Object> dto)throws Exception
     {
-    	//1.±àĞ´SQLÓï¾ä
+    	//1.é”Ÿæ–¤æ‹·å†™SQLé”Ÿæ–¤æ‹·é”Ÿï¿½
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ac02(aab101,aac202,aac203,aac204,aac207,")
     			.append("                 aac205,aac206)")
     			.append("          values(?,NOW(),?,?,?,")
     			.append("                 '0','0')")
     			;
-    	//2.±àĞ´²ÎÊıÊı×é
+    	//2.é”Ÿæ–¤æ‹·å†™é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     	Object args[]={
     			this.get("aab101Self"),
     			dto.get("aac203"),
     			dto.get("aac204"),
     			dto.get("aac207")
     	};
-        return this.executeUpdate(sql.toString(), args)>0;	
+        return this.executeUpdate(sql.toString(), args)>0;
     }
-        
-    //ÅĞ¶ÏÊÇ·ñÊÕ²Ø
+
+    //é”Ÿå«è®¹æ‹·é”Ÿè§’å‡¤æ‹·é”Ÿç§¸è¯§æ‹·
     private String collectionNumber()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -94,33 +107,33 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	Object args[]={this.get("aac201"),this.get("aab101Self")};
     	return check(sql.toString(),args);
     }
-    //ÅĞ¶ÏÊÇ·ñµãÔŞ
+    //é”Ÿå«è®¹æ‹·é”Ÿè§’å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½
     private String likeNumber()throws Exception
     {
-    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";    	
+    	String sql="select aad101 from ad01 where aad103='02' and aad104=? and aab101=? ";
     	Object args[]={this.get("aac201"),this.get("aab101Self")};
     	return check(sql,args);
     }
-    //»ñµÃ×÷Æ·µÄÓÃ»§Á÷Ë®ºÅ
+    //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡å‡¤æ‹·é”Ÿæ–¤æ‹·æ²¡é”Ÿæ–¤æ‹·é”Ÿå‰¿î‡†æ‹·é”Ÿï¿½
     private String authorNumber()throws Exception
     {
-    	String sql="select aab101 from ac02 where aac201=? ";    	
+    	String sql="select aab101 from ac02 where aac201=? ";
     	Object args[]={this.get("aac201")};
     	return check(sql,args);
-    }    
-    //»ñµÃµ±Ç°ÓÃ»§µÄÓÃ»§Ãû
+    }
+    //é”Ÿæ–¤æ‹·ç«é”Ÿè§’å¸®æ‹·æ²¡é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ²¡é”Ÿæ–¤æ‹·é”Ÿï¿½
     private String userName()throws Exception
-    {	
-    	String sql="select aab102 from ab01 where aab101=? ";    	
+    {
+    	String sql="select aab102 from ab01 where aab101=? ";
     	Object args[]={this.get("aab101Self")};
     	return check(sql,args);
     }
-    
+
     /**
-     * Ö´ĞĞ²éÑ¯µ¥ÖµÓï¾ä
+     * æ‰§é”Ÿå«è¯§æ‹·è¯¢é”Ÿæ–¤æ‹·å€¼é”Ÿæ–¤æ‹·é”Ÿï¿½
      * @param sql
      * @param args
-     * @return ²éÑ¯µÃµ½µÄÎ¨Ò»µÄÖµ
+     * @return é”Ÿæ–¤æ‹·è¯¢é”ŸçŸ«ç¢‰æ‹·é”Ÿæ–¤æ‹·å”¯ä¸€é”Ÿæ–¤æ‹·å€¼
      * @throws Exception
      */
     private String check(String sql,Object args[])throws Exception
@@ -134,29 +147,29 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
                 vo.getKey();
                 value=vo.getValue();
             }
-        }    	
+        }
     	return value;
     }
-    
+
     private Object[] xiaoxi(String msg)throws Exception
     {
-    	//µ±Ç°×÷Æ·µÄÓÃ»§ºÅ
+    	//é”Ÿæ–¤æ‹·å‰é”Ÿæ–¤æ‹·å“é”Ÿæ–¤æ‹·é”ŸçŸ«ä¼™æ‹·é”Ÿæ–¤æ‹·
     	String authorNumber = authorNumber();
-    	//µ±Ç°ÓÃ»§µÄÃû×Ö
+    	//é”Ÿæ–¤æ‹·å‰é”ŸçŸ«ä¼™æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     	String userName=userName();
     	String text=userName+msg;
     	Object args[]={authorNumber,text};
     	return args;
     }
-    
+
     /*
-     * µãÔŞ×÷Æ·
-     * 1¡¢ÏòµãÔŞ±íÀïÔö¼ÓµãÔŞÊı¾İ
-     * 2¡¢¸üĞÂ×÷Æ·±íÀïµÄµãÔŞÊı
-     * 3¡¢ÏòÏûÏ¢ÁĞ±íÌí¼ÓÊı¾İ
+     * é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å“
+     * 1é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·è–‡é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ‹¥é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½
+     * 2é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å“é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ç‰¡é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½
+     * 3é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯é”Ÿå«æ†‹æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
      */
     private boolean giveLike()throws Exception
-    {   	
+    {
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad01(aab101,aad102,aad103,aad104)")
     			.append("          values(?,NOW(),'02',?)")
@@ -166,7 +179,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac206=a.aac206+1")
@@ -174,25 +187,25 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	StringBuilder sql3=new StringBuilder()
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args3[]=xiaoxi("¸øÄãµÄ×÷Æ·µãÁËÔŞ");
-    	this.apppendSql(sql3.toString(), args3);  
-    	
+    	Object args3[]=xiaoxi("é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½");
+    	this.apppendSql(sql3.toString(), args3);
+
     	return this.executeTransaction();
     }
-    
-    //È¡Ïû×÷Æ·µãÔŞ
+
+    //å–é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å“é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     private boolean cancleProLike()throws Exception
     {
     	String sql1="delete from ad01 where aad103='02' and aab101=? and aad104=? ";
-    	
+
     	Object args1[]={this.get("aab101Self"),this.get("aac201")};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac206=a.aac206-1")
@@ -200,37 +213,37 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	    	
+
     	return this.executeTransaction();
     }
-    
-    //ÆÀÂÛ×÷Æ·
+
+    //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å“
     private boolean addComment()throws Exception
     {
-    	//1.±àĞ´SQLÓï¾ä
+    	//1.é”Ÿæ–¤æ‹·å†™SQLé”Ÿæ–¤æ‹·é”Ÿï¿½
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad04(aad402,aad403,aad404,aad405)")
     			.append("          values('02',?,?,?)")
     			;
-    	//2.±àĞ´²ÎÊıÊı×é
+    	//2.é”Ÿæ–¤æ‹·å†™é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     	Object args1[]={
     			this.get("aac201"),
     			this.get("aad404"),
-    			this.get("aab101Self")   			
+    			this.get("aab101Self")
     	};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args2[]=xiaoxi("ÆÀÂÛÁËÄãµÄ×÷Æ·");
-    	this.apppendSql(sql2.toString(), args2); 
-    	
+    	Object args2[]=xiaoxi("é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡ï¿½");
+    	this.apppendSql(sql2.toString(), args2);
+
     	return this.executeTransaction();
-    } 
-    
-    //Õ¹Ê¾ÆÀÂÛ
+    }
+
+    //å±•ç¤ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     public List<Map<String,String>> queryComment()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -241,12 +254,12 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad403=? ")
     			;
     	Object args[]={
-    			this.get("aac201")   			  			
+    			this.get("aac201")
     	};
     	return this.queryForList(sql.toString(),args);
     }
-    
-    //Õ¹Ê¾µãÔŞ
+
+    //å±•ç¤ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
     public List<Map<String,String>> queryLikes()throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -257,12 +270,12 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("   and a.aad104=? ")
     			;
     	Object args[]={
-    			this.get("aac201")   			  			
+    			this.get("aac201")
     	};
     	return this.queryForList(sql.toString(),args);
     }
-    
-    //ÊÕ²Ø×÷Æ·
+
+    //é”Ÿç§¸è¯§æ‹·é”Ÿæ–¤æ‹·å“
     private boolean collection()throws Exception
     {
     	StringBuilder sql1=new StringBuilder()
@@ -274,7 +287,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			this.get("aac201")
     	};
     	this.apppendSql(sql1.toString(), args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205+1")
@@ -282,19 +295,20 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	StringBuilder sql3=new StringBuilder()
     			.append("insert into ab03(aab101,aab302,aab303,aab304)")
     			.append("          values(?,?,'00',NOW())")
     			;
-    	Object args3[]=xiaoxi("ÊÕ²ØÁËÄãµÄ×÷Æ·");
-    	this.apppendSql(sql3.toString(), args3); 
-    	
+    	Object args3[]=xiaoxi("é”Ÿç§¸è¯§æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡ï¿½");
+    	this.apppendSql(sql3.toString(), args3);
+
     	return this.executeTransaction();
     }
-    
-	//»ñÈ¡ÊÕ²Ø¼ĞÍ¼Æ¬
-	private String getImg()
+
+
+	//é”Ÿæ–¤æ‹·å–é”Ÿç§¸è—ç¡·æ‹·å›¾ç‰‡
+	public String getImg()
 	{
 		Random ran = new Random();
 	    int i = ran.nextInt(5);
@@ -315,8 +329,8 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    }
 	}
 
-    //´´½¨²¢²åÈëÊÕ²Ø¼Ğ
-	private boolean createColl()throws Exception
+
+	public boolean createColl()throws Exception
 	{
 		 StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")
@@ -324,16 +338,16 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    			;
 		 Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
 		 this.apppendSql(sql.toString(), args);
-		  
+
 		 int aad301=Tools.getSequence("aad301");
-		  
+
 	     StringBuilder sql1=new StringBuilder()
 	    			.append("insert into ad02(aad301,aad202,aad203,aad204)")
 	    			.append("       values(?,NOW(),'02',?)")
 	    			;
 	     Object args1[]={aad301,this.get("aac201")};
 	     this.apppendSql(sql1.toString(), args1);
-	    	
+
 	     StringBuilder sql2=new StringBuilder()
 	    			.append("update ac02 a")
 	    			.append("   set a.aac205=a.aac205+1")
@@ -348,18 +362,17 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	 Object args3[]=xiaoxi("ÊÕ²ØÁËÄãµÄ×÷Æ·");
     	 this.apppendSql(sql3.toString(), args3); 
-		  
 	     return this.executeTransaction();
 	}
 
-    //È¡ÏûÊÕ²Ø
+    //å–é”Ÿæ–¤æ‹·é”Ÿç§¸è¯§æ‹·
     private boolean cancleCollection()throws Exception
-    {   	
+    {
     	String sql1="delete from ad02 where aad201=? ";
-    	   	
+
     	Object args1[]={this.get("aad201")};
     	this.apppendSql(sql1, args1);
-    	
+
     	StringBuilder sql2=new StringBuilder()
     			.append("update ac02 a")
     			.append("   set a.aac205=a.aac205-1")
@@ -367,18 +380,18 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			;
     	Object args2[]={this.get("aac201")};
     	this.apppendSql(sql2.toString(), args2);
-    	
+
     	return this.executeTransaction();
     }
-    
-    //É¾³ı×÷Æ·
+
+    //åˆ é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å“
     private boolean deleteById()throws Exception
     {
     	String sql="delete from ac02 where aac201=?";
     	return this.executeUpdate(sql, this.get("aac201"))>0;
     }
-    
-    //ĞŞ¸Ä×÷Æ·
+
+    //é”Ÿç«é©æ‹·é”Ÿæ–¤æ‹·å“
     public boolean modifyPro(Map<String,Object> dto)throws Exception
     {
     	StringBuilder sql=new StringBuilder()
@@ -393,6 +406,5 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	};
     	return this.executeUpdate(sql.toString(), args)>0;
     }
-    
 
 }

@@ -1,4 +1,4 @@
-<!-- author:º«½ðÀû -->
+<!-- author:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -10,96 +10,132 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
-		<link rel="stylesheet" href="./layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
-		<link href="./define/css/styles.css" rel="stylesheet">
-		<script type="text/javascript" src="./define/js/move-top.js"></script>
-		<script type="text/javascript" src="./define/js/easing.js"></script>
-		<script src="./define/js/jquery.min.js"></script>        
+		<script type="text/javascript">
+		function getRecipe(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/queryHomeRecipe.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+		function getWork(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/queryHomeWork.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getCol(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/collect.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getLike(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/myLikes.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getSub(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/queryAllSubscribe.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+        function getSubByMe(vaab101)
+        {
+        	 var vform = document.getElementById("myform");
+        	 vform.action="<%=path%>/querySubMe.html?aab101="+vaab101;
+        	 vform.submit();
+        }
+		</script>
 </head>
 <body>
-	<div class="konghang"></div>   
-        <div class="conwidth">                
+	  <form id="myform" method="post">
+	   <div class="layui-container" style="margin-top:50px;margin-left:15%; width:70%">
+        </div>
+       <c:if test="${ins!=null }">
+        <div class="conwidth">
+
+
         	<div class="jianjie">
-        		<img src="img/userkitchen/cffd00b5681c11e68b73f960d60360bd.jpg" class="img"/>
+        		<img src="${ins.aab106 }" class="img"/>
         		<div class="fl">
-        				<h2>Ò»¹þÓÐ°¡µÄ³ø·¿</h2>
-        			   <!-- <span><i class="icon1"></i>2016-3-23 ¼ÓÈë</span><br />-->
+        				<h2>${ins.aab102 }ï¿½Ä³ï¿½ï¿½ï¿½</h2>
+        			   <!-- <span><i class="icon1"></i>2016-3-23 ï¿½ï¿½ï¿½ï¿½</span><br />-->
         				<div class="guanzhuderen">
 						<div class="x y">
-							<span>¹Ø×¢µÄÈË</span><br><a href="#"><span>256</span></a>
+							<span>ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½</span><br><a href="#" onclick="getSub('${param.aab101}');"><span>${ins.aab107 }</span></a>
 						</div>
 						<div class="x">
-							<span>±»¹Ø×¢</span><br><a href="#"><span>775</span></a>
+							<span>ï¿½ï¿½ï¿½ï¿½×¢</span><br><a href="#" onclick="getSubByMe('${param.aab101}');"><span>${ins.aab108 }</span></a>
 						</div>
 					</div>
-        				
+
         		</div>
-        		<div class="fr">
-					<a href="#"><div class="guanzhu2">¹Ø×¢</div></a>
-        		</div>
-        	</div>
-        	
-        	<div class="kh20"></div>
-		</div>
-		
-		 <div class="conwidth survey">
-        	<div class="navigation">
-        		<span class="teshu bqcaipu"><a href="#">²ËÆ×</a></span>
-        		<span class="bqzuopin"><a href="#">×÷Æ·</a></span>
-        		<span class="bqshoucang"><a href="#">ÊÕ²Ø</a></span>
-        		<span class="bqliuyanban"><a href="<%=path%>/myLikes.html">µãÔÞ</a></span>
-        		<span class="bqcaidan"><a href="#">»î¶¯×÷Æ·</a></span>
+
         	</div>
 
         	<div class="kh20"></div>
-          <form id="myform" method="post">
+		</div>
+		</c:if>
+
+		 <div class="conwidth survey">
+        	<div class="navigation">
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">ï¿½ï¿½ï¿½ï¿½</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">ï¿½ï¿½Æ·</a></span>
+        		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">ï¿½Õ²ï¿½</a></span>
+        		<span class="teshu bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">ï¿½ï¿½ï¿½ï¿½</a></span>
+        	</div>
+
+        	<div class="kh20"></div>
+
         	<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>²ËÆ×</legend>
-				</fieldset>	
-			         <!-- ÏÔÊ¾Êµ¼Ê²éÑ¯µ½µÄÊý¾Ý -->
+					<legend>ï¿½ï¿½ï¿½ï¿½</legend>
+				</fieldset>
+			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${reci}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chacaipu('${ins.aac101}')">
-		            				<img src="${ins.aac108}" alt="²ËÆ×Í¼Æ¬" width="300px" height="240px"/>
+		            				<img src="${ins.aac108}" alt="ï¿½ï¿½ï¿½ï¿½Í¼Æ¬" width="300px" height="240px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
-		        			<div class="stars">		        			    
-		        				<a href="#" onclick="shancaipu('${ins.aac101}')">É¾³ý</a>
+		        			<div class="stars">
+		        				<a href="#" onclick="shancaipu('${ins.aac101}')">É¾ï¿½ï¿½</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
 			  </div>
-			  
+
 			<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>×÷Æ·</legend>
-				</fieldset>	
-			         <!-- ÏÔÊ¾Êµ¼Ê²éÑ¯µ½µÄÊý¾Ý -->
+					<legend>ï¿½ï¿½Æ·</legend>
+				</fieldset>
+			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${pro}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chazuopin('${ins.aac201}')">
-		            				<img src="${ins.aac204}" alt="×÷Æ·Í¼Æ¬" width="300px" height="240px"/>
+		            				<img src="${ins.aac204}" alt="ï¿½ï¿½Æ·Í¼Æ¬" width="300px" height="240px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
-		        			<div class="stars">		        			    
-		        				<a href="#" onclick="shanzuopin('${ins.aac201}')">É¾³ý</a>
+		        			<div class="stars">
+		        				<a href="#" onclick="shanzuopin('${ins.aac201}')">É¾ï¿½ï¿½</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
-			  </div>  
-			  
+			  </div>
+
 			<div class="userprod clearfix">
         		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-					<legend>×¨À¸</legend>
+					<legend>×¨ï¿½ï¿½</legend>
 				</fieldset>
-					
-			         <!-- ÏÔÊ¾Êµ¼Ê²éÑ¯µ½µÄÊý¾Ý -->
+
+			         <!-- ï¿½ï¿½Ê¾Êµï¿½Ê²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 				     <c:forEach items="${comp}" var="ins" varStatus="vs">
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
@@ -109,13 +145,14 @@
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac302}</p>
 		        			<div class="stars">
-		        				<a href="#" onclick="shanzhuanlan('${ins.aac301}')">É¾³ý</a>
+		        				<a href="#" onclick="shanzhuanlan('${ins.aac301}')">É¾ï¿½ï¿½</a>
 		        			</div>
 				         </div>
 				      </c:forEach>
-			  </div>             
-          </form>
+			  </div>
+
        </div>
+        </form>
 		<script type="text/javascript">
 	      function shancaipu(vaac101)
 	      {
@@ -136,5 +173,6 @@
 	    	 vform.submit();
 	      }
 	   </script>
+
 	</body>
 </html>
