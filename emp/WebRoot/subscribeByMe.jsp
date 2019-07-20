@@ -10,11 +10,38 @@
   <link rel="stylesheet" href="define/css/stylegan.css" media="all">
  <link rel="stylesheet" href="css/test.css">
  <script type="text/javascript">
- function onDel(vaab201,vaab101)
+ function onDel(vaab201,vaab101,paab101)
  {
-	 var vform = document.getElementById("myform");
-	 vform.action="<%=path%>/delByIdSub.html?aab201="+vaab201+"&aab101="+vaab101;
-	 vform.submit();
+	 $.ajax({
+ 		url:'/emp/delByIdSub.do',
+ 		type:'post',
+ 		data:{
+ 			"aab201":vaab201,
+ 			"aab101":vaab101
+ 		},
+ 		dataType:'json',
+ 		success:function(data){
+ 		},
+ 		error:function(data){
+ 			
+ 			alert("提示：网络故障！");
+ 		}
+ 	});	
+	 $.ajax({
+	 		url:'/emp/queryAllSubscribe.do',
+	 		type:'post',
+	 		data:{
+	 			"aab101":paab101
+	 		},
+	 		dataType:'json',
+	 		success:function(data){
+	 			 window.location.href="queryAllSubscribe.html?aab101="+paab101;
+	 			 alert("取消关注!")
+	 		},
+	 		error:function(data){	
+	 			alert("提示：网络故障！");
+	 		}
+	 	});
  }
  function onGo(vaab101)
  {
@@ -54,9 +81,9 @@ ${msg}
             </h3>
           </a>
           <c:if test="${sessionScope.aab101Self==param.aab101 }">
-          <button class="layui-btn layui-btn-sm caller-fr" onclick="onDel('${ins.aab201}','${ins.aab101}')">
-            <i class="layui-icon layui-icon-close"></i>
-             取消关注
+          <button class="layui-btn layui-btn-sm caller-fr" onclick="onDel('${ins.aab201}','${ins.aab101}','${param.aab101 }')">
+          <i class="layui-icon layui-icon-close"></i>
+                        取消关注
           </button>
           </c:if>
 </div>

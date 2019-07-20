@@ -1,5 +1,6 @@
 package com.neusoft.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -79,15 +80,9 @@ public class SubOthersServicesImpl extends JdbcServicesSupport
 	    			.append(" where a.aab101=?")
 	    			;
 	    	this.apppendSql(sql3.toString(), this.get("aab101"));
-	    	
 	    	return this.executeTransaction();
 	    }
 
-	
-//	public boolean deleteById()throws Exception
-//	{
-//		String sql="delete from ab02 where aab201=?";
-//		return this.executeUpdate(sql,this.get("aab201"))>0;
-//				
-//	}
+		
+
 }

@@ -39,5 +39,11 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql, this.get("aab101Self"));
 	}
 	
+	private boolean updateMessage()throws Exception
+	{
+		String sql="update ab03 set aab303=1 where aab301=?";
+		return this.executeUpdate(sql, this.get("aab301"))>0;
+	}
+	
 
 }

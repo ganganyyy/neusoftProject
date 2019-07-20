@@ -12,7 +12,7 @@
 <script type="text/javascript" src="./define/js/move-top.js"></script>
 <script type="text/javascript" src="./define/js/easing.js"></script>
 <script src="./define/js/jquery.min.js"></script>
-<script src="js/nacigationBar.js" type="text/javascript" charset="utf-8"></script>
+
 		
 		
 </head>
@@ -57,11 +57,11 @@
 		  		<div class="toggle">
 		  			<ul class="toggle-menu">
 						<li></li>
-		  				<li><a class="active" href="mainPage.jsp">主页</a></li>
-		  				<li><a  href="#" onclick="toMessage();">系统消息</a></li>
-		  				<li><a  href="blog.html">用户问答</a></li>
-		  				<li><a  href="typo.html">专栏文章</a></li>
-		  				<li><a  href="contact.html">联系我们</a></li>
+		  				<li><a  href="mainPage.jsp" id="option1">主页</a></li>
+		  				<li><a  onclick='selectType("02");' id="option2">食谱一览</a></li>
+		  				<li><a  href="#" onclick="toMessage();" id="option3">作品一览</a></li>
+		  				<li><a  href="typo.html" id="option4">专栏文章</a></li>
+		  				<li><a  href="contact.html" id="option5">联系我们</a></li>
 						<li></li>
 						<li></li>
 		  			</ul>
@@ -104,32 +104,6 @@
 </body>
 
 <script src="./layui/layui.js"></script>
-<script>
+<script src="js/navigationBar.js" type="text/javascript" charset="utf-8"></script>
 
-layui.use(['element','form'], function(){
-	
- var form = layui.form;
-
-  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-  //监听导航点击
-  element.on('nav(demo)', function(elem){
-    //console.log(elem)
-    layer.msg(elem.text());
-  });
-
-  form.on('select(sch)', function(data){
-		 var input=document.getElementsByName("inputHunt")[0];
-		 if(data.value=="ab01")
-		 {
-			 input.placeholder="搜索用户";
-		 }
-		 else
-		 {
-			 input.placeholder="搜索食谱";
-		 }
-	});      
-});
-
-
-</script>
 </html>

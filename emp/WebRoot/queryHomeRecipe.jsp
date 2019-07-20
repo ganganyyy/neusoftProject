@@ -76,9 +76,16 @@
         				
         		</div>
         		<c:if test="${sessionScope.aab101Self!=param.aab101 }">
+        		<c:if test="${sub.aab201!=null }">
+        		<div class="fr">
+					<a href="#"><div class="guanzhu2">已关注</div></a>
+        		</div>
+        		</c:if>
+        		<c:if test="${sub.aab201==null }">
         		<div class="fr">
 					<a href="#" onclick="onSub('${param.aab101}');"><div class="guanzhu2">关注</div></a>
         		</div>
+        		</c:if>
         		</c:if>
         	</div>
         	
@@ -93,10 +100,12 @@
         		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
         		<span class="bqshoucang"><a href="#">收藏</a></span>
         		<span class="bqliuyanban"><a href="#">点赞</a></span>
-        		<span class="bqcaidan"><a href="#">活动作品</a></span>
         	</div>
         
-        	<div class="kh20"></div>
+        	<div class="kh40">
+        	<button type="button" onclick="addRecipe();" class="guanzhu3">
+            <i class="layui-icon layui-icon-add-1"></i>创建菜谱</button>	
+        	</div>
         	
         	<div class="layui-row layui-col-space25">
 

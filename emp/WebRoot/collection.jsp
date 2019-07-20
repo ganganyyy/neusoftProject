@@ -1,6 +1,7 @@
+<!-- author:董淑媛 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@ include file="navigationBar.jsp" %>
 <html>
 	<head>
 		<meta charset="GBK">
@@ -16,6 +17,13 @@
         <script src="js/collection/jquery-1.9.1.min.js" type="text/javascript" charset="GBK"></script>
         <script src="js/collection/common.js" type="text/javascript" charset="GBK"></script>
         <script src="js/collection/user.js" type="text/javascript" charset="GBK"></script>
+
+<link rel="stylesheet" href="./layui/css/layui.css" media="all">
+<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
+<link href="./define/css/styles.css" rel="stylesheet">
+<script type="text/javascript" src="./define/js/move-top.js"></script>
+<script type="text/javascript" src="./define/js/easing.js"></script>
+<script src="./define/js/jquery.min.js"></script>
 
 <script type="text/javascript">
 

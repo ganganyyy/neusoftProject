@@ -102,7 +102,7 @@
         <td><input type="checkbox" name="idlist" value="${ins.aab301 }"
 				             onclick="onSelect(this.checked)"></td>
         <c:if test="${ins.aab303==0 }">
-        <td><a herf="#" class="colorA">${ins.aab302 }</a></td>
+        <td><a herf="#" id="addAsset" class="colorA" onclick="onLook('${ins.aab302 }','${ins.aab301 }')">${ins.aab302 }</a></td>
         </c:if>
         <c:if test="${ins.aab303==1 }">
         <td><a herf="#">${ins.aab302 }</a></td>
@@ -136,6 +136,20 @@
 <script src="layui/layui.js" charset="utf-8"></script>
 
 </div>
-</form>
+ <script>
+ function onLook(vaab302,vaab301)
+ {
+  layer.alert(vaab302,function(index){
+	  var vform = document.getElementById("myform");
+	  vform.action="<%=path%>/updateMessage.html?aab301="+vaab301;
+	  vform.submit();
+  layer.close(index);
+  });
+ }
+  </script>
 </body>
+    <!-- µ¯´° -->
+    <script src="layer/layer.js"></script>
+    <script src="layer/extend/layer.ext.js"></script>
+
 </html>
