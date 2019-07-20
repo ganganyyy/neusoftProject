@@ -103,6 +103,7 @@ function addings()
 	<div class="conwidth content clearfix">
 
 	<div class="kh30"></div>
+	<input type="hidden" name="aab101" value="${sessionScope.aab101Self }">
 	<input type="text" name="aac102" required lay-verify="required"
     placeholder="Ìí¼Ó²ËÆ×Ãû³Æ" autocomplete="off" class="layui-input">
 
