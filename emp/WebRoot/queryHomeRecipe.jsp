@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
 		<link rel="stylesheet" href="define/css/stylegan.css" media="all">
         <link rel="stylesheet" href="css/test.css">
+        <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
         function getRecipe(vaab101)
         {
