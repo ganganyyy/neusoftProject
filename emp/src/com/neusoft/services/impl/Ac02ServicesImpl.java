@@ -32,7 +32,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    }
 	}
 
-	
 	//查询所有作品
     public List<Map<String,String>> query()throws Exception
     {
@@ -88,9 +87,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     {
     	//获取当前员工编号
     	String aab101="1";
-    	//向DTO添加员工编号
-    	dto.put("aab101", aab101);
-    	    	
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ac02(aab101,aac202,aac203,aac204,aac207,")
@@ -424,7 +420,6 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	     return this.executeTransaction();
 	}
 
-    
     //取消收藏
     private boolean cancleCollection()throws Exception
     {   	

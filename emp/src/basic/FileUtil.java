@@ -54,20 +54,22 @@ public class FileUtil
                     String [] allowedImagetype=ALLWED_IMAGE_TYPE.split(",");
                     if (!Arrays.asList(allowedImagetype).contains(ext)) 
                     {
-                        throw  new LogicException("false");
+                    	imageList=null;
                     }
-
-                    String RandomName = UUID.randomUUID().toString()+"."+FilenameUtils.getExtension(item.getName());
-                    //System.out.println(fileName + "->" + FilenameUtils.getName(item.getName()));
-                    //String path=req.getServletContext().getRealPath("/img");
-                    
-                    String path="D:/github/neusoftProject/emp/WebRoot/img";
-                    
-                    item.write(new File(path, RandomName));
-                    
-                    imgPath="img/"+RandomName;
-                    imageList.add(imgPath);
-                    //System.out.println(item.isInMemory());
+                    if(FilenameUtils.getExtension(item.getName())!="")
+                    {
+                    	String RandomName = UUID.randomUUID().toString()+"."+FilenameUtils.getExtension(item.getName());
+                        //System.out.println(fileName + "->" + FilenameUtils.getName(item.getName()));
+                        //String path=req.getServletContext().getRealPath("/img");
+                        
+                        String path="D:/github/neusoftProject/emp/WebRoot/img";
+                        
+                        item.write(new File(path, RandomName));
+                        
+                        imgPath="img/"+RandomName;
+                        imageList.add(imgPath);
+                        //System.out.println(item.isInMemory());
+                    }
                 } 
                 dto.put("imageList", imageList);
             } 

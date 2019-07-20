@@ -168,9 +168,9 @@ function create(vaac101)
 					<div class="fr">
 						<c:choose>
 							<c:when test="${0>1}">
-								<a class="layui-btn layui-btn-danger">修改</a>
+								<a class="layui-btn layui-btn-danger" href="<%=path%>/updateDetail.html?aac101=${ins.aac101}">修改</a>
 								<a class="layui-btn layui-btn-danger"
-									href="<%=path%>/delreci.html">删除</a>
+									href="<%=path%>/delreci.html?aac101=${ins.aac101}">删除</a>
 							</c:when>
 							<c:otherwise>
 					
@@ -242,10 +242,12 @@ function create(vaac101)
 								<p>${ins.aac402 }</p> <img src="${ins.aac403}"
 									width="400px" height="270px"></li>
 							</c:forEach>
+							<li></li>
 						</ol>
 					</div>
 
-					<div class="upload">上传你做的${ins.aac102 }</div>
+                    <br>
+					<div class="upload"><a href="<%=path%>/addPro.jsp?aac207=${ins.aac101}">上传你做的${ins.aac102 }</a></div>
 				</div>
 				<div class="kh30"></div>
 			</div>

@@ -21,13 +21,15 @@ public class AddProServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		String aac207=null;
 		try 
         {
 			Map<String,Object> dto=FileUtil.upload(request);
             List<String> imageList = (List<String>) dto.get("imageList");          
             //ͼƬ
             String aac204=imageList.get(0);
-            dto.put("aac204", aac204);           
+            dto.put("aac204", aac204);   
+            aac207=(String)dto.get("aac207");
             Ac02ServicesImpl service=new Ac02ServicesImpl();
             boolean tag=service.addPro(dto);
             if(tag)
@@ -45,7 +47,7 @@ public class AddProServlet extends HttpServlet {
             String Msg=e.getMessage();
             request.setAttribute("errorMsg",Msg);
         }
-        request.getRequestDispatcher("/addPro.jsp").forward(request,response);
+        request.getRequestDispatcher("/details.html?aac101="+aac207).forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

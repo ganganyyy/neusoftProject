@@ -13,29 +13,165 @@ import com.neusoft.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
-	   //获取收藏夹图片
-	   public String getImg()
-	   {
-		   Random ran = new Random();
-		   int i = ran.nextInt(5);
-		      switch(i)
-		      {
-		         case 1:
-		            return "img/collection/01.jpeg";
-		         case 2:
-		        	return "img/collection/02.jpg";
-		         case 3:
-		        	return "img/collection/03.jpg";
-		         case 4:
-			        return "img/collection/04.jpg";
-		         case 5:
-			        return "img/collection/05.jpeg";
-		         default:
-		        	return "img/collection/06.jpg";
-		      }
-		   }
+    //查询用料数
+    public Map<String,String> findInsg()throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("select count(c.aac601) aac601count")
+    			.append("  from ac06 c")
+    			.append(" where c.aac101=?")
+    			;
+    	//执行查询
+    	return this.queryForMap(sql.toString(), this.get("aac101"));
+    }
+    //删除一行用料
+    public boolean deleteInsg(Map<String,Object> dto,int i)throws Exception
+    {
+    	String sql="delete from ac06 where aac601=?";
+    	System.out.println("8888888888");
+    	System.out.println(dto.get(i+"aac601"));
+    	return this.executeUpdate(sql, dto.get(i+"aac601"))>0;
+    }
+	//修改用料
+	public boolean updateInsg(Map<String,Object> dto,int i)throws Exception
+    {
+		if(dto.get(i+"aac602")!=null&&dto.get(i+"aac603")!=null)
+		{
+			//1.编写SQL语句
+	    	StringBuilder sql=new StringBuilder()
+	    			.append("update ac06 set aac602=?,aac603=?")
+	    			.append(" where aac601=?")
+	    			;
+	    	//2.编写参数数组
+	    	Object args[]={
+	    			dto.get(i+"aac602"),
+	    			dto.get(i+"aac603"),
+	    			dto.get(i+"aac601")
+	    	};
+	        return this.executeUpdate(sql.toString(), args)>0;
+		}
+		else
+		{
+			return deleteInsg(dto,i);
+		}
+    }
+	
+    //查询步骤数
+    public Map<String,String> findStep()throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("select count(c.aac401) aac401count")
+    			.append("  from ac04 c")
+    			.append(" where c.aac101=?")
+    			;
+    	//执行查询
+    	return this.queryForMap(sql.toString(), this.get("aac101"));
+    }
+	//修改步骤
+	public boolean updateStep(Map<String,Object> dto,int i)throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("update ac04 set aac402=?,aac403=?")
+    			.append(" where aac401=?")
+    			;
+    	//2.编写参数数组
+    	Object args[]={
+    			dto.get(i+"aac402"),
+    			dto.get("aac403"),
+    			dto.get(i+"aac401"),
+    	};
+        return this.executeUpdate(sql.toString(), args)>0;	
+    }
+	
+	//修改菜谱
+    public boolean updateReci(Map<String,Object> dto)throws Exception
+    {
+    	//1.编写SQL语句
+    	StringBuilder sql=new StringBuilder()
+    			.append("update ac01 set aac102=?,aac104=NOW(),aac105=?,aac107=?,aac108=?")
+    			.append(" where aac101=?")
+    			;
+    	//2.编写参数数组
+    	Object args[]={
+    			dto.get("aac102"),
+    			dto.get("aac105"),
+    			dto.get("aac107"),
+    			dto.get("aac108"),
+    			dto.get("aac101")
+    	};
+        return this.executeUpdate(sql.toString(), args)>0;	
+    }
+	
+    private Object[] xiaoxi(String msg)throws Exception
+    {
+    	//当前作品的用户号
+    	String authorNumber = authorNumber();
+    	//当前登录用户
+    	String userName=userName();
+    	String text=userName+msg;
+    	Object args[]={authorNumber,text};
+    	return args;
+    }
+	
+    //获得菜谱的用户流水号
+    private String authorNumber()throws Exception
+    {
+    	String sql="select aac106 from ac01 where aac101=? ";    	
+    	Object args[]={this.get("aac101")};
+    	return check(sql,args);
+    }
+    
+    //获得当前用户的用户名
+    private String userName()throws Exception
+    {
+    	//获取当前员工编号
+    	String aab101="1";	
+    	String sql="select aab102 from ab01 where aab101=? ";    	
+    	Object args[]={aab101};
+    	return check(sql,args);
+    }
+
+    private String check(String sql,Object args[])throws Exception
+    {
+    	List<Map<String,String>> rows = new ArrayList<>();
+    	String value = null;
+    	rows = this.queryForList(sql, args);
+        for (Map<String, String> m :rows)
+        {
+            for(Map.Entry<String, String> vo : m.entrySet()){
+                vo.getKey();
+                value=vo.getValue();
+            }
+        }    	
+    	return value;
+    }
+	
+    //获取收藏夹图片
+    public String getImg()
+    {
+	   Random ran = new Random();
+	   int i = ran.nextInt(5);
+	      switch(i)
+	      {
+	         case 1:
+	            return "img/collection/01.jpeg";
+	         case 2:
+	        	return "img/collection/02.jpg";
+	         case 3:
+	        	return "img/collection/03.jpg";
+	         case 4:
+		        return "img/collection/04.jpg";
+	         case 5:
+		        return "img/collection/05.jpeg";
+	         default:
+	        	return "img/collection/06.jpg";
+	      }
+	   }
       //创建并插入收藏夹
-	  public boolean createColl()throws Exception
+      public boolean createColl()throws Exception
 	  {
 		  //当前用户流水号
 		  String aab101="1";
@@ -65,8 +201,8 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		  
 	      return this.executeTransaction();
 	  }  
-	//查询收藏夹
-	  public List<Map<String,String>> queryCollections()throws Exception
+	 //查询收藏夹
+	 public List<Map<String,String>> queryCollections()throws Exception
 	  {
 		  //当前用户流水号
 		  String aab101="1";
@@ -89,7 +225,16 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("          values('01',?,?,?)")
     			;
     	Object args[]={this.get("aac101"),this.get("aad404"),aab101};
-    	return this.executeUpdate(sql.toString(), args)>0;
+    	this.apppendSql(sql.toString(), args);
+    	
+    	StringBuilder sql2=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args2[]=xiaoxi("评论了你的菜谱");
+    	this.apppendSql(sql2.toString(), args2); 
+    	
+    	return this.executeTransaction();
     }
 	
 	//关注
@@ -123,6 +268,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			;
     	Object args3[]={this.get("aac106")};
     	this.apppendSql(sql3.toString(), args3);
+    	
+    	StringBuilder sql4=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args4[]=xiaoxi("关注了你");
+    	this.apppendSql(sql4.toString(), args4);
     	
     	return this.executeTransaction();
     }
@@ -207,6 +359,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("收藏了你的作品");
+    	this.apppendSql(sql3.toString(), args3);
+    	
     	return this.executeTransaction();
     }
 	
@@ -277,6 +436,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Object args2[]={this.get("aac101")};
     	this.apppendSql(sql2.toString(), args2);
     	
+    	StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	Object args3[]=xiaoxi("给你的菜谱点了赞");
+    	this.apppendSql(sql3.toString(), args3);
+    	
     	return this.executeTransaction();
     }
 	
@@ -334,7 +500,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
     			.append("select a.aac101,a.aac102,date_format(a.aac103,'%Y-%m-%d') aac103,a.aac104,")
-    			.append("       a.aac105,a.aac108,a.aac110,s.fvalue,b.aab102,b.aab106,a.aac106")
+    			.append("       a.aac105,a.aac107,a.aac108,a.aac110,s.fvalue,b.aab102,b.aab106,a.aac106")
     			.append("  from ac01 a,ab01 b,syscode s")
     			.append(" where a.aac101=? and s.fcode=a.aac107 and b.aab101=a.aac106")
     			;
@@ -352,6 +518,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	Map<String,String> pro=findPro();
     	String pronum=pro.get("pronum");
     	recidto.put("pronum", pronum);
+    	Map<String,String> insg=findInsg();
+    	String aac601count=insg.get("aac601count");
+    	recidto.put("aac601count", aac601count);
+    	Map<String,String> step=findStep();
+    	String aac401count=step.get("aac401count");
+    	recidto.put("aac401count", aac401count);
     	return recidto;
     }
     
@@ -372,7 +544,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	  public List<Map<String,String>> querySteps()throws Exception
 	  {
 	    	StringBuilder sql=new StringBuilder()
-	    			.append("select a.aac402,a.aac403,a.aac404")
+	    			.append("select a.aac401,a.aac402,a.aac403,a.aac404")
 	    			.append("  from ac04 a")
 	    			.append(" where a.aac101=? order by a.aac404 asc")
 	    			;
@@ -383,7 +555,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	  public List<Map<String,String>> query()throws Exception
 	  {
 	    	StringBuilder sql=new StringBuilder()
-	    			.append("select a.aac602,a.aac603")
+	    			.append("select a.aac601,a.aac602,a.aac603")
 	    			.append("  from ac06 a")
 	    			.append(" where a.aac101=?")
 	    			;
@@ -426,7 +598,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    public boolean deleteById()throws Exception
 	    {
 	    	String sql="delete from ac01 where aac101=?";
-	    	return this.executeUpdate(sql, "2")>0;
+	    	return this.executeUpdate(sql, this.get("aac101"))>0;
 	    }
 	    
 		//添加用料
@@ -467,10 +639,8 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		//添加菜谱
 	    public boolean addReci(Map<String,Object> dto)throws Exception
 	    {
-	    	
 	        //aac106 当前用户流水号
 	    	String aac106="1";
-	        dto.put("aac106", aac106);
 	        
 	    	//1.编写SQL语句
 	    	StringBuilder sql=new StringBuilder()
@@ -483,7 +653,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    	Object args[]={
 	    			dto.get("aac102"),
 	    			dto.get("aac105"),
-	    			dto.get("aac106"),
+	    			aac106,
 	    			dto.get("aac107"),
 	    			dto.get("aac108")
 	    	};
