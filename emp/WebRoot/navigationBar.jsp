@@ -12,7 +12,7 @@
 <script type="text/javascript" src="./define/js/move-top.js"></script>
 <script type="text/javascript" src="./define/js/easing.js"></script>
 <script src="./define/js/jquery.min.js"></script>
-
+<script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 		
 		
 </head>
@@ -59,7 +59,7 @@
 						<li></li>
 		  				<li><a  href="mainPage.jsp" id="option1">主页</a></li>
 		  				<li><a  onclick='selectType("02");' id="option2">食谱一览</a></li>
-		  				<li><a  href="#" onclick="toMessage();" id="option3">作品一览</a></li>
+		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
 		  				<li><a  href="typo.html" id="option4">专栏文章</a></li>
 		  				<li><a  href="contact.html" id="option5">联系我们</a></li>
 						<li></li>
