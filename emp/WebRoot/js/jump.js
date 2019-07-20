@@ -42,18 +42,6 @@ function kitchen(vaab101)
  	vform.submit();
 }
 
-/**
- * 跳转
- * @returns
- */
-function toAllWork()
-{
-	var vform = document.getElementById("myform");
-	alert("/emp/queryVoteDetail.html?aae101="+vaae101);
- 	vform.action="/emp/queryVoteDetail.html?aae101="+vaae101;
- 	vform.submit();
-
-}
 
 /**
  * 跳转到食谱一览
@@ -62,8 +50,7 @@ function toAllWork()
  */
 function selectType(type)
 {
-	changeClass("option2");
-	document.getElementById
+	//changeClass("option2");
 	var form=document.getElementById("myform");
 	form.action="/emp/allMenu.html?aac107="+type;
 	form.submit();
