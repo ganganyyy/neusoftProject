@@ -1,9 +1,10 @@
+<!-- author:韩金利 -->
 <%@ page language="java" pageEncoding="GBK" %>
 <%String path=request.getContextPath(); %>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>上传作品</title>
+	<title>修改作品</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/addpro.css"/>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">

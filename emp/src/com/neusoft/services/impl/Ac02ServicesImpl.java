@@ -7,31 +7,12 @@ import java.util.Random;
 
 import com.neusoft.services.JdbcServicesSupport;
 import com.neusoft.system.tools.Tools;
-
+/**
+ * 作品相关操作
+ * @author 韩金利
+ */
 public class Ac02ServicesImpl extends JdbcServicesSupport 
 {	
-	   //获取收藏夹图片
-	public String getImg()
-	{
-		Random ran = new Random();
-	    int i = ran.nextInt(5);
-	    switch(i)
-	    {
-	         case 1:
-	            return "img/collection/01.jpeg";
-			 case 2:
-				return "img/collection/02.jpg";
-			 case 3:
-				return "img/collection/03.jpg";
-			 case 4:
-			    return "img/collection/04.jpg";
-			 case 5:
-			    return "img/collection/05.jpeg";
-			 default:
-				return "img/collection/06.jpg";
-	    }
-	}
-
 	//查询所有作品
     public List<Map<String,String>> query()throws Exception
     {
@@ -388,6 +369,28 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
     
+	//获取收藏夹图片
+	public String getImg()
+	{
+		Random ran = new Random();
+	    int i = ran.nextInt(5);
+	    switch(i)
+	    {
+	         case 1:
+	            return "img/collection/01.jpeg";
+			 case 2:
+				return "img/collection/02.jpg";
+			 case 3:
+				return "img/collection/03.jpg";
+			 case 4:
+			    return "img/collection/04.jpg";
+			 case 5:
+			    return "img/collection/05.jpeg";
+			 default:
+				return "img/collection/06.jpg";
+	    }
+	}
+
     //创建并插入收藏夹
 	public boolean createColl()throws Exception
 	{
