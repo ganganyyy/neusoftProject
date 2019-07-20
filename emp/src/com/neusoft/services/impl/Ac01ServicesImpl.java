@@ -617,7 +617,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    	Object args[]={
 	    			dto.get("aac102"),
 	    			dto.get("aac105"),
-	    			this.get("aab101Self"),
+	    			dto.get("aab101"),
 	    			dto.get("aac107"),
 	    			dto.get("aac108")
 	    	};
