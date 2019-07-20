@@ -9,6 +9,7 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
+		<link rel="stylesheet" type="text/css" href="css/myRP.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
 		<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
 		<script type="text/javascript">
@@ -165,6 +166,24 @@
 	      {
 	    	 var vform = document.getElementById("myform");
 	    	 vform.action="<%=path%>/cancleLike.html?aac301="+vaac301+"&aad103=03";
+	    	 vform.submit();
+	      }
+	      function chacaipu(vaac101)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/details.html?aac101="+vaac101;
+	    	 vform.submit();
+	      }
+	      function chazuopin(vaac201)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/findByIdPro.html?aac201="+vaac201;
+	    	 vform.submit();
+	      }
+	      function chazhuanlan(vaac301)
+	      {
+	    	 var vform = document.getElementById("myform");
+	    	 vform.action="<%=path%>/browsefindByIdarticle.html?aac301="+vaac301;
 	    	 vform.submit();
 	      }
 	   </script>
