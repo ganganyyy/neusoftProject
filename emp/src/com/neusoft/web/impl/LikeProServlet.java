@@ -1,5 +1,9 @@
 package com.neusoft.web.impl;
 
+/**
+ * 作品点赞
+ * @author 韩金利
+ */
 public class LikeProServlet extends ProControllerSupport
 {
 	@Override

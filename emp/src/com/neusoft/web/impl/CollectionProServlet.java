@@ -1,5 +1,9 @@
 package com.neusoft.web.impl;
 
+/**
+ * 作品收藏
+ * @author 韩金利
+ */
 public class CollectionProServlet extends ProControllerSupport 
 {
 	@Override

@@ -1,3 +1,4 @@
+<!-- author:º«½ðÀû -->
 <%@ page language="java" pageEncoding="GBK" %>
 <%String path=request.getContextPath(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
