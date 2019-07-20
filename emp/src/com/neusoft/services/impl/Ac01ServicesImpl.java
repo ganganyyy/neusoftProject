@@ -29,7 +29,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     public boolean deleteInsg(Map<String,Object> dto,int i)throws Exception
     {
     	String sql="delete from ac06 where aac601=?";
-    	System.out.println("8888888888");
     	System.out.println(dto.get(i+"aac601"));
     	return this.executeUpdate(sql, dto.get(i+"aac601"))>0;
     }
