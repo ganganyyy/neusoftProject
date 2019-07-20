@@ -46,14 +46,32 @@ function toMessage()
  */
 function selectType(type)
 {
-	
+	changeClass("option2");
+	document.getElementById
 	var form=document.getElementById("myform");
 	form.action="/emp/allMenu.html?aac107="+type;
-	alert("/emp/allMenu.html?aac107="+type)
 	form.submit();
 	
 }
 
+/**
+ * 改变toggle选中状态
+ * @param id
+ * @returns
+ */
+function changeClass(id)
+{
+	alert(id);
+	for(var i=1;i<=5;i++)
+	{
+		var option="option"+i;
+		alert(option);
+		document.getElementById(option).class="";
+	}
+	document.getElementById(id).class="active";
+	
+	alert(document.getElementById(id).class);
+}
 
 /**
  * 退出登录
