@@ -1,3 +1,4 @@
+//author:¶­ÊçæÂ
 package com.neusoft.web.impl;
 
 import java.io.IOException;
@@ -58,7 +59,6 @@ public class UpdateReciServlet extends HttpServlet {
 	    		dto.put("aac403", aac403);
 	        	service.addStep(dto,x);
 	        }
-            System.out.println("000000000");
         }
         catch (Exception e)
         {
@@ -66,7 +66,7 @@ public class UpdateReciServlet extends HttpServlet {
             String Msg=e.getMessage();
             request.setAttribute("errorMsg",Msg);
         }
-        request.getRequestDispatcher("/test.jsp").forward(request,response);
+        request.getRequestDispatcher("/mainPage.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

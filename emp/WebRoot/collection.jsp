@@ -136,15 +136,15 @@ function getSubByMe(vaab101)
 		</div>
 		</c:if>
         <div class="kh20"></div>
-		</div>
+		
 		
 		 <div class="conwidth survey">
-		 
+		 <input type="hidden" name="aab101" value="${param.aab101}">
         	<div class="navigation">
-        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
-        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
-        		<span class="teshu  bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
-        		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
+        		<span class="bqcaipu"><a href="#" onclick="getRecipe('${sessionScope.aab101Self}')">菜谱</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${sessionScope.aab101Self}')">作品</a></span>
+        		<span class="teshu  bqshoucang"><a href="#" onclick="getCol('${sessionScope.aab101Self}')">收藏</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getLike('${sessionScope.aab101Self}')">点赞</a></span>
         	</div>
             
         <div class="wrap user-box">
