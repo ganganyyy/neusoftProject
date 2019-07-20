@@ -140,7 +140,7 @@
 </div>
 </div>
 <div class="layui-col-md12">
-          <a href="javascript:;">
+          <a href="#" onclick="toMenuDetail('${ins.aac101}')">
             <h3 style="color:#d3c5a1;text-align:center;">
               <strong>${ins.aac102 }</strong>
             </h3>
