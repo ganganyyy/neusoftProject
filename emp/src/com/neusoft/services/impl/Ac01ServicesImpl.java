@@ -126,11 +126,9 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     
     //获得当前用户的用户名
     private String userName()throws Exception
-    {
-    	//获取当前员工编号
-    	String aab101="1";	
+    {	
     	String sql="select aab102 from ab01 where aab101=? ";    	
-    	Object args[]={aab101};
+    	Object args[]={this.get("aab101Self")};
     	return check(sql,args);
     }
 
@@ -173,13 +171,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
       //创建并插入收藏夹
       public boolean createColl()throws Exception
 	  {
-		  //当前用户流水号
-		  String aab101="1";
 		  StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
 	    			;
-		  Object args[]={aab101,this.get("caad302"),getImg()};
+		  Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
 		  this.apppendSql(sql.toString(), args);
 		  
 		  int aad301=Tools.getSequence("aad301");
@@ -204,27 +200,22 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	 //查询收藏夹
 	 public List<Map<String,String>> queryCollections()throws Exception
 	  {
-		  //当前用户流水号
-		  String aab101="1";
 		  StringBuilder sql=new StringBuilder()
 	    			.append("select a.aad301,a.aad302,a.aad303")
 	    			.append("  from ad03 a")
 	    			.append(" where a.aab101=?")
 	    			;
-	      return this.queryForList(sql.toString(), aab101);
+	      return this.queryForList(sql.toString(), this.get("aab101Self"));
 	  }
 	  
 	//评论
 	private boolean comment()throws Exception
     {
-    	String aab101="1";
-    	this.put("aab101", aab101);
-    	
     	StringBuilder sql=new StringBuilder()
     			.append("insert into ad04(aad402,aad403,aad404,aad405)")
     			.append("          values('01',?,?,?)")
     			;
-    	Object args[]={this.get("aac101"),this.get("aad404"),aab101};
+    	Object args[]={this.get("aac101"),this.get("aad404"),this.get("aab101Self")};
     	this.apppendSql(sql.toString(), args);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -240,15 +231,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	//关注
 	private boolean guanzhu()throws Exception
     {
-		//当前账号用户
-		String aab202="1";
-		this.put("aab202", aab202);
-    	
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ab02(aab202,aab203)")
     			.append("       values(?,?)")
     			;
-    	Object args1[]={aab202,this.get("aac106")};
+    	Object args1[]={this.get("aab101Self"),this.get("aac106")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	//当前用户关注数加1
@@ -257,7 +244,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("   set a.aab107=a.aab107+1")
     			.append(" where a.aab101=?")
     			;
-    	Object args2[]={aab202};
+    	Object args2[]={this.get("aab101Self")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	//菜谱用户被关注数加1
@@ -282,15 +269,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	//取消关注
 	private boolean cancleguanzhu()throws Exception
     {
-		//当前账号用户
-		String aab202="1";
-		this.put("aab202", aab202);
-    	
     	StringBuilder sql1=new StringBuilder()
     			.append("delete from ab02")
     			.append(" where aab202=? and aab203=?")
     			;
-    	Object args1[]={aab202,this.get("aac106")};
+    	Object args1[]={this.get("aab101Self"),this.get("aac106")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	//当前用户关注数减1
@@ -299,7 +282,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append("   set a.aab107=a.aab107-1")
     			.append(" where a.aab101=?")
     			;
-    	Object args2[]={aab202};
+    	Object args2[]={this.get("aab101Self")};
     	this.apppendSql(sql2.toString(), args2);
     	
     	//菜谱用户被关注数减1
@@ -317,14 +300,10 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     //判断是否关注 value不为空即已关注
 	private String guanzhuNumber()throws Exception
 	{
-		//当前账号用户
-		String aab202="1";
-		this.put("aab202", aab202);
-		
 		List<Map<String,String>> rows = new ArrayList<>();
 		
 		String sql="select aab201 from ab02 where aab202=? and aab203=? ";
-		Object args[]={aab202,this.get("aac106")};
+		Object args[]={this.get("aab101Self"),this.get("aac106")};
 		
 		String aab201 = null;
 		String value = null;
@@ -343,7 +322,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	//收藏
 	private boolean shoucang()throws Exception
     {
-		String aab101="1";
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad02(aad301,aad202,aad203,aad204)")
     			.append("       values(?,NOW(),'01',?)")
@@ -390,7 +368,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     //判断是否收藏 value不为空即已收藏
 	private String shoucangNumber()throws Exception
 	{
-		String aab101="1";
 		List<Map<String,String>> rows = new ArrayList<>();
 		
 		StringBuilder sql=new StringBuilder()
@@ -399,7 +376,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		.append(" where b.aab101=? and a.aad204=?")
 		;		
 
-		Object args[]={aab101,this.get("aac101")};
+		Object args[]={this.get("aab101Self"),this.get("aac101")};
 		
 		String aad201 = null;
 		String value = null;
@@ -418,14 +395,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	//点赞
 	private boolean giveLike()throws Exception
     {
-    	String aab101="1";
-    	this.put("aab101", aab101);
-    	
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ad01(aab101,aad102,aad103,aad104)")
     			.append("          values(?,NOW(),'01',?)")
     			;
-    	Object args1[]={aab101,this.get("aac101")};
+    	Object args1[]={this.get("aab101Self"),this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -449,11 +423,8 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	//取消点赞
     private boolean cancleLike()throws Exception
     {
-    	String aab101="1";
-    	this.put("aab101", aab101);
-    	
     	String sql1="delete from ad01 where aad103='01' and aab101=? and aad104=? ";
-    	Object args1[]={aab101,this.get("aac101")};
+    	Object args1[]={this.get("aab101Self"),this.get("aac101")};
     	this.apppendSql(sql1.toString(), args1);
     	
     	StringBuilder sql2=new StringBuilder()
@@ -469,16 +440,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	
     //判断是否点赞 value不为空即已点赞
 	private String likeNumber()throws Exception
-	{ 
-		//用户流水号
-		String aab101="1";
-		this.put("aab101", aab101);
-		
+	{
 		List<Map<String,String>> rows = new ArrayList<>();
 		
 		String sql="select aad101 from ad01 where aad103='01' and aad104=? and aab101=? ";
 		
-		Object args[]={this.get("aac101"),aab101};
+		Object args[]={this.get("aac101"),this.get("aab101Self")};
 		
 		String aad101 = null;
 		String value = null;
@@ -639,9 +606,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		//添加菜谱
 	    public boolean addReci(Map<String,Object> dto)throws Exception
 	    {
-	        //aac106 当前用户流水号
-	    	String aac106="1";
-	        
 	    	//1.编写SQL语句
 	    	StringBuilder sql=new StringBuilder()
 	    			.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
@@ -653,7 +617,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    	Object args[]={
 	    			dto.get("aac102"),
 	    			dto.get("aac105"),
-	    			aac106,
+	    			this.get("aab101Self"),
 	    			dto.get("aac107"),
 	    			dto.get("aac108")
 	    	};
