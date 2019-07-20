@@ -7,7 +7,7 @@ public class DelreciServlet extends EmpdsyControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("deleteById", "É¾³ý");
-		return "test";
+		return "mainPage";
 	}
 
 }

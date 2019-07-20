@@ -24,7 +24,7 @@
 	<div class="layui-row">
 		<div class="layui-col-md4 layui-col-md-offset3">
 			
-				<form class="layui-form" id="myform" action="<%=path%>/search.html" style="margin-top: 25px" method="post">
+				<form class="layui-form" id="SearchForm" action="<%=path%>/search.html" style="margin-top: 25px" method="post">
 				<div class="layui-input-item">
 				 <div class="layui-input-block layui-row ">
 					<div class ="layui-col-md1">
@@ -58,7 +58,7 @@
 		  			<ul class="toggle-menu">
 						<li></li>
 		  				<li><a  href="mainPage.jsp" id="option1">主页</a></li>
-		  				<li><a  onclick='selectType("02");' id="option2">食谱一览</a></li>
+		  				<li><a  onclick='selectType("01");' id="option2">食谱一览</a></li>
 		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
 		  				<li><a  href="typo.html" id="option4">专栏文章</a></li>
 		  				<li><a  href="contact.html" id="option5">联系我们</a></li>

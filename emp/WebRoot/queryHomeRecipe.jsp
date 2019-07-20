@@ -123,8 +123,8 @@
         
         <c:if test="${sessionScope.aab101Self==param.aab101 }">
         	<div class="kh40">
-        	<button type="button" onclick="addRecipe();" class="guanzhu3">
-            <i class="layui-icon layui-icon-add-1"></i>创建菜谱</button>	
+        	<a href="<%=path%>/uploadrecipe.jsp"><button type="button" class="guanzhu3">
+            <i class="layui-icon layui-icon-add-1"></i>创建菜谱</button></a>
         	</div>
         </c:if>
         	<div class="layui-row layui-col-space25">
