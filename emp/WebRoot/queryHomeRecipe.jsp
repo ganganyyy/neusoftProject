@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
 		<link rel="stylesheet" href="define/css/stylegan.css" media="all">
         <link rel="stylesheet" href="css/test.css">
+        <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
         function getRecipe(vaab101)
         {
@@ -139,7 +140,7 @@
 </div>
 </div>
 <div class="layui-col-md12">
-          <a href="javascript:;">
+          <a href="#" onclick="toMenuDetail('${ins.aac101}')">
             <h3 style="color:#d3c5a1;text-align:center;">
               <strong>${ins.aac102 }</strong>
             </h3>

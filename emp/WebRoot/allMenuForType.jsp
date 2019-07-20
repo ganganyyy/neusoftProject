@@ -44,17 +44,20 @@
 		<div class="layui-col-md4" >
 			<div class="layui-card">
 				<div class="layui-card-body" align="center" style="font-size: 13px;">
+					<a onclick="toMenuDetail('${ins.aac101}')">
 					<img src="${ins.aac108}" style="width:100%;height: 100%;">
+					</a>
 					<br/>
 					&nbsp;&nbsp;${ins.aac105 }
 					
-					<p>${ins.aab102 }  创建
+					<p><a onclick="kitchen('${ins.aab101}')">
+					${ins.aab102 }</a> 创建
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					菜系：${ins.fcode }
+					菜系：${ins.fvalue }
 					</p>
 					<br/>
-					<a  href="/emp/registe.do?aac101=${ins.aac101}">
-						read more ${ins.aac101}
+					<a onclick="toMenuDetail('${ins.aac101}')">
+						read more 
 					</a>			
 				</div>
 			</div>
