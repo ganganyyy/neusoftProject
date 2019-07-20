@@ -22,6 +22,7 @@ public class AddarticleServlet extends HttpServlet {
 		try 
 		{
 			Map<String, Object> dto=Tools.createDto(request);
+			dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 			addarticleservicesimpl services=new  addarticleservicesimpl(dto);
 			Map<String, String> rank =services.rank();
 			System.out.println(rank);

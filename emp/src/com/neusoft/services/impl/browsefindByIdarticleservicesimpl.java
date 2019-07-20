@@ -28,7 +28,7 @@ public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport1
 					"03",//专栏文章
 					this.get("aac301"),
 					this.get("aad404"),
-					"04"//用户流水号，动态获取，暂用固定值
+					this.get("aab101Self")//用户流水号，动态获取，暂用固定值
 								
 			};
 		
@@ -45,7 +45,7 @@ public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport1
 				               .append(" values(?,?)  ");
 		Object args[]=
 			{
-					"04",//用户流水号，暂用固定值
+				this.get("aab101Self"),//用户流水号，暂用固定值
 					this.get("aac306"),//被关注用户
 					
 			};
@@ -56,7 +56,7 @@ public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport1
 	{
 		String sql="delete from ab02 where  aab202=? and aab203=( select aac306  from ac03 where aac301=?) ";
 		//此处需获取用户流水号 暂用固定值
-		return this.executeUpdate(sql.toString(),"4", this.get("aac301"))>0;
+		return this.executeUpdate(sql.toString(),this.get("aab101Self"), this.get("aac301"))>0;
 		
 	}
 	
@@ -91,7 +91,7 @@ public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport1
 	{
 		String sql="delete from ad01 where aad103='03' and aab101=? and aad104=? ";
 		//此处需获取用户流水号 暂用固定值
-		return this.executeUpdate(sql.toString(),"4", this.get("aac301"))>0;
+		return this.executeUpdate(sql.toString(),this.get("aab101Self"), this.get("aac301"))>0;
 		
 	}
 	
@@ -103,7 +103,7 @@ public class browsefindByIdarticleservicesimpl extends JdbcServicesSupport1
 				               .append(" values(?,?,?,?)  ");
 		Object args[]=
 			{
-					"04",//用户流水号，暂用固定值
+				this.get("aab101Self"),//用户流水号，暂用固定值
 					new SimpleDateFormat("yy-MM-dd HH-mm-ss").format(new java.util.Date()),
 					"03",
 					this.get("aac301")//

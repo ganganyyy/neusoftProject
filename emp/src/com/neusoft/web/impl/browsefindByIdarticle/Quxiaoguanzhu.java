@@ -18,6 +18,7 @@ public class Quxiaoguanzhu extends BaseServletSupport
 	protected String execute(HttpServletRequest request, Map<String, Object> dto) throws Exception
 	{
 		browsefindByIdarticleservicesimpl  services=new browsefindByIdarticleservicesimpl(dto);
+		dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 		String msg=services.quxiaoguanzhu()?"取消关注成功":"取消关注失败";
 		browsearticleservicesimpl services2=new browsearticleservicesimpl(dto);
 		List<Map<String, String>>comment=services2.querycomment();

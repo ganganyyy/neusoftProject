@@ -15,6 +15,7 @@ public class BrowsefindByIdarticleServlet extends BaseServletSupport {
 	protected String execute(HttpServletRequest request, Map<String, Object> dto) throws Exception
 	{
 		browsearticleservicesimpl services=new browsearticleservicesimpl(dto);
+		dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 		Map<String,String>ins=services.findById();
 		     Map<String, String>ab02=services.ab02();
 		     Map<String, String>ad01=services.ad01();

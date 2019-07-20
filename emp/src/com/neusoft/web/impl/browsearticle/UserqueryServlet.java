@@ -21,6 +21,7 @@ public class UserqueryServlet extends BaseServletSupport {
 	{
 		
 		browsearticleservicesimpl services =new browsearticleservicesimpl(dto);
+		dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 		List<Map<String, String>>rows=services.query();
 		if(rows.size()>0)
 		{
