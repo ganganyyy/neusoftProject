@@ -41,11 +41,6 @@
 		        			<div class="stars">
 		        				<span class="a">${ins.aac202}</span>
 		        				<span class="b">${ins.aac206}</span>
-		                    	<!----
-		                    	<span class="zanshu"><i class="layui-icon">&#xe6c6;</i>${ins.aac206}</span>
-		                    	<span class="cangshu"><i class="layui-icon">&#xe600;</i>${ins.aac205}</span>                    	 
-		                    	<span class="c">${ins.aac205}</span>
-		                    	------->
 		        			</div>
 				         </div>
 				      </c:forEach>

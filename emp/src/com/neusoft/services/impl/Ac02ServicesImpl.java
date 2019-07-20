@@ -294,7 +294,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     }
     
 	//获取收藏夹图片
-	public String getImg()
+	private String getImg()
 	{
 		Random ran = new Random();
 	    int i = ran.nextInt(5);
@@ -316,7 +316,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	}
 
     //创建并插入收藏夹
-	public boolean createColl()throws Exception
+	private boolean createColl()throws Exception
 	{
 		 StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")
@@ -341,6 +341,13 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
 	    			;
 	     Object args2[]={this.get("aac201")};
 	     this.apppendSql(sql2.toString(), args2);
+	     
+    	 StringBuilder sql3=new StringBuilder()
+    			.append("insert into ab03(aab101,aab302,aab303,aab304)")
+    			.append("          values(?,?,'00',NOW())")
+    			;
+    	 Object args3[]=xiaoxi("收藏了你的作品");
+    	 this.apppendSql(sql3.toString(), args3); 
 		  
 	     return this.executeTransaction();
 	}
