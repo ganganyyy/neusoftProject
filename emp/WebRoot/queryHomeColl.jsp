@@ -1,7 +1,8 @@
+<!-- author:董淑媛 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@ include file="navigationBar.jsp" %>
 <html>
 <head>
 		<meta charset="GBK">
@@ -10,6 +11,13 @@
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
         <link rel="stylesheet" href="css/test.css">
+        
+<link rel="stylesheet" href="./layui/css/layui.css" media="all">
+<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
+<link href="./define/css/styles.css" rel="stylesheet">
+<script type="text/javascript" src="./define/js/move-top.js"></script>
+<script type="text/javascript" src="./define/js/easing.js"></script>
+<script src="./define/js/jquery.min.js"></script>
         
 <script type="text/javascript">
 function chacaipu(vaac101)

@@ -1,7 +1,8 @@
+<!-- author:¶­ÊçæÂ -->
 <%@ page language="java" pageEncoding="GBK"%>
-<%String path=request.getContextPath(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ include file="navigationBar.jsp" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -15,6 +16,13 @@
 <script src="js/main.js"></script>
 <script src="layui/layui.js"></script>
 <script src="js/uploadrecipe.js"></script>
+
+<link rel="stylesheet" href="./layui/css/layui.css" media="all">
+<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
+<link href="./define/css/styles.css" rel="stylesheet">
+<script type="text/javascript" src="./define/js/move-top.js"></script>
+<script type="text/javascript" src="./define/js/easing.js"></script>
+<script src="./define/js/jquery.min.js"></script>
 </head>
 <script type="text/javascript">
 function addzuofa()
