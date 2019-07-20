@@ -36,7 +36,7 @@ function exeLatestMenu(){
 					+'<div class="layui-card">'
 					+'<div class="layui-card-header" style="text-align: center;font-size: 18px;">'+data.rows[i].aac102+'</div>'
 					+'<div class="layui-card-body" align="center" style="font-size: 13px;">'
-					+'<a href="#"><img src="'+data.rows[i].aac108+'" style="widtn:180px;height:100px;"></a>'
+					+'<a onclick="toMenuDetail('+data.rows[i].aac101+')"><img src="'+data.rows[i].aac108+'" style="widtn:180px;height:100px;"></a>'
 					+'<p><a href="#">'+data.rows[i].aab102+'</a>创建&nbsp;&nbsp;'+data.rows[i].ac02count+'做过</p>'
 					+'<a href="#">read more</a>'
 					+'</br>'

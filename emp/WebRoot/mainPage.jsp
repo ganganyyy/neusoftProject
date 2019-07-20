@@ -12,6 +12,8 @@
 <script type="text/javascript" src="./define/js/move-top.js"></script>
 <script type="text/javascript" src="./define/js/easing.js"></script>
 <script src="./define/js/jquery.min.js"></script>
+
+<script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/mainPage.js" type="text/javascript" charset="utf-8"></script>
 		
 </head>

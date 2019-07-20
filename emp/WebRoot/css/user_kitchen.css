@@ -20,11 +20,13 @@
 
 
 .guanzhu2{width: 30%;height: 30px;background: #DD3915;border:0px;margin-bottom:10px;
-font-size: 12px;color: #fff;margin-right: 10px;margin-top:5px;float:right;}
+font-size: 12px;color: #fff;margin-right: 10px;margin-top:5px;float:right;text-align:center;}
+.guanzhu3{width: 10%;height: 30px;background: #DD3915;border:0px;margin-bottom:10px;
+font-size: 12px;color: #fff;margin-right: 10px;margin-top:5px;float:left;text-align:center;}
 
 
 .jianjie .fr .guanzhu2{width: 120px;height: 50px;background: #DD3915;line-height: 50px;
-font-size: 15px;color: #fff;text-indent: 42px;margin-top:55px;}
+font-size: 15px;color: #fff;margin-top:55px;text-align:center;}
 .jianjie .fr .guanzhuderen{width: 150px;height: 58px;background: #F5F6F5;margin-top: 30px;line-height: 20px;}
 .jianjie .fr .x{float: left;width: 48%;height: 40px;text-align: center;margin: 9px 0px;}
 .jianjie .fr .y{border-right: 1px solid #CCCCCC;}

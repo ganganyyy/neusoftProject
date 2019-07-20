@@ -40,6 +40,40 @@ function toMessage()
 }
 
 /**
+ * 跳转到食谱一览
+ * @param type
+ * @returns
+ */
+function selectType(type)
+{
+	changeClass("option2");
+	document.getElementById
+	var form=document.getElementById("myform");
+	form.action="/emp/allMenu.html?aac107="+type;
+	form.submit();
+	
+}
+
+/**
+ * 改变toggle选中状态
+ * @param id
+ * @returns
+ */
+function changeClass(id)
+{
+	alert(id);
+	for(var i=1;i<=5;i++)
+	{
+		var option="option"+i;
+		alert(option);
+		document.getElementById(option).class="";
+	}
+	document.getElementById(id).class="active";
+	
+	alert(document.getElementById(id).class);
+}
+
+/**
  * 退出登录
  * @returns
  */
@@ -101,5 +135,32 @@ function exeUserOnline(){
 		}
 	});	
 }
+
+
+
+
+layui.use(['element','form'], function(){
+	
+ var form = layui.form;
+
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+
+  form.on('select(sch)', function(data){
+		 var input=document.getElementsByName("inputHunt")[0];
+		 if(data.value=="ab01")
+		 {
+			 input.placeholder="搜索用户";
+		 }
+		 else
+		 {
+			 input.placeholder="搜索食谱";
+		 }
+	});      
+});
 
 
