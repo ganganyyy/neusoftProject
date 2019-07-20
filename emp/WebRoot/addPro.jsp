@@ -54,7 +54,8 @@
       			<input class="layui-btn" type="submit" name="next" value="Ã·Ωª" ">
       			<button type="reset" class="layui-btn layui-btn-primary">÷ÿ÷√</button>
     		</div> 
-    		<input type="hidden" name="aac207" value="${param.aac207}"> 					
+    		<input type="hidden" name="aac207" value="${param.aac207}"> 
+    		<input type="hidden" name="aab101" value="${sessionScope.aab101Self}"> 					
 		</form>
 	</div>
 	

@@ -19,7 +19,6 @@
 <body>
 	
 	<div class="konghang"></div>
-<a href="<%=path%>/queryPro.html">×÷Æ·¶¯Ì¬</a>
     <div class="conwidth">
     	<div class="conwidth survey">
         	<div class="fubiaoti2 clearfix">

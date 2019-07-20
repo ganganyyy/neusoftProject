@@ -67,7 +67,7 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     			.append("                 '0','0')")
     			;
     	Object args[]={
-    			this.get("aab101Self"),
+    			dto.get("aab101"),
     			dto.get("aac203"),
     			dto.get("aac204"),
     			dto.get("aac207")

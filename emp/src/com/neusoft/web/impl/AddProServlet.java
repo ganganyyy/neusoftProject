@@ -32,7 +32,7 @@ public class AddProServlet extends HttpServlet {
             List<String> imageList = (List<String>) dto.get("imageList");          
             //ͼƬ
             String aac204=imageList.get(0);
-            dto.put("aac204", aac204);   
+            dto.put("aac204", aac204);
             aac207=(String)dto.get("aac207");
             Ac02ServicesImpl service=new Ac02ServicesImpl();
             boolean tag=service.addPro(dto);
