@@ -117,7 +117,7 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 		
 		StringBuilder sql=new StringBuilder()
 				.append("select u.aac101,aac102,aac108,aac109,aac110,")
-				.append("       aab102,GROUP_CONCAT(aac603) as ingredientStr")
+				.append("       v.aab101,aab102,GROUP_CONCAT(aac603) as ingredientStr")
 				.append("  from ac01 u left join ab01 v on u.aac106=v.aab101")
 				.append("       left join ac06 w on u.aac101=w.aac101")
 				.append("       GROUP BY u.aac101")
@@ -148,7 +148,7 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 		System.out.println("session中获取流水号："+this.get("aab101Self"));
 		
 		StringBuilder sql=new StringBuilder()
-				.append("select u.aac101,u.aac102,u.aac103,u.aac108,v.aab102,count(w.aac207) as ac02Count")
+				.append("select u.aac101,u.aac102,u.aac103,u.aac108,v.aab101,v.aab102,count(w.aac207) as ac02Count")
 				.append("  from ac01 u left join ab01 v on u.aac106=v.aab101")
 				.append("  left join ac02 w on u.aac101=w.aac207")
 				.append("  group by u.aac101")

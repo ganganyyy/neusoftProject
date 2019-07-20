@@ -92,31 +92,29 @@ function create(vaac101)
 					<span class="cooknum">${ins.pronum }</span><span>&nbsp;人做过这道菜</span>
 					<div class="fr">
 						<c:choose>
-							<c:when test="${0>1}">
-								<a class="layui-btn layui-btn-danger" href="<%=path%>/updateDetail.html?aac101=${ins.aac101}">修改</a>
-								<a class="layui-btn layui-btn-danger"
-									href="<%=path%>/delreci.html?aac101=${ins.aac101}">删除</a>
+							<c:when test="${ins.aac106!=sessionScope.aab101Self}">	
+			<c:choose>
+				<c:when test="${ins.aad101!=null}">
+					<a class="layui-btn layui-btn-danger" onclick="cancle('${ins.aac101}')">已赞</a>							
+				</c:when>
+				<c:otherwise>
+					<a class="layui-btn layui-btn-danger" onclick="give('${ins.aac101}')">点赞</a>
+				</c:otherwise>
+			</c:choose>
+				
+			<c:choose>
+				<c:when test="${ins.aad201!=null}">
+					<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}','${ins.aad201}')">已收藏</a>							
+				</c:when>
+				<c:otherwise>
+				    <a class="layui-btn layui-btn-danger" id="shoucang" href="javascript:;">收藏</a>
+				</c:otherwise>
+			</c:choose>
 							</c:when>
 							<c:otherwise>
-					
-					<c:choose>
-						<c:when test="${ins.aad101!=null}">
-							<a class="layui-btn layui-btn-danger" onclick="cancle('${ins.aac101}')">已赞</a>							
-						</c:when>
-						<c:otherwise>
-							<a class="layui-btn layui-btn-danger" onclick="give('${ins.aac101}')">点赞</a>
-						</c:otherwise>
-					</c:choose>
-						
-					<c:choose>
-						<c:when test="${ins.aad201!=null}">
-							<a class="layui-btn layui-btn-danger" onclick="cancleShoucang('${ins.aac101}','${ins.aad201}')">已收藏</a>							
-						</c:when>
-						<c:otherwise>
-						    <a class="layui-btn layui-btn-danger" id="shoucang" href="javascript:;">收藏</a>
-						</c:otherwise>
-					</c:choose>
-							
+			<a class="layui-btn layui-btn-danger" href="<%=path%>/updateDetail.html?aac101=${ins.aac101}">修改</a>
+			<a class="layui-btn layui-btn-danger"
+			   href="<%=path%>/delreci.html?aac101=${ins.aac101}">删除</a>
 							</c:otherwise>
 						</c:choose>
 						
