@@ -28,8 +28,14 @@ public class AddarticleServlet extends HttpServlet {
 			System.out.println(rank);
 			String msg=null;
 			String is2="02";
-			if(rank.get("aab105").equals(is2))						
+			if(rank.get("aab105").equals(is2))
+			{
 			msg = services.addarticle()?"添加成功":"添加失败";
+			}
+			else
+			{
+				msg = "权限不够";
+			}
 					
 			request.setAttribute("msg", msg);		
 		}
