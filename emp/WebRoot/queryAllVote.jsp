@@ -23,21 +23,25 @@
      <link rel="stylesheet" href="layui/css/layui.css"  media="all">
      <link rel="stylesheet" href="define/css/stylegan.css" media="all">
     </head>
-    
-    <body onload="open('${msg }');">
+    <c:if test="${msg!=null }">
+    <body onload="open('${msg}');">
+    </c:if>
+    <c:if test="${msg==null }">
+    <body>
+    </c:if>
     <div class="layui-container" style="margin-top:80px;margin-left:20%; width:60%">
     <form id="myform" action="<%=path%>/queryAllVote.html" method="post">
     
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 100px;">
   <legend>查看所有活动</legend>
 </fieldset>  
 
 <table class="layui-table" lay-even="" lay-skin="row">
   <colgroup>
+    <col width="100">
+    <col width="350">
     <col width="150">
     <col width="150">
-    <col width="200">
-    <col>
   </colgroup>
   <thead>
     <tr>

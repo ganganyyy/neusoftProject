@@ -175,7 +175,6 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
 	    			;
-		  System.out.println(this.get("aab101Self"));
 		  Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
 		  this.apppendSql(sql.toString(), args);
 		  
