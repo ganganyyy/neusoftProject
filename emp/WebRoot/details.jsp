@@ -59,7 +59,7 @@ function cancleShoucang(vaac101,vaad201)
 function guanzhu(vaac101,vaac106) 
 {
 	var vform = document.getElementById("myform");
-	vform.action="<%=path%>/guanzhu.html?aac101="+vaac101+"&aac106="+vaac106;
+	vform.action="<%=path%>/guanzhuReci.html?aac101="+vaac101+"&aac106="+vaac106;
 	vform.submit();
 }
 function cancleGuanzhu(vaac101,vaac106) 
@@ -72,7 +72,6 @@ function create(vaac101)
 {
 	 var vform = document.getElementById("myform");
 	 vform.action="<%=path%>/creAndColl.html?aac101="+vaac101;
-	 alert(vform.action);
 	 vform.submit();
 }
 </script>

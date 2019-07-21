@@ -24,7 +24,7 @@
 		<a onclick='selectType("01");'>¥®≤À</a>
 		<a onclick='selectType("03");'>‘¡≤À</a>
 		<a onclick='selectType("06");'>√ˆ≤À</a>
-		<a onclickf='selectType("04");'>À’≤À</a>
+		<a onclick='selectType("04");'>À’≤À</a>
 		<a onclick='selectType("05");'>’„≤À</a>
 		<a onclick='selectType("07");'>œÊ≤À</a>
 		<a onclick='selectType("08");'>ª’≤À</a>
@@ -43,13 +43,13 @@
 	<c:forEach items="${rows }" var="ins" varStatus="status" >
 		<div class="layui-col-md4" >
 			<div class="layui-card">
-				<div class="layui-card-body" align="center" style="font-size: 13px;">
+				<div class="layui-card-body"  style="font-size: 13px;">
 					<a onclick="toMenuDetail('${ins.aac101}')">
-					<img src="${ins.aac108}" style="width:100%;height: 100%;">
+					<img src="${ins.aac108}"  align="center" style="width:100%;height: 100%;">
 					</a>
-					<br/>
-					&nbsp;&nbsp;${ins.aac105 }
-					
+					<p>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ins.aac105 }
+					</p>
 					<p><a onclick="kitchen('${ins.aab101}')">
 					${ins.aab102 }</a> ¥¥Ω®
 					&nbsp;&nbsp;&nbsp;&nbsp;
@@ -86,5 +86,5 @@
 <script src="./layui/layui.js"></script>
 <script src="js/allMenu.js" type="text/javascript" charset="utf-8"></script>
 
-</script>
+
 </html>
