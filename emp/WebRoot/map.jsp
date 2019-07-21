@@ -8,13 +8,16 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
     <link rel="stylesheet" href="css/area.css"/>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
     <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
     <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
     <title>地图</title>
 </head>
 <body>
-	<div class="my-map">
-		<div id="container"></div>
+
+	<div class="my-map">	
+		<div id="container"></div>		
+		<div class="info"><a href="<%=path%>/mainPage.jsp" class="layui-btn" style="float:right;">回到主页</a></div>
 	</div>
 	<script src="https://webapi.amap.com/maps?v=1.4.15&key=dc45539a898fa3f2e694f3e9e0bb8762"></script>
     <!-- UI组件库 1.0 -->
