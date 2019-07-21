@@ -72,7 +72,6 @@ function create(vaac101)
 {
 	 var vform = document.getElementById("myform");
 	 vform.action="<%=path%>/creAndColl.html?aac101="+vaac101;
-	 alert(vform.action);
 	 vform.submit();
 }
 </script>

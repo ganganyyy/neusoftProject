@@ -62,11 +62,11 @@ public class FileUtil
                         //System.out.println(fileName + "->" + FilenameUtils.getName(item.getName()));
                         //String path=req.getServletContext().getRealPath("/img");
                         
-                        String path="D:/github/neusoftProject/emp/WebRoot/img";
+                        String path="D:/github/neusoftProject/emp/WebRoot/images/menu";
                         
                         item.write(new File(path, RandomName));
                         
-                        imgPath="img/"+RandomName;
+                        imgPath="images/menu/"+RandomName;
                         imageList.add(imgPath);
                         //System.out.println(item.isInMemory());
                     }
