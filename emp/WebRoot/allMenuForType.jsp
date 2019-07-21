@@ -24,7 +24,7 @@
 		<a onclick='selectType("01");'>╢╗╡к</a>
 		<a onclick='selectType("03");'>та╡к</a>
 		<a onclick='selectType("06");'>цЖ╡к</a>
-		<a onclickf='selectType("04");'>ку╡к</a>
+		<a onclick='selectType("04");'>ку╡к</a>
 		<a onclick='selectType("05");'>уЦ╡к</a>
 		<a onclick='selectType("07");'>оФ╡к</a>
 		<a onclick='selectType("08");'>╩у╡к</a>
