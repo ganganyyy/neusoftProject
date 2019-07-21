@@ -2,7 +2,7 @@ package com.neusoft.web.impl;
 
 /**
  * 人气用户模块
- * @author gangan
+ * @author 刘诗滢
  *
  */
 public class PopularUsersServlet extends Ab01ControllerSupport {

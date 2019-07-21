@@ -1,4 +1,4 @@
-<!-- author:刘诗滢 -->
+<!-- author:刘诗滢   导航栏界面 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath();%>
 <!DOCTYPE html>
@@ -6,12 +6,12 @@
 <head>
 <title>登录页面</title>
 <link rel="stylesheet" href="./layui/css/layui.css" media="all">
-<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
-<link href="./define/css/styles.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/define/stylegan.css" media="all">
+<link href="./css/define/styles.css" rel="stylesheet">
 	<!-- animation-effect -->
-<script type="text/javascript" src="./define/js/move-top.js"></script>
-<script type="text/javascript" src="./define/js/easing.js"></script>
-<script src="./define/js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/define/move-top.js"></script>
+<script type="text/javascript" src="./js/define/easing.js"></script>
+<script src="./js/define/jquery.min.js"></script>
 <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 		
 		
@@ -60,7 +60,7 @@
 		  				<li><a  href="mainPage.jsp" id="option1">主页</a></li>
 		  				<li><a  onclick='selectType("01");' id="option2">食谱一览</a></li>
 		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
-		  				<li><a  href="/emp/browsefindByIdarticle.html" id="option4">专栏文章</a></li>
+		  				<li><a  href="/emp/browsearticle.jsp" id="option4">专栏文章</a></li>
 		  				<li><a  href="contact.html" id="option5">联系我们</a></li>
 						<li></li>
 						<li></li>
@@ -79,6 +79,7 @@
 		    <dl class="layui-nav-child">
 		      <dd><a href="#" onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
 		      <dd><a href="#" onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
+		      <dd><a href="/emp/queryEvent.jsp">活动审核</a></dd>
 		      <dd><a onclick="exit();">退出</a></dd>
 		    </dl>
 		   </li>

@@ -19,6 +19,7 @@ public class DianzanServlet extends BaseServletSupport {
 	protected String execute(HttpServletRequest request, Map<String, Object> dto) throws Exception
 	{
 		browsefindByIdarticleservicesimpl  services=new browsefindByIdarticleservicesimpl(dto);
+		dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 		String msg=services.dianzan()?"点赞成功":"点赞失败";
 		services.jiayidianzan();
 		browsearticleservicesimpl services2=new browsearticleservicesimpl(dto);

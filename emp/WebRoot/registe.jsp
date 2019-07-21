@@ -1,4 +1,4 @@
-<!-- author:ÁõÊ«äÞ -->
+<!-- author:ÁõÊ«äÞ    ×¢²á½çÃæ -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath();%>
 <html>

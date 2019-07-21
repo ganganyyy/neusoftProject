@@ -19,6 +19,7 @@ public class ArticlecommentServlet extends BaseServletSupport
 	protected String execute(HttpServletRequest request, Map<String, Object> dto) throws Exception 
 	{
 		browsefindByIdarticleservicesimpl services=new  browsefindByIdarticleservicesimpl(dto);
+		dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 		String msg = services.addcomment()?"评论成功":"评论失败";
 		browsearticleservicesimpl services2=new browsearticleservicesimpl(dto);
 		Map<String, String>ab02=services2.ab02();

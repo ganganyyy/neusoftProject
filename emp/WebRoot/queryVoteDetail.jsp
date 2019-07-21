@@ -2,13 +2,14 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@ include file="navigationBar.jsp" %>
 <html>
 	<head>
 		<meta charset="GBK">
 		<title>活动投票界面</title>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/vote.css"/>
+		<link rel="stylesheet" href="define/css/stylegan.css" media="all">
 		<script type="text/javascript">
 		
 		function onSel(vaae201)
@@ -32,11 +33,11 @@
 			vform.submit();
 		}
 		
-		function checkApply(vaae101,vaab101)
+		function checkApply(vaae101)
 		{
 			
 			var vform = document.getElementById("myform");
-			vform.action="<%=path%>/checkByIdVote.html?aab101="+vaab101+"&aae101="+vaae101;
+			vform.action="<%=path%>/checkByIdVote.html?aae101="+vaae101;
 			vform.submit();
 		}
 		
@@ -65,7 +66,7 @@
         		<div class="fr">
         			<div class="apply">
         			<div class="kh30"></div>
-        			 <button onclick="checkApply('${param.aae101}','${ins.aab101}')">参加活动</button>
+        			 <button onclick="checkApply('${param.aae101}')">参加活动</button>
         
         		</div>
         		

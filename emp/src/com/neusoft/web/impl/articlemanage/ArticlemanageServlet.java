@@ -18,6 +18,7 @@ public class ArticlemanageServlet extends BaseServletSupport {
 	protected String execute(HttpServletRequest request, Map<String, Object> dto) throws Exception
 	{
 		articlemanageservicesimpl services=new articlemanageservicesimpl(dto);
+		dto.put("aab101Self", request.getSession().getAttribute("aab101Self"));
 		List<Map<String, String>>rows=services.query();
 		if(rows.size()>0)
 		{

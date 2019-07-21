@@ -34,7 +34,6 @@
 </head>
 
 <body class="theme-white">
-${msg }
 <br>
 <form id="myform" action="<%=path%>/queryEvent.html" method="post">
 
@@ -89,7 +88,7 @@ ${msg }
 		     
 		      <tr class="gradeX">
 		       
-               <td>${ins.aae102 }
+               <td>
                <a herf="#" onclick="onEdit('${ins.aae101}')" 
       style="color: #809cd2;font-weight: bold;cursor: pointer;">${ins.aae102 }</a></td>
                <td>${ins.aae103 }</td>

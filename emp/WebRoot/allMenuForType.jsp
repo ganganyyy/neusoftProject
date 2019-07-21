@@ -1,4 +1,4 @@
-<!-- author:刘诗滢 -->
+<!-- author:刘诗滢    食谱一览界面 -->
 <%@ page language="java"  pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="navigationBar.jsp" %>
@@ -57,7 +57,7 @@
 					</p>
 					<br/>
 					<a onclick="toMenuDetail('${ins.aac101}')">
-						read more 
+						更多细节... 
 					</a>			
 				</div>
 			</div>

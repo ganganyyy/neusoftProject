@@ -99,7 +99,7 @@
 				    ,method: 'POST'
 				    ,auto: false //选择文件后不自动上传
 				    ,bindAction: '#uploadBtn' //指向一个按钮触发上传
-				    ,url: '../PhotoUploadServer'
+				    ,url: '../PhotoUploadServlet'
 				    ,size: 10240//限制文件大小10M
 				    ,choose:function(obj){//选择文件的回调，obj为选中的文件
 				    	//将每次选择的文件追加到文件队列

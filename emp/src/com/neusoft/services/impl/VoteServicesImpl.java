@@ -24,7 +24,6 @@ public class VoteServicesImpl extends JdbcServicesSupport
 				this.get("aab101Self")
 				//this.get("aab101") 假设1用户
 		};
-		System.out.println("queryForMap"+this.queryForMap(sql.toString(), args));
 		return this.queryForMap(sql.toString(), args);
 	}
 	
@@ -35,7 +34,6 @@ public class VoteServicesImpl extends JdbcServicesSupport
 				.append("insert into ae02(aae203,aae202,aae204,aae205)")
 				.append("     values (?,?,?,CURRENT_TIMESTAMP())")
 				;
-		System.out.println("在这个service里"+this.get("msg"));
 		Object args[]={
 			//this.get("aae203"),
 			this.get("msg"),
@@ -124,7 +122,7 @@ public class VoteServicesImpl extends JdbcServicesSupport
 			this.get("aae201"),
 			//用户流水号
 			//this.get("aab101")
-			1
+			this.get("aab101Self")
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
@@ -139,8 +137,8 @@ public class VoteServicesImpl extends JdbcServicesSupport
 	private boolean addVoteNum()throws Exception
 	{
 		String sql = "update ae02 set aae202=(aae202+1) where aae201=?";
-		//return this.executeUpdate(sql,this.get("aae201"))>0;
-		return this.executeUpdate(sql,12)>0;
+		return this.executeUpdate(sql,this.get("aae201"))>0;
+		//return this.executeUpdate(sql,12)>0;
 	}
 	
 

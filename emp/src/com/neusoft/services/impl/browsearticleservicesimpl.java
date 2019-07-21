@@ -28,7 +28,7 @@ public class browsearticleservicesimpl extends JdbcServicesSupport1
 				             .append("   from ad01  ")
 				              .append("   where aab101=? and aad103='03' and aad104=?  ");
 		//aab202为动态获取的用户号 此处暂用4
-		return this.queryForMap(sql.toString(), "4",this.get("aac301"));
+		return this.queryForMap(sql.toString(), this.get("aab101Self"),this.get("aac301"));
 	}
 	
 	
@@ -41,7 +41,7 @@ public class browsearticleservicesimpl extends JdbcServicesSupport1
 				             .append("   from ab02")
 				              .append("   where  aab202=?  and aab203=( select aac306  from ac03 where aac301=?) ");
 		//aab202为动态获取的用户号 此处暂用4
-		return this.queryForMap(sql.toString(), "4",this.get("aac301"));
+		return this.queryForMap(sql.toString(), this.get("aab101Self"),this.get("aac301"));
 	}
 	
 	

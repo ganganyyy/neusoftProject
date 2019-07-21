@@ -1,3 +1,4 @@
+<!-- author:刘诗滢   首页点击最近流行食谱后的跳转界面 -->
 <%@ page language="java"  pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="navigationBar.jsp" %>
@@ -40,7 +41,7 @@
 							<span>${ins.ac02count}做过</span>
 							<br/>
 							<a onclick="toMenuDetail('${ins.aac101}')">
-								read more
+								更多细节...
 							</a>			
 						</div>
 					</div>

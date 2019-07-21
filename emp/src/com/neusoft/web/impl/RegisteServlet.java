@@ -1,5 +1,10 @@
 package com.neusoft.web.impl;
 
+/**
+ * зЂВс
+ * @author СѕЪЋфо
+ *
+ */
 public class RegisteServlet extends Ab01ControllerSupport {
 
 	

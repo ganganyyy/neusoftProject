@@ -53,7 +53,6 @@
 </head>
 <body>
  <div class="layui-container" style="margin-top:50px;margin-left:20%; width:60%">
-${msg}
 <br>
 <br>
 <form id="myform" method="post">
@@ -75,7 +74,7 @@ ${msg}
 </div>
 </div>
 <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
-          <a href="#" onclick="onGo('${ins.aab101}')">
+          <a href="#">
             <h3 class="layadmin-title">
               <strong>${ins.aab102 }</strong>
             </h3>

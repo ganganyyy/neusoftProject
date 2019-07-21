@@ -1,4 +1,5 @@
 /**
+ * 主页
  * @author:刘诗滢
  */
 $(document).ready(function(){
@@ -27,7 +28,7 @@ function exeLatestMenu(){
 			html='<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;width: 100%;">'
 				+'<legend style="font-size: 15px;">最近流行食谱</legend>'
 				+'<div class="layui-field-box" >'
-				+'<a href="/emp/LatestMenu.html"  style="font-size: 16px;color:#63707E;float:right">see more</a>'
+				+'<a href="/emp/LatestMenu.html"  style="font-size: 16px;color:#63707E;float:right">查看更多流行食谱</a>'
 				+'</div>'
 				+'</fieldset>';
 			for(var i=0;i<6&&i<data.rows.length;i++)
@@ -38,7 +39,7 @@ function exeLatestMenu(){
 					+'<div class="layui-card-body" align="center" style="font-size: 13px;">'
 					+'<a onclick="toMenuDetail('+data.rows[i].aac101+')"><img src="'+data.rows[i].aac108+'" style="widtn:180px;height:100px;"></a>'
 					+'<p><a onclick="kitchen('+data.rows[i].aab101+')">'+data.rows[i].aab102+'</a>创建&nbsp;&nbsp;'+data.rows[i].ac02count+'做过</p>'
-					+'<a onclick="toMenuDetail('+data.rows[i].aac101+')">read more</a>'
+					+'<a onclick="toMenuDetail('+data.rows[i].aac101+')">更多细节...</a>'
 					+'</br>'
 					+'</div>'
 					+'</div>'
@@ -72,7 +73,7 @@ function exePopularUsers(){
 	        html='<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;width: 100%;">'
 				+'<legend style="font-size: 15px;">明星用户</legend>'
 				+'<div class="layui-field-box" >'
-				+'<a href="/emp/PopularUsers.html"  style="font-size: 16px;color:#63707E;float:right">see more</a>'
+				+'<a href="/emp/rankingList.jsp"  style="font-size: 16px;color:#63707E;float:right">查看更多排行榜</a>'
 				+'</div>'
 				+'</fieldset>';
 			for(var i=0;i<data.rows.length&&i<3;i++)
@@ -86,7 +87,7 @@ function exePopularUsers(){
 					 +'<a onclick="kitchen('+data.rows[i].aab101+')">'+data.rows[i].aab102+'</a><span>'+data.rows[i].aab108+'关注</span>'
 					 +'<p><span>'+data.rows[i].ac01count+'食谱&nbsp;</span><span>'+data.rows[i].ac02count+'个作品</span></p>'
 					 +'<a  onclick="kitchen('+data.rows[i].aab101+')">'
-					 +'read more'
+					 +'更多细节...'
 					 +'</a>'
 					 +'</div>'
 					 +'</div>'
@@ -122,23 +123,23 @@ function exeActivity(){
 				+'<fieldset class="layui-elem-field layui-field-title" style="width: 100%;">'
 				+'<legend style="font-size: 15px; text-align: center;">活动公告栏</legend>'
 				+'<div class="layui-field-box" >'
-				+'<a href="/emp/queryAllVote.html"  style="font-size: 13px;color:#63707E;float:right">see more</a>'
+				+'<a href="/emp/queryAllVote.html"  style="font-size: 13px;color:#63707E;float:right">查看更多活动</a>'
 				+'</div>'
 				+'</fieldset>'
 				+'</div>';
 			for(var i=0;i<data.rows.length&&i<3;i++)
 			{	
-				html+='<div class="layui-row">'
+				html+='<div class="layui-row layui-col-space10">'
 					 +'<div class="layui-card">'
 					 +'<div class="layui-card-header" style="text-align:center;">'+data.rows[i].aae102
 					 +'</div>'
 					 +'<div class="layui-card-body">'
 					 +data.rows[i].aae103.substring(0,20)
-					 +'<br/>'
+					/* +'<br/>'
 					 +'起止日期：'+data.rows[i].aae104
 					 +'<br/>'
-					 +'截至日期：'+data.rows[i].aae105
-					 +'<a onclick="ActiDetail('+data.rows[i].aae101+');" style="float:right;color:#c2c2c2">more details</a>'
+					 +'截至日期：'+data.rows[i].aae105*/
+					 +'<a onclick="ActiDetail('+data.rows[i].aae101+');" style="float:right;color:#c2c2c2">更多细节...</a>'
 					 +'</div>'
 					 +'</div>'
 					 +'</div>';

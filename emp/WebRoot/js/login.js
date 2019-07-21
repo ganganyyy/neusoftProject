@@ -1,6 +1,6 @@
 /**
+ * 登录
  * @author：刘诗滢
- * 登录页面的跳转
  */
 
 layui.use(['form','layer'], function(){

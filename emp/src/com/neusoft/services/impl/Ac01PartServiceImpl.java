@@ -16,7 +16,7 @@ import com.neusoft.services.JdbcServicesSupport;
  * 
  * 操作部分ac01表
  * 首页模块
- * @author gangan
+ * @author 刘诗滢
  *
  */
 public class Ac01PartServiceImpl extends JdbcServicesSupport {
