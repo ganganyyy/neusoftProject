@@ -116,15 +116,8 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 		
 		//Map<String,String> map=this.queryForMap(sql.toString(),1);
 		Map<String,String> map=this.queryForMap(sql.toString(),this.get("aab101Self"));
-		int total;
-		if(map.get("total")!=null)
-		{
-		total=Integer.parseInt(map.get("total"));
-		}
-		else
-		{
-			total=0;
-		}
+		
+		int total=Integer.parseInt(map.get("total"));
 		System.out.println("食谱的点赞数和收藏数"+total);
 		return total;
 	}
@@ -139,15 +132,8 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 				.append(" where aab101=?")
 				;
 		Map<String,String> map = this.queryForMap(sql.toString(), this.get("aab101Self"));
-		int total;
-		if(map.get("total")!=null)
-		{
-		total=Integer.parseInt(map.get("total"));
-		}
-		else
-		{
-			total=0;
-		}
+		//Map<String,String> map = this.queryForMap(sql.toString(), 1);
+		int total=Integer.parseInt(map.get("total"));
 		System.out.println("作品的点赞数和收藏数"+total);
 		return total;
 	}
@@ -161,16 +147,7 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 		String sql = "select aab108 from ab01 where aab101=?";
 		//Map<String,String> map=this.queryForMap(sql, 1);
 		Map<String,String> map=this.queryForMap(sql, this.get("aab101Self"));
-		int total;
-		if(map.get("aab108")!=null)
-		{
-		total=Integer.parseInt(map.get("aab108"));
-		}
-		else
-		{
-			total=0;
-		}
-		
+		int total=Integer.parseInt(map.get("aab108"));
 		System.out.println("用户的被关注数"+total);
 		return total;
 	}

@@ -1,4 +1,4 @@
-<!-- author:ï¿½ï¿½ï¿½Éº -->
+<!-- author:Îâ¼ÑÉº -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -15,7 +15,7 @@
   	 var vform = document.getElementById("myform");
   	 vform.action="<%=path%>/upgradeCount.html";
   	 vform.submit();
-    }
+    } 
     function toMessage()
     {
     	var vform = document.getElementById("myform");
@@ -33,12 +33,12 @@
   	 var vform = document.getElementById("myform");
   	 vform.action="<%=path%>/queryPersonalInfo.html";
   	 vform.submit();
-    }
+    } 
     function open(vmsg)
     {
-    	alert(vmsg);
+    	alert(vmsg);	
     }
-
+ 
     </script>
 </head>
  <c:if test="${msg!=null }">
@@ -58,19 +58,19 @@
 <ul class="layui-nav layui-nav-tree" lay-filter="test" >
 
 <!-- <ul class="layui-nav layui-nav-tree layui-nav-side" style="margin-top: 20px;">-->
-<li class="layui-nav-item" ><a href="#" onclick="toInfo();"><i class="layui-icon layui-icon-set" style="font-size: 20px; color: #89bcaf;"></i>  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½</a></li>
-<li class="layui-nav-item" ><a href="#" onclick="toPhoto();"><i class="layui-icon layui-icon-picture-fine" style="font-size: 20px; color: #89bcaf;"></i>  ï¿½Þ¸ï¿½Í·ï¿½ï¿½</a></li>
-<li class="layui-nav-item layui-this" ><a href="#" onclick="toUpgrade();"><i class="layui-icon layui-icon-diamond" style="font-size: 20px; color: #89bcaf;"></i>  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
-<li class="layui-nav-item"><a href="#" onclick="toMessage();"><i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #89bcaf;"></i>  ÏµÍ³ï¿½ï¿½Ï¢</a></li>
+<li class="layui-nav-item" ><a href="#" onclick="toInfo();"><i class="layui-icon layui-icon-set" style="font-size: 20px; color: #89bcaf;"></i>  ¸öÈËÐÅÏ¢ÉèÖÃ</a></li>
+<li class="layui-nav-item" ><a href="#" onclick="toPhoto();"><i class="layui-icon layui-icon-picture-fine" style="font-size: 20px; color: #89bcaf;"></i>  ÐÞ¸ÄÍ·Ïñ</a></li>
+<li class="layui-nav-item layui-this" ><a href="#" onclick="toUpgrade();"><i class="layui-icon layui-icon-diamond" style="font-size: 20px; color: #89bcaf;"></i>  ÉêÇëÉý¼¶</a></li>
+<li class="layui-nav-item"><a href="#" onclick="toMessage();"><i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #89bcaf;"></i>  ÏµÍ³ÏûÏ¢</a></li>
 
-</ul>
+</ul> 
  </div>
-
-   <div class="layui-col-md9">
+     
+   <div class="layui-col-md9">        
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</legend>
-</fieldset>
-
+  <legend>ÉêÇëÉý¼¶</legend>
+</fieldset>  
+ 
 <table class="layui-table" lay-even="" lay-skin="row">
   <colgroup>
     <col width="150">
@@ -80,11 +80,11 @@
   </colgroup>
   <thead>
     <tr>
-      <th>ï¿½ï¿½×¢ï¿½ï¿½(2ï¿½ï¿½)</th>
-      <th>ï¿½Õ²ï¿½ï¿½ï¿½(1ï¿½ï¿½)</th>
-      <th>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(1ï¿½ï¿½)</th>
-      <th>ï¿½Ü·ï¿½</th>
-    </tr>
+      <th>¹Ø×¢Êý(2·Ö)</th>
+      <th>ÊÕ²ØÊý(1·Ö)</th>
+      <th>µãÔÞÊý(1·Ö)</th>
+      <th>×Ü·Ö</th>
+    </tr> 
   </thead>
   <tbody>
   <c:if test="${ins!=null }">
@@ -97,8 +97,8 @@
 </c:if>
   </tbody>
 </table>
-<blockquote class="layui-elem-quote layui-quote-nm" style="color:#969191;">ï¿½Ü·Ö³ï¿½ï¿½ï¿½500ï¿½Ö¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ê³ï¿½ï¿½V</blockquote>
-  <input type="submit" name="next" value="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" style="border:0px;width: 100px;height: 40px;background: #89bcaf;
+<blockquote class="layui-elem-quote layui-quote-nm" style="color:#969191;">×Ü·Ö³¬¹ý500·Ö¼´¿ÉÉêÇëÉý¼¶³ÉÎªÃÀÊ³´óV</blockquote>
+  <input type="submit" name="next" value="ÉêÇëÉý¼¶" style="border:0px;width: 100px;height: 40px;background: #89bcaf;
 font-size: 14px;color: #fff; margin-top:1px;float:right;">
 </div>
 </div>
