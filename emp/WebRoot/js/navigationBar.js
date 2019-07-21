@@ -98,12 +98,15 @@ function exeUserOnline(){
 	});	
 }
 
+function contact()
+{ 
+	layer.msg("嘿嘿嘿小组出品--联系方式：连说三声嘿嘿嘿");
+}
 
-
-
-layui.use(['element','form'], function(){
+layui.use(['element','form','layer'], function(){
 	
  var form = layui.form;
+ var layer=layui.layer;
 
   var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
   //监听导航点击

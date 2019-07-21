@@ -66,7 +66,7 @@
 		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
 		  				<li><a  href="/emp/browsearticle.jsp" id="option4">专栏文章</a></li>
 		  				<li><a  href="/emp/map.jsp" id="option5">美食地图</a></li>
-		  				<li><a  href="contact.html" id="option5">联系我们</a></li>
+		  				<li><a  onclick="contact();" id="option5">联系我们</a></li>
 						<li></li>
 						<li></li>
 		  			</ul>
