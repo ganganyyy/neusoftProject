@@ -30,18 +30,22 @@
 					<div class="layui-card">
 						<div class="layui-card-header" style="text-align: center;font-size: 18px;">${ins.aac102}</div>
 						<div class="layui-card-body" align="center" style="font-size: 13px;">
-							<a onclick="toMenuDetail('${ins.aac101}')">
+							<a onclick="toMenuDetail('${ins.aac101}')" style="cursor:pointer;">
 							<img src="${ins.aac108}" style="width:100%;height: 100%;">
 							</a>
-							<br/>
-							<a onclick="kitchen('${ins.aab101}')">
-							${ins.aab102 }</a>  创建 <span>${ins.aac103}</span>
-							<br/>
+							<p>
+							<a onclick="kitchen('${ins.aab101}')" style="cursor:pointer;">
+							${ins.aab102 }</a>  创建 
 							<span>${ins.ac02count}做过</span>
-							<br/>
-							<a onclick="toMenuDetail('${ins.aac101}')">
+							</p>
+							<p>
+							${ins.aac103}
+							</p>
+							<p>
+							<a onclick="toMenuDetail('${ins.aac101}')" style="cursor:pointer;">
 								更多细节...
 							</a>			
+							</p>
 						</div>
 					</div>
 				</div>

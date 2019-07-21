@@ -24,8 +24,8 @@
 
 <div class="layui-container" style="width:68%; margin-top: 100px;">
 	
-	<div style="text-align:center">
-		排行榜！！
+	<div style="text-align:center;font-size:20px;">
+		排行榜
 	</div>
 		<div class="layui-row layui-col-space20">
 			<!--明星用户-->
