@@ -2,34 +2,36 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@ include file="navigationBar.jsp" %>
     <html>
     <head>
+    
     <title>Insert title here</title>
     <script type="text/javascript">
     function onEdit(vaae101)
     {
   	 var vform = document.getElementById("myform");
   	 vform.action="<%=path%>/queryVoteDetail.html?aae101="+vaae101;
-  	 //alert(vform.action);
   	 vform.submit();
     } 
+    function open(vmsg)
+    {
+    	alert(vmsg);	
+    }
+
     </script>
      <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+     <link rel="stylesheet" href="define/css/stylegan.css" media="all">
     </head>
     
-    <body>
-    <div class="layui-container" style="margin-top:50px;margin-left:20%; width:60%">
-    
-    ${msg}
-    <br>
-    
+    <body onload="open('${msg }');">
+    <div class="layui-container" style="margin-top:80px;margin-left:20%; width:60%">
     <form id="myform" action="<%=path%>/queryAllVote.html" method="post">
     
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
   <legend>查看所有活动</legend>
 </fieldset>  
- 
+
 <table class="layui-table" lay-even="" lay-skin="row">
   <colgroup>
     <col width="150">
