@@ -29,20 +29,20 @@
 					<div class="layui-card">
 						<div class="layui-card-header" style="text-align: center;font-size: 18px;">${ins.aac102}</div>
 						<div class="layui-card-body" align="center" style="font-size: 13px;">
-							<a onclick="toMenuDetail('${ins.aac101}')">
+							<a onclick="toMenuDetail('${ins.aac101}')" style="cursor:pointer;">
 							<img src="${ins.aac108}" style="width:100%;height: 100%;">
 							</a>
 							<br/>
 							用料<span>${ins.ingredientstr}</span>
 							<br/>
-							<a onclick="kitchen('${ins.aab101}')">
+							<a onclick="kitchen('${ins.aab101}')" style="cursor:pointer;">
 							${ins.aab102 }  创建
 							</a>
 							<br/>
 							<span>${ins.aac110}收藏</span><span>${ins.aac109}点赞</span>
 							<br/>
-							<a onclick="toMenuDetail('${ins.aac101}')">
-								read more ${ins.aac101}
+							<a onclick="toMenuDetail('${ins.aac101}')" style="cursor:pointer;">
+								read more 
 							</a>			
 						</div>
 					</div>

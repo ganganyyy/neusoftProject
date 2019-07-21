@@ -74,6 +74,12 @@ function create(vaac101)
 	 vform.action="<%=path%>/creAndColl.html?aac101="+vaac101;
 	 vform.submit();
 }
+function chazuopin(vaac201)
+{
+	 var vform = document.getElementById("myform");
+	 vform.action="<%=path%>/findByIdPro.html?aac201="+vaac201;
+	 vform.submit();
+}
 </script>
 
 </head>
@@ -248,7 +254,7 @@ function create(vaac101)
 						<c:when test="${rows3.size() != 0}">
 						<c:forEach items="${rows3}" var="ins" varStatus="vs">
 				     	<div class="likemenu">
-						<a href="#"> 
+						<a href="#" onclick="chazuopin('${ins.aac201}')"> 
 					        <img src="${ins.aac204}"/>
 							<p class="title">${ins.aac203 }</p>
 					    </a>

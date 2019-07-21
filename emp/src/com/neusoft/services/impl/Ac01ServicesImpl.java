@@ -532,7 +532,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	  public List<Map<String,String>> queryPro()throws Exception
 	  {
 	    	StringBuilder sql=new StringBuilder()
-	    			.append("select a.aac203,a.aac204")
+	    			.append("select a.aac201,a.aac203,a.aac204")
 	    			.append("  from ac02 a")
 	    			.append(" where a.aac207=? limit 4")
 	    			;
