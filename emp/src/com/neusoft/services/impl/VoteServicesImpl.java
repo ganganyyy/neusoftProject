@@ -63,8 +63,7 @@ public class VoteServicesImpl extends JdbcServicesSupport
 				.append("   and c.aae201=?") 
 				;
 		Object args[]={
-			//this.get("aae303"),
-			1,
+			this.get("aab101Self"),
 			this.get("aae201")
 		};
 		
@@ -80,7 +79,8 @@ public class VoteServicesImpl extends JdbcServicesSupport
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select c.aab102,a.aae202,a.aae203,a.aae204,b.aae102")
+				.append("select c.aab102,a.aae202,a.aae203,a.aae204,b.aae102,")
+				.append("  c.aab106")
 				.append("  from (ae02 a join ae01 b on a.aae101=b.aae101)")
 				.append("  join ab01 c on a.aab101=c.aab101")
 				.append(" where a.aae201=?")
