@@ -145,7 +145,7 @@ public class BaseServlet extends HttpServlet
 	private void addAab101(Map<String,Object>dto,HttpSession session)
 	{
 		dto.put("aab101Self", session.getAttribute("aab101Self"));
-		dto.put("aab105Self", session.getAttribute("aab101Self"));
+		dto.put("aab105Self", session.getAttribute("aab105Self"));
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
