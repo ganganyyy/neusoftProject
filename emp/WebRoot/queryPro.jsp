@@ -50,10 +50,6 @@
         
      <div class="conwidth footer"><!----------------页脚---------------->
         <ul>
-            <li><a href="#">美食生活杂志</a></li>
-            <li><a href="#">厨房工作</a></li>
-            <li><a href="#">社区指导原则</a></li>
-            <li><a href="#">美拾出版的书</a></li>
             <li><a href="#">帮助中心</a></li>
             <li><a href="#">联系我们</a></li>
             <li><a href="#">意见反馈</a></li>
