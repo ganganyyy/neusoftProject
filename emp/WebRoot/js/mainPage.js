@@ -1,4 +1,5 @@
 /**
+ * 主页
  * @author:刘诗滢
  */
 $(document).ready(function(){

@@ -1,4 +1,4 @@
-<!-- author:ÁõÊ«äÞ -->
+<!-- author:ÁõÊ«äÞ   µ¼º½À¸½çÃæ -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath();%>
 <!DOCTYPE html>
@@ -6,12 +6,12 @@
 <head>
 <title>µÇÂ¼Ò³Ãæ</title>
 <link rel="stylesheet" href="./layui/css/layui.css" media="all">
-<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
-<link href="./define/css/styles.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/define/stylegan.css" media="all">
+<link href="./css/define/styles.css" rel="stylesheet">
 	<!-- animation-effect -->
-<script type="text/javascript" src="./define/js/move-top.js"></script>
-<script type="text/javascript" src="./define/js/easing.js"></script>
-<script src="./define/js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/define/move-top.js"></script>
+<script type="text/javascript" src="./js/define/easing.js"></script>
+<script src="./js/define/jquery.min.js"></script>
 <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 		
 		

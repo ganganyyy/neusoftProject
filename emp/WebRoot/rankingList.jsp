@@ -1,4 +1,4 @@
-<!-- author:ÁõÊ«äÞ -->
+<!-- author:ÁõÊ«äÞ   ÅÅÐÐ°ñ½çÃæ -->
 <%@ page language="java"  pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="navigationBar.jsp" %>

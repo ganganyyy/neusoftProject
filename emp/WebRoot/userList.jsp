@@ -1,3 +1,4 @@
+<!-- author:刘诗滢   搜索用户界面-->
 <%@ page language="java"  pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="navigationBar.jsp" %>

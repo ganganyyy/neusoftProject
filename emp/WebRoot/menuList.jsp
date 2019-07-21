@@ -1,3 +1,4 @@
+<!-- author:刘诗滢   搜索后食谱界面-->
 <%@ page language="java"  pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="navigationBar.jsp" %>
@@ -17,7 +18,7 @@
 
 <div class="layui-container" style="width:68%;">
 	
-	<!--流行食谱模块、明星用户模块-->
+	
 	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 100px;width:100%;">
 		<legend style="font-size: 15px;">您搜索的食谱</legend>
 	</fieldset>
