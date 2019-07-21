@@ -1,7 +1,7 @@
 //author:¶­ÊçæÂ
 package com.neusoft.web.impl;
 
-public class GuanzhuServlet extends EmpdsyControllerSupport 
+public class GuanzhuReciServlet extends EmpdsyControllerSupport 
 {
 
 	@Override
