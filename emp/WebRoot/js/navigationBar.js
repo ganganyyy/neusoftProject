@@ -14,7 +14,7 @@ $(document).ready(function(){
 function examine()
 {
 
-	if(aab105Self=="02")
+	if(aab105Self=="03")
 	{
 		
 		//系统用户隐藏个人中心和我的厨房
