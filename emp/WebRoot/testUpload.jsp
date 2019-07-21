@@ -18,7 +18,7 @@
             <input hidden="true" id="aae101" name="aae101" value="${param.aae101 }"/>
                 
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">备注</label>
+                    <label class="layui-form-label">作品内容</label>
                     <div class="layui-input-block">
                         <textarea id="desc" name="desc" placeholder="请输入内容" maxlength="1000" class="layui-textarea"></textarea>
                     </div>

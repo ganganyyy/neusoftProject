@@ -55,7 +55,7 @@
 	</head>
 
 	<body>
-	${msg }
+
     
     <div class="layui-container" style="margin-top:100px;margin-left:10%; width:80%">
     <form class="layui-form" id="myform" action="<%=path%>/updateInfo.html" method="post">
@@ -113,7 +113,7 @@
   </div>
   </div>
   </div>
-  
+  	${msg }
 </form>
 </div>
 <script src="layui/layui.js" charset="utf-8"></script>

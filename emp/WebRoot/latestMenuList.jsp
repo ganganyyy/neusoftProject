@@ -40,7 +40,7 @@
 							<span>${ins.ac02count}做过</span>
 							<br/>
 							<a onclick="toMenuDetail('${ins.aac101}')">
-								read more
+								更多细节...
 							</a>			
 						</div>
 					</div>

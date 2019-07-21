@@ -57,7 +57,7 @@
 					</p>
 					<br/>
 					<a onclick="toMenuDetail('${ins.aac101}')">
-						read more 
+						¸ü¶àÏ¸½Ú... 
 					</a>			
 				</div>
 			</div>

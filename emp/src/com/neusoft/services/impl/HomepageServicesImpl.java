@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.PassWord;
 
 /**
  * 用户信息修改,用户总分,申请升级
@@ -15,10 +16,11 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 	{
 		String sql = "select aab103 from ab01 where aab101=?";
 				
-		//Map<String, String> map=this.queryForMap(sql, this.get("aab101"));
-		Map<String, String> map=this.queryForMap(sql, 5);
+		Map<String, String> map=this.queryForMap(sql, this.get("aab101Self"));
+		//Map<String, String> map=this.queryForMap(sql, 5);
 		String a=map.get("aab103");
-		if(a.equals(this.get("oldaab103")))
+		System.out.println("123456:"+PassWord.conduct("123456"));
+		if(a.equals(PassWord.conduct(this.get("oldaab103"))))
 		{
 			return true;
 		}
@@ -40,7 +42,7 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 		
 		Object args[]={
 				this.get("aab102"),
-				this.get("aab103"),
+				PassWord.conduct(this.get("aab103")),
 				this.get("aab101Self")
 		};
 		
