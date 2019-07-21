@@ -11,7 +11,6 @@
 </head>
 <body>
 
-${msg}
 <br>
 <br>
 
@@ -25,7 +24,7 @@ ${msg}
   <div class="layui-form-item">
     <label class="layui-form-label">活动名称</label>
     <div class="layui-input-block">
-      <input type="text" name="aae102" autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="aae102" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
   
@@ -35,7 +34,7 @@ ${msg}
     <div class="layui-inline">
       <label class="layui-form-label">开始日期</label>
       <div class="layui-input-inline">
-        <input type="text" name="aae104" id="date"  placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+        <input type="text" name="aae104" id="date" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
       </div>
     </div>
   </div>
@@ -44,7 +43,7 @@ ${msg}
     <div class="layui-inline">
       <label class="layui-form-label">结束日期</label>
       <div class="layui-input-inline">
-        <input type="text" name="aae105" id="date2"  placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+        <input type="text" name="aae105" id="date2" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
       </div>
     </div>
   </div>
@@ -60,7 +59,7 @@ ${msg}
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">活动内容</label>
     <div class="layui-input-block">
-      <textarea name="aae103" placeholder="请输入内容" class="layui-textarea"></textarea>
+      <textarea name="aae103" placeholder="请输入内容" lay-verify="required" class="layui-textarea"></textarea>
     </div>
   </div>
   
@@ -100,6 +99,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
         laydate.render({
             elem: '#date2',
             type: 'datetime',
+            min: nowTime
         });
  
 

@@ -51,11 +51,19 @@
   	 vform.action="<%=path%>/queryPersonalInfo.html";
   	 vform.submit();
     } 
+    function open(vmsg)
+    {
+    	alert(vmsg);	
+    }
 	</script>
 	</head>
 
-	<body>
-
+	<c:if test="${msg!=null }">
+    <body onload="open('${msg}');" class="theme-white">
+    </c:if>
+    <c:if test="${msg==null }" >
+    <body class="theme-white">
+    </c:if>
     
     <div class="layui-container" style="margin-top:100px;margin-left:10%; width:80%">
     <form class="layui-form" id="myform" action="<%=path%>/updateInfo.html" method="post">
@@ -113,7 +121,7 @@
   </div>
   </div>
   </div>
-  	${msg }
+  	
 </form>
 </div>
 <script src="layui/layui.js" charset="utf-8"></script>

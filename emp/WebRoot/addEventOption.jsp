@@ -11,7 +11,6 @@
 </head>
 <body>
 
-${msg}
 <br>
 <br>
 
@@ -25,14 +24,14 @@ ${msg}
   <div class="layui-form-item">
     <label class="layui-form-label">选项1</label>
     <div class="layui-input-block">
-      <input type="text" name="1aae203" autocomplete="off" placeholder="请输入选项1" class="layui-input">
+      <input type="text" name="1aae203" lay-verify="required" autocomplete="off" placeholder="请输入选项1" class="layui-input">
     </div>
   </div>
   
    <div class="layui-form-item">
     <label class="layui-form-label">选项2</label>
     <div class="layui-input-block">
-      <input type="text" name="2aae203" autocomplete="off" placeholder="请输入选项2" class="layui-input">
+      <input type="text" name="2aae203" lay-verify="required" autocomplete="off" placeholder="请输入选项2" class="layui-input">
     </div>
   </div>
  
