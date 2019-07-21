@@ -79,6 +79,7 @@
 		    <dl class="layui-nav-child">
 		      <dd><a href="#" onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
 		      <dd><a href="#" onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
+		      <dd><a href="/emp/queryEvent.jsp">活动审核</a></dd>
 		      <dd><a onclick="exit();">退出</a></dd>
 		    </dl>
 		   </li>
