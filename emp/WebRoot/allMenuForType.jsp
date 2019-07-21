@@ -86,5 +86,5 @@
 <script src="./layui/layui.js"></script>
 <script src="js/allMenu.js" type="text/javascript" charset="utf-8"></script>
 
-</script>
+
 </html>
