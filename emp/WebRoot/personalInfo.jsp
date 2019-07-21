@@ -88,28 +88,28 @@
   <div class="layui-form-item">
     <label class="layui-form-label">用户名</label>
     <div class="layui-input-block">
-      <input type="text" name="aab102" autocomplete="off"  class="layui-input">
+      <input type="text" name="aab102" autocomplete="off" lay-verify="required" class="layui-input">
     </div>
   </div>
   
   <div class="layui-form-item">
     <label class="layui-form-label">旧密码</label>
     <div class="layui-input-block">
-      <input type="password" name="oldaab103" class="layui-input">
+      <input type="password" name="oldaab103" lay-verify="required" class="layui-input">
     </div>
   </div>
   
   <div class="layui-form-item">
     <label class="layui-form-label">新密码</label>
     <div class="layui-input-block">
-      <input type="password" name="aab103"  class="layui-input">
+      <input type="password" name="aab103" lay-verify="required" class="layui-input">
     </div>
   </div>
   
   <div class="layui-form-item">
     <label class="layui-form-label">确认密码</label>
     <div class="layui-input-block">
-      <input type="password" name="aae102"  class="layui-input">
+      <input type="password" name="aae102" lay-verify="required" class="layui-input">
     </div>
   </div>
  

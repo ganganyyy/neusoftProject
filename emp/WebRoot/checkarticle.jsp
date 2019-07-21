@@ -152,6 +152,8 @@ ${msg }
     <tr>
     <td align="center">
     <input class="layui-btn" type="submit"  id="next" name="next" value="²éÑ¯">
+    <input class="layui-btn" type="submit"  id="next" name="next" value="·µ»ØÖ÷Ò³"
+                       formaction="<%=path%>/mainPage.jsp"   >
    
      </td>
     </tr>
