@@ -41,7 +41,7 @@ public abstract class BaseServletSupport extends HttpServlet {
 	private void addAab101(Map<String,Object>dto,HttpSession session)
 	{
 		dto.put("aab101Self", session.getAttribute("aab101Self"));
-		dto.put("aab105Self", session.getAttribute("aab101Self"));
+		dto.put("aab105Self", session.getAttribute("aab105Self"));
 	}
 	  
 	protected final void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
