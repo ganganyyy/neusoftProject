@@ -65,6 +65,7 @@
 		  				<li><a  onclick='selectType("01");' id="option2">食谱一览</a></li>
 		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
 		  				<li><a  href="/emp/browsearticle.jsp" id="option4">专栏文章</a></li>
+		  				<li><a  href="/emp/map.jsp" id="option5">美食地图</a></li>
 		  				<li><a  href="contact.html" id="option5">联系我们</a></li>
 						<li></li>
 						<li></li>
@@ -76,20 +77,24 @@
 		  	  $(this).toggleClass('navicon--active');
 		  	  $('.toggle').toggleClass('toggle--active');
 		  	});
+		  	
+		  	
+		  	var aab105Self=${sessionScope.aab105Self};
+		
 		  	</script>
 		  	
 		  	<li class="layui-nav-item" style="margin-top:0px" id="userLi">
 		    <a href="" style="color:black;"><img src="${aab106 }" class="layui-nav-img" id="userIcon"></a>
 		    <dl class="layui-nav-child">
-		      <dd><a href="#" onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
-		      <dd><a href="#" onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
-		      <dd id=""><a href="/emp/queryEvent.jsp">活动审核</a></dd>
+		      <dd id="examine1"><a  onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
+		      <dd id="examine2"><a  onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
+		      <dd id="examine"><a href="/emp/queryEvent.jsp">活动审核</a></dd>
+		      <dd id="examine3"><a href="/emp/upmanage.html">升级审核</a></dd>
+		      <dd id="examine4"><a href="/emp/checkarticle.html">文章审核</a></dd>
 		      <dd><a onclick="exit();">退出</a></dd>
 		    </dl>
 		   </li>
 		  </div>
-		
-		
 </ul>
 
 

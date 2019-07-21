@@ -3,9 +3,36 @@
  */
 $(document).ready(function(){
 	
+	
 	exeUserOnline();
-
+	
 });
+
+/**
+ *普通用户隐藏审核按钮
+ */
+function examine()
+{
+
+	if(aab105Self=="02")
+	{
+		
+		//系统用户隐藏个人中心和我的厨房
+		//document.getElementById("examine").style.display="block";
+		document.getElementById("examine1").style.display="none";
+		//alert(document.getElementById("option1").style.display);
+		document.getElementById("examine2").style.display="none";
+		//alert(document.getElementById("option2").style.display);
+	}
+	else
+	{
+		//普通用户隐藏审核活动
+		document.getElementById("examine").style.display="none";
+		document.getElementById("examine3").style.display="none";
+		document.getElementById("examine4").style.display="none";
+	}
+}
+
 
 /**
  * 退出登录
@@ -53,6 +80,7 @@ function exeUserOnline(){
 			{
 				//用户登录后
 				document.getElementById("userIcon").src=data.ins.aab106;
+				examine();
 			}
 			else
 			{
