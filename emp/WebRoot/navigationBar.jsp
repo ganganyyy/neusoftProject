@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>登录页面</title>
+<title>小熊教你来做菜</title>
 <link rel="stylesheet" href="./layui/css/layui.css" media="all">
 	
 <link rel="stylesheet" href="./define/css/stylegan.css" media="all">
@@ -88,7 +88,7 @@
 		    <dl class="layui-nav-child">
 		      <dd id="examine1"><a  onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
 		      <dd id="examine2"><a  onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
-		      <dd id="examine"><a href="/emp/queryEvent.jsp">活动审核</a></dd>
+		      <dd id="examine"><a href="/emp/queryEvent.jsp">活动管理</a></dd>
 		      <dd id="examine3"><a href="/emp/upmanage.html">升级审核</a></dd>
 		      <dd id="examine4"><a href="/emp/checkarticle.html">文章审核</a></dd>
 		      <dd><a onclick="exit();">退出</a></dd>
