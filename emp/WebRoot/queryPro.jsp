@@ -33,7 +33,7 @@
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="onEdit('${ins.aac201}')">
-		            				<img src="${ins.aac204}" alt="作品图片" width="300px" height="240px"/>
+		            				<img src="${ins.aac204}" alt="作品图片" width="280px" height="200px"/>
 		            			</a>
 		            		</div>
 		        			<p>&nbsp;&nbsp;${ins.aac203}</p>
