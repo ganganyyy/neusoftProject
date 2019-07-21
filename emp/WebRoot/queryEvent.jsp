@@ -28,12 +28,21 @@
   	 //alert(vform.action);
   	 vform.submit();
     } 
+    function open(vmsg)
+    {
+    	alert(vmsg);	
+    }
  
     </script> 
 
 </head>
+ <c:if test="${msg!=null }">
+    <body onload="open('${msg}');" class="theme-white">
+    </c:if>
+    <c:if test="${msg==null }" >
+    <body class="theme-white">
+    </c:if>
 
-<body class="theme-white">
 <br>
 <form id="myform" action="<%=path%>/queryEvent.html" method="post">
 

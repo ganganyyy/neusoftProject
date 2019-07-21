@@ -9,6 +9,7 @@ public class UpgradeServlet extends PersonalControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
+		this.getInstance("findByIdPhoto", "", "photo");
 		if(this.updateNoMsg("countSum"))
 		{
 		this.update("upgrade", "用户升级");
@@ -17,7 +18,7 @@ public class UpgradeServlet extends PersonalControllerSupport
 		{
 			this.update("applyUpdate", "总分未达500分,提交升级申请");
 		}
-		return "message";
+		return "upgrade";
 	}
 
 }

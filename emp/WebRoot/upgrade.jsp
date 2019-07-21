@@ -34,12 +34,20 @@
   	 vform.action="<%=path%>/queryPersonalInfo.html";
   	 vform.submit();
     } 
+    function open(vmsg)
+    {
+    	alert(vmsg);	
+    }
  
     </script>
 </head>
-<body>
+ <c:if test="${msg!=null }">
+    <body onload="open('${msg}');">
+    </c:if>
+    <c:if test="${msg==null }" >
+    <body>
+    </c:if>
  <div class="layui-container" style="margin-top:90px;margin-left:10%; width:80%">
-${msg}
 
 <form id="myform" action="<%=path%>/upgrade.html" method="post">
 <div class="layui-row">
