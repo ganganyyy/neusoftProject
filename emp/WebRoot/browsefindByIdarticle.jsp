@@ -115,6 +115,9 @@ ${msg }
 <input class="layui-btn" type="submit" name="next" value="·µ»Ø"
           formaction="userquery.html"
           formnovalidate="formnovalidate">
+          <input class="layui-btn" type="submit"  id="next" name="next" value="·µ»ØÖ÷Ò³"
+                       formaction="<%=path%>/mainPage.jsp"  
+                        formnovalidate="formnovalidate" >
           </td>
           </tr>
 </table>
