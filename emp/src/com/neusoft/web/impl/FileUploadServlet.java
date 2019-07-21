@@ -169,7 +169,7 @@ public class FileUploadServlet extends HttpServlet{
         dto = new Gson().fromJson(gsonString,Map.class);
         this.setMapDto(dto);
         this.addVoteOption();
-        request.getRequestDispatcher("back.jsp").forward(request, response);
+        request.getRequestDispatcher("queryAllVote.jsp").forward(request, response);
        
         
     	}
@@ -190,13 +190,12 @@ public class FileUploadServlet extends HttpServlet{
 				.append("          values(?,?,?,?,CURRENT_TIMESTAMP(),")
 				.append("                 ?)")
 				;
-		System.out.println("中文乱码"+this.dto.get("desc"));
 		Object args[]={
 			this.dto.get("aae101"),
 			this.dto.get("desc"),
 			0, //票数是0票
 			this.dto.get("fileName"),
-			1 //这里是用户流水号
+			this.dto.get("aab101")
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
 		

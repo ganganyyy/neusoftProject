@@ -7,16 +7,17 @@
 <head>
         <title>JSP Page</title>
         <link rel="stylesheet" href="layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="define/css/stylegan.css" media="all">
 </head>
     <body>
     
-        <div class="layui-container" style="margin-top:50px;margin-left:20%; width:60%">
+        <div class="layui-container" style="margin-top:90px;margin-left:20%; width:60%">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
   			<legend>添加个人参赛作品</legend>
 		</fieldset>
             <form class="layui-form" action="<%=path%>/uploadtest" enctype="multipart/form-data" method="post">
             <input hidden="true" id="aae101" name="aae101" value="${param.aae101 }"/>
-                
+                <input hidden="true" id="aab101" name="aab101" value="${sessionScope.aab101Self }"/>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">作品内容</label>
                     <div class="layui-input-block">
@@ -47,8 +48,7 @@
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
-                
-                
+   
             </form>
         </div>
     </body>
@@ -63,7 +63,7 @@
             //执行上传
             var uploadInst = upload.render({
                 elem: '#uploadFile', //绑定元素
-                url: '../FileUploadServer', //上传接口
+                url: '../FileUploadServlet', //上传接口
                 method: 'POST',
                 auto: false,
                 accept: 'file',
