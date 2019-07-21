@@ -1,5 +1,4 @@
 /**
- * 导航栏
  * @author:刘诗滢
  */
 $(document).ready(function(){

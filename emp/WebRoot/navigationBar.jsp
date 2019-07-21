@@ -1,4 +1,4 @@
-<!-- author:刘诗滢   导航栏界面 -->
+<!-- author:刘诗滢 -->
 <%@ page language="java" pageEncoding="GBK"%>
 <%String path=request.getContextPath();%>
 <!DOCTYPE html>
@@ -6,15 +6,17 @@
 <head>
 <title>登录页面</title>
 <link rel="stylesheet" href="./layui/css/layui.css" media="all">
-<link rel="stylesheet" href="./css/define/stylegan.css" media="all">
-<link href="./css/define/styles.css" rel="stylesheet">
+	
+<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
+<link href="./define/css/styles.css" rel="stylesheet">
 	<!-- animation-effect -->
-<script type="text/javascript" src="./js/define/move-top.js"></script>
-<script type="text/javascript" src="./js/define/easing.js"></script>
-<script src="./js/define/jquery.min.js"></script>
+<script type="text/javascript" src="./define/js/move-top.js"></script>
+<script type="text/javascript" src="./define/js/easing.js"></script>
+<script src="./define/js/jquery.min.js"></script>
 <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 		
 		
+
 </head>
 <body>
 
@@ -22,6 +24,8 @@
 <ul class="layui-nav" style="position:fixed;top:0;width:100%;z-index:1000">
 	
 	<div class="layui-row">
+	
+		<!-- 搜索 -->
 		<div class="layui-col-md4 layui-col-md-offset3">
 			
 				<form class="layui-form" id="SearchForm" action="<%=path%>/search.html" style="margin-top: 25px" method="post">
@@ -50,9 +54,9 @@
 			
 		</div>
 
-		<!-- <div  style="float:right;margin-top: 25px;"> -->
 	
-		  	<div class="nav-icon"  style="float:right;margin-top: 25px;" >		
+		<!-- 点击和小人 -->
+		<div class="nav-icon"  style="float:right;margin-top: 25px;" >		
 		  	<a href="#" class="navicon"></a>
 		  		<div class="toggle">
 		  			<ul class="toggle-menu">
@@ -79,19 +83,13 @@
 		    <dl class="layui-nav-child">
 		      <dd><a href="#" onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
 		      <dd><a href="#" onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
-		      <dd><a href="/emp/queryEvent.jsp">活动审核</a></dd>
+		      <dd id=""><a href="/emp/queryEvent.jsp">活动审核</a></dd>
 		      <dd><a onclick="exit();">退出</a></dd>
 		    </dl>
 		   </li>
 		  </div>
 		
 		
-		
-	
-		<!-- 用户小人 -->
-		
-	
-<!-- 	</div> -->
 </ul>
 
 
