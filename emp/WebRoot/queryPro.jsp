@@ -33,7 +33,7 @@
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="onEdit('${ins.aac201}')">
-		            				<img src="${ins.aac204}" alt="作品图片" width="300px" height="240px"/>
+		            				<img src="${ins.aac204}" alt="作品图片" width="280px" height="200px"/>
 		            			</a>
 		            		</div>
 		        			<p>&nbsp;&nbsp;${ins.aac203}</p>
@@ -50,10 +50,6 @@
         
      <div class="conwidth footer"><!----------------页脚---------------->
         <ul>
-            <li><a href="#">美食生活杂志</a></li>
-            <li><a href="#">厨房工作</a></li>
-            <li><a href="#">社区指导原则</a></li>
-            <li><a href="#">美拾出版的书</a></li>
             <li><a href="#">帮助中心</a></li>
             <li><a href="#">联系我们</a></li>
             <li><a href="#">意见反馈</a></li>

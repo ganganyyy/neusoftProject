@@ -91,8 +91,8 @@ ${msg }
 <table  class="layui-table" border="1"  width="60%" align="center">
 
     <tr> 
-    <td>头像</td>
-    <td>用户 </td>
+    <td width="10%">头像</td>
+    <td width="10%">用户 </td>
     <td>评论内容</td>    
     </tr>
           <c:forEach items="${comment }" var="ins"  varStatus="vs">

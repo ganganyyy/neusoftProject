@@ -98,7 +98,7 @@
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chacaipu('${ins.aac101}')">
-		            				<img src="${ins.aac108}" alt="²ËÆ×Í¼Æ¬" width="300px" height="240px"/>
+		            				<img src="${ins.aac108}" alt="²ËÆ×Í¼Æ¬" width="280px" height="200px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac102}</p>
@@ -117,7 +117,7 @@
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chazuopin('${ins.aac201}')">
-		            				<img src="${ins.aac204}" alt="×÷Æ·Í¼Æ¬" width="300px" height="240px"/>
+		            				<img src="${ins.aac204}" alt="×÷Æ·Í¼Æ¬" width="280px" height="200px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac203}</p>
@@ -136,7 +136,7 @@
 			    	   	 <div class="userproduction">
 		            		<div class="cover">
 		            			<a href="#" onclick="chazhuanlan('${ins.aac301}')">
-		            				<img src="img/zl.jpg"  width="300px" height="240px"/>
+		            				<img src="img/zl.jpg"  width="280px" height="200px"/>
 		            			</a>
 		            		</div>
 		            		<p>&nbsp;&nbsp;${ins.aac302}</p>

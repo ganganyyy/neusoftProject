@@ -34,7 +34,7 @@
    <div class="layui-form-item">
     <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i></label>
     <div class="layui-input-block">
-      <input type="text" name="aab103" placeholder="ÇëÊäÈëÃÜÂë" autocomplete="off" class="layui-input" lay-verify="required">	  
+      <input type="password" name="aab103" placeholder="ÇëÊäÈëÃÜÂë" autocomplete="off" class="layui-input" lay-verify="required">	  
     </div>
   </div>
   

@@ -43,7 +43,7 @@ public class myarticleservicesimpl extends JdbcServicesSupport1 {
 					.append("	 from ac03 x   ")
 					.append(" where  aac306=?  ");
 			List<Object> paramlist=new ArrayList<>();
-			paramlist.add(3);//此处应动态获取流水号  暂用固定值
+			this.get("aab101Self");//此处应动态获取流水号  暂用固定值
 			
 			if(this.isNotNull(aac302))
 			{

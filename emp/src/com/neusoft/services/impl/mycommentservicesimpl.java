@@ -44,7 +44,7 @@ public class mycommentservicesimpl extends JdbcServicesSupport1 {
 					.append("  from ad04  x ,syscode a  ")
 					.append("  where x.aad405=?  and a.fname='aad402' and a.fcode=x.aad402 ");
 			List<Object> paramlist=new ArrayList<>();
-			paramlist.add(4);//此处应动态获取流水号  暂用固定值
+			this.get("aab101Self");//此处应动态获取流水号  暂用固定值
 			
 			if(this.isNotNull(aad404))
 			{
