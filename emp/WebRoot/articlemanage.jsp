@@ -160,10 +160,14 @@ ${msg }
     <tr>
     <td align="center">
     <input class="layui-btn" type="submit"  name="next" value="查询">
+    <input  class="layui-btn" type="submit"  name="next" value="已发布的文章"
+     formaction="<%=path%>/myarticle.jsp"          >
     <input  class="layui-btn" type="submit"  name="next" value="发布新文章"
      formaction="<%=path%>/addarticle.jsp"          >
     <input class="layui-btn" type="submit"  id="del" name="next" value="删除" disabled="disabled"
                  formaction="<%=path%>/delarticle.html"  >
+                 <input class="layui-btn" type="submit"  id="next" name="next" value="返回主页"
+                       formaction="<%=path%>/mainPage.jsp"   >
      </td>
     </tr>
 
