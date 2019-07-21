@@ -16,15 +16,20 @@ import com.neusoft.system.tools.Tools;
 
 /**
  * 
- * 锟斤拷要为锟斤拷录注锟斤拷模锟斤拷使锟斤拷
- * 锟斤拷锟斤拷Ab01锟矫伙拷锟斤拷
- * @author gangna
+ * 主要为登录注册模块使用
+ * 操作Ab01用户表
+ * @author 刘诗滢
  *
  */
 public class Ab01ServicesImpl extends JdbcServicesSupport {
 
 	
-	
+	/**
+	 * 查找在线用户
+	 * aab101Self为session中的存放的用户流水号
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String,String>findByAab101()throws Exception
 	{
 		if(this.get("aab101Self")==null)
@@ -41,12 +46,12 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	
 	
 	/**
-	 * 锟斤拷录
-	 * 锟斤拷锟斤拷锟街伙拷锟斤拷锟诫、锟斤拷锟斤拷锟斤拷证锟矫伙拷
+	 * 登录
+	 * 根据手机号码、密码验证用户
 	 */
 	  public Map<String,String> findById()throws Exception
 	    {
-	    	//1.锟斤拷写SQL锟斤拷锟�
+	  
 	    	StringBuilder sql=new StringBuilder()
 	    			.append("select a.aab101,a.aab102,a.aab103,a.aab104,a.aab105,")
 	    			.append("       a.aab106")
@@ -54,19 +59,19 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    			.append(" where a.aab103=? and a.aab104=?")
 	    			;
 	    	
-	    	//执锟叫诧拷询
+	   
 	    	return this.queryForMap(sql.toString(), PassWord.conduct(this.get("aab103")),this.get("aab104"));
 	    }
 	  
 	  /**
-	   * 锟斤拷锟斤拷锟街伙拷锟脚诧拷询锟矫伙拷
+	   * 根据手机号查询用户
 	   * @param aab104
 	   * @return
 	   * @throws Exception
 	   */
 	  public Map<String,String> findByTel()throws Exception
 	    {
-	    	//1.锟斤拷写SQL锟斤拷锟�
+	    	
 	    	StringBuilder sql=new StringBuilder()
 	    			.append("select a.aab101,a.aab102,a.aab103,a.aab104,a.aab105,")
 	    			.append("       a.aab106")
@@ -74,25 +79,25 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    			.append(" where a.aab104=?")
 	    			;
 	    	
-	    	//执锟叫诧拷询
+	    	
 	    	return this.queryForMap(sql.toString(),this.get("aab104"));
 	    }
 	  
 	  
 	  /**
-	   * 锟斤拷锟矫伙拷锟斤拷锟接碉拷锟斤拷锟捷匡拷(注锟斤拷)
+	   * 将用户增加到数据库(注册)
 	   * @return
 	   * @throws Exception
 	   */
 	    public boolean addAb01()throws Exception
 	    {
 	    	String uuid=UUID.randomUUID().toString().replace("-", "").toLowerCase();
-	    	//1.锟斤拷写SQL锟斤拷锟�
+	    
 	    	StringBuilder sql=new StringBuilder()
 	    			.append("insert into ab01(aab102,aab103,aab104,aab105,aab106,")
 	    			.append("				  aab107,aab108)")
 	    			.append("				  values(?,?,?,'01','',0,0);");
-	    	//2.锟斤拷写锟斤拷锟斤拷锟斤拷锟斤拷
+	    	
 	    	Object args[]={
 	    			uuid,
 	    			PassWord.conduct(this.get("aab103")),
@@ -103,11 +108,11 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	    
 	   
 	    /**
-	     * 锟斤拷锟斤拷锟矫伙拷
-	     * 锟斤拷锟捷憋拷锟斤拷注锟斤拷锟斤拷锟斤拷锟斤拷前10锟斤拷锟矫伙拷
-	     * aab108:锟斤拷锟斤拷注锟斤拷锟斤拷
-	     * ac01Count:锟斤拷食锟斤拷锟斤拷
-	     * ac02Count锟斤拷锟斤拷锟斤拷品锟斤拷
+	     * 人气用户
+	     * 根据被关注人数搜索前10名用户
+	     * aab108:被关注人数
+	     * ac01Count:总食谱数
+	     * ac02Count:总作品数
 	     * @return
 	     * @throws Exception
 	     */
@@ -127,19 +132,19 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	  
 	
 	  /**
-	   * 锟斤拷锟脚凤拷锟斤拷
+	   * 短信服务
 	   * @return
 	   */
 		protected Map<String,String> getVerify()
 		{
 			String aab104=(String) this.get("aab104");
-			 //2.模锟斤拷锟斤拷锟�
+			 //2.模板参数
 	        String signName = "作业宝";
 	        String templateCode = "SMS_165117602";
 	        String randCode=randCode(5);
 	        String verifyCode=randCode;
 	        String param="{\"code\":\""+randCode+"\"}";
-	        //3.锟斤拷锟酵讹拷锟斤拷
+	        //3.发送短信
 	        try {
 	            SendSmsResponse sendSmsResponse = SmsUtil.sendSms(aab104, templateCode, signName, param);
 	            if (sendSmsResponse.getCode().equals("OK")) {
@@ -148,18 +153,18 @@ public class Ab01ServicesImpl extends JdbcServicesSupport {
 	                data.put("aab104",aab104);
 	                return data;
 	            } else {
-	            	System.out.println(sendSmsResponse.getMessage());
+	            	System.out.println("短信发送失败"+sendSmsResponse.getMessage());
 	                return null;
 	            }
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            System.out.println("锟斤拷锟斤拷锟斤拷锟斤拷失锟斤拷锟阶筹拷锟届常");
+	            System.out.println("短信请求失败抛出异常");
 	            return null;
 	        }
 		}
 		
 		/**
-		 * 锟斤拷锟斤拷锟斤拷锟斤拷锟街わ拷锟�
+		 * 生成随机验证码
 		 * @param length
 		 * @return
 		 */

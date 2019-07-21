@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author gangan
+ * @author 刘诗滢
  * 用于解决直接通过路径访问以及游客权限登录
  * 用于检查session中用户流水号、用户权限
  */

@@ -18,12 +18,15 @@ import javax.servlet.http.HttpSession;
 import com.alibaba.fastjson.JSON;
 
 /**
- * 
- * 将Servlet修改为向前台传入json数据
+ * 将Servlet修改为向前台输入json数据
+ * 并将登录后的用户流水号存入session
+ * 退出后的用户流水号移出session
+ * 将用户流水号放入dto中
+ * @author 刘诗滢
  *
  */
 @WebServlet("*.do")
-public class BaseServlet2 extends HttpServlet 
+public class BaseServletForJson extends HttpServlet 
 {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
@@ -131,6 +134,10 @@ public class BaseServlet2 extends HttpServlet
 
 	}
 	
+	/**
+	 * 将用户流水号和用户类型移除session
+	 * @param session
+	 */
 	private void removeSession(HttpSession session)
 	{
 		session.removeAttribute("aab101Self");

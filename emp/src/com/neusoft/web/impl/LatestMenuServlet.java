@@ -1,8 +1,8 @@
 package com.neusoft.web.impl;
 
 /**
- * 流行食谱模块（根据做过的人数）
- * @author gangan
+ * 流行食谱模块（根据食谱对应作评数）
+ * @author 刘诗滢
  *
  */
 public class LatestMenuServlet extends SearchControllerSupport {

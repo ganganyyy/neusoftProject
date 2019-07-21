@@ -9,15 +9,14 @@ import com.neusoft.services.BaseServices;
 
 public abstract class ControllerSupport implements BaseController
 {
-
 	/*****************************************
-	 * 	        业锟斤拷锟竭硷拷锟斤拷锟斤拷锟斤拷芄锟阶拷锟�
+	 * 	        业务逻辑组件及架构注入
 	 *****************************************/
 	
 	private BaseServices services=null;
 	
 	/**
-	 * 锟斤拷锟斤拷通锟斤拷锟矫凤拷锟斤拷,为Services锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟矫的撅拷锟斤拷锟斤拷锟斤拷锟�
+	 * 子类通过该方法,为Services变量传递引用的具体类对象
 	 * @param services
 	 */
 	protected void setServices(BaseServices services)
@@ -29,12 +28,12 @@ public abstract class ControllerSupport implements BaseController
 	{
 		return this.services;
 	}
-	
+
 	/*****************************************
-	 * 	        锟斤拷锟斤拷业锟斤拷锟斤拷锟教凤拷装
+	 * 	        子类业务流程封装
 	 *****************************************/
 	/**
-	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷询
+	 * 数据批量查询
 	 * @throws Exception
 	 */
 	protected final void savePageData()throws Exception
@@ -46,12 +45,12 @@ public abstract class ControllerSupport implements BaseController
 		}
 		else
 		{
-			this.saveAttribute("msg", "没锟叫凤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷!");
+			this.saveAttribute("msg", "没有符合条件的数据!");
 		}	
 	}
 	
 	/**
-	 * 锟斤拷一实锟斤拷 锟斤拷询
+	 * 单一实例 查询
 	 * @throws Exception
 	 */
 	protected final void savePageInstance()throws Exception
@@ -63,15 +62,15 @@ public abstract class ControllerSupport implements BaseController
 		}
 		else
 		{
-			this.saveAttribute("msg", "锟斤拷示:锟斤拷锟斤拷锟斤拷锟斤拷删锟斤拷锟斤拷锟街癸拷锟斤拷锟�!");
+			this.saveAttribute("msg", "提示:该数据已删除或禁止访问!");
 		}	
 	}
 	
 	
 	/**
 	 * 根据方法名获取单一实例
-	 * 编写原因：希望通过传递的方法名来调用
-	 * @author gangan
+	 * 通过传递的方法名来调用
+	 * @author 刘诗滢
 	 * @param methodName
 	 * @param msgText
 	 * @throws Exception
@@ -94,17 +93,17 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * 通锟斤拷锟斤拷锟斤拷执锟叫革拷锟铰凤拷锟斤拷
+	 * 通过反射执行更新方法
 	 * @param methodName
 	 * @return
 	 * @throws Exception
 	 */
 	private boolean executeUpdateMethod(String methodName)throws Exception
 	{
-		//1.锟斤拷取锟斤拷要锟斤拷锟矫的凤拷锟斤拷锟斤拷锟斤拷
+		//1.获取需要调用的方法对象
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
-		//2.锟斤拷锟矫凤拷锟斤拷
+		//2.调用方法
 		return  (boolean)method.invoke(services);
 	}
 	
@@ -112,7 +111,7 @@ public abstract class ControllerSupport implements BaseController
 	
 	/**
 	 * 获取单一实例,是否有值在数据库
-	 * @author 33
+	 * @author 吴佳珊
 	 * @param methodName
 	 * @throws Exception
 	 */
@@ -134,9 +133,9 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/**
-	 * 锟斤拷锟斤拷锟斤拷为锟斤拷锟杰匡拷锟斤拷
+	 * 更新行为的总开关
 	 * <
-	 *   锟斤拷锟斤拷息锟斤拷示
+	 *   简单消息提示
 	 * >
 	 * @param utype
 	 * @param msgText
@@ -144,7 +143,7 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void update(String methodName,String msgText)throws Exception
 	{
-		String msg=this.executeUpdateMethod(methodName)?"锟缴癸拷!":"失锟斤拷!";
+		String msg=this.executeUpdateMethod(methodName)?"成功!":"失败!";
 		this.saveAttribute("msg", msgText+msg);
 	}
 	
@@ -153,6 +152,14 @@ public abstract class ControllerSupport implements BaseController
 		return this.executeUpdateMethod(methodName);
 	}
 	
+	/**
+	 * 更新个人信息
+	 * @author 吴佳珊
+	 * @param methodName
+	 * @param msgText
+	 * @param flag
+	 * @throws Exception
+	 */
 	protected final void updateForInfo(String methodName,String msgText,boolean flag)throws Exception
 	{
 		if(flag)
@@ -200,7 +207,7 @@ public abstract class ControllerSupport implements BaseController
 
 	
 	/**
-	 * 锟斤拷锟叫憋拷诺锟斤拷锟较拷锟绞撅拷母锟斤拷锟斤拷锟轿�
+	 * 带有编号的消息提示的更新行为
 	 * @param utype
 	 * @param typeText
 	 * @param msgText
@@ -209,12 +216,12 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void update(String methodName,String typeText,String msgText,String key)throws Exception
 	{
-		String msg=typeText+"失锟斤拷!";
+		String msg=typeText+"失败!";
     	if(this.executeUpdateMethod(methodName))
     	{
     		msg=msgText+"[ <msg> "+this.dto.get(key)+" </msg> ]";
     	}
-    	//Servlet锟斤拷页锟斤拷锟斤拷锟斤拷锟斤拷锟�
+    	//Servlet向页面输出数据
     	this.saveAttribute("msg", msg);
 
 	}
@@ -222,7 +229,7 @@ public abstract class ControllerSupport implements BaseController
 	
 	
 	/**
-	 * 删锟斤拷锟斤拷锟斤拷锟斤拷菁锟斤拷锟�
+	 * 删除后的数据检索
 	 * @throws Exception
 	 */
 	protected final void savePageDataForDelete()throws Exception
@@ -237,7 +244,7 @@ public abstract class ControllerSupport implements BaseController
 	
 	
 	/**
-	 * @author:gangan
+	 * @author:刘诗滢
 	 * 根据方法名获取批量实例
 	 * 编写原因：希望通过传递的方法名来调用
 	 * @param methodName
@@ -263,7 +270,7 @@ public abstract class ControllerSupport implements BaseController
 
 	
 	/**
-	 * @author gangan
+	 * @author 刘诗滢
 	 * 获取一些不需要显示在页面的信息：
 	 * 例如判断信息用于流程控制
 	 * @param methodName
@@ -279,7 +286,7 @@ public abstract class ControllerSupport implements BaseController
 	}
 	
 	/*****************************************
-	 * 	        锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+	 * 	        数据输入流
 	 *****************************************/
 	private Map<String,Object> dto=null;
     @Override
@@ -298,7 +305,7 @@ public abstract class ControllerSupport implements BaseController
 
     
 	/*****************************************
-	 * 	        锟斤拷锟斤拷锟斤拷锟斤拷锟�
+	 * 	           数据输出流
 	 *****************************************/
     private Map<String,Object> attribute=new HashMap<>();
     protected final void  saveAttribute(String key,Object value)

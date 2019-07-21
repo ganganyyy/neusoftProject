@@ -11,6 +11,11 @@ import com.aliyuncs.profile.IClientProfile;
 
 import java.util.ResourceBundle;
 
+/**
+ * ¶ÌĞÅ·şÎñ
+ * @author ÁõÊ«äŞ
+ *
+ */
 public class SmsUtil {
 
 	public SmsUtil() {

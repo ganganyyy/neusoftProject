@@ -1,5 +1,10 @@
 package com.neusoft.web.impl;
 
+/**
+ * 在线用户显示
+ * @author 刘诗滢
+ *
+ */
 public class UserOnlineServlet extends Ab01ControllerSupport {
 
 	@Override

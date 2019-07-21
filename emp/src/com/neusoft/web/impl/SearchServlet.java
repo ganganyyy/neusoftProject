@@ -1,8 +1,8 @@
 package com.neusoft.web.impl;
 
 /**
- * ËÑË÷Ä£¿é
- * @author gangan
+ * ËÑË÷
+ * @author ÁõÊ«äŞ
  *
  */
 public class SearchServlet extends SearchControllerSupport {

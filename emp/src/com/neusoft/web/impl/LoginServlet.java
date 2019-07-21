@@ -6,6 +6,11 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.neusoft.web.support.ControllerSupport;
 
+/**
+ * µÇÂ¼
+ * @author ÁõÊ«äŞ
+ *
+ */
 public class LoginServlet extends Ab01ControllerSupport{
 	
 	@Override
