@@ -172,11 +172,15 @@ public class PhotoUploadServlet extends HttpServlet{
         //Map<String,Object> map = new HashMap<String, Object>();
         dto = new Gson().fromJson(gsonString,Map.class);
         String aab101Self=(String) request.getSession().getAttribute("aab101Self");
-       this.setMapDto(dto);
-       this.dto.put("aab101Self", aab101Self);
-        this.addPhoto();
+        this.setMapDto(dto);
+        this.dto.put("aab101Self", aab101Self);
+        
+        boolean flag=this.addPhoto();
+        if(flag){
+        request.setAttribute("message", "上传成功");
+        }
 
-        request.getRequestDispatcher("/QueryMessage.html?aab101="+aab101Self).forward(request, response);
+        request.getRequestDispatcher("/uploadPhoto.jsp").forward(request, response);
      
        
         

@@ -35,11 +35,18 @@
   	 vform.action="<%=path%>/queryPersonalInfo.html";
   	 vform.submit();
     } 
- 
+    function open(vmsg)
+    {
+    	alert(vmsg);	
+    }
     </script> 
 	</head>
-	<body>
-	
+	 <c:if test="${message!=null }">
+    <body onload="open('${message}');">
+    </c:if>
+    <c:if test="${message==null }">
+    <body>
+    </c:if>
 	<div class="layui-container" style="margin-top:90px;margin-left:10%; width:80%">
          <form id="myform" class="layui-form" action="<%=path%>/uploadPhoto" enctype="multipart/form-data" method="post">
         <div class="layui-row">
