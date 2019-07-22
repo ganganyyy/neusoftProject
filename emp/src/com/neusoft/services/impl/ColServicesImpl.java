@@ -10,7 +10,6 @@ import com.neusoft.services.JdbcServicesSupport;
 
 public class ColServicesImpl extends JdbcServicesSupport
 {
-	   //��ȡ�ղؼ�ͼƬ
 	   public String getImg()
 	   {
 		   Random ran = new Random();
@@ -32,14 +31,13 @@ public class ColServicesImpl extends JdbcServicesSupport
 		      }
 		   }
 
-	//��ѯ�û�
 	public Map<String,String> findById()throws Exception
 	{
 	String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
 
 	return this.queryForMap(sql,this.get("aab101Self"));
 	}
-    //ȡ���ղ�
+	
     private boolean deleteColle()throws Exception
     {
     	String tag=(String)this.get("aad203");
@@ -57,7 +55,7 @@ public class ColServicesImpl extends JdbcServicesSupport
     		return cancleComp();
     	}
     }
-	//ȡ��ר���ղ�
+
     private boolean cancleComp()throws Exception
     {
     	String sql1="delete from ad02 where aad201=? ";
@@ -74,7 +72,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 
     	return this.executeTransaction();
     }
-	//ȡ����Ʒ�ղ�
+
     private boolean canclePro()throws Exception
     {
     	String sql1="delete from ad02 where aad201=? ";
@@ -92,7 +90,7 @@ public class ColServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
 
-	//ȡ�������ղ�
+
     private boolean cancleReci()throws Exception
     {
     	String sql1="delete from ad02 where aad201=? ";
@@ -110,7 +108,7 @@ public class ColServicesImpl extends JdbcServicesSupport
     	return this.executeTransaction();
     }
 
-	  //��ѯ����
+
 	  public List<Map<String,String>> queryCollReci()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -121,7 +119,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.queryForList(sql.toString(),this.get("aad301"));
 	  }
 
-	  //��ѯ��Ʒ
+	  
 	  public List<Map<String,String>> queryCollPro()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -132,7 +130,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.queryForList(sql.toString(),this.get("aad301"));
 	  }
 
-	  //��ѯר��
+
 	  public List<Map<String,String>> queryCollComp()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -143,7 +141,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.queryForList(sql.toString(),this.get("aad301"));
 	  }
 
-      //��ѯ�ղؼ�
+
 	  public List<Map<String,String>> queryCollections()throws Exception
 	  {
 
@@ -155,7 +153,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.queryForList(sql.toString(), this.get("aab101"));
 	  }
 
-      //�ղؼ�������
+
 	  public boolean rename()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -167,7 +165,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.executeUpdate(sql.toString(), args)>0;
 	  }
 
-      //ɾ���ղؼ�
+
 	  public boolean deleteColl()throws Exception
 	  {
 		  StringBuilder sql=new StringBuilder()
@@ -178,11 +176,9 @@ public class ColServicesImpl extends JdbcServicesSupport
 	      return this.executeUpdate(sql.toString(), args)>0;
 	  }
 
-      //�����ղؼ�
+
 	  public boolean createColl()throws Exception
 	  {
-		  //��ǰ�û���ˮ��
-		  //String aab101="1";
 		  StringBuilder sql=new StringBuilder()
 	    			.append("insert into ad03(aab101,aad302,aad303)")
 	    			.append("       values(?,?,?) ")
