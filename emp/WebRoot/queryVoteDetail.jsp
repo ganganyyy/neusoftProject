@@ -58,7 +58,9 @@
         		<div class="fr">
         			<div class="apply">
         			<div class="kh30"></div>
+        			<c:if test="${ins.aae107==2 }">
         			 <button onclick="checkApply('${param.aae101}')">参加活动</button>
+        			 </c:if>
         
         		</div>
         		
