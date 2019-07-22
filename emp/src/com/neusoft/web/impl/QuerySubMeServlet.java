@@ -3,7 +3,7 @@ package com.neusoft.web.impl;
  * ËÑË÷Ë­¹Ø×¢ÎÒ
  * @author Îâ¼ÑÉº
  */
-public class QuerySubMeServlet extends SubscribeControllerSupport 
+public class QuerySubMeServlet extends SubMeControllerSupport 
 {
 
 	@Override

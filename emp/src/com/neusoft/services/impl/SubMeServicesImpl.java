@@ -18,7 +18,7 @@ public class SubMeServicesImpl extends JdbcServicesSupport
 				.append("  from ab01 a left join ab02 b on a.aab101=b.aab202") 
 				.append(" where b.aab203=?") 
 				;
-		return this.queryForList(sql.toString(), this.get("aab101"));
+		return this.queryForList(sql.toString(), this.get("aab101Self"));
 	}
 	
 }
