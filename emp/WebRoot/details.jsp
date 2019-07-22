@@ -186,16 +186,6 @@ function chazuopin(vaac201)
 				<div class="kh30"></div>
 			</div>
 			<div class="rightcon">
-				<div class="look">
-					<div class="title">
-						<h2 class="fubiaoti">随便看看</h2>
-					</div>
-					<span><a href="#">花生仁拌芹菜</a></span><span><a href="#">口袋三明治</a></span>
-					<span><a href="#">干锅有机花菜</a></span><span><a href="#">巧克力派</a></span>
-					<span><a href="#">香菇红烧鸡块</a></span><span><a href="#">木耳烧腐竹</a></span>
-					<span><a href="#">面筋粉面筋</a></span><span><a href="#">紫菜肉片汤</a></span>
-					<span><a href="#">腐乳烧肉</a></span><span><a href="#">素炒蘑菇</a></span>
-				</div>
 				<div class="kh30"></div>
 				
 				<div>
