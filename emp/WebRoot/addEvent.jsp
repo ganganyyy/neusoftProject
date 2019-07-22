@@ -34,7 +34,7 @@
     <div class="layui-inline">
       <label class="layui-form-label">开始日期</label>
       <div class="layui-input-inline">
-        <input type="text" name="aae104" id="date" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+        <input type="text" name="aae104" id="start" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
     <div class="layui-inline">
       <label class="layui-form-label">结束日期</label>
       <div class="layui-input-inline">
-        <input type="text" name="aae105" id="date2" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+        <input type="text" name="aae105" id="end" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
       </div>
     </div>
   </div>
@@ -83,25 +83,53 @@ layui.use(['form', 'layedit', 'laydate'], function(){
  laydate.render({
             elem: '#date',
             type: 'datetime',
-            calendar: true,
-            min: nowTime,
-            done: function(value, date, endDate){
-                end.config.min = {
-                    year: date.year,
-                    month: date.month - 1,
-                    date: date.date,
-                    hours: date.hours,
-                    minutes: date.minutes,
-                    seconds: date.seconds
-                }
-            }
+            calendar: true,	
+            min: nowTime
+           
         });
-        laydate.render({
+ laydate.render({
             elem: '#date2',
             type: 'datetime',
-            min: nowTime
+            min: '${aae104}'
         });
- 
+ var startTime=laydate.render({
+ 	elem:'#start',
+ 	type:'datetime',
+ 	btns: ['confirm'],
+ 	min:nowTime,//默认最大值为当前日期
+ 	done:function(value,date){
+// 		console.log(value); //得到日期生成的值，如：2017-08-18
+// 	    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+ 	    endTime.config.min={    	    		
+ 	    	year:date.year,
+ 	    	month:date.month-1,//关键
+             date:date.date,
+             hours:date.hours,
+             minutes:date.minutes,
+             seconds:date.seconds
+ 	    };
+ 	    
+ 	}
+ })
+ var endTime=laydate.render({
+ 	elem:'#end',
+ 	type:'datetime',
+ 	btns: ['confirm'],
+ 	//min:'nowTime',
+ 	done:function(value,date){
+// 		console.log(value); //得到日期生成的值，如：2017-08-18
+// 	    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}    	   
+ 	    startTime.config.max={
+ 	    		year:date.year,
+     	    	month:date.month-1,//关键
+                 date:date.date,
+                 hours:date.hours,
+                 minutes:date.minutes,
+                 seconds:date.seconds
+ 	    }
+ 	    
+ 	}
+ })
 
   //创建一个编辑器
   var editIndex = layedit.build('LAY_demo_editor');

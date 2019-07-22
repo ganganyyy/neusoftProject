@@ -64,7 +64,7 @@ public class Ae01ServicesImpl extends JdbcServicesSupport
 	}
 	
 	/**
-	 *搜索所有活动
+	 *搜索所有活动,改了让还没截止的活动显示而已
 	 */
 	public List<Map<String,String>> query()throws Exception
 	{
@@ -72,6 +72,7 @@ public class Ae01ServicesImpl extends JdbcServicesSupport
 				.append("select aae101,aae102,aae103,aae104,aae105,")
 				.append("       aae107")
 				.append("  from ae01")
+				.append(" where aae105>now() and aae104<now()")
 				.append(" order by aae104 desc")
 				;
 		return this.queryForList(sql.toString());
