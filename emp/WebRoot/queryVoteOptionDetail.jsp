@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/voteDetail.css"/>
 	<script type="text/javascript">
-	function onVote(vaae201)
+	function onVote(vaae201,vaae101)
 	{
 		var vform = document.getElementById("myform");
 		vform.action="<%=path%>/addVote.html?aae201="+vaae201;
@@ -19,7 +19,7 @@
 	</head>
 
 	<body>
-	${param.aae201}
+	
 		<form id="myform" action="<%=path%>/addVote.html" method="post"></form>
         <div class="konghang"></div>
 
