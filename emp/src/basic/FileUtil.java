@@ -62,7 +62,7 @@ public class FileUtil
                         //System.out.println(fileName + "->" + FilenameUtils.getName(item.getName()));
                         //String path=req.getServletContext().getRealPath("/img");
                         
-                        String path="D:/github/neusoftProject/emp/WebRoot/images/menu";
+                        String path="C:\\Users\\xrt\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images\\menu";
                         
                         item.write(new File(path, RandomName));
                         
