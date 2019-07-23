@@ -97,10 +97,10 @@
 		 <div class="conwidth survey">
         	<div class="navigation">
         		<span class="bqcaipu"><a href="#" onclick="getRecipe('${param.aab101}')">菜谱</a></span>
-        		<span class="teshu bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
+        		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
         		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
         		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
-        		<span class="bqliuyanban"><a href="#" onclick="getEvent('${param.aab101}')">活动作品</a></span>
+        		<span class="teshu bqliuyanban"><a href="#" onclick="getEvent('${param.aab101}')">活动作品</a></span>
         	</div>
 
         	<div class="kh20"></div>
@@ -114,15 +114,15 @@
 <div class="layadmin-contact-box">
 <div class="layui-col-md12">
 <div class="layadmin-text-center">
-      <img src="${ins.aac204 }" onclick="chazuopin('${ins.aac201}')" style="border-radius:0%;margin-bottom:15px;">
+      <img src="${ins.aae204 }"  style="border-radius:0%;margin-bottom:0px;">
 </div>
 </div>
 <div class="layui-col-md12">
-          <a href="#" onclick="chazuopin('${ins.aac201}')">
+          
             <h3 style="color:#d3c5a1;text-align:center;">
-              <strong>${ins.aac102 }</strong>
+              <strong>${ins.aae203 }</strong>
             </h3>
-          </a>
+          
 </div>
 </div>
 </div>

@@ -59,10 +59,10 @@
 	</head>
 
 	<c:if test="${msg!=null }">
-    <body onload="open('${msg}');" class="theme-white">
+    <body onload="open('${msg}');">
     </c:if>
     <c:if test="${msg==null }" >
-    <body class="theme-white">
+    <body>
     </c:if>
     
     <div class="layui-container" style="margin-top:100px;margin-left:10%; width:80%">

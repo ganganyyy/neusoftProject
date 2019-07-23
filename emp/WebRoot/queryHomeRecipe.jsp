@@ -13,6 +13,12 @@
 		<link rel="stylesheet" href="define/css/stylegan.css" media="all">
         <link rel="stylesheet" href="css/test.css">
         <script type="text/javascript">
+        function getEvent(vaab101)
+        {
+        	var vform = document.getElementById("myform");
+       	    vform.action="<%=path%>/queryHomeEvent.html?aab101="+vaab101;
+       	    vform.submit();
+        }
         function getRecipe(vaab101)
         {
         	 var vform = document.getElementById("myform");
@@ -125,6 +131,7 @@
         		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
         		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
         		<span class="bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getEvent('${param.aab101}')">活动作品</a></span>
         	</div>
         
         <c:if test="${sessionScope.aab101Self==param.aab101 }">
