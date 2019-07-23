@@ -66,7 +66,7 @@
   </tbody>
 </table>  
 
-      <input type="submit" name="next" value="查询所有活动">
+      <input type="submit" class="layui-btn layui-btn-sm layui-btn-green-fr" name="next" value="查询所有活动">
 	</form>
 	
 	</div>
