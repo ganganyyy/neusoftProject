@@ -63,8 +63,10 @@ public class Ac01PartServiceImpl extends JdbcServicesSupport {
 	public Map<String,String> getOption()throws Exception
 	{
 		String huntOption=(String)this.get("huntOption");
+		String inputHunt=(String) this.get("inputHunt");
 		Map<String,String>info=new HashMap<>();
 		info.put("huntOption", huntOption);
+		info.put("inputHunt", inputHunt);
 		return info;
 	}
 	

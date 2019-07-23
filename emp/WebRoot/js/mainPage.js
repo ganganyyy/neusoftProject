@@ -126,9 +126,9 @@ function exeActivity(){
 				+'</div>'
 				+'</fieldset>'
 				+'</div>';
-			for(var i=0;i<data.rows.length&&i<4;i++)
+			for(var i=0;i<data.rows.length&&i<3;i++)
 			{	
-				html+='<div class="layui-row layui-col-space10">'
+				html+='<div class="layui-row layui-col-space30">'
 					 +'<div class="layui-card">'
 					 +'<div class="layui-card-header" style="text-align:center;color:#78a4ae">'+data.rows[i].aae102
 					 +'</div>'
