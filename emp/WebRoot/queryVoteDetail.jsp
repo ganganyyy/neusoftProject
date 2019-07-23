@@ -18,20 +18,13 @@
 		  	 vform.action="<%=path%>/findByIdVote.html?aae201="+vaae201;
 		  	 vform.submit();
 		 } 
-		function onVote(vaae201)
+		function onVote(vaae201,vaae101)
 		{
 			var vform = document.getElementById("myform");
-			vform.action="<%=path%>/addVote.html?aae201="+vaae201;
+			vform.action="<%=path%>/addVote.html?aae201="+vaae201+"&aae101="+vaae101;
 			vform.submit();
 		}
 		
-		
-		function apply(vaae101)
-		{
-			var vform = document.getElementById("myform");
-			vform.action="<%=path%>/testUpload.jsp?aae101="+vaae101;
-			vform.submit();
-		}
 		
 		function checkApply(vaae101)
 		{
@@ -66,7 +59,9 @@
         		<div class="fr">
         			<div class="apply">
         			<div class="kh30"></div>
+        			<c:if test="${ins.aae107==2 }">
         			 <button onclick="checkApply('${param.aae101}')">参加活动</button>
+        			 </c:if>
         
         		</div>
         		
@@ -90,12 +85,12 @@
             <!-- 活动选项 -->
             <c:forEach items="${rows }" var="ins" varStatus="vs">
             	<c:if test="${ins.aae107==1 }">
-            	<div class="userproduction">
+            	<div class="userproduction" style="height:100px;">
             		<p class="name">${ins.aae203 }</p>
         			<div class="stars">
         				<span class="a">目前票数</span>${ins.aae202 }票
         				
-      					<input type="submit" class="button" onclick="onVote('${ins.aae201}')" value="投票">
+      					<input type="submit" class="button" onclick="onVote('${ins.aae201 }','${param.aae101}')" value="投票">
         				<!-- <button>投票</button> -->
         				
         			</div>
@@ -116,7 +111,7 @@
         			<div class="stars">
         				<span class="a">目前票数</span>${ins.aae202 }票
         				
-        				<input type="submit" class="button" onclick="onVote('${ins.aae201}')" value="投票">
+        				<input type="submit" class="button" onclick="onVote('${ins.aae201 }','${param.aae101}')" value="投票">
         				<!-- <button>投票</button> -->
         				
         			</div>

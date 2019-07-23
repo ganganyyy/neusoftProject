@@ -16,6 +16,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				.append("select aab301,aab302,aab303,aab304")
 				.append("  from ab03")
 				.append(" where aab101=?")
+				.append(" order by aab303 asc,aab304 desc")
 				;
 		return this.queryForList(sql.toString(), this.get("aab101Self"));
 	}

@@ -15,9 +15,19 @@
 
 <script src="js/jump.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/mainPage.js" type="text/javascript" charset="utf-8"></script>
-		
+<script type="text/javascript">
+function open(vmsg)
+{
+	alert(vmsg);	
+}
+</script>		
 </head>
-<body>
+<c:if test="${message!=null }">
+    <body onload="open('${message}');">
+    </c:if>
+    <c:if test="${message==null }">
+    <body>
+    </c:if>
 <div class="layui-container" style="width:80%;">
 	
 	<div class="layui-row layui-col-space20" style="margin-top: 100px;">

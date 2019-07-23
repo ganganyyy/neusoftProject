@@ -49,6 +49,9 @@ public class SubOthersServicesImpl extends JdbcServicesSupport
 	    }
 		
 
+		/**
+		 * 我关注的人
+		 */
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
@@ -56,7 +59,7 @@ public class SubOthersServicesImpl extends JdbcServicesSupport
 				.append("  from ab01 a join ab02 b on a.aab101=b.aab203")
 				.append(" where b.aab202=?")
 				;
-		return this.queryForList(sql.toString(), this.get("aab101"));
+		return this.queryForList(sql.toString(), this.get("aab101Self"));
 	}
 	
 	//取消关注

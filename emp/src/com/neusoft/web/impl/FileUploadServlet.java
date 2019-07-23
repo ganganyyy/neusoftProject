@@ -38,7 +38,7 @@ public class FileUploadServlet extends HttpServlet{
         String result = "";
         
         //上传文件的保存目录
-        String savePath = "C:\\Users\\HP\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
+        String savePath = "C:\\Users\\xrt\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
         //上传时生成的临时文件保存目录
         String tempPath = "D:\\testImage\\tmp";
 

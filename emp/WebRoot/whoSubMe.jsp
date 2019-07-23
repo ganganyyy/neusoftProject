@@ -16,11 +16,11 @@
 	 vform.action="<%=path%>/delByIdSub.html?aab203="+vaab203;
 	 vform.submit();
  } 
+
  </script>
 </head>
-<body>
+ <body>
  <div class="layui-container" style="margin-top:50px;margin-left:20%; width:60%">
-${msg}
 <br>
 <br>
 <form id="myform" action="<%=path%>/upgrade.html" method="post">

@@ -60,11 +60,11 @@ public class VoteServicesImpl extends JdbcServicesSupport
 				.append("  left join ae01 a on b.aae101=a.aae101")
 				.append(" where to_days(c.aae302) = to_days(now())")
 				.append("   and c.aae303=?")
-				.append("   and c.aae201=?") 
+				.append("   and a.aae101=?")
 				;
 		Object args[]={
 			this.get("aab101Self"),
-			this.get("aae201")
+			this.get("aae101"),
 		};
 		
 		return this.queryForMap(sql.toString(), args);
@@ -90,7 +90,13 @@ public class VoteServicesImpl extends JdbcServicesSupport
 		//return this.queryForMap(sql.toString(),55);
 		
 	}
-	
+	/**
+	 * 增加无作品的投票选项
+	 * aae203:选项内容
+	 * aae202:投票数为0
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean uploadVoteOption()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -152,7 +158,7 @@ public class VoteServicesImpl extends JdbcServicesSupport
 				.append("      b.aae102,b.aae103")
 				.append("	 from ae01 b left join ae02 a")
 				.append("     on b.aae101=a.aae101")
-				.append("  where b.aae101=?;")
+				.append("  where b.aae101=?")
 				;
 		
 		return this.queryForList(sql.toString(),this.get("aae101"));
