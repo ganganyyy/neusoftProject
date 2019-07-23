@@ -54,7 +54,7 @@ ${msg }
 <!-- 查询 --> 
 <table class="layui-table"  border="1"  width="80%" align="center" method="post"  >
    <caption>
-     历史投稿
+     我的评论
      
    <hr width="160px">
    </caption>
