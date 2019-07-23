@@ -33,7 +33,6 @@ public class BaseServletForJson extends HttpServlet
 		 String toPath=null;   //跳转的目标页面
          try
          {
-        	 
         	/************************************************************
         	 *      解析访问路径,获取目标类的名称
         	 ************************************************************/
@@ -48,7 +47,7 @@ public class BaseServletForJson extends HttpServlet
      		//获取控制器的前缀名
      		String controllerFirstName=baseName.substring(0,1).toUpperCase()+baseName.substring(1);
      		
-     		
+
      		/***********************************************************
      		 *                        实例化目标类---业务控制器
      		 ***********************************************************/
@@ -97,8 +96,6 @@ public class BaseServletForJson extends HttpServlet
 		
 	}
 	
-	
-	
 	/**
 	 * 
 	 * @author gangan
@@ -126,7 +123,6 @@ public class BaseServletForJson extends HttpServlet
 	 */
 	private void saveSesseion(HttpServletRequest request,Map<String,Object>rueqestAttribute)
 	{
-		
 		HttpSession session=request.getSession();
 		session.setAttribute("aab101Self",rueqestAttribute.get("aab101Self"));
 		session.setAttribute("aab105Self",rueqestAttribute.get("aab105Self"));
@@ -203,6 +199,5 @@ public class BaseServletForJson extends HttpServlet
 	{
 		this.doGet(request, response);
 	}
-
 	
 }

@@ -44,11 +44,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	    			.append(" where aac601=?")
 	    			;
 	    	//2.编写参数数组
-	    	Object args[]={
+	    	Object args[]=
+	    		{
 	    			dto.get(i+"aac602"),
 	    			dto.get(i+"aac603"),
 	    			dto.get(i+"aac601")
-	    	};
+	    	    };
 	        return this.executeUpdate(sql.toString(), args)>0;
 		}
 		else
@@ -78,11 +79,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append(" where aac401=?")
     			;
     	//2.编写参数数组
-    	Object args[]={
+    	Object args[]=
+    		{
     			dto.get(i+"aac402"),
     			dto.get("aac403"),
     			dto.get(i+"aac401"),
-    	};
+    	    };
         return this.executeUpdate(sql.toString(), args)>0;	
     }
 	
@@ -95,13 +97,14 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     			.append(" where aac101=?")
     			;
     	//2.编写参数数组
-    	Object args[]={
+    	Object args[]=
+    		{
     			dto.get("aac102"),
     			dto.get("aac105"),
     			dto.get("aac107"),
     			dto.get("aac108"),
     			dto.get("aac101")
-    	};
+    	    };
         return this.executeUpdate(sql.toString(), args)>0;	
     }
 	
@@ -139,7 +142,8 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
     	rows = this.queryForList(sql, args);
         for (Map<String, String> m :rows)
         {
-            for(Map.Entry<String, String> vo : m.entrySet()){
+            for(Map.Entry<String, String> vo : m.entrySet())
+            {
                 vo.getKey();
                 value=vo.getValue();
             }

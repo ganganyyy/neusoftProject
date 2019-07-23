@@ -20,6 +20,12 @@
 <script src="./define/js/jquery.min.js"></script>
 
 <script type="text/javascript">
+function getEvent(vaab101)
+{
+	var vform = document.getElementById("myform");
+	    vform.action="<%=path%>/queryHomeEvent.html?aab101="+vaab101;
+	    vform.submit();
+}
 function chacaipu(vaac101)
 {
 	var vform = document.getElementById("myform");
@@ -110,6 +116,7 @@ function getSubByMe(vaab101)
         		<span class="bqzuopin"><a href="#" onclick="getWork('${sessionScope.aab101Self}')">作品</a></span>
         		<span class="teshu bqshoucang"><a href="#" onclick="getCol('${sessionScope.aab101Self}')">收藏</a></span>
         		<span class="bqliuyanban"><a href="#" onclick="getLike('${sessionScope.aab101Self}')">点赞</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getEvent('${param.aab101}')">活动作品</a></span>
         	</div>
 
         	<div class="kh20"></div>

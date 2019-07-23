@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import com.neusoft.services.impl.Ac02ServicesImpl;
 
-
 @WebServlet("*.html")
 public class BaseServlet extends HttpServlet 
 {
@@ -24,7 +23,6 @@ public class BaseServlet extends HttpServlet
 		 String toPath=null;   //跳转的目标页面
          try
          {
-        	 
         	/************************************************************
         	 *      解析访问路径,获取目标类的名称
         	 ************************************************************/
@@ -37,7 +35,6 @@ public class BaseServlet extends HttpServlet
      		String basePackageName="com.neusoft.web.impl.";
      		//获取控制器的前缀名
      		String controllerFirstName=baseName.substring(0,1).toUpperCase()+baseName.substring(1);
-     		
      		
      		/***********************************************************
      		 *                        实例化目标类---业务控制器
@@ -78,7 +75,6 @@ public class BaseServlet extends HttpServlet
 		request.getRequestDispatcher("/"+toPath+".jsp").forward(request, response);
 	}
 	
-	
 	private void parseRueqestAttribute(HttpServletRequest request,Map<String,Object> rueqestAttribute)
 	{
 		//1.还原所有的键值对,形成集合
@@ -93,7 +89,6 @@ public class BaseServlet extends HttpServlet
 		//清除所有的request级属性数据
 		rueqestAttribute.clear();
 	}
-	
 	
 	/**
 	 *  DTO切片

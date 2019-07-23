@@ -13,6 +13,12 @@
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
 		<link rel="stylesheet" href="./define/css/stylegan.css" media="all">
 		<script type="text/javascript">
+		function getEvent(vaab101)
+		{
+			var vform = document.getElementById("myform");
+			    vform.action="<%=path%>/queryHomeEvent.html?aab101="+vaab101;
+			    vform.submit();
+		}
 		function getRecipe(vaab101)
         {
         	 var vform = document.getElementById("myform");
@@ -86,6 +92,7 @@
         		<span class="bqzuopin"><a href="#" onclick="getWork('${param.aab101}')">作品</a></span>
         		<span class="bqshoucang"><a href="#" onclick="getCol('${param.aab101}')">收藏</a></span>
         		<span class="teshu bqliuyanban"><a href="#" onclick="getLike('${param.aab101}')">点赞</a></span>
+        		<span class="bqliuyanban"><a href="#" onclick="getEvent('${param.aab101}')">活动作品</a></span>
         	</div>
 
         	<div class="kh20"></div>
