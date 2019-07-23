@@ -12,12 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.neusoft.system.tools.Tools;
 
-
-public abstract class BaseServletSupport extends HttpServlet {
-	
-  
-
-	
+public abstract class BaseServletSupport extends HttpServlet 
+{
 	protected  final void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String toPath=null;
@@ -32,12 +28,10 @@ public abstract class BaseServletSupport extends HttpServlet {
            ex.printStackTrace();
 		}
 		request.getRequestDispatcher("/"+toPath+".jsp").forward(request, response);
-		
 	}
 
 	protected abstract String execute(HttpServletRequest request,Map<String, Object> dto)throws Exception;
-	
-	
+
 	private void addAab101(Map<String,Object>dto,HttpSession session)
 	{
 		dto.put("aab101Self", session.getAttribute("aab101Self"));
@@ -49,5 +43,4 @@ public abstract class BaseServletSupport extends HttpServlet {
 		
 		this.doGet(request, response);
 	}
-
 }

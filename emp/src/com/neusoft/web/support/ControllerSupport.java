@@ -66,7 +66,6 @@ public abstract class ControllerSupport implements BaseController
 		}	
 	}
 	
-	
 	/**
 	 * 根据方法名获取单一实例
 	 * 通过传递的方法名来调用
@@ -106,8 +105,6 @@ public abstract class ControllerSupport implements BaseController
 		//2.调用方法
 		return  (boolean)method.invoke(services);
 	}
-	
-
 	
 	/**
 	 * 获取单一实例,是否有值在数据库
@@ -174,7 +171,6 @@ public abstract class ControllerSupport implements BaseController
 		}
 	}
 	
-
 	/**
 	 * 带有活动类型的更新行为
 	 * @param utype
@@ -204,8 +200,6 @@ public abstract class ControllerSupport implements BaseController
     	return flag;
 	}
 	
-
-	
 	/**
 	 * 带有编号的消息提示的更新行为
 	 * @param utype
@@ -223,10 +217,7 @@ public abstract class ControllerSupport implements BaseController
     	}
     	//Servlet向页面输出数据
     	this.saveAttribute("msg", msg);
-
 	}
-		
-	
 	
 	/**
 	 * 删除后的数据检索
@@ -241,8 +232,6 @@ public abstract class ControllerSupport implements BaseController
 		}
 	}
 	
-	
-	
 	/**
 	 * @author:刘诗滢
 	 * 根据方法名获取批量实例
@@ -253,7 +242,6 @@ public abstract class ControllerSupport implements BaseController
 	 */
 	protected final void getInstanceList(String methodName,String msgText,String attributeName)throws Exception
 	{
-		
 		Method method=this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
 		//2.调用方法
@@ -268,7 +256,6 @@ public abstract class ControllerSupport implements BaseController
 		}	
 	}
 
-	
 	/**
 	 * @author 刘诗滢
 	 * 获取一些不需要显示在页面的信息：
@@ -293,9 +280,7 @@ public abstract class ControllerSupport implements BaseController
     public final void setMapDto(Map<String, Object> dto) 
     {
         this.dto=dto;	
-        //同锟斤拷为Services锟斤拷锟斤拷DTO
         this.services.setMapDto(dto);
-        
     }
     
     protected final void showDto()
@@ -303,7 +288,6 @@ public abstract class ControllerSupport implements BaseController
     	//System.out.println(this.dto);
     }
 
-    
 	/*****************************************
 	 * 	           数据输出流
 	 *****************************************/
