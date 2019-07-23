@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="css/user_kitchen.css"/>
 		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
         <link rel="stylesheet" href="css/test.css">
+        <link rel="stylesheet" type="text/css" href="css/myRP.css"/>
 
 <link rel="stylesheet" href="./layui/css/layui.css" media="all">
 <link rel="stylesheet" href="./define/css/stylegan.css" media="all">
