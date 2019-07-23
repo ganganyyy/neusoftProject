@@ -28,6 +28,8 @@ public abstract class SearchControllerSupport extends ControllerSupport {
 		this.getInstanceList("queryForOption", "ËÑË÷ÄÚÈÝ²»´æÔÚ","rows");
 		Map<String,String>extraInfo=this.getExtraInfo("getOption");
 		String huntOption=extraInfo.get("huntOption");
+		String inputHunt=extraInfo.get("inputHunt");
+		this.getAttribute().put("inputHunt", inputHunt);
 		String backPage=null;
 		if(huntOption.equals("ab01"))
 		{

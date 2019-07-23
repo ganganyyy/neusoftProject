@@ -35,11 +35,11 @@ function open(vmsg)
 		<div class="layui-col-md8">
 			<div class="layui-carousel" id="mainCarousel" >
 			  <div carousel-item>
-				<div><img src="img/foodlist/3.jpg" ></div>
-				<div><img src="img/foodlist/2.jpg" ></div>
-				<div><img src="img/foodlist/6.jpg" ></div>
-				<div><img src="img/foodlist/7.jpg" ></div>
-				<div><img src="img/foodlist/5.jpg"	></div>
+				<div><img src="img/foodlist/14.jpg" ></div>
+				<div><img src="img/foodlist/12.jpg" ></div>
+				<div><img src="img/foodlist/11.jpg" ></div>
+				<div><img src="img/foodlist/18.jpg" ></div>
+				<div><img src="img/foodlist/20.jpg"	></div>
 			  </div>
 			</div>
 		</div>
@@ -100,7 +100,7 @@ layui.use(['element','carousel','form'], function(){
   carousel.render({
     elem: '#mainCarousel'
     ,width: '100%' //设置容器宽度
-	,height:"480px"
+	,height:"420px"
     ,arrow: 'always' //始终显示箭头
     //,anim: 'updown' //切换动画方式
   });

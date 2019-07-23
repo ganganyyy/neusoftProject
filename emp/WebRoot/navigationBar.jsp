@@ -38,7 +38,7 @@
 						</select>
 					</div>
 					<div class="layui-col-md10"><!-- 1px solid #ccc -->
-						<input type="text" name="inputHunt"  placeholder="搜索" autocomplete="off" class="layui-input"> 
+						<input type="text" name="inputHunt"  placeholder="搜索" autocomplete="off" class="layui-input" value="${inputHunt }"> 
 						<!-- style="border-radius: 10px;border: none;color:black;" --> 
 						
 					</div>
@@ -83,7 +83,7 @@
 		
 		  	</script>
 		  	
-		  	<li class="layui-nav-item" style="margin-top:0px" id="userLi">
+		  	<li class="layui-nav-item" style="margin-top:-20px" id="userLi">
 		    <a href="" style="color:black;"><img src="${aab106 }" class="layui-nav-img" id="userIcon"></a>
 		    <dl class="layui-nav-child">
 		      <dd id="examine1"><a  onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
