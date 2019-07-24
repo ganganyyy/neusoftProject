@@ -57,7 +57,7 @@ layui.use(['form','layer'], function(){
 	    		   
 	    		   verifyCode=obj.ins.verifyCode;
 	    		   //alert(verifyCode);
-	    		   console.log("verifyCode");
+	    		   console.log(verifyCode);
 	    		   layer.alert("提示：获取短信验证码成功", {icon: 6}); 
 	    	   }
 	    	   else

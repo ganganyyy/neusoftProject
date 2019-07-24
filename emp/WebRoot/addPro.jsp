@@ -22,7 +22,7 @@
 	<div class="content">
 		<form id="myform" class="layui-form" action="<%=path%>/addPro" method="post" enctype="multipart/form-data">					
 			<div class="atitle" style="margin-top: 10px;">
-				<span class="alable">上传我做的</span> 
+				<span class="alable">上传你的作品</span> 
 			</div>									
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 				<legend>上传图片</legend>
