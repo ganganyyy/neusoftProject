@@ -31,7 +31,7 @@
 						<div class="layui-card-header" style="text-align: center;font-size: 18px;">${ins.aac102}</div>
 						<div class="layui-card-body" align="center" style="font-size: 13px;">
 							<a onclick="toMenuDetail('${ins.aac101}')" style="cursor:pointer;">
-							<img src="${ins.aac108}" style="width:100%;height: 100%;">
+							<img src="${ins.aac108}" style="width:250px;height: 180px;">
 							</a>
 							<p>
 							<a onclick="kitchen('${ins.aab101}')" style="cursor:pointer;">
