@@ -38,7 +38,7 @@ function addzuofa()
 	rowobj.innerHTML="<div class='kh30'></div>"
 	+"<div class='layui-col-md1'>"+b+"</div>"
 	+"<input type='hidden' name='"+b+"aac404' value='"+b+"'>"
-    +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='Ìí¼Ó²ËÆ×ÃèÊö' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
+    +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='Ìí¼Ó²½ÖèÃèÊö' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
     +"<div class='layui-col-md5'>"
     +"<a href='javascript:;' class='file'>ÉÏ´«Í¼Æ¬"
     +"<input type='file' onchange='PreviewImage(this, "+b+")' name='images'/> </a>"
@@ -110,7 +110,7 @@ function addings()
 	<div class="kh30"></div>
     
     <a href="javascript:;" class="file">ÉÏ´«Í¼Æ¬
-    <input type="file" onchange="Image(this)" name="images"/> 
+    <input type="file" onchange="Image(this)" name="images" /> 
     </a>
     <div class="layui-upload">
     <div id="imgPreview" class="layui-upload-list">
@@ -166,12 +166,12 @@ function addings()
 			<div class="layui-col-md1">1</div>
 			<input type="hidden" name="1aac404" value="1">
 			<div class="layui-col-md3">
-				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
+				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²½ÖèÃèÊö"
 				style="width: 100%; border: 0px; height: 240px" name="1aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
 			<a href="javascript:;" class="file">ÉÏ´«Í¼Æ¬
-		    <input type="file" onchange="PreviewImage(this,1)" name="images"/> 
+		    <input type="file" onchange="PreviewImage(this,1)" name="images" /> 
 		    </a>
 		<div class="layui-upload">
 		<div id="imgPreview1" class="layui-upload-list" >
@@ -187,12 +187,12 @@ function addings()
 			<div class="layui-col-md1">2</div>
 			<input type="hidden" name="2aac404" value="2">
 			<div class="layui-col-md3">
-				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
+				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²½ÖèÃèÊö"
 				style="width: 100%; border: 0px; height: 240px" name="2aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
 			<a href="javascript:;" class="file">ÉÏ´«Í¼Æ¬
-		    <input type="file" onchange="PreviewImage(this,2)" name="images"/> 
+		    <input type="file" onchange="PreviewImage(this,2)" name="images" /> 
 		    </a>
 		<div class="layui-upload">
 		<div id="imgPreview2" class="layui-upload-list" >
@@ -208,12 +208,12 @@ function addings()
 			<div class="layui-col-md1">3</div>
 			<input type="hidden" name="3aac404" value="3">
 			<div class="layui-col-md3">
-				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
+				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²½ÖèÃèÊö"
 				style="width: 100%; border: 0px; height: 240px" name="3aac402"></textarea>
 			</div>
 			<div class="layui-col-md5">
 			<a href="javascript:;" class="file">ÉÏ´«Í¼Æ¬
-		    <input type="file" onchange="PreviewImage(this,3)" name="images"/> 
+		    <input type="file" onchange="PreviewImage(this,3)" name="images" /> 
 		    </a>
 		<div class="layui-upload">
 		<div id="imgPreview3" class="layui-upload-list" >

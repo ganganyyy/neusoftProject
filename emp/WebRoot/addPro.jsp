@@ -30,13 +30,13 @@
 			<div class="proimg">
 				<div class="layui-upload">
 				<button type="button" class="layui-btn" id="uploadQR">选择图片</button>
-				  <input type="file" onchange="Image(this)" name="images" id="shangchuan">                  
+				  <input type="file" onchange="Image(this)" name="images" id="shangchuan" required="required">                  
                   <div id="imgPreview" class="layui-upload-list">
 					  <img class="layui-upload-img" width="300px" height="200px">
 				  </div>
 				</div>  						 
               	<div style="color: #c2c2c2;margin:10px 0;">
-              		温馨提示: 每次最多上传一张图片, 单张图片的大小不超过2MB
+              		温馨提示: 记得上传一张图片哦
               	</div>				
 			</div>
 								

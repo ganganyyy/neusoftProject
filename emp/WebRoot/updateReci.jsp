@@ -40,7 +40,7 @@ function addzuofa()
 	+"<div class='layui-col-md1'>"+b+"</div>"
 	+"<input type='hidden' name='"+b+"aac401'>"
 	+"<input type='hidden' name='"+b+"aac404' value='"+b+"'>"
-    +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='Ìí¼Ó²ËÆ×ÃèÊö' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
+    +"<div class='layui-col-md3'><textarea rows='5' cols='20' placeholder='Ìí¼Ó²½ÖèÃèÊö' style='width:100%;border:0px;height:240px' name='"+b+"aac402'></textarea></div>"
     +"<div class='layui-col-md5'>"
     +"<a href='javascript:;' class='file'>ÉÏ´«Í¼Æ¬"
     +"<input type='file' onchange='PreviewImage(this, "+b+")' name='images'/> </a>"
@@ -116,7 +116,7 @@ function addings()
 	<div class="kh30"></div>
     
     <a href="javascript:;" class="file">ÉÏ´«Í¼Æ¬
-    <input type="file" onchange="Image(this)" name="images"/> 
+    <input type="file" onchange="Image(this)" name="images" /> 
     </a>
     <div class="layui-upload">
     <div id="imgPreview" class="layui-upload-list">
@@ -169,7 +169,7 @@ function addings()
 			<input type="hidden" name="${vs.count }aac401" value="${ins.aac401 }">
 			<input type="hidden" name="${vs.count }aac404" value="1">
 			<div class="layui-col-md3">
-				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²ËÆ×ÃèÊö"
+				<textarea rows="5" cols="20" placeholder="Ìí¼Ó²½ÖèÃèÊö"
 				style="width: 100%; border: 0px; height: 240px" name="${vs.count }aac402">${ins.aac402 }</textarea>
 			</div>
 			<div class="layui-col-md5">
