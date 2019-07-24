@@ -61,12 +61,12 @@
 		  		<div class="toggle">
 		  			<ul class="toggle-menu">
 						<li></li>
-		  				<li><a  href="mainPage.jsp" id="option1">主页</a></li>
-		  				<li><a  onclick='selectType("01");' id="option2">食谱一览</a></li>
-		  				<li><a  href="/emp/queryPro.html" id="option3">作品一览</a></li>
-		  				<li><a  href="/emp/browsearticle.jsp" id="option4">专栏文章</a></li>
-		  				<li><a  href="/emp/map.jsp" id="option5">美食地图</a></li>
-		  				<li><a  onclick="contact();" id="option5">联系我们</a></li>
+		  				<li><a  href="mainPage.jsp" id="option1" style="cursor:pointer;">主页</a></li>
+		  				<li><a  onclick='selectType("01");' id="option2" style="cursor:pointer;">食谱一览</a></li>
+		  				<li><a  href="/emp/queryPro.html" id="option3" style="cursor:pointer;">作品一览</a></li>
+		  				<li><a  href="/emp/browsearticle.jsp" id="option4" style="cursor:pointer;">专栏文章</a></li>
+		  				<li><a  href="/emp/map.jsp" id="option5" style="cursor:pointer;">美食地图</a></li>
+		  				<li><a  onclick="contact();" id="option5" style="cursor:pointer;">联系我们</a></li>
 						<li></li>
 						<li></li>
 		  			</ul>
@@ -86,12 +86,12 @@
 		  	<li class="layui-nav-item" style="margin-top:-20px" id="userLi">
 		    <a href="" style="color:black;"><img src="${aab106 }" class="layui-nav-img" id="userIcon"></a>
 		    <dl class="layui-nav-child">
-		      <dd id="examine1"><a  onclick="personal('${sessionScope.aab101Self}');">个人中心</a></dd>
-		      <dd id="examine2"><a  onclick="kitchen('${sessionScope.aab101Self}');">我的厨房</a></dd>
-		      <dd id="examine"><a href="/emp/queryEvent.jsp">活动管理</a></dd>
-		      <dd id="examine3"><a href="/emp/upmanage.html">升级审核</a></dd>
-		      <dd id="examine4"><a href="/emp/checkarticle.html">文章审核</a></dd>
-		      <dd><a onclick="exit();">退出</a></dd>
+		      <dd id="examine1"><a  onclick="personal('${sessionScope.aab101Self}');" >个人中心</a></dd>
+		      <dd id="examine2"><a  onclick="kitchen('${sessionScope.aab101Self}');" >我的厨房</a></dd>
+		      <dd id="examine"><a href="/emp/queryEvent.jsp" >活动管理</a></dd>
+		      <dd id="examine3"><a href="/emp/upmanage.html" >升级审核</a></dd>
+		      <dd id="examine4"><a href="/emp/checkarticle.html" >文章审核</a></dd>
+		      <dd><a onclick="exit();" >退出</a></dd>
 		    </dl>
 		   </li>
 		  </div>
