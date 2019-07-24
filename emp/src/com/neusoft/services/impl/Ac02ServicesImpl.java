@@ -385,5 +385,24 @@ public class Ac02ServicesImpl extends JdbcServicesSupport
     	};
     	return this.executeUpdate(sql.toString(), args)>0;
     }
+    
+    //我的作品
+	public List<Map<String,String>> myPro()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select a.aac102,c.aac204,c.aac201,b.aab102,b.aab106")
+				.append("  from (ac02 c join ac01 a on c.aac207=a.aac101)")
+				.append("              join ab01 b on a.aac106=b.aab101")
+				.append(" where c.aab101=?")
+				;
+		return this.queryForList(sql.toString(), this.get("aab101Self"));
+	}
+	//我
+	public Map<String,String> me()throws Exception
+	{
+		String sql = "select aab102,aab106,aab107,aab108 from ab01 where aab101=?";
+		
+		return this.queryForMap(sql,this.get("aab101Self"));
+	}
 
 }
