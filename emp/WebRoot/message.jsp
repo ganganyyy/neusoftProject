@@ -102,7 +102,7 @@
         <td><input type="checkbox" name="idlist" value="${ins.aab301 }"
 				             onclick="onSelect(this.checked)"></td>
         <c:if test="${ins.aab303==0 }">
-        <td><a herf="#" id="addAsset" class="colorA" onclick="onLook('${ins.aab302 }','${ins.aab301 }')">${ins.aab302 }</a></td>
+        <td><a herf="#" id="addAsset" class="colorA" onclick="onLook2('${ins.aab302 }','${ins.aab301 }')">${ins.aab302 }</a></td>
         </c:if>
         <c:if test="${ins.aab303==1 }">
         <td><a herf="#">${ins.aab302 }</a></td>
@@ -142,9 +142,31 @@
   layer.alert(vaab302,function(index){
 	  var vform = document.getElementById("myform");
 	  vform.action="<%=path%>/updateMessage.html?aab301="+vaab301;
-	  vform.submit();
+	  vform.submit();	
   layer.close(index);
   });
+ }
+ function onLook2(vaab302,vaab301)
+ {
+	 layer.alert(vaab302,function(index){
+		 $.ajax({
+		 		url:'/emp/updateMessage.do',
+		 		type:'post',
+		 		data:{
+		 			"aab301":vaab301
+		 		},
+		 		dataType:'json',
+		 		success:function(data){
+		 			 window.location.href="queryMessage.html";
+		 		},
+		 		error:function(data){
+		 			
+		 			alert("Ã· æ£∫Õ¯¬Áπ ’œ£°");
+		 		}
+		 	});	
+	  layer.close(index);
+	  });
+ 	
  }
   </script>
 </body>
