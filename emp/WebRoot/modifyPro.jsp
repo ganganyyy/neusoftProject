@@ -47,7 +47,7 @@
 				    </fieldset>
 				</div>
 				<div>
-					<textarea class="layui-textarea" rows="10" placeholder="说点什么吧" name="aac203">${ins.aac203}</textarea>
+					<textarea class="layui-textarea" rows="10" placeholder="说点什么吧" name="aac203" required>${ins.aac203}</textarea>
 				</div>
 			</div>
 			<div class="layui-input-block">
