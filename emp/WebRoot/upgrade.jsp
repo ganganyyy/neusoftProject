@@ -70,7 +70,7 @@
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
   <legend>申请升级</legend>
 </fieldset>
-
+<c:if test="${ins!=null }">
 <table class="layui-table" lay-even="" lay-skin="row">
   <colgroup>
     <col width="150">
@@ -87,21 +87,25 @@
     </tr>
   </thead>
   <tbody>
-  <c:if test="${ins!=null }">
+  
     <tr>
       <td>${ins.totalsub }</td>
       <td>${ins.totalcollects }</td>
       <td>${ins.totallikes }</td>
       <td>${ins.totallikes+ins.totalcollects+2*ins.totalsub }</td>
     </tr>
-</c:if>
+
   </tbody>
 </table>
 <blockquote class="layui-elem-quote layui-quote-nm" style="color:#969191;">如果总分大于500分,则直接升级成功.若小于500分则提交升级至系统,等待审核。</blockquote>
-  <input type="submit" name="next" value="申请升级" style="border:0px;width: 100px;height: 40px;background: #89bcaf;
-font-size: 14px;color: #fff; margin-top:1px;float:right;">
+  <c:if test="${photo.aab105==01 }"><input type="submit" name="next" value="申请升级" style="border:0px;width: 100px;height: 40px;background: #89bcaf;
+font-size: 14px;color: #fff; margin-top:1px;float:right;"></c:if>
+ <c:if test="${photo.aab105==02 }"><input name="next" value="您已是大V" style="border:0px;text-align:center;width: 100px;height: 40px;background: #89bcaf;
+font-size: 14px;color: #fff; margin-top:1px;float:right;"></c:if>
+</c:if>
 </div>
 </div>
+
 </form>
 
 </div>
