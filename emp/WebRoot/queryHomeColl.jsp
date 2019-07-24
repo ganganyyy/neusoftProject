@@ -91,7 +91,7 @@ function getSubByMe(vaab101)
 				<img src="${ins.aab106 }" class="img"/>
 				<div class="fl">
 				<h2>${ins.aab102 }的厨房</h2>
-				<!-- <span><i class="icon1"></i>2016-3-23 锟斤拷锟斤拷</span><br />-->
+				
 				<div class="guanzhuderen">
 				<div class="x y">
 				<span>关注的人</span><br><a href="#"><span>${ins.aab107 }</span></a>
@@ -101,9 +101,6 @@ function getSubByMe(vaab101)
 				</div>
 				</div>
 
-				</div>
-				<div class="fr">
-				<a href="#"><div class="guanzhu2">关注</div></a>
 				</div>
 				</div>
 

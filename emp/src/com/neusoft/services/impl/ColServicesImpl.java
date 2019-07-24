@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 
 import com.neusoft.services.JdbcServicesSupport;
+import com.neusoft.system.tools.Tools;
 
 public class ColServicesImpl extends JdbcServicesSupport
 {
@@ -184,6 +185,7 @@ public class ColServicesImpl extends JdbcServicesSupport
 	    			.append("       values(?,?,?) ")
 	    			;
 		  Object args[]={this.get("aab101Self"),this.get("caad302"),getImg()};
+		  int aad301=Tools.getSequence("aad301");
 	      return this.executeUpdate(sql.toString(), args)>0;
 	  }
 }
