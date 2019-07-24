@@ -131,6 +131,8 @@ ${msg }
     <input class="layui-btn" type="submit"  name="next" value="²éÑ¯">
     <input class="layui-btn" type="submit"  id="del" name="next" value="É¾³ý" disabled="disabled"
                  formaction="<%=path%>/delcomment.html"  >
+                  <input class="layui-btn" type="submit"  id="del" name="next" value="·µ»Ø" 
+                 formaction="<%=path%>/mainPage.jsp"  >
      </td>
     </tr>
 

@@ -91,7 +91,7 @@ ${msg }
 <table  class="layui-table" border="1"  width="60%" align="center">
 
     <tr> 
-    <td width="10%">头像</td>
+    <td width="10%"></td>
     <td width="10%">用户 </td>
     <td>评论内容</td>    
     </tr>
@@ -111,6 +111,9 @@ ${msg }
 <td coslpan="2" align="center">
 <input class="layui-btn" type="submit" name="next" value="我也要写"
           formaction="addarticle.jsp"
+          formnovalidate="formnovalidate">
+          <input class="layui-btn" type="submit" name="next" value="我的评论"
+          formaction="mycomment.jsp"
           formnovalidate="formnovalidate">
 <input class="layui-btn" type="submit" name="next" value="返回"
           formaction="userquery.html"
