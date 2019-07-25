@@ -125,7 +125,7 @@
 				    , done: function(data, index, upload) {//上传完毕回调
 	                    layer.closeAll('loading');
 
-	                    if (data.no == 1) {
+	                    if (data.no === 1) {
 	                        layer.msg("上传成功！", {
 	                            icon: 6
 	                        });
