@@ -18,6 +18,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 /**
  * 上传用户头像
@@ -36,10 +37,12 @@ public class PhotoUploadServlet extends HttpServlet{
         Map<String,Object> resultMap = new HashMap<String,Object>();
         
         String result = "";
+        //JSONObject result="";
         
     
         //上传文件的保存目录
-        String savePath = "C:\\Users\\xrt\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
+        //String savePath = "C:\\Users\\HP\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
+        String savePath=request.getServletContext().getRealPath("images");
         //上传时生成的临时文件保存目录
         String tempPath = "D:\\testImage\\tmp";
 
@@ -135,8 +138,9 @@ public class PhotoUploadServlet extends HttpServlet{
                     //删除处理文件上传时生成的临时文件
                     item.delete();
                     
-                    //resultMap.put("no", 1);
-                    resultMap.put("msg", "头像上传成功！");
+                    //resultMap.put("code", 0);
+                    //resultMap.put("msg", "");
+                    resultMap.put("no", 1);
                     resultMap.put("uuid", UUID.randomUUID().toString().replaceAll("-", ""));
                     
                     result = new Gson().toJson(resultMap);

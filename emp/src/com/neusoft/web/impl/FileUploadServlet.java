@@ -38,7 +38,8 @@ public class FileUploadServlet extends HttpServlet{
         String result = "";
         
         //上传文件的保存目录
-        String savePath = "C:\\Users\\xrt\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
+        //String savePath = "C:\\Users\\HP\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images";
+        String savePath=request.getServletContext().getRealPath("images");
         //上传时生成的临时文件保存目录
         String tempPath = "D:\\testImage\\tmp";
 
@@ -134,7 +135,7 @@ public class FileUploadServlet extends HttpServlet{
                     //删除处理文件上传时生成的临时文件
                     item.delete();
                     
-                    //resultMap.put("no", 1);
+                    resultMap.put("no", 1);
                     resultMap.put("msg", "文件上传成功！");
                     resultMap.put("uuid", UUID.randomUUID().toString().replaceAll("-", ""));
                     
