@@ -181,10 +181,9 @@ public class HomepageServicesImpl extends JdbcServicesSupport
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select sum(a.aac109)+sum(b.aac206) as totalLikes,")
-				.append("       sum(a.aac110)+sum(b.aac205) as totalCollects,")
-				.append("       sum(c.aab108) as totalSub,")
-				.append("       c.aab105")
+				.append("select sum(a.aac109) as totalLikes,")
+				.append("       sum(a.aac110) as totalCollects,")
+				.append("       sum(c.aab108) as totalSub")
 				.append("  from (ac01 a left join ac02 b on a.aac106=b.aab101)")
 				.append("               left join ab01 c on a.aac106=c.aab101")
 				.append("  where a.aac106=?")
