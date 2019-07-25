@@ -69,7 +69,7 @@ ${msg }
           formaction="<%=path%>/${empty ad01.aad101?'dianzan':'quxiaodianzan' }.html" 
           formnovalidate="formnovalidate">       
 <input class="layui-btn" type="submit" name="next" value="ÊÕ²Ø"
-          formaction=""    
+          formaction=""   
             formnovalidate="formnovalidate">
           </td>
           </tr>
