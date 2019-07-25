@@ -97,7 +97,6 @@
                 }
                 , error: function() {//请求异常回调
                     layer.closeAll('loading');
-                    layer.msg('网络异常，请稍后重试！');
                 }
             });
         });

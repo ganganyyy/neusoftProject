@@ -130,7 +130,7 @@
 	                            icon: 6
 	                        });
 	                    } else {
-	                        layer.msg("上传失败，请稍后重试！", {
+	                        layer.msg("", {
 	                            icon: 5
 	                        });
 	                    }
@@ -140,7 +140,6 @@
 	                }
 				    ,error: function(){
 				    	  layer.closeAll('loading');
-		                  layer.msg('网络异常，请稍后重试！');
 				      }
 				    
 				  });
