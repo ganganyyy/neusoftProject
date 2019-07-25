@@ -60,9 +60,9 @@ public class FileUtil
                     {
                     	String RandomName = UUID.randomUUID().toString()+"."+FilenameUtils.getExtension(item.getName());
                         //System.out.println(fileName + "->" + FilenameUtils.getName(item.getName()));
-                        //String path=req.getServletContext().getRealPath("/img");
+                        String path=req.getServletContext().getRealPath("/images/menu");
                         
-                        String path="C:\\Users\\xrt\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images\\menu";
+                        //String path="C:\\Users\\xrt\\Documents\\GitHub\\neusoftProject\\emp\\WebRoot\\images\\menu";
                         
                         item.write(new File(path, RandomName));
                         
