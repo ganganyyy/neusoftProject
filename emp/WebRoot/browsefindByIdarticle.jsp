@@ -68,9 +68,7 @@ ${msg }
 <input class="layui-btn" type="submit" name="next" value="${empty ad01.aad101?'点赞':'取消点赞' }"
           formaction="<%=path%>/${empty ad01.aad101?'dianzan':'quxiaodianzan' }.html" 
           formnovalidate="formnovalidate">       
-<input class="layui-btn" type="submit" name="next" value="收藏"
-          formaction=""    
-            formnovalidate="formnovalidate">
+
           </td>
           </tr>
       <tr>
